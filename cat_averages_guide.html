@@ -1,0 +1,1846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The CAT Averages Codex — A Teaching Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4ebd9;
+  --paper-2:#ebe0c8;
+  --ink:#142028;
+  --ink-soft:#36444f;
+  --ink-faint:#677584;
+  --accent:#1f6b6b;
+  --accent-deep:#144848;
+  --ochre:#c89b3c;
+  --olive:#5a6b3e;
+  --rust:#a23f24;
+  --rule:#c5b698;
+  --rule-soft:#dbcdaf;
+  --highlight:#fff1bf;
+  --shadow:0 1px 0 rgba(20,32,40,.06), 0 2px 6px rgba(20,32,40,.04);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Fraunces',Georgia,serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.65;
+  font-size:17px;
+  background-image:
+    radial-gradient(circle at 12% 14%, rgba(31,107,107,.05) 0%, transparent 42%),
+    radial-gradient(circle at 88% 78%, rgba(162,63,36,.04) 0%, transparent 45%);
+  min-height:100vh;
+}
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .32 0 0 0 0 .27 0 0 0 0 .18 0 0 0 .04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:1;opacity:.55;
+}
+
+.layout{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  min-height:100vh;
+  position:relative;z-index:2;
+}
+@media (max-width:980px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{position:static!important;height:auto!important;border-right:none!important;border-bottom:2px solid var(--ink)}
+}
+
+.sidebar{
+  position:sticky;top:0;
+  height:100vh;
+  border-right:1px solid var(--rule);
+  background:linear-gradient(180deg,var(--paper-2) 0%,var(--paper) 100%);
+  padding:32px 26px 24px;
+  overflow-y:auto;
+  display:flex;flex-direction:column;
+}
+.brand{
+  border-bottom:2px solid var(--ink);
+  padding-bottom:22px;margin-bottom:24px;
+}
+.brand-eyebrow{
+  font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--accent);font-weight:600;margin-bottom:8px;
+}
+.brand-title{
+  font-family:'Fraunces',serif;
+  font-weight:900;font-size:30px;line-height:1;
+  letter-spacing:-.02em;
+}
+.brand-title em{
+  font-style:italic;font-weight:400;color:var(--accent);
+  font-size:26px;
+}
+.brand-sub{
+  font-family:'Inter',sans-serif;
+  font-size:11px;color:var(--ink-faint);
+  margin-top:10px;letter-spacing:.05em;
+}
+.companion-tag{
+  margin-top:14px;
+  padding:6px 10px;
+  font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;font-weight:600;
+  color:var(--rust);
+  background:rgba(162,63,36,.08);
+  border-left:2px solid var(--rust);
+}
+.nav-label{
+  font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--ink-faint);font-weight:600;
+  margin-bottom:10px;
+}
+.nav-list{
+  list-style:none;
+  font-family:'Inter',sans-serif;
+  flex:1;
+}
+.nav-list li{
+  position:relative;
+  border-bottom:1px dotted var(--rule);
+}
+.nav-list li:last-child{border-bottom:none}
+.nav-list a{
+  display:flex;align-items:baseline;gap:10px;
+  padding:11px 0 11px 8px;
+  text-decoration:none;
+  color:var(--ink-soft);
+  font-size:13.5px;font-weight:500;
+  transition:all .2s ease;
+}
+.nav-list a:hover{color:var(--accent);padding-left:14px}
+.nav-list a.active{
+  color:var(--ink);font-weight:600;
+  padding-left:14px;
+}
+.nav-list a.active::before{
+  content:"";position:absolute;left:0;top:50%;
+  width:5px;height:5px;background:var(--accent);
+  border-radius:50%;transform:translateY(-50%);
+}
+.nav-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;color:var(--ink-faint);
+  font-weight:400;min-width:24px;
+}
+.nav-list a.active .nav-num{color:var(--accent)}
+
+.sidebar-footer{
+  margin-top:22px;padding-top:18px;
+  border-top:1px solid var(--rule);
+  font-family:'Inter',sans-serif;
+  font-size:10.5px;color:var(--ink-faint);
+  letter-spacing:.04em;
+}
+
+.main{
+  padding:48px 64px 96px;
+  max-width:1080px;
+}
+@media (max-width:980px){.main{padding:32px 22px 64px}}
+
+.section{display:none;animation:fadeUp .4s ease}
+.section.active{display:block}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:none}
+}
+
+.section-header{
+  border-bottom:2px solid var(--ink);
+  padding-bottom:28px;margin-bottom:42px;
+  position:relative;
+}
+.module-meta{
+  display:flex;align-items:center;gap:16px;
+  font-family:'Inter',sans-serif;
+  font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--accent);
+  font-weight:600;margin-bottom:14px;
+}
+.module-meta::after{
+  content:"";flex:1;height:1px;background:var(--rule);
+}
+.section-title{
+  font-family:'Fraunces',serif;
+  font-weight:900;font-size:56px;line-height:1;
+  letter-spacing:-.035em;margin-bottom:14px;
+  color:var(--ink);
+}
+.section-title em{
+  font-style:italic;font-weight:400;color:var(--accent);
+}
+.section-deck{
+  font-family:'Fraunces',serif;font-style:italic;
+  font-size:21px;line-height:1.5;color:var(--ink-soft);
+  max-width:680px;font-weight:400;
+}
+
+h3{
+  font-family:'Fraunces',serif;
+  font-weight:700;font-size:30px;line-height:1.15;
+  letter-spacing:-.02em;margin:42px 0 18px;
+  color:var(--ink);
+  border-bottom:1px solid var(--rule);
+  padding-bottom:8px;
+  display:flex;align-items:baseline;gap:14px;
+}
+h3 .h-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;color:var(--accent);
+  font-weight:500;letter-spacing:.05em;
+}
+h4{
+  font-family:'Fraunces',serif;
+  font-weight:600;font-size:22px;
+  margin:32px 0 12px;color:var(--ink);
+  letter-spacing:-.01em;
+}
+h5{
+  font-family:'Inter',sans-serif;
+  font-weight:600;font-size:12px;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--accent);margin:24px 0 10px;
+}
+p{margin:0 0 16px;font-size:17.5px}
+p.lede{font-size:20px;line-height:1.55;color:var(--ink-soft);margin-bottom:24px}
+strong{color:var(--ink);font-weight:600}
+em{color:var(--ink-soft)}
+ul,ol{margin:8px 0 18px 22px}
+li{margin-bottom:8px}
+code{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.88em;background:rgba(31,107,107,.10);
+  padding:1px 6px;border-radius:3px;
+  color:var(--accent-deep);
+}
+.kbd-math{
+  font-family:'JetBrains Mono',monospace;
+  font-size:15px;
+  background:rgba(20,32,40,.05);
+  padding:2px 8px;border-radius:3px;
+  display:inline-block;
+  border:1px solid var(--rule-soft);
+}
+
+.callout{
+  border-left:3px solid var(--accent);
+  background:linear-gradient(90deg,rgba(31,107,107,.07),transparent);
+  padding:18px 22px;margin:24px 0;
+  font-family:'Fraunces',serif;
+  font-style:italic;font-size:18px;
+  line-height:1.5;color:var(--ink-soft);
+}
+.callout strong{font-style:normal;color:var(--accent-deep)}
+
+.note{
+  background:var(--paper-2);
+  border:1px solid var(--rule);
+  border-radius:2px;
+  padding:18px 22px;margin:22px 0;
+  position:relative;
+}
+.note::before{
+  content:"NOTE";
+  position:absolute;top:-10px;left:18px;
+  background:var(--paper);
+  padding:0 8px;font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.22em;
+  color:var(--ink-faint);font-weight:600;
+}
+.note.tip::before{content:"TIP";color:var(--olive)}
+.note.tip{border-color:var(--olive);background:rgba(90,107,62,.07)}
+.note.warn::before{content:"WATCH OUT";color:var(--rust)}
+.note.warn{border-color:var(--rust);background:rgba(162,63,36,.05)}
+
+.formula{
+  background:#fbf6ec;
+  border:1px solid var(--rule);
+  border-left:4px solid var(--ochre);
+  padding:20px 24px;margin:20px 0;
+  font-family:'Fraunces',serif;
+  font-size:19px;line-height:1.7;
+  position:relative;
+  box-shadow:var(--shadow);
+}
+.formula .label{
+  font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--ochre);
+  font-weight:700;margin-bottom:6px;display:block;
+}
+.formula .eq{
+  font-family:'JetBrains Mono',monospace;
+  font-size:16px;background:rgba(0,0,0,.04);
+  padding:8px 14px;border-radius:2px;
+  display:inline-block;margin:6px 0;
+  font-weight:500;color:var(--ink);
+}
+
+.recip-table{
+  width:100%;
+  border-collapse:collapse;
+  font-family:'JetBrains Mono',monospace;
+  font-size:14px;
+  margin:20px 0;
+  background:#fbf6ec;
+  border:1px solid var(--rule);
+}
+.recip-table th, .recip-table td{
+  padding:10px 14px;
+  text-align:left;
+  border-bottom:1px solid var(--rule-soft);
+}
+.recip-table th{
+  background:var(--ink);color:var(--paper);
+  font-family:'Inter',sans-serif;
+  font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;font-weight:600;
+}
+.recip-table tr:hover{background:rgba(31,107,107,.05)}
+.recip-table td:first-child{font-weight:600;color:var(--accent-deep)}
+
+.q-card{
+  background:#fdfaf2;
+  border:1px solid var(--rule);
+  border-radius:2px;
+  margin:24px 0;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.q-head{
+  background:var(--ink);color:var(--paper);
+  padding:14px 22px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:'Inter',sans-serif;
+  font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;font-weight:600;
+}
+.q-tag{
+  display:inline-block;
+  padding:3px 10px;border-radius:2px;
+  font-size:10px;letter-spacing:.15em;
+}
+.q-tag.easy{background:var(--olive);color:#f5efe4}
+.q-tag.med{background:var(--ochre);color:#1a2332}
+.q-tag.hard{background:var(--accent);color:#f5efe4}
+.q-tag.elite{background:var(--accent-deep);color:#f5efe4}
+.q-body{padding:20px 24px 8px;font-size:17px;line-height:1.6}
+.q-body p{margin-bottom:10px}
+.q-options{
+  font-family:'Fraunces',serif;
+  margin:10px 0 0 0;list-style:none;
+  padding:0;
+}
+.q-options li{
+  padding:4px 0 4px 28px;
+  position:relative;
+}
+.q-options li::before{
+  content:attr(data-opt);
+  font-family:'JetBrains Mono',monospace;
+  position:absolute;left:0;top:4px;
+  width:20px;height:20px;
+  background:var(--paper-2);
+  border:1px solid var(--rule);
+  border-radius:50%;text-align:center;
+  font-size:11px;font-weight:600;
+  line-height:18px;color:var(--ink-soft);
+}
+.toggle-sol{
+  width:100%;
+  background:var(--paper-2);
+  border:none;border-top:1px dashed var(--rule);
+  padding:12px 24px;
+  font-family:'Inter',sans-serif;
+  font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;font-weight:600;
+  color:var(--accent);cursor:pointer;
+  text-align:left;
+  display:flex;justify-content:space-between;align-items:center;
+  transition:background .2s ease;
+}
+.toggle-sol:hover{background:rgba(31,107,107,.10)}
+.toggle-sol::after{
+  content:"▾";font-size:14px;
+  transition:transform .25s ease;
+}
+.toggle-sol.open::after{transform:rotate(180deg)}
+.sol{
+  display:none;
+  padding:20px 26px 26px;
+  background:var(--paper-2);
+  border-top:1px solid var(--rule);
+  font-size:16.5px;
+  line-height:1.65;
+}
+.sol.open{display:block;animation:fadeUp .25s ease}
+.sol .ans-line{
+  display:flex;align-items:center;gap:12px;
+  padding:10px 14px;
+  background:var(--ink);color:var(--paper);
+  border-radius:2px;margin-top:14px;
+  font-family:'Fraunces',serif;
+  font-size:17px;
+}
+.sol .ans-line strong{color:var(--ochre);font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.sol p{margin-bottom:12px}
+.sol .step{
+  border-left:2px solid var(--rule);
+  padding-left:14px;margin:10px 0;
+}
+.sol .step-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;color:var(--accent);
+  font-weight:600;letter-spacing:.05em;
+  display:block;margin-bottom:3px;
+}
+
+.stat-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0;margin:36px 0 8px;
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+}
+@media (max-width:760px){.stat-grid{grid-template-columns:repeat(2,1fr)}}
+.stat{
+  padding:22px 18px;
+  border-right:1px solid var(--rule);
+  text-align:left;
+}
+.stat:last-child{border-right:none}
+@media (max-width:760px){
+  .stat:nth-child(2){border-right:none}
+  .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--rule)}
+}
+.stat-num{
+  font-family:'Fraunces',serif;
+  font-weight:900;font-size:44px;line-height:.9;
+  letter-spacing:-.03em;color:var(--accent);
+}
+.stat-num span{font-size:22px;color:var(--ink-soft);font-weight:400}
+.stat-label{
+  font-family:'Inter',sans-serif;
+  font-size:10.5px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink-faint);
+  margin-top:8px;font-weight:600;
+}
+
+.compare{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:0;margin:24px 0;
+  border:1px solid var(--rule);
+}
+@media (max-width:760px){.compare{grid-template-columns:1fr}}
+.compare > div{padding:18px 22px}
+.compare > div:first-child{border-right:1px solid var(--rule);background:rgba(162,63,36,.05)}
+.compare > div:last-child{background:rgba(90,107,62,.05)}
+@media (max-width:760px){
+  .compare > div:first-child{border-right:none;border-bottom:1px solid var(--rule)}
+}
+.compare h5{margin-top:0}
+
+.section-end{
+  margin-top:56px;padding-top:24px;
+  border-top:2px solid var(--ink);
+  font-family:'Fraunces',serif;font-style:italic;
+  font-size:15px;color:var(--ink-faint);
+  display:flex;justify-content:space-between;
+}
+
+.dropcap{
+  font-family:'Fraunces',serif;
+  font-weight:900;font-size:64px;line-height:.85;
+  float:left;padding:6px 12px 0 0;
+  color:var(--accent);
+}
+
+.tips-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:18px;margin:24px 0;
+}
+@media (max-width:760px){.tips-grid{grid-template-columns:1fr}}
+.tip-card{
+  background:#fbf6ec;
+  border:1px solid var(--rule);
+  border-top:3px solid var(--olive);
+  padding:20px 22px;
+  position:relative;
+}
+.tip-card .t-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;color:var(--olive);
+  letter-spacing:.1em;font-weight:600;
+}
+.tip-card h6{
+  font-family:'Fraunces',serif;
+  font-size:19px;font-weight:700;
+  margin:4px 0 10px;color:var(--ink);
+}
+.tip-card p{font-size:15.5px;margin-bottom:0;line-height:1.55}
+
+.drill{
+  background:var(--ink);
+  color:var(--paper);
+  padding:24px 28px;
+  margin:24px 0;
+  border-radius:2px;
+}
+.drill h5{color:var(--ochre);margin-top:0}
+.drill p{color:var(--paper);font-family:'Fraunces',serif;font-size:17px}
+.drill code{background:rgba(245,239,228,.1);color:var(--ochre)}
+
+/* Alligation visual */
+.alligation-box{
+  background:#fbf6ec;
+  border:1px solid var(--rule);
+  padding:24px;
+  margin:24px 0;
+  text-align:center;
+  font-family:'JetBrains Mono',monospace;
+}
+.alligation-svg{
+  max-width:480px;
+  width:100%;
+  height:auto;
+  margin:8px 0;
+}
+.alligation-cap{
+  font-family:'Inter',sans-serif;
+  font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-faint);
+  margin-top:14px;
+}
+
+a.inline{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+a.inline:hover{color:var(--accent-deep)}
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-eyebrow">Quantitative Aptitude · CAT Prep</div>
+      <div class="brand-title">The <em>Averages</em><br>Codex</div>
+      <div class="brand-sub">A teacher's companion · 9 modules · 25 worked problems</div>
+      <div class="companion-tag">Companion · Vol. II</div>
+    </div>
+
+    <div class="nav-label">Modules</div>
+    <ul class="nav-list">
+      <li><a href="#m0" class="nav-link active" data-target="m0"><span class="nav-num">00</span>Orientation</a></li>
+      <li><a href="#m1" class="nav-link" data-target="m1"><span class="nav-num">01</span>Foundations &amp; Mental Model</a></li>
+      <li><a href="#m2" class="nav-link" data-target="m2"><span class="nav-num">02</span>Properties of the Mean</a></li>
+      <li><a href="#m3" class="nav-link" data-target="m3"><span class="nav-num">03</span>Replacement &amp; Adjustment</a></li>
+      <li><a href="#m4" class="nav-link" data-target="m4"><span class="nav-num">04</span>Weighted Averages</a></li>
+      <li><a href="#m5" class="nav-link" data-target="m5"><span class="nav-num">05</span>Alligation &amp; Its Rule</a></li>
+      <li><a href="#m6" class="nav-link" data-target="m6"><span class="nav-num">06</span>Application Themes</a></li>
+      <li><a href="#m7" class="nav-link" data-target="m7"><span class="nav-num">07</span>Tips, Tricks &amp; Pitfalls</a></li>
+      <li><a href="#m8" class="nav-link" data-target="m8"><span class="nav-num">08</span>Worked Problem Bank</a></li>
+      <li><a href="#m9" class="nav-link" data-target="m9"><span class="nav-num">09</span>Reference Sheet</a></li>
+    </ul>
+
+    <div class="sidebar-footer">
+      Prepared for classroom delivery.<br>
+      All worked problems carry full reasoning.<br>
+      <span style="color:var(--accent)">⬤</span> Tap any solution to expand.
+    </div>
+  </aside>
+
+  <main class="main">
+
+  <!-- ====== MODULE 0 — ORIENTATION ====== -->
+  <section class="section active" id="m0">
+    <header class="section-header">
+      <div class="module-meta">Module 00 · Orientation</div>
+      <h1 class="section-title">Why <em>averages</em><br>is the quietest<br>scoring topic in QA.</h1>
+      <p class="section-deck">A teacher's overview of why this chapter is short to teach, gentle to grade, and consistently four to eight questions of marks across every recent CAT. Where to spend time, where to skim, and how to position it alongside percentages.</p>
+    </header>
+
+    <p class="lede"><span class="dropcap">A</span>verages is the textbook example of a topic that students dismiss because the formula is one line, only to lose marks on it because every actual CAT question is about <em>the formula in disguise</em>. The arithmetic mean is, properly understood, not a single number but a <strong>statement about totals</strong>. CAT setters never test whether a student can compute (12 + 18 + 27)/3. They test whether the student can think in terms of <em>total = average × count</em> when the problem hands them an average and asks for a total — or hands them part of a total and asks for an average. The shift is small. The impact is enormous.</p>
+
+    <p>Averages is also the chapter where the <strong>volume of questions in recent CAT papers is rising</strong>. In CAT 2022, eight questions across the three slots touched averages directly or were weighted-average problems in costume. Even in years with fewer direct questions, averages appears <em>inside</em> data interpretation, mixtures, motion problems, and ratio chapters. Teach this topic well and a student gains marks in five other chapters too.</p>
+
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="stat-num">2–4</div>
+        <div class="stat-label">Direct questions per CAT</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">~10<span>%</span></div>
+        <div class="stat-label">Of total Quant marks</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">8</div>
+        <div class="stat-label">Peak count (CAT 2022)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">Easy–Mod.</div>
+        <div class="stat-label">Typical difficulty</div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">0.1</span>How to use this codex in class</h3>
+
+    <p>The nine modules are sequenced for a <strong>6–8 hour block</strong> of teaching, shorter than the percentages block because the conceptual surface is smaller. Modules 1 and 2 lay the philosophical groundwork — the mean as a balancing point, not a calculation. Module 3 covers the entire family of "what happens to the average when one element changes" problems, which is CAT 2023 in a microcosm. Modules 4 and 5 are where the most marks live: weighted averages and alligation. Module 6 collects applied themes; Module 7 the tactical wisdom; Module 8 a graded problem bank; Module 9 the wall-poster summary.</p>
+
+    <div class="callout">
+      <strong>Teaching philosophy.</strong> Insist from day one that the student translate every "average" into "total" before doing anything else. <em>Average × count = total</em> is the master identity. The student who reaches for this identity first will solve eighty percent of CAT averages questions in under ninety seconds.
+    </div>
+
+    <h3><span class="h-num">0.2</span>What the CAT actually asks</h3>
+    <p>Scanning the 2017–2025 CAT papers, averages-based questions split cleanly into seven recurring archetypes:</p>
+
+    <ul>
+      <li><strong>Direct totals.</strong> "The average of a group is X; one element is replaced; find the new average." Solved by translating to totals and tracking the change.</li>
+      <li><strong>Weighted averages and group merging.</strong> "Class A has average 60, Class B has average 80; combined average?" Two groups, two averages, two weights — alligation territory.</li>
+      <li><strong>Conditional averages.</strong> "Average of the first n is A, average of the first n+1 is B, find the (n+1)th element." A standard pattern; the student should recognise it in one second.</li>
+      <li><strong>Sub-group constraints.</strong> Like CAT 2022's bonus problem: averages of overlapping subsets of employees, all of which must be consistent.</li>
+      <li><strong>Bounds and optimisation.</strong> Like CAT 2022's "six distinct natural numbers with two-end constraints"; the student must use the structure of the mean to bound the answer.</li>
+      <li><strong>Average involving change.</strong> "Adding a person of weight w changes the average by Δ kg." The pivot variable in such problems is always <em>number of people</em>, and the trick is the small algebraic identity in Module 3.</li>
+      <li><strong>Cricket / batting-average problems.</strong> Specific to averages with a not-out twist. Less common in CAT itself but very common in mocks and a great teaching vehicle for the conditional average.</li>
+    </ul>
+
+    <div class="note tip">
+      <p style="margin:0"><strong>Classroom diagnostic in two minutes.</strong> Ask: <em>"The average age of 11 cricketers is 25. The coach (age 50) is included. What's the new average?"</em> The fast student computes (11 × 25 + 50)/12 = 25/12 + 50/12 ≈ 27.08 in twenty seconds. The slow student stares. The struggler answers "37.5" by averaging 25 and 50 directly. Use the diagnostic to identify the third group; the codex is built to rescue them.</p>
+    </div>
+
+    <h3><span class="h-num">0.3</span>What averages is not</h3>
+    <p>Three quick clarifications worth airing on day one. <strong>First</strong>, "average" in CAT always means the arithmetic mean unless specified otherwise. Median and mode are tested rarely and only in DI sets. <strong>Second</strong>, the arithmetic mean of two quantities is not necessarily their best summary — but for CAT purposes, when a problem says "average", you compute arithmetic mean. <strong>Third</strong>, averages and percentages share a structural cousin called the <em>weighted average</em>; the alligation rule in Module 5 sits at the exact intersection of these two chapters. Students who do not yet have percentages fluent should pause and consolidate that chapter before pushing deep into Module 4 here.</p>
+
+    <div class="section-end">
+      <span>End of Module 00 · Orientation</span>
+      <span>→ next: Foundations</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 1 — FOUNDATIONS ====== -->
+  <section class="section" id="m1">
+    <header class="section-header">
+      <div class="module-meta">Module 01 · Foundations</div>
+      <h1 class="section-title">What an <em>average</em><br>actually is.</h1>
+      <p class="section-deck">Building the mental model from zero. Sum divided by count — yes. But more usefully, a balancing point. By the end of this module, students should never again reach for the calculator first.</p>
+    </header>
+
+    <h3><span class="h-num">1.1</span>The literal definition</h3>
+    <p>The arithmetic mean — the only average that matters for CAT — is the sum of all values divided by the count of values. The familiar one-liner:</p>
+
+    <div class="formula">
+      <span class="label">The Definition</span>
+      <span class="eq">Average = Sum / Count</span><br>
+      For numbers a₁, a₂, …, aₙ:<br>
+      <span class="eq">Avg = (a₁ + a₂ + … + aₙ) / n</span>
+    </div>
+
+    <p>This is the form the student already knows. The shift this codex insists on is the <strong>rearranged form</strong>:</p>
+
+    <div class="formula">
+      <span class="label">The Useful Form (memorise!)</span>
+      <span class="eq">Sum = Average × Count</span><br>
+      i.e. <span class="eq">a₁ + a₂ + … + aₙ = n × Avg</span>
+    </div>
+
+    <p>Whenever a CAT problem hands you an average, write down the total before anything else. The total is the workable quantity. The average is an interpretation of the total. Reaching for the total first turns nine out of ten problems into a single algebraic line.</p>
+
+    <h3><span class="h-num">1.2</span>The average as a balancing point</h3>
+
+    <p>Here is the intuition that separates strong students from average ones. Picture the values on a number line. The average is the <em>balance point</em>: the spot where, if you put equal-mass beads at each value, the line balances. Every value above the mean contributes a positive deviation; every value below contributes a negative deviation; and these deviations cancel exactly.</p>
+
+    <div class="formula">
+      <span class="label">The Balancing Property</span>
+      For values a₁, a₂, …, aₙ with mean M:<br>
+      <span class="eq">(a₁ − M) + (a₂ − M) + … + (aₙ − M) = 0</span><br>
+      The sum of deviations from the mean is always zero.
+    </div>
+
+    <p>This identity is more powerful than it looks. Many CAT problems give you partial information about deviations — "three numbers exceed the mean by 4, 7, and 11; the rest fall short of the mean by some total amount; find that total". The balancing property hands you the answer instantly: the total shortfall must be exactly 22.</p>
+
+    <div class="callout">
+      <strong>The teaching analogy.</strong> Tell the class: the mean is the see-saw fulcrum. The students above-average and below-average are sitting on opposite sides. The product of their displacement and weight is the same on each side. This metaphor will carry you all the way to weighted averages in Module 4.
+    </div>
+
+    <h3><span class="h-num">1.3</span>The three quantities — and reading the question</h3>
+
+    <p>Every averages problem has exactly three quantities in play: <strong>Sum</strong>, <strong>Count</strong>, and <strong>Average</strong>. The question gives you two; it asks for the third — or, more often, it gives you two of the three for one situation and two of the three for a related situation, and asks how something changes.</p>
+
+    <div class="compare">
+      <div>
+        <h5>What you're given</h5>
+        <p style="margin-bottom:0">"The average of 12 students is 65."<br>That gives you the sum: 12 × 65 = 780. Write this down immediately. Don't carry the average around; carry the sum.</p>
+      </div>
+      <div>
+        <h5>What you need to find</h5>
+        <p style="margin-bottom:0">If the question asks "what does the average become when…", you compute the new sum and new count, then divide. If it asks "what is the missing value", you compute the desired new sum and subtract what you have.</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">1.4</span>A worked walkthrough to seal the module</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Foundation example — the coach joins the team</span>
+        <span class="q-tag easy">Easy</span>
+      </div>
+      <div class="q-body">
+        <p>The average age of a cricket team of 11 players is 25 years. The coach, aged 50, is included in the squad. What is the new average age of the squad?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Translate to total</span>
+          Sum of player ages = 11 × 25 = 275 years.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Add the coach</span>
+          New sum = 275 + 50 = 325. New count = 12.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 3 · Average back out</span>
+          New average = 325 / 12 = 27.08… ≈ <strong>27 years 1 month</strong>.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>≈ <strong style="color:#fff;font-family:Fraunces">27.08 years</strong></div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: the wrong instinct is to "average" 25 and 50 to get 37.5. Drill the discipline of always going through the total. The reason the wrong answer feels right is that students intuit a midpoint, forgetting that the coach is one of twelve, not one of two.</p>
+      </div>
+    </div>
+
+    <div class="drill">
+      <h5>· In-class drill ·</h5>
+      <p>Round-robin, no calculator, ten seconds each. Express each as a sum first.</p>
+      <p><code>Average of 8 numbers is 12. Sum?</code> · <code>Average of 15 numbers is 20. Sum?</code> · <code>Average of 6 numbers is 30, average of next 4 is 50. Average of all 10?</code></p>
+      <p style="font-size:14px;opacity:.7;margin-top:10px">Answers: 96 · 300 · 38.</p>
+    </div>
+
+    <div class="section-end">
+      <span>End of Module 01 · Foundations</span>
+      <span>→ next: Properties of the Mean</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 2 — PROPERTIES OF THE MEAN ====== -->
+  <section class="section" id="m2">
+    <header class="section-header">
+      <div class="module-meta">Module 02 · Properties</div>
+      <h1 class="section-title">Five <em>properties</em><br>of the mean<br>that matter.</h1>
+      <p class="section-deck">Five identities that — once memorised — let students short-circuit eighty percent of CAT averages questions without setting up any equations at all.</p>
+    </header>
+
+    <p class="lede">The arithmetic mean has a handful of crisp algebraic properties. Most coaching books list them but never explain why each one is useful. This module ties each property to a recurring CAT pattern, so the student learns the property in the same breath as the question type that exploits it.</p>
+
+    <h3><span class="h-num">2.1</span>Property One — Shifting the data shifts the mean</h3>
+
+    <div class="formula">
+      <span class="label">Shift Property</span>
+      If each of a₁, a₂, …, aₙ has the same constant <em>k</em> added to it, the new mean is <span class="eq">M + k</span>.<br>
+      If each has <em>k</em> subtracted, the new mean is <span class="eq">M − k</span>.
+    </div>
+
+    <p>Useful when a CAT problem says "five years later the average age is…". You don't have to recompute. Each person is older by five years, so the mean is older by five years. Trivial in isolation, gold in combination with the next property.</p>
+
+    <h3><span class="h-num">2.2</span>Property Two — Scaling the data scales the mean</h3>
+
+    <div class="formula">
+      <span class="label">Scale Property</span>
+      If each of a₁, a₂, …, aₙ is multiplied by a constant <em>c</em>, the new mean is <span class="eq">c × M</span>.
+    </div>
+
+    <p>If a class's average salary doubles uniformly, the new average is double. If every score in an exam is scaled to be out of 50 instead of 100, the average halves. Combined with shift property, you get the affine rule: applying a transformation <em>x → cx + k</em> to every value sends the mean from M to <em>cM + k</em>.</p>
+
+    <h3><span class="h-num">2.3</span>Property Three — The mean lies between min and max</h3>
+
+    <div class="formula">
+      <span class="label">Bound Property</span>
+      For any data set with minimum value <em>m</em> and maximum value <em>M</em>:<br>
+      <span class="eq">m ≤ Average ≤ M</span>
+    </div>
+
+    <p>Stronger version: the average equals the minimum only if <em>all values</em> are the minimum (similarly for the max). This property is the engine behind every "find the maximum/minimum possible average given constraints" question, of which CAT 2022 had a beautiful one (we solve it in Module 8 as Q21).</p>
+
+    <h3><span class="h-num">2.4</span>Property Four — Adding the mean preserves the mean</h3>
+
+    <div class="formula">
+      <span class="label">Self-Preserving Property</span>
+      If you add a new value equal to the current mean M to a data set, the mean stays M.<br>
+      Add a value <em>greater</em> than M, the mean rises. Add a value <em>less</em> than M, the mean falls.
+    </div>
+
+    <p>This is intuitive but worth stating explicitly because of a subtle corollary used heavily in CAT problems:</p>
+
+    <div class="callout">
+      <strong>The corollary.</strong> If a new value greater than the mean is added, the increase in the mean depends on <em>how much</em> the new value exceeds the old mean and on <em>how many</em> values there were already. Specifically: <em>new mean − old mean = (new value − old mean) / new count</em>. Memorise this. Module 3 makes it earn its keep.
+    </div>
+
+    <h3><span class="h-num">2.5</span>Property Five — The mean of consecutive integers</h3>
+
+    <div class="formula">
+      <span class="label">Symmetric Set Property</span>
+      The mean of any arithmetic progression is the average of its first and last terms:<br>
+      <span class="eq">M = (a₁ + aₙ) / 2</span><br>
+      In particular: mean of {1, 2, …, n} = (n+1)/2. Mean of {2, 4, 6, …, 2n} = n+1.
+    </div>
+
+    <p>Wherever the values in a CAT problem are evenly spaced — consecutive integers, an arithmetic sequence of ages, a sequence of multiples — this collapses the entire sum computation into one line. Use it.</p>
+
+    <h3><span class="h-num">2.6</span>Worked applications of the properties</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Property 5 in action</span>
+        <span class="q-tag easy">Easy</span>
+      </div>
+      <div class="q-body">
+        <p>Find the average of the first 30 multiples of 7.</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">METHOD</span>
+          The values are 7, 14, 21, …, 210 — an arithmetic progression. Average = (first + last)/2 = (7 + 210)/2 = 217/2 = 108.5.
+        </div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">108.5</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Property 4 in action — adding above the mean</span>
+        <span class="q-tag easy">Easy</span>
+      </div>
+      <div class="q-body">
+        <p>The average mark of 20 students is 72. A new student joins with a mark of 92. By how much does the average increase?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">USE THE COROLLARY</span>
+          New mean − Old mean = (new value − old mean) / new count = (92 − 72)/21 = 20/21 ≈ 0.95.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>Average rises by ≈ <strong style="color:#fff;font-family:Fraunces">0.95 marks</strong></div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: the formula reflects intuition. The new student is 20 marks above the old mean. That 20-mark surplus is spread evenly across the 21 students now in the group. Hence each student's "share" of the surplus is 20/21. That's exactly how much the mean rises.</p>
+      </div>
+    </div>
+
+    <div class="section-end">
+      <span>End of Module 02 · Properties</span>
+      <span>→ next: Replacement &amp; Adjustment</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 3 — REPLACEMENT & ADJUSTMENT ====== -->
+  <section class="section" id="m3">
+    <header class="section-header">
+      <div class="module-meta">Module 03 · The Δ Engine</div>
+      <h1 class="section-title">Replacement,<br>addition,<br><em>departure</em>.</h1>
+      <p class="section-deck">When the count stays fixed but a value is swapped. When the count grows. When the count shrinks. Three near-identical situations, three near-identical formulas — and a CAT setter's favourite playground.</p>
+    </header>
+
+    <h3><span class="h-num">3.1</span>The master identity revisited</h3>
+    <p>Every problem in this module is solvable in two steps: <strong>(1)</strong> compute the change in the sum; <strong>(2)</strong> compute the change in the count. Then divide. Nothing else. Let's formalise the three sub-cases.</p>
+
+    <h3><span class="h-num">3.2</span>Sub-case A — Replacement (count unchanged)</h3>
+
+    <p>An old value <em>v_out</em> is removed and a new value <em>v_in</em> takes its place. The count stays the same.</p>
+
+    <div class="formula">
+      <span class="label">Replacement Identity</span>
+      Change in sum = <span class="eq">v_in − v_out</span><br>
+      Change in mean = <span class="eq">(v_in − v_out) / n</span>
+    </div>
+
+    <p>If the average mark of 30 students is 70 and one student's score is corrected from 50 to 80, the sum rises by 30, and the new average is 70 + 30/30 = 71. One line.</p>
+
+    <h3><span class="h-num">3.3</span>Sub-case B — Addition (count grows by one)</h3>
+
+    <p>A new value <em>v_new</em> joins the group. The count goes from <em>n</em> to <em>n + 1</em>.</p>
+
+    <div class="formula">
+      <span class="label">Addition Identity</span>
+      New mean = <span class="eq">(n × M_old + v_new) / (n + 1)</span><br>
+      Equivalently, new mean − old mean = <span class="eq">(v_new − M_old) / (n + 1)</span>
+    </div>
+
+    <p>The second form is the gold one. It says: <em>the change in mean equals the new value's distance from the old mean, divided by the new total count</em>. This is the corollary we met in Module 2 — now it's the workhorse of an entire problem family.</p>
+
+    <h3><span class="h-num">3.4</span>Sub-case C — Removal (count shrinks by one)</h3>
+
+    <p>A value <em>v_out</em> leaves the group. The count goes from <em>n</em> to <em>n − 1</em>.</p>
+
+    <div class="formula">
+      <span class="label">Removal Identity</span>
+      New mean = <span class="eq">(n × M_old − v_out) / (n − 1)</span><br>
+      Equivalently, new mean − old mean = <span class="eq">(M_old − v_out) / (n − 1)</span>
+    </div>
+
+    <p>Same logic as addition, with the signs flipped. If the leaver was above the mean, removing them drags the mean down; if below, removing them lifts the mean up.</p>
+
+    <h3><span class="h-num">3.5</span>The unified mental shortcut</h3>
+
+    <div class="callout">
+      <strong>One sentence to memorise.</strong> When a single element is swapped, added, or removed, <em>the change in the mean equals the "out-of-line" distance of that element from the mean, divided by the final count of elements</em>. The sign tracks direction; the magnitude tracks how far out of line the element was.
+    </div>
+
+    <h3><span class="h-num">3.6</span>The killer CAT pattern</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>CAT 2023 — D and E swap problem (adapted)</span>
+        <span class="q-tag hard">Hard</span>
+      </div>
+      <div class="q-body">
+        <p>If a person D joins a room of A, B and C, the average weight of the persons in the room reduces by x kg. Instead of D, if person E joins, the average weight increases by 2x kg. If E weighs 12 kg more than D, find the value of x.</p>
+        <ul class="q-options">
+          <li data-opt="A">2</li><li data-opt="B">0.5</li><li data-opt="C">1</li><li data-opt="D">1.5</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Set up</span>
+          Let the original mean of A, B, C be M. Sum of three = 3M.<br>
+          When D joins: new mean = (3M + D)/4 = M − x. So 3M + D = 4M − 4x, giving D = M − 4x.<br>
+          When E joins instead: new mean = (3M + E)/4 = M + 2x. So 3M + E = 4M + 8x, giving E = M + 8x.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Use the weight gap</span>
+          E − D = (M + 8x) − (M − 4x) = 12x. We are told this equals 12. So 12x = 12 ⟹ x = 1.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>Option <strong style="color:#fff;font-family:Fraunces">C · 1</strong></div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: this is a perfect example of why translating averages into sums is non-negotiable. Trying to reason directly about "the mean changed by x" without writing down 3M + D = 4(M − x) leaves the student grasping at intuitions. Once written out, the algebra is a single line.</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">3.7</span>The classic batting-average problem</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Batting average — adapted classic</span>
+        <span class="q-tag med">Medium</span>
+      </div>
+      <div class="q-body">
+        <p>A batsman has an average of 40 runs over 16 innings. In the 17th innings he scores a century. What does his average become?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">SUMS</span>
+          Old sum = 16 × 40 = 640. New sum = 640 + 100 = 740. New average = 740/17 ≈ 43.53.
+        </div>
+        <div class="step">
+          <span class="step-num">SHORTCUT</span>
+          The century is 60 above the old mean. Distributed over the new count of 17: 60/17 ≈ 3.53. So new average = 40 + 3.53 = 43.53.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>≈ <strong style="color:#fff;font-family:Fraunces">43.53</strong> runs per innings</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Batting average — the reverse direction</span>
+        <span class="q-tag med">Medium</span>
+      </div>
+      <div class="q-body">
+        <p>A cricketer has played some innings with a certain average. In his next innings he scores 95 runs and his average rises from x to x + 5. After the innings, his total innings played is 12. What was his original average?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">SETUP</span>
+          Before the 12th innings he had played 11 innings with average x. Sum before = 11x. After the 12th innings: 11x + 95 = 12(x + 5).
+        </div>
+        <div class="step">
+          <span class="step-num">SOLVE</span>
+          11x + 95 = 12x + 60 ⟹ 35 = x. So his original average was 35 runs.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>Original average = <strong style="color:#fff;font-family:Fraunces">35</strong> runs</div>
+      </div>
+    </div>
+
+    <div class="section-end">
+      <span>End of Module 03 · Δ Engine</span>
+      <span>→ next: Weighted Averages</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 4 — WEIGHTED AVERAGES ====== -->
+  <section class="section" id="m4">
+    <header class="section-header">
+      <div class="module-meta">Module 04 · Weighted Means</div>
+      <h1 class="section-title">When the <em>groups</em><br>have different<br>sizes.</h1>
+      <p class="section-deck">Combining two or more groups, each with its own average and its own count. This is where most CAT averages questions actually live — and where alligation begins.</p>
+    </header>
+
+    <h3><span class="h-num">4.1</span>Why the naïve answer is almost always wrong</h3>
+
+    <p>Class A has 20 students with an average mark of 60. Class B has 30 students with an average of 80. What's the combined average? Untrained students answer "70" — the simple average of 60 and 80. <strong>That is wrong</strong>, because Class B has more students. The combined average must be pulled closer to 80.</p>
+
+    <p>The correct method: compute the totals, add them, divide by the combined count.</p>
+
+    <div class="formula">
+      <span class="label">Weighted Average — Definition</span>
+      For two groups with counts <em>n₁</em>, <em>n₂</em> and averages <em>A₁</em>, <em>A₂</em>:<br>
+      <span class="eq">Combined Average = (n₁A₁ + n₂A₂) / (n₁ + n₂)</span>
+    </div>
+
+    <p>Applied: (20 × 60 + 30 × 80)/(20 + 30) = (1200 + 2400)/50 = 3600/50 = <strong>72</strong>. Not 70. The weighted average sits closer to 80 because Class B has more weight.</p>
+
+    <h3><span class="h-num">4.2</span>The general formula</h3>
+
+    <div class="formula">
+      <span class="label">k-Group Weighted Average</span>
+      For k groups with counts <em>n₁, n₂, …, n_k</em> and averages <em>A₁, A₂, …, A_k</em>:<br>
+      <span class="eq">Avg = (Σ nᵢAᵢ) / (Σ nᵢ)</span>
+    </div>
+
+    <p>The denominator is the combined count. The numerator is the combined sum. Compute each piece, divide.</p>
+
+    <h3><span class="h-num">4.3</span>The proportion-weight version</h3>
+
+    <p>Sometimes a CAT problem doesn't tell you absolute counts — it gives you proportions. "Manufacturing employees are 20% of total staff; their average salary is X; non-manufacturing employees are 80% with average Y; what's the overall average?" Replace counts with proportions; the formula still works.</p>
+
+    <div class="formula">
+      <span class="label">Proportion form</span>
+      If group <em>i</em> has weight <em>wᵢ</em> (with Σ wᵢ = 1), then<br>
+      <span class="eq">Overall Avg = Σ wᵢ × Aᵢ</span>
+    </div>
+
+    <h3><span class="h-num">4.4</span>The CAT 2023 manufacturing-salary problem</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>CAT 2023 — Manufacturing salary ratio</span>
+        <span class="q-tag hard">Hard</span>
+      </div>
+      <div class="q-body">
+        <p>In a company, 20% of the employees work in manufacturing. The total salary paid to manufacturing employees is one-sixth of the total salary paid to all employees. What is the ratio of the average salary of manufacturing employees to the average salary of non-manufacturing employees?</p>
+        <ul class="q-options">
+          <li data-opt="A">4 : 5</li><li data-opt="B">5 : 6</li><li data-opt="C">5 : 4</li><li data-opt="D">6 : 5</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Translate to totals (always!)</span>
+          Let total employees = 100, total salary = S. Manufacturing employees = 20, salary paid to them = S/6. Non-manufacturing = 80, salary paid to them = S − S/6 = 5S/6.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Compute the averages</span>
+          Avg salary (manuf) = (S/6)/20 = S/120.<br>
+          Avg salary (non-manuf) = (5S/6)/80 = 5S/480 = S/96.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 3 · Ratio</span>
+          (S/120) : (S/96) = 96 : 120 = 4 : 5.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>Option <strong style="color:#fff;font-family:Fraunces">A · 4 : 5</strong></div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: the entire question collapses once you assume total = 100 and total salary = S. Picking the right symbolic "anchor" is a skill — encourage students to write it down before computing.</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">4.5</span>The merge-with-known-result problem</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Reverse direction — find one group's average</span>
+        <span class="q-tag med">Medium</span>
+      </div>
+      <div class="q-body">
+        <p>A class has 50 boys and 30 girls. The class average score is 64. The girls' average is 70. What is the boys' average?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Total</span>
+          Total class score = 80 × 64 = 5120.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Girls' contribution</span>
+          Girls' total = 30 × 70 = 2100. Boys' total = 5120 − 2100 = 3020. Boys' average = 3020/50 = 60.4.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>Boys' average = <strong style="color:#fff;font-family:Fraunces">60.4</strong></div>
+      </div>
+    </div>
+
+    <div class="section-end">
+      <span>End of Module 04 · Weighted Means</span>
+      <span>→ next: Alligation</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 5 — ALLIGATION ====== -->
+  <section class="section" id="m5">
+    <header class="section-header">
+      <div class="module-meta">Module 05 · The Shortcut</div>
+      <h1 class="section-title">The <em>rule of</em><br><em>alligation.</em></h1>
+      <p class="section-deck">A two-hundred-year-old shortcut from commercial arithmetic that turns most weighted-average CAT questions into ten-second one-liners. If your students learn nothing else this week, teach this.</p>
+    </header>
+
+    <h3><span class="h-num">5.1</span>The rule in plain English</h3>
+
+    <p>When two groups with averages <em>A₁</em> and <em>A₂</em> are merged to produce a combined average <em>M</em>, the <strong>ratio of their counts</strong> is the inverse of the ratio of their <em>distances from the mean</em>.</p>
+
+    <div class="formula">
+      <span class="label">Alligation Rule</span>
+      <span class="eq">n₁ : n₂ = (A₂ − M) : (M − A₁)</span><br>
+      (where A₁ &lt; M &lt; A₂)<br><br>
+      The group <em>closer</em> to the combined mean is the <em>larger</em> group.
+    </div>
+
+    <h3><span class="h-num">5.2</span>The visual — the alligation cross</h3>
+
+    <p>The rule has a traditional diagrammatic form, sometimes called the alligation cross. It is faster than the formula once you internalise it:</p>
+
+    <div class="alligation-box">
+      <svg class="alligation-svg" viewBox="0 0 480 240" xmlns="http://www.w3.org/2000/svg">
+        <!-- Top labels -->
+        <text x="80" y="50" font-family="JetBrains Mono, monospace" font-size="18" fill="#142028" text-anchor="middle" font-weight="600">A₁</text>
+        <text x="400" y="50" font-family="JetBrains Mono, monospace" font-size="18" fill="#142028" text-anchor="middle" font-weight="600">A₂</text>
+        <text x="80" y="70" font-family="Inter, sans-serif" font-size="11" fill="#677584" text-anchor="middle">cheaper / lower</text>
+        <text x="400" y="70" font-family="Inter, sans-serif" font-size="11" fill="#677584" text-anchor="middle">dearer / higher</text>
+        <!-- Cross lines -->
+        <line x1="100" y1="60" x2="220" y2="130" stroke="#1f6b6b" stroke-width="2"/>
+        <line x1="380" y1="60" x2="260" y2="130" stroke="#1f6b6b" stroke-width="2"/>
+        <line x1="240" y1="150" x2="120" y2="220" stroke="#1f6b6b" stroke-width="2"/>
+        <line x1="240" y1="150" x2="360" y2="220" stroke="#1f6b6b" stroke-width="2"/>
+        <!-- Center M -->
+        <circle cx="240" cy="140" r="26" fill="#fff1bf" stroke="#c89b3c" stroke-width="2"/>
+        <text x="240" y="146" font-family="JetBrains Mono, monospace" font-size="18" fill="#142028" text-anchor="middle" font-weight="700">M</text>
+        <!-- Bottom labels -->
+        <text x="80" y="230" font-family="JetBrains Mono, monospace" font-size="16" fill="#a23f24" text-anchor="middle" font-weight="600">A₂ − M</text>
+        <text x="400" y="230" font-family="JetBrains Mono, monospace" font-size="16" fill="#a23f24" text-anchor="middle" font-weight="600">M − A₁</text>
+        <!-- Center arrows -->
+        <text x="160" y="115" font-family="Fraunces, serif" font-size="13" font-style="italic" fill="#36444f">subtract</text>
+        <text x="295" y="115" font-family="Fraunces, serif" font-size="13" font-style="italic" fill="#36444f">subtract</text>
+      </svg>
+      <div class="alligation-cap">The ratio n₁ : n₂ reads OFF THE BOTTOM corners.</div>
+    </div>
+
+    <p>Mechanics: write the two endpoints at the top. Write the mean in the middle. Compute each diagonal difference. The bottom row gives the ratio — and crucially, the bottom number on the <em>left</em> belongs to the <em>left</em> group, the bottom number on the <em>right</em> to the <em>right</em> group.</p>
+
+    <h3><span class="h-num">5.3</span>Worked illustration</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Alligation in action — milk mixture</span>
+        <span class="q-tag easy">Easy</span>
+      </div>
+      <div class="q-body">
+        <p>In what ratio must milk priced at Rs. 50/litre be mixed with milk priced at Rs. 70/litre to get a mixture worth Rs. 56/litre?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">SET UP THE CROSS</span>
+          Left = 50, Right = 70, Middle = 56.<br>
+          Bottom-left = 70 − 56 = 14. Bottom-right = 56 − 50 = 6.<br>
+          So 50-rupee milk : 70-rupee milk = 14 : 6 = 7 : 3.
+        </div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">7 : 3</strong></div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: pause and sanity-check the direction. The mixture (56) is closer to the cheaper milk (50), so the cheaper milk dominates the mix — hence the 7 : 3 ratio with cheaper milk on top. If your alligation answer doesn't pass this sanity check, you flipped the diagonal.</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">5.4</span>Where alligation slays in CAT</h3>
+
+    <p>Alligation is not just for mixtures (despite the name). Any time CAT asks you to combine two groups to hit a target average — combining classes, blending salary tiers, mixing investment returns — the rule gives you the ratio directly. Five seconds.</p>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Alligation on salaries (non-mixture)</span>
+        <span class="q-tag med">Medium</span>
+      </div>
+      <div class="q-body">
+        <p>A company has two teams. The average salary in Team A is Rs. 45,000 and in Team B is Rs. 65,000. The overall average across both teams is Rs. 53,000. What is the ratio of the number of employees in Team A to Team B?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">ALLIGATION</span>
+          Left = 45, Right = 65, Middle = 53.<br>
+          Bottom-left = 65 − 53 = 12. Bottom-right = 53 − 45 = 8.<br>
+          Team A : Team B = 12 : 8 = 3 : 2.
+        </div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">3 : 2</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">5.5</span>Three-group alligation — when not to bother</h3>
+
+    <p>For three or more groups, alligation no longer gives a unique answer (more unknowns than equations). In that case, fall back to the weighted-average formula and set up algebra. <strong>Don't</strong> try to apply the alligation cross to three groups; it will mislead you. Two-group only.</p>
+
+    <div class="note tip">
+      <p style="margin:0"><strong>The "twin twins" trick.</strong> For three-group problems, sometimes you can pair two of the groups by their weighted average first, then alligate that pair against the third group. Useful in CAT problems that mix three salary tiers or three investment classes — see the CAT 2025 Kamala investment problem (from the percentages codex) for a related example.</p>
+    </div>
+
+    <div class="section-end">
+      <span>End of Module 05 · Alligation</span>
+      <span>→ next: Application Themes</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 6 — APPLICATIONS ====== -->
+  <section class="section" id="m6">
+    <header class="section-header">
+      <div class="module-meta">Module 06 · Applications</div>
+      <h1 class="section-title">Where <em>averages</em><br>actually live<br>in CAT.</h1>
+      <p class="section-deck">Eight applied themes — class scores, batting innings, salaries, age groups, speed/time, mixtures, business metrics, and the curious case of "average of averages".</p>
+    </header>
+
+    <h3><span class="h-num">6.1</span>Theme — Class scores and grade averages</h3>
+    <p>The bread and butter. A class has some students, an average mark, and either gains, loses, or has one student's score corrected. Always work in sums. Always.</p>
+
+    <h3><span class="h-num">6.2</span>Theme — Batting averages (with not-outs)</h3>
+
+    <p>The cricket twist: a batsman's average is <em>total runs ÷ number of times dismissed</em>, NOT total runs ÷ number of innings. Innings in which the batsman is "not out" count toward runs but not toward dismissals. This subtle redefinition often appears in CAT-style problems and almost always traps the casual reader.</p>
+
+    <div class="formula">
+      <span class="label">Cricket Batting Average</span>
+      <span class="eq">Batting Avg = Total Runs / Innings in which dismissed</span><br>
+      Not-out innings add to numerator but not denominator.
+    </div>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Not-out cricket problem</span>
+        <span class="q-tag med">Medium</span>
+      </div>
+      <div class="q-body">
+        <p>A batsman plays 12 innings, scoring a total of 540 runs, and remains not out in 2 of them. What is his batting average?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">FORMULA</span>
+          540 runs / (12 − 2) dismissals = 540/10 = 54.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>Batting average = <strong style="color:#fff;font-family:Fraunces">54</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">6.3</span>Theme — Salaries, bonuses, and corporate averages</h3>
+    <p>CAT 2022's bonus problem (Q22 in the Problem Bank) is the gold standard. Overlapping subsets of employees, each with its own average, all linked together by sum conservation. The same technique you teach in Module 1 — work in sums, not averages — cracks it open.</p>
+
+    <h3><span class="h-num">6.4</span>Theme — Ages and family problems</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Classic family-age problem</span>
+        <span class="q-tag med">Medium</span>
+      </div>
+      <div class="q-body">
+        <p>The average age of a family of 6 members today is 25 years. The youngest member is 10 years old. What was the average age of the family at the time the youngest member was born?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Total today</span>
+          Total age today = 6 × 25 = 150 years.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Roll back 10 years</span>
+          At the moment of the youngest's birth, the family had 5 members (not 6). Each of those 5 was 10 years younger. So total age then = 150 − 60 − 0 = 90 years (we subtract 10 × 5 = 50 for the others' ages, and the youngest's 10 — i.e. 60 in total).<br>
+          Average age then = 90/5 = 18 years.
+        </div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">18 years</strong></div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: the trap is forgetting that the youngest member <em>didn't exist</em> at that time. The count was 5, not 6. Students who try to subtract "everyone's 10 years" from the current total and divide by 6 get the wrong answer.</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">6.5</span>Theme — Average speed</h3>
+
+    <p>One of the most heavily tested traps. The average speed for a journey is <strong>not</strong> the average of the speeds. It is total distance divided by total time. When equal distances are travelled at different speeds, the average speed is the <em>harmonic mean</em>.</p>
+
+    <div class="formula">
+      <span class="label">Average Speed</span>
+      <span class="eq">Avg Speed = Total Distance / Total Time</span><br>
+      For equal distances at speeds u and v: <span class="eq">Avg Speed = 2uv/(u+v)</span>
+    </div>
+
+    <p>For instance, going 60 km at 30 km/h and returning at 60 km/h: the average speed is 2 × 30 × 60 / (30 + 60) = 3600/90 = 40 km/h. Not 45. The slower leg takes more time, dragging the average down.</p>
+
+    <h3><span class="h-num">6.6</span>Theme — Mixtures (averages of concentrations)</h3>
+    <p>Already met in Module 5 via alligation. Mixture problems are the most natural setting for the alligation cross because everything has units of "per litre" or "per kg" and the rule applies cleanly.</p>
+
+    <h3><span class="h-num">6.7</span>Theme — Average of averages (when allowed?)</h3>
+
+    <div class="note warn">
+      <p style="margin:0"><strong>Average of averages is wrong unless weights are equal.</strong> If class A and class B have equal numbers of students, then the average of their averages equals the combined average. If the class sizes differ, you must use weighted averages. CAT setters routinely build options around this trap — option (D) is often the naive average of averages, sitting there to catch the rushing student.</p>
+    </div>
+
+    <h3><span class="h-num">6.8</span>Theme — Median, mode, and other averages</h3>
+    <p>Rarely tested directly in CAT. When they do appear, it's in DI sets or in the very occasional QA question. Definitions to know: median = middle value (or average of two middle values for even count); mode = most frequent value. For symmetric distributions all three coincide; for skewed data they pull apart, with the mean drifting toward the long tail.</p>
+
+    <div class="section-end">
+      <span>End of Module 06 · Applications</span>
+      <span>→ next: Tips and Pitfalls</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 7 — TIPS / TRICKS / PITFALLS ====== -->
+  <section class="section" id="m7">
+    <header class="section-header">
+      <div class="module-meta">Module 07 · Tactics</div>
+      <h1 class="section-title">Twelve <em>tips</em>,<br>tricks, and traps.</h1>
+      <p class="section-deck">Accumulated wisdom from teaching averages — what to drill, what to whisper, and the mistakes you will see again and again in classroom mocks.</p>
+    </header>
+
+    <div class="tips-grid">
+      <div class="tip-card">
+        <span class="t-num">TIP 01 · TOTALS</span>
+        <h6>Always translate to sums first</h6>
+        <p>The master identity Sum = Average × Count is the first thing on your scratch pad. Always. The student who reaches for it first solves twice as fast as one who carries averages around.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 02 · DEVIATIONS</span>
+        <h6>Sum of deviations is zero</h6>
+        <p>When a problem gives partial info about how some values exceed or fall short of the mean, the rest must cancel them out exactly. This identity is gold for "find the missing total" problems.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 03 · COUNT</span>
+        <h6>Track count carefully</h6>
+        <p>Did the youngest member exist back then? Was the coach already in the squad? Count is the most-missed variable. Always pause and ask: "how many are there <em>now</em>?"</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 04 · ALLIGATION</span>
+        <h6>Use the cross for two groups</h6>
+        <p>Whenever two groups merge to a known combined mean and you need the ratio, alligation gives it in five seconds. Don't reach for algebra unless three or more groups are involved.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 05 · NOT-OUT</span>
+        <h6>Cricket averages divide by dismissals</h6>
+        <p>In any batting problem, the denominator is "innings in which dismissed", not "innings played". Not-out innings count toward runs but not toward the divisor.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 06 · SPEED</span>
+        <h6>Speed averaging is harmonic</h6>
+        <p>For equal distances, use 2uv/(u+v). Never the simple average. The slower segment takes more time, so the average pulls toward the slower speed.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 07 · WEIGHTS</span>
+        <h6>Average of averages ≠ overall average</h6>
+        <p>Unless the group sizes are equal. CAT setters love putting the naïve answer (simple average of averages) as a distractor. Always check the weights.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 08 · APs</span>
+        <h6>For arithmetic progressions, use endpoints</h6>
+        <p>Mean of an AP equals (first + last)/2. Use this for any consecutive-integer, multiples-of-k, or evenly-spaced sequence. Don't sum term by term.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 09 · BOUNDS</span>
+        <h6>Mean lies between min and max</h6>
+        <p>For "find the maximum possible average" problems, push the unconstrained values to their extreme. For "minimum possible", push them the other way. Always respect the global min/max bound.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 10 · SHIFT &amp; SCALE</span>
+        <h6>Affine transforms transfer cleanly</h6>
+        <p>If every value is multiplied by c and shifted by k, the mean does the same. Useful for "five years later" or "convert marks to percentages" problems.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 11 · DROP</span>
+        <h6>Removing an above-mean element drops the mean</h6>
+        <p>And vice versa. Use this to predict the direction of change before computing. A sanity check saves you from sign errors.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 12 · ALGEBRA</span>
+        <h6>Two unknowns, two averages</h6>
+        <p>If a problem gives you two distinct averages of two related groups (e.g., first n, first n+1), set up two equations on totals. The variable of interest is usually the (n+1)th element.</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">7.1</span>Five traps that wreck the median student</h3>
+
+    <div class="note warn">
+      <p><strong>Trap 1 — Naïve averaging of averages.</strong> Two classes have averages 60 and 80; the combined average is 70 only if class sizes are equal. Most CAT distractors are built on this.</p>
+    </div>
+
+    <div class="note warn">
+      <p><strong>Trap 2 — Forgetting the count changed.</strong> When a person joins or leaves, the count goes up or down. Half of students get the sum right and divide by the wrong number.</p>
+    </div>
+
+    <div class="note warn">
+      <p><strong>Trap 3 — Speed averaged arithmetically.</strong> "Bus goes at 40 km/h and returns at 60 km/h; average speed?" — almost everyone says 50. The correct answer is 48. This trap is so reliable it appears in CAT mocks every year.</p>
+    </div>
+
+    <div class="note warn">
+      <p><strong>Trap 4 — Counting not-out innings as dismissals.</strong> The batting-average denominator excludes not-outs. CAT mocks routinely embed this in mixed-section DI problems.</p>
+    </div>
+
+    <div class="note warn">
+      <p><strong>Trap 5 — Mishandling overlapping subsets.</strong> CAT 2022's bonus problem (Q22 ahead) gives averages of <em>overlapping</em> subsets. Adding the averages together overcounts. Track which employees belong to which subset.</p>
+    </div>
+
+    <h3><span class="h-num">7.2</span>The two-minute problem checklist</h3>
+    <ol>
+      <li>Read twice. Identify each group and its count.</li>
+      <li>Translate every average to a sum. Write the sums down.</li>
+      <li>Determine what's conserved (total sum? total count?) and what's changing.</li>
+      <li>Set up one equation per piece of information.</li>
+      <li>If two groups merge, consider alligation before algebra.</li>
+      <li>Sanity-check direction: does the answer move the right way?</li>
+      <li>Plug the answer back into the totals to verify.</li>
+    </ol>
+
+    <div class="section-end">
+      <span>End of Module 07 · Tactics</span>
+      <span>→ next: Worked Problem Bank</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 8 — PROBLEM BANK ====== -->
+  <section class="section" id="m8">
+    <header class="section-header">
+      <div class="module-meta">Module 08 · Problem Bank</div>
+      <h1 class="section-title">Twenty-five<br>worked<br><em>problems</em>.</h1>
+      <p class="section-deck">Sequenced easy to elite. Adapted patterns from CAT 2017 through CAT 2025, including the marquee CAT 2022 problems (six distinct natural numbers, bonus structure, replacement) and CAT 2023's room-weight problem. Tap any "Show solution" to reveal the working.</p>
+    </header>
+
+    <h3><span class="h-num">8.1</span>Easy tier — fluency check</h3>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q1 · Direct average</span><span class="q-tag easy">Easy</span></div>
+      <div class="q-body"><p>The average of five numbers is 27. If the sum of the first four is 102, what is the fifth number?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Total = 5 × 27 = 135. Fifth = 135 − 102 = 33.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">33</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q2 · Average of an AP</span><span class="q-tag easy">Easy</span></div>
+      <div class="q-body"><p>What is the average of the first 50 natural numbers?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>(1 + 50)/2 = 25.5.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">25.5</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q3 · Joining and average rise</span><span class="q-tag easy">Easy</span></div>
+      <div class="q-body"><p>The average weight of 8 persons is 50 kg. A new person of weight 68 kg joins. What is the new average?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Old sum = 400. New sum = 468. New average = 468/9 = 52 kg.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">52 kg</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q4 · Score correction</span><span class="q-tag easy">Easy</span></div>
+      <div class="q-body"><p>The average score of a class of 25 students was incorrectly calculated as 56. After review, one student's score was found to be 48 instead of 84. What is the correct average?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Sum was over-counted by 84 − 48 = 36. Correct sum = 25 × 56 − 36 = 1400 − 36 = 1364. Correct average = 1364/25 = 54.56.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">54.56</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q5 · Combined class average</span><span class="q-tag easy">Easy</span></div>
+      <div class="q-body"><p>The average of 20 numbers is 12. The average of another 30 numbers is 22. Find the average of all 50 numbers.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Total = 20 × 12 + 30 × 22 = 240 + 660 = 900. Average = 900/50 = 18.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">18</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.2</span>Medium tier — exam-grade</h3>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q6 · Replacement and average change</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>The average age of 8 members of a club is 30 years. If one member, whose age is 50 years, is replaced by a new member whose age is 26 years, what is the new average?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Old sum = 240. Change in sum = 26 − 50 = −24. New sum = 216. New average = 216/8 = 27.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">27 years</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q7 · Average speed (round trip)</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>A man travels 120 km from A to B at 40 km/h and returns at 60 km/h. What is his average speed for the entire trip?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Total distance = 240 km. Time forward = 3 h, time back = 2 h. Total time = 5 h. Average speed = 240/5 = 48 km/h.</div>
+        <div class="step"><span class="step-num">SHORTCUT</span>Harmonic mean: 2 × 40 × 60 / (40 + 60) = 4800/100 = 48 km/h.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">48 km/h</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q8 · Cricket innings — find n</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>The average runs of a batsman after some innings was 40. After scoring 80 in his next innings, the average rises to 42. How many innings had he played before the latest innings?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">SETUP</span>Let n be the original number of innings. Old sum = 40n. After the new innings: 40n + 80 = 42(n + 1).</div>
+        <div class="step"><span class="step-num">SOLVE</span>40n + 80 = 42n + 42 ⟹ 2n = 38 ⟹ n = 19.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">19 innings</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q9 · Alligation — milk-water mix</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>In what ratio should water be mixed with milk costing Rs. 60/litre so that the cost of the mixture becomes Rs. 48/litre (treating water as free)?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">ALLIGATION</span>Left (water) = 0, Right (milk) = 60, Middle = 48.<br>Bottom-left = 60 − 48 = 12. Bottom-right = 48 − 0 = 48.<br>Water : Milk = 12 : 48 = 1 : 4.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">Water : Milk = 1 : 4</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q10 · Including/excluding one element</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>The average of 10 numbers is 14. If we exclude one number, the average of the remaining 9 becomes 12. What is the excluded number?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Sum of 10 = 140. Sum of remaining 9 = 108. Excluded = 140 − 108 = 32.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">32</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q11 · Family average backward</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>The average age of a family of five members is 28 years. The youngest member is 8 years old. What was the average age of the family at the time the youngest member was born?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">STEP 1 · Current total</span>Total = 5 × 28 = 140 years.</div>
+        <div class="step"><span class="step-num">STEP 2 · Roll back 8 years for the OTHER four</span>At the youngest's birth, only 4 family members existed (each was 8 years younger). Their combined age then = (140 − 8) − 4 × 8 = 132 − 32 = 100.<br>Average = 100/4 = 25 years.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">25 years</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q12 · Three-group average</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>The average score of class A (20 students) is 55, class B (25 students) is 65, and class C (15 students) is 75. What is the overall average?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Total = 20 × 55 + 25 × 65 + 15 × 75 = 1100 + 1625 + 1125 = 3850. Count = 60. Average = 3850/60 ≈ 64.17.</div>
+        <div class="ans-line"><strong>Answer</strong>≈ <strong style="color:#fff;font-family:Fraunces">64.17</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q13 · Removal with average shift</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>The average age of 30 students in a class is 14 years. When the teacher's age is included, the average increases by one year. What is the teacher's age?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>New average = 15 years for 31 people. New total = 31 × 15 = 465. Old total = 30 × 14 = 420. Teacher's age = 465 − 420 = 45 years.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">45 years</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q14 · Salary average shift</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>The average monthly salary of 25 workers in a factory is Rs. 18,000. When the manager's salary is added, the average rises to Rs. 19,000. What is the manager's salary?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>New total = 26 × 19,000 = 4,94,000. Old total = 25 × 18,000 = 4,50,000. Manager's salary = 4,94,000 − 4,50,000 = Rs. 44,000.</div>
+        <div class="ans-line"><strong>Answer</strong>Rs. <strong style="color:#fff;font-family:Fraunces">44,000</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q15 · Test-score replacement</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>The average score of 11 boys was 75. If the highest and lowest scores are excluded, the average of the remaining 9 boys is 76. If the highest was 95, what was the lowest?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Sum of 11 = 825. Sum of middle 9 = 684. Highest + lowest = 825 − 684 = 141. With highest = 95, lowest = 46.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">46</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.3</span>Hard tier — exam top-quartile</h3>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q16 · CAT 2023 — D and E room problem</span><span class="q-tag hard">Hard</span></div>
+      <div class="q-body"><p>If a person D joins a room of A, B, C, the average weight reduces by x kg. If E joins instead, the average rises by 2x kg. E weighs 12 kg more than D. Find x.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">SETUP</span>Let mean of A, B, C be M. D = M − 4x (from the equation 3M + D = 4(M − x)). E = M + 8x (from 3M + E = 4(M + 2x)). So E − D = 12x.</div>
+        <div class="step"><span class="step-num">SOLVE</span>12x = 12 ⟹ x = 1.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">x = 1</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q17 · CAT 2023 — manufacturing salary ratio</span><span class="q-tag hard">Hard</span></div>
+      <div class="q-body"><p>In a company, 20% of employees work in manufacturing. The total salary of manufacturing employees is 1/6 of the total salary of all employees. What is the ratio of average salary (manuf : non-manuf)?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">SETUP</span>Total = 100 employees, total salary = S. Manuf = 20 ppl with salary S/6, so avg manuf = S/120. Non-manuf = 80 ppl with salary 5S/6, so avg non-manuf = S/96.</div>
+        <div class="step"><span class="step-num">RATIO</span>(S/120) : (S/96) = 96 : 120 = <strong>4 : 5</strong>.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">4 : 5</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q18 · Alligation on three groups (pairing trick)</span><span class="q-tag hard">Hard</span></div>
+      <div class="q-body"><p>A merchant has three varieties of tea costing Rs. 60, Rs. 80, and Rs. 100 per kg. He mixes them in the ratio 1 : 2 : 3 by weight. What is the cost per kg of the mixture?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Use the weighted-average formula directly. Cost = (1 × 60 + 2 × 80 + 3 × 100)/(1 + 2 + 3) = (60 + 160 + 300)/6 = 520/6 ≈ 86.67.</div>
+        <div class="ans-line"><strong>Answer</strong>≈ Rs. <strong style="color:#fff;font-family:Fraunces">86.67/kg</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q19 · Two-stage replacement</span><span class="q-tag hard">Hard</span></div>
+      <div class="q-body"><p>The average age of a group of 5 friends is 32 years. Two members leave (whose ages are 28 and 36) and three new members join. After the change, the new average is 33 years. What was the total age of the three new members?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">STEP 1 · Old total</span>5 × 32 = 160.</div>
+        <div class="step"><span class="step-num">STEP 2 · After two leave</span>160 − 28 − 36 = 96. Count = 3.</div>
+        <div class="step"><span class="step-num">STEP 3 · After three join</span>New count = 6. New total = 6 × 33 = 198. New members' total = 198 − 96 = 102.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">102 years</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q20 · Book-sales average</span><span class="q-tag hard">Hard</span></div>
+      <div class="q-body"><p>The average number of copies of a book sold per day by a shopkeeper is 60 over the first seven days after launch, and 63 over the first eight days. How many copies were sold on the eighth day?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Sum first 7 days = 7 × 60 = 420. Sum first 8 days = 8 × 63 = 504. Day 8 = 504 − 420 = 84.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">84 copies</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.4</span>Elite tier — top percentile</h3>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q21 · CAT 2022 — six distinct natural numbers</span><span class="q-tag elite">Elite</span></div>
+      <div class="q-body">
+        <p>Consider six distinct natural numbers such that the average of the two smallest is 14, and the average of the two largest is 28. Find the maximum possible value of the average of all six numbers.</p>
+        <ul class="q-options">
+          <li data-opt="A">22.5</li><li data-opt="B">23.5</li><li data-opt="C">24</li><li data-opt="D">23</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">STEP 1 · The endpoint constraints</span>Sum of two smallest = 28. Sum of two largest = 56.</div>
+        <div class="step"><span class="step-num">STEP 2 · To maximise the overall average, maximise the two middle numbers</span>The two middle numbers must be distinct natural numbers, strictly greater than the second-smallest and strictly less than the second-largest.<br>The smallest pair sums to 28 with distinct positives — to leave room above, take them as (1, 27) — but wait: the second-smallest must be strictly less than both middle numbers. To maximise, we want the second-smallest as high as possible. Best case: smallest = 13, second-smallest = 15. (We can't take 14, 14 — must be distinct.)<br>The largest pair sums to 56 with distinct — say second-largest = 27, largest = 29. Then the two middle numbers must be in (15, 27): take them as 25, 26 to push the average up.</div>
+        <div class="step"><span class="step-num">STEP 3 · Compute</span>Sum = 13 + 15 + 25 + 26 + 27 + 29 = 135. Average = 135/6 = 22.5.</div>
+        <div class="ans-line"><strong>Answer</strong>Option <strong style="color:#fff;font-family:Fraunces">A · 22.5</strong></div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: this is the gold standard CAT averages problem — it tests structural reasoning (the bound property from Module 2) more than arithmetic. The temptation to grab any six numbers is the trap. Slow careful enumeration of the constraints wins.</p>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q22 · CAT 2022 — corporate bonus averages</span><span class="q-tag elite">Elite</span></div>
+      <div class="q-body">
+        <p>A company has 40 employees in a fixed order. In 2022, the average bonus of the first 30 employees was Rs. 40,000, of the last 30 employees was Rs. 60,000, and of the first 10 and last 10 together was Rs. 50,000. Next year, the average bonus of the first 10 employees rose by 100%, of the last 10 employees by 200%, and the rest were unchanged. What was the 2023 average bonus across all 40 employees?</p>
+        <ul class="q-options">
+          <li data-opt="A">95000</li><li data-opt="B">85000</li><li data-opt="C">80000</li><li data-opt="D">90000</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">STEP 1 · Label the groups</span>Let x = avg of first 10, y = avg of next 10 (positions 11–20), z = avg of next 10 (positions 21–30), w = avg of last 10 (positions 31–40).</div>
+        <div class="step"><span class="step-num">STEP 2 · Use the three constraints</span>First 30 avg 40,000: 10x + 10y + 10z = 30 × 40,000 = 12,00,000 ⟹ x + y + z = 1,20,000.<br>Last 30 avg 60,000: 10y + 10z + 10w = 30 × 60,000 = 18,00,000 ⟹ y + z + w = 1,80,000.<br>First 10 and last 10 avg 50,000: 10x + 10w = 20 × 50,000 = 10,00,000 ⟹ x + w = 1,00,000.</div>
+        <div class="step"><span class="step-num">STEP 3 · Solve</span>Subtract the first from the second: w − x = 60,000. Combined with x + w = 1,00,000: w = 80,000, x = 20,000.</div>
+        <div class="step"><span class="step-num">STEP 4 · 2023 averages</span>New x = 2x = 40,000. New w = 3w = 2,40,000. y, z unchanged.<br>2023 total = 10 × 40,000 + 10y + 10z + 10 × 2,40,000 = 4,00,000 + 10(y + z) + 24,00,000.<br>From step 2: y + z = 1,20,000 − x = 1,00,000.<br>So total = 4,00,000 + 10,00,000 + 24,00,000 = 38,00,000.<br>Average = 38,00,000 / 40 = <strong>95,000</strong>.</div>
+        <div class="ans-line"><strong>Answer</strong>Option <strong style="color:#fff;font-family:Fraunces">A · 95,000</strong></div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: this is a four-variable, three-equation system, and the variable of interest (the 2023 total) doesn't require solving for y and z individually — only for y + z. Teach the discipline of asking "what do I actually need?" before grinding through all four unknowns.</p>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q23 · CAT 2022 — non-decreasing sequence with replacement</span><span class="q-tag elite">Elite</span></div>
+      <div class="q-body">
+        <p>The average of a non-decreasing sequence of N numbers a₁, a₂, …, aₙ is 300. If a₁ is replaced by 6a₁, the new average becomes 400. Find the number of possible values of a₁.</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">STEP 1 · Translate</span>Original sum = 300N. New sum = 400N. So 5a₁ = 100N ⟹ a₁ = 20N.</div>
+        <div class="step"><span class="step-num">STEP 2 · Use the non-decreasing constraint</span>Since the sequence is non-decreasing, a₁ ≤ each other term. Average is 300, so a₁ ≤ 300 ⟹ 20N ≤ 300 ⟹ N ≤ 15.<br>Also, N ≥ 2 (if N = 1, the average of a single number is just that number — and 6a₁ would give a "new average" of 6a₁; here we'd need 6a₁ = 400, but then original a₁ = 400/6 — and average of one number is itself, which was 300. Contradiction. So N ≥ 2.)</div>
+        <div class="step"><span class="step-num">STEP 3 · Count</span>N can take values 2, 3, …, 15. That's <strong>14</strong> values, each giving a distinct a₁.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">14</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q24 · Multi-stage average with constraints</span><span class="q-tag elite">Elite</span></div>
+      <div class="q-body">
+        <p>The average marks of 100 students were calculated as 40. Later, it was discovered that the marks of two students had been entered incorrectly as 75 and 81 instead of 57 and 18. After correction, what is the correct average?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Original (incorrect) sum = 100 × 40 = 4000. Correction: subtract 75 and 81, add 57 and 18. Net change = (57 + 18) − (75 + 81) = 75 − 156 = −81. Corrected sum = 4000 − 81 = 3919. Corrected average = 3919/100 = 39.19.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">39.19</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q25 · Capstone — three-group merge with constraint</span><span class="q-tag elite">Elite</span></div>
+      <div class="q-body">
+        <p>A school has three classes A, B, and C with student-count ratio 4 : 5 : 6. The average score of class A is 60, of class B is 50, and the overall average across all three classes is 55. What is the average score of class C?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">SETUP</span>Let counts be 4k, 5k, 6k. Total students = 15k. Overall sum = 15k × 55 = 825k.</div>
+        <div class="step"><span class="step-num">SOLVE</span>4k × 60 + 5k × 50 + 6k × C = 825k ⟹ 240k + 250k + 6kC = 825k ⟹ 6kC = 335k ⟹ C = 335/6 ≈ 55.83.</div>
+        <div class="ans-line"><strong>Answer</strong>Class C average ≈ <strong style="color:#fff;font-family:Fraunces">55.83</strong></div>
+      </div>
+    </div>
+
+    <div class="section-end">
+      <span>End of Module 08 · Problem Bank</span>
+      <span>→ next: Reference Sheet</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 9 — REFERENCE ====== -->
+  <section class="section" id="m9">
+    <header class="section-header">
+      <div class="module-meta">Module 09 · Reference</div>
+      <h1 class="section-title">The <em>one-page</em><br>reference<br>sheet.</h1>
+      <p class="section-deck">Everything in this codex, distilled. Photocopy; tape into the notebook; review before every mock.</p>
+    </header>
+
+    <h3><span class="h-num">9.1</span>Core definitions</h3>
+    <div class="formula">
+      <span class="label">The Arithmetic Mean</span>
+      <span class="eq">Average = Sum / Count</span><br>
+      <span class="eq">Sum = Average × Count</span> ← the workable form
+    </div>
+    <div class="formula">
+      <span class="label">Weighted Average (two groups)</span>
+      <span class="eq">M = (n₁A₁ + n₂A₂) / (n₁ + n₂)</span>
+    </div>
+    <div class="formula">
+      <span class="label">k-Group Weighted Average</span>
+      <span class="eq">M = Σ(nᵢAᵢ) / Σnᵢ</span>
+    </div>
+    <div class="formula">
+      <span class="label">Average Speed (round trip, equal distances)</span>
+      <span class="eq">v_avg = 2uv / (u + v)</span>
+    </div>
+
+    <h3><span class="h-num">9.2</span>Replacement, addition, removal — quick formulas</h3>
+    <table class="recip-table">
+      <thead><tr><th>Operation</th><th>Change in sum</th><th>Change in mean</th></tr></thead>
+      <tbody>
+        <tr><td>Replace v_out with v_in</td><td>v_in − v_out</td><td>(v_in − v_out) / n</td></tr>
+        <tr><td>Add v_new (count → n+1)</td><td>v_new</td><td>(v_new − M_old) / (n + 1)</td></tr>
+        <tr><td>Remove v_out (count → n−1)</td><td>−v_out</td><td>(M_old − v_out) / (n − 1)</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="h-num">9.3</span>The five properties</h3>
+    <ol>
+      <li><strong>Shift.</strong> If every value gets +k, the mean gets +k.</li>
+      <li><strong>Scale.</strong> If every value gets ×c, the mean gets ×c.</li>
+      <li><strong>Bound.</strong> min ≤ Average ≤ max.</li>
+      <li><strong>Self-preserving.</strong> Adding a value equal to the mean keeps the mean.</li>
+      <li><strong>Symmetric set / AP.</strong> Mean = (first + last)/2 for any AP.</li>
+    </ol>
+
+    <h3><span class="h-num">9.4</span>Alligation cross (two groups only)</h3>
+    <p>Endpoints A₁ and A₂ (A₁ &lt; A₂); mean M; ratio of counts:</p>
+    <div class="formula">
+      <span class="label">Alligation</span>
+      <span class="eq">n₁ : n₂ = (A₂ − M) : (M − A₁)</span><br>
+      The group closer to the mean is the bigger group.
+    </div>
+
+    <h3><span class="h-num">9.5</span>The traps catalogue</h3>
+    <ul>
+      <li>Average of averages ≠ overall average (unless weights equal).</li>
+      <li>Average speed is harmonic, not arithmetic.</li>
+      <li>Cricket: divide by dismissals, not innings.</li>
+      <li>When someone joins / leaves, the COUNT changes — track it.</li>
+      <li>The youngest didn't exist before they were born — careful with family-age problems.</li>
+    </ul>
+
+    <h3><span class="h-num">9.6</span>The two-minute problem checklist</h3>
+    <ol>
+      <li>Read twice. Identify each group and its count.</li>
+      <li>Translate every average to a sum. Write totals on scratch paper.</li>
+      <li>Decide what's conserved and what's changing.</li>
+      <li>If two groups merge, alligate. Otherwise, write equations on the totals.</li>
+      <li>Sanity-check direction: does the answer move the right way?</li>
+      <li>Plug back to verify.</li>
+    </ol>
+
+    <h3><span class="h-num">9.7</span>What to drill — recommended sequence</h3>
+    <ol>
+      <li>Day 1: Foundations and the five properties — 45 minutes.</li>
+      <li>Day 2: Replacement, addition, removal — 45 minutes plus drill set.</li>
+      <li>Day 3: Weighted averages and alligation cross — 60 minutes.</li>
+      <li>Day 4: Problem bank easy and medium — 90 minutes.</li>
+      <li>Day 5: Hard and elite — at least three problems each.</li>
+      <li>Weekly: revisit elite-tier problems and traps. Pair with percentages drills.</li>
+    </ol>
+
+    <div class="callout">
+      <strong>The averages mantra.</strong> Sum, not average. Total, not mean. Count, not weight. The student who reaches for the total first and converts back to the average only at the very end will solve every CAT averages question faster, cleaner, and more reliably than the student who tries to think directly in averages. Every. Time.
+    </div>
+
+    <div class="section-end">
+      <span>End of Codex · Module 09</span>
+      <span>Good luck.</span>
+    </div>
+  </section>
+
+  </main>
+</div>
+
+<script>
+  const links = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('.section');
+
+  links.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = link.dataset.target;
+      links.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      sections.forEach(s => s.classList.remove('active'));
+      const targetEl = document.getElementById(target);
+      if (targetEl) {
+        targetEl.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  });
+
+  document.querySelectorAll('.toggle-sol').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sol = btn.nextElementSibling;
+      const open = sol.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.textContent = open ? 'Hide solution' : 'Show solution';
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    const activeLink = document.querySelector('.nav-link.active');
+    const allLinks = Array.from(links);
+    const idx = allLinks.indexOf(activeLink);
+    if (e.key === 'ArrowRight' && idx < allLinks.length - 1) {
+      allLinks[idx + 1].click();
+    } else if (e.key === 'ArrowLeft' && idx > 0) {
+      allLinks[idx - 1].click();
+    }
+  });
+</script>
+
+</body>
+</html>
