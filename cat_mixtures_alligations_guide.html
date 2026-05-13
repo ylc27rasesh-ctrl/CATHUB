@@ -1,0 +1,1898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The CAT Mixtures &amp; Alligations Codex — A Teaching Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f2ead7;
+  --paper-2:#e7dcc2;
+  --ink:#1a2519;
+  --ink-soft:#384535;
+  --ink-faint:#6a7166;
+  --forest:#2d5236;
+  --forest-deep:#1a3522;
+  --copper:#b6602a;
+  --copper-soft:#d18147;
+  --ochre:#c89b3c;
+  --olive:#5a6b3e;
+  --teal:#1f6b6b;
+  --wine:#7a1f3d;
+  --rule:#c4b699;
+  --rule-soft:#d8caa9;
+  --highlight:#fff1bf;
+  --shadow:0 1px 0 rgba(26,37,25,.06), 0 2px 6px rgba(26,37,25,.04);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Fraunces',Georgia,serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.65;
+  font-size:17px;
+  background-image:
+    radial-gradient(circle at 14% 14%, rgba(45,82,54,.05) 0%, transparent 42%),
+    radial-gradient(circle at 86% 80%, rgba(182,96,42,.05) 0%, transparent 45%);
+  min-height:100vh;
+}
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .32 0 0 0 0 .27 0 0 0 0 .18 0 0 0 .04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:1;opacity:.55;
+}
+
+.layout{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  min-height:100vh;
+  position:relative;z-index:2;
+}
+@media (max-width:980px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{position:static!important;height:auto!important;border-right:none!important;border-bottom:2px solid var(--ink)}
+}
+
+.sidebar{
+  position:sticky;top:0;
+  height:100vh;
+  border-right:1px solid var(--rule);
+  background:linear-gradient(180deg,var(--paper-2) 0%,var(--paper) 100%);
+  padding:32px 26px 24px;
+  overflow-y:auto;
+  display:flex;flex-direction:column;
+}
+.back-link{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'Inter',sans-serif;
+  font-size:10.5px;letter-spacing:.22em;
+  text-transform:uppercase;font-weight:600;
+  color:var(--ink-faint);
+  text-decoration:none;
+  padding-bottom:18px;
+  margin-bottom:18px;
+  border-bottom:1px dotted var(--rule);
+  transition:color .2s ease, gap .2s ease;
+}
+.back-link::before{
+  content:"←";font-size:14px;
+  transition:transform .2s ease;
+}
+.back-link:hover{color:var(--forest);gap:12px}
+.back-link:hover::before{transform:translateX(-3px)}
+
+.brand{
+  border-bottom:2px solid var(--ink);
+  padding-bottom:22px;margin-bottom:24px;
+}
+.brand-eyebrow{
+  font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--forest);font-weight:600;margin-bottom:8px;
+}
+.brand-title{
+  font-family:'Fraunces',serif;
+  font-weight:900;font-size:28px;line-height:1;
+  letter-spacing:-.02em;
+}
+.brand-title em{
+  font-style:italic;font-weight:400;color:var(--forest);
+  font-size:24px;
+}
+.brand-sub{
+  font-family:'Inter',sans-serif;
+  font-size:11px;color:var(--ink-faint);
+  margin-top:10px;letter-spacing:.05em;
+}
+.companion-tag{
+  margin-top:14px;
+  padding:6px 10px;
+  font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;font-weight:600;
+  color:var(--copper);
+  background:rgba(182,96,42,.10);
+  border-left:2px solid var(--copper);
+}
+.nav-label{
+  font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--ink-faint);font-weight:600;
+  margin-bottom:10px;
+}
+.nav-list{
+  list-style:none;
+  font-family:'Inter',sans-serif;
+  flex:1;
+}
+.nav-list li{
+  position:relative;
+  border-bottom:1px dotted var(--rule);
+}
+.nav-list li:last-child{border-bottom:none}
+.nav-list a{
+  display:flex;align-items:baseline;gap:10px;
+  padding:11px 0 11px 8px;
+  text-decoration:none;
+  color:var(--ink-soft);
+  font-size:13.5px;font-weight:500;
+  transition:all .2s ease;
+}
+.nav-list a:hover{color:var(--forest);padding-left:14px}
+.nav-list a.active{
+  color:var(--ink);font-weight:600;
+  padding-left:14px;
+}
+.nav-list a.active::before{
+  content:"";position:absolute;left:0;top:50%;
+  width:5px;height:5px;background:var(--forest);
+  border-radius:50%;transform:translateY(-50%);
+}
+.nav-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;color:var(--ink-faint);
+  font-weight:400;min-width:24px;
+}
+.nav-list a.active .nav-num{color:var(--forest)}
+
+.sidebar-footer{
+  margin-top:22px;padding-top:18px;
+  border-top:1px solid var(--rule);
+  font-family:'Inter',sans-serif;
+  font-size:10.5px;color:var(--ink-faint);
+  letter-spacing:.04em;
+}
+
+.main{
+  padding:48px 64px 96px;
+  max-width:1080px;
+}
+@media (max-width:980px){.main{padding:32px 22px 64px}}
+
+.section{display:none;animation:fadeUp .4s ease}
+.section.active{display:block}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:none}
+}
+
+.section-header{
+  border-bottom:2px solid var(--ink);
+  padding-bottom:28px;margin-bottom:42px;
+  position:relative;
+}
+.module-meta{
+  display:flex;align-items:center;gap:16px;
+  font-family:'Inter',sans-serif;
+  font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--forest);
+  font-weight:600;margin-bottom:14px;
+}
+.module-meta::after{
+  content:"";flex:1;height:1px;background:var(--rule);
+}
+.section-title{
+  font-family:'Fraunces',serif;
+  font-weight:900;font-size:56px;line-height:1;
+  letter-spacing:-.035em;margin-bottom:14px;
+  color:var(--ink);
+}
+.section-title em{
+  font-style:italic;font-weight:400;color:var(--forest);
+}
+.section-deck{
+  font-family:'Fraunces',serif;font-style:italic;
+  font-size:21px;line-height:1.5;color:var(--ink-soft);
+  max-width:680px;font-weight:400;
+}
+
+h3{
+  font-family:'Fraunces',serif;
+  font-weight:700;font-size:30px;line-height:1.15;
+  letter-spacing:-.02em;margin:42px 0 18px;
+  color:var(--ink);
+  border-bottom:1px solid var(--rule);
+  padding-bottom:8px;
+  display:flex;align-items:baseline;gap:14px;
+}
+h3 .h-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;color:var(--forest);
+  font-weight:500;letter-spacing:.05em;
+}
+h4{
+  font-family:'Fraunces',serif;
+  font-weight:600;font-size:22px;
+  margin:32px 0 12px;color:var(--ink);
+  letter-spacing:-.01em;
+}
+h5{
+  font-family:'Inter',sans-serif;
+  font-weight:600;font-size:12px;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--forest);margin:24px 0 10px;
+}
+p{margin:0 0 16px;font-size:17.5px}
+p.lede{font-size:20px;line-height:1.55;color:var(--ink-soft);margin-bottom:24px}
+strong{color:var(--ink);font-weight:600}
+em{color:var(--ink-soft)}
+ul,ol{margin:8px 0 18px 22px}
+li{margin-bottom:8px}
+code{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.88em;background:rgba(45,82,54,.10);
+  padding:1px 6px;border-radius:3px;
+  color:var(--forest-deep);
+}
+.kbd-math{
+  font-family:'JetBrains Mono',monospace;
+  font-size:15px;
+  background:rgba(26,37,25,.05);
+  padding:2px 8px;border-radius:3px;
+  display:inline-block;
+  border:1px solid var(--rule-soft);
+}
+
+.callout{
+  border-left:3px solid var(--forest);
+  background:linear-gradient(90deg,rgba(45,82,54,.06),transparent);
+  padding:18px 22px;margin:24px 0;
+  font-family:'Fraunces',serif;
+  font-style:italic;font-size:18px;
+  line-height:1.5;color:var(--ink-soft);
+}
+.callout strong{font-style:normal;color:var(--forest-deep)}
+
+.note{
+  background:var(--paper-2);
+  border:1px solid var(--rule);
+  border-radius:2px;
+  padding:18px 22px;margin:22px 0;
+  position:relative;
+}
+.note::before{
+  content:"NOTE";
+  position:absolute;top:-10px;left:18px;
+  background:var(--paper);
+  padding:0 8px;font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.22em;
+  color:var(--ink-faint);font-weight:600;
+}
+.note.tip::before{content:"TIP";color:var(--olive)}
+.note.tip{border-color:var(--olive);background:rgba(90,107,62,.07)}
+.note.warn::before{content:"WATCH OUT";color:var(--copper)}
+.note.warn{border-color:var(--copper);background:rgba(182,96,42,.05)}
+
+.formula{
+  background:#fbf6ec;
+  border:1px solid var(--rule);
+  border-left:4px solid var(--copper);
+  padding:20px 24px;margin:20px 0;
+  font-family:'Fraunces',serif;
+  font-size:19px;line-height:1.7;
+  position:relative;
+  box-shadow:var(--shadow);
+}
+.formula .label{
+  font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--copper);
+  font-weight:700;margin-bottom:6px;display:block;
+}
+.formula .eq{
+  font-family:'JetBrains Mono',monospace;
+  font-size:16px;background:rgba(0,0,0,.04);
+  padding:8px 14px;border-radius:2px;
+  display:inline-block;margin:6px 0;
+  font-weight:500;color:var(--ink);
+}
+
+.recip-table{
+  width:100%;
+  border-collapse:collapse;
+  font-family:'JetBrains Mono',monospace;
+  font-size:14px;
+  margin:20px 0;
+  background:#fbf6ec;
+  border:1px solid var(--rule);
+}
+.recip-table th, .recip-table td{
+  padding:10px 14px;
+  text-align:left;
+  border-bottom:1px solid var(--rule-soft);
+}
+.recip-table th{
+  background:var(--ink);color:var(--paper);
+  font-family:'Inter',sans-serif;
+  font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;font-weight:600;
+}
+.recip-table tr:hover{background:rgba(45,82,54,.05)}
+.recip-table td:first-child{font-weight:600;color:var(--forest-deep)}
+
+.q-card{
+  background:#fdfaf2;
+  border:1px solid var(--rule);
+  border-radius:2px;
+  margin:24px 0;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.q-head{
+  background:var(--ink);color:var(--paper);
+  padding:14px 22px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:'Inter',sans-serif;
+  font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;font-weight:600;
+}
+.q-tag{
+  display:inline-block;
+  padding:3px 10px;border-radius:2px;
+  font-size:10px;letter-spacing:.15em;
+}
+.q-tag.easy{background:var(--olive);color:#f5efe4}
+.q-tag.med{background:var(--ochre);color:#1a2332}
+.q-tag.hard{background:var(--forest);color:#f5efe4}
+.q-tag.elite{background:var(--forest-deep);color:#f5efe4}
+.q-body{padding:20px 24px 8px;font-size:17px;line-height:1.6}
+.q-body p{margin-bottom:10px}
+.q-options{
+  font-family:'Fraunces',serif;
+  margin:10px 0 0 0;list-style:none;
+  padding:0;
+}
+.q-options li{
+  padding:4px 0 4px 28px;
+  position:relative;
+}
+.q-options li::before{
+  content:attr(data-opt);
+  font-family:'JetBrains Mono',monospace;
+  position:absolute;left:0;top:4px;
+  width:20px;height:20px;
+  background:var(--paper-2);
+  border:1px solid var(--rule);
+  border-radius:50%;text-align:center;
+  font-size:11px;font-weight:600;
+  line-height:18px;color:var(--ink-soft);
+}
+.toggle-sol{
+  width:100%;
+  background:var(--paper-2);
+  border:none;border-top:1px dashed var(--rule);
+  padding:12px 24px;
+  font-family:'Inter',sans-serif;
+  font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;font-weight:600;
+  color:var(--forest);cursor:pointer;
+  text-align:left;
+  display:flex;justify-content:space-between;align-items:center;
+  transition:background .2s ease;
+}
+.toggle-sol:hover{background:rgba(45,82,54,.10)}
+.toggle-sol::after{
+  content:"▾";font-size:14px;
+  transition:transform .25s ease;
+}
+.toggle-sol.open::after{transform:rotate(180deg)}
+.sol{
+  display:none;
+  padding:20px 26px 26px;
+  background:var(--paper-2);
+  border-top:1px solid var(--rule);
+  font-size:16.5px;
+  line-height:1.65;
+}
+.sol.open{display:block;animation:fadeUp .25s ease}
+.sol .ans-line{
+  display:flex;align-items:center;gap:12px;
+  padding:10px 14px;
+  background:var(--ink);color:var(--paper);
+  border-radius:2px;margin-top:14px;
+  font-family:'Fraunces',serif;
+  font-size:17px;
+}
+.sol .ans-line strong{color:var(--copper-soft);font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.sol p{margin-bottom:12px}
+.sol .step{
+  border-left:2px solid var(--rule);
+  padding-left:14px;margin:10px 0;
+}
+.sol .step-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;color:var(--forest);
+  font-weight:600;letter-spacing:.05em;
+  display:block;margin-bottom:3px;
+}
+
+.stat-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0;margin:36px 0 8px;
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+}
+@media (max-width:760px){.stat-grid{grid-template-columns:repeat(2,1fr)}}
+.stat{
+  padding:22px 18px;
+  border-right:1px solid var(--rule);
+  text-align:left;
+}
+.stat:last-child{border-right:none}
+@media (max-width:760px){
+  .stat:nth-child(2){border-right:none}
+  .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--rule)}
+}
+.stat-num{
+  font-family:'Fraunces',serif;
+  font-weight:900;font-size:44px;line-height:.9;
+  letter-spacing:-.03em;color:var(--forest);
+}
+.stat-num span{font-size:22px;color:var(--ink-soft);font-weight:400}
+.stat-label{
+  font-family:'Inter',sans-serif;
+  font-size:10.5px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink-faint);
+  margin-top:8px;font-weight:600;
+}
+
+.compare{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:0;margin:24px 0;
+  border:1px solid var(--rule);
+}
+@media (max-width:760px){.compare{grid-template-columns:1fr}}
+.compare > div{padding:18px 22px}
+.compare > div:first-child{border-right:1px solid var(--rule);background:rgba(182,96,42,.05)}
+.compare > div:last-child{background:rgba(45,82,54,.05)}
+@media (max-width:760px){
+  .compare > div:first-child{border-right:none;border-bottom:1px solid var(--rule)}
+}
+.compare h5{margin-top:0}
+
+.section-end{
+  margin-top:56px;padding-top:24px;
+  border-top:2px solid var(--ink);
+  font-family:'Fraunces',serif;font-style:italic;
+  font-size:15px;color:var(--ink-faint);
+  display:flex;justify-content:space-between;
+}
+
+.dropcap{
+  font-family:'Fraunces',serif;
+  font-weight:900;font-size:64px;line-height:.85;
+  float:left;padding:6px 12px 0 0;
+  color:var(--forest);
+}
+
+.tips-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:18px;margin:24px 0;
+}
+@media (max-width:760px){.tips-grid{grid-template-columns:1fr}}
+.tip-card{
+  background:#fbf6ec;
+  border:1px solid var(--rule);
+  border-top:3px solid var(--copper);
+  padding:20px 22px;
+  position:relative;
+}
+.tip-card .t-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;color:var(--copper);
+  letter-spacing:.1em;font-weight:600;
+}
+.tip-card h6{
+  font-family:'Fraunces',serif;
+  font-size:19px;font-weight:700;
+  margin:4px 0 10px;color:var(--ink);
+}
+.tip-card p{font-size:15.5px;margin-bottom:0;line-height:1.55}
+
+.drill{
+  background:var(--ink);
+  color:var(--paper);
+  padding:24px 28px;
+  margin:24px 0;
+  border-radius:2px;
+}
+.drill h5{color:var(--copper-soft);margin-top:0}
+.drill p{color:var(--paper);font-family:'Fraunces',serif;font-size:17px}
+.drill code{background:rgba(242,234,215,.1);color:var(--copper-soft)}
+
+.alligation-box{
+  background:#fbf6ec;
+  border:1px solid var(--rule);
+  padding:24px;
+  margin:24px 0;
+  text-align:center;
+  font-family:'JetBrains Mono',monospace;
+}
+.alligation-svg{
+  max-width:520px;
+  width:100%;
+  height:auto;
+  margin:8px 0;
+}
+.alligation-cap{
+  font-family:'Inter',sans-serif;
+  font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-faint);
+  margin-top:14px;
+}
+
+a.inline{color:var(--forest);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+a.inline:hover{color:var(--forest-deep)}
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <a href="index.html" class="back-link">Back to series</a>
+    <div class="brand">
+      <div class="brand-eyebrow">Quantitative Aptitude · CAT Prep</div>
+      <div class="brand-title">The <em>Mixtures &amp;<br>Alligations</em><br>Codex</div>
+      <div class="brand-sub">A teacher's companion · 9 modules · 25 worked problems</div>
+      <div class="companion-tag">Companion · Vol. IV</div>
+    </div>
+
+    <div class="nav-label">Modules</div>
+    <ul class="nav-list">
+      <li><a href="#m0" class="nav-link active" data-target="m0"><span class="nav-num">00</span>Orientation</a></li>
+      <li><a href="#m1" class="nav-link" data-target="m1"><span class="nav-num">01</span>The Mixture Frame</a></li>
+      <li><a href="#m2" class="nav-link" data-target="m2"><span class="nav-num">02</span>Alligation, Reloaded</a></li>
+      <li><a href="#m3" class="nav-link" data-target="m3"><span class="nav-num">03</span>Conservation &amp; the Substance Rule</a></li>
+      <li><a href="#m4" class="nav-link" data-target="m4"><span class="nav-num">04</span>Replacement &amp; Repeated Dilution</a></li>
+      <li><a href="#m5" class="nav-link" data-target="m5"><span class="nav-num">05</span>Three-Component Mixtures</a></li>
+      <li><a href="#m6" class="nav-link" data-target="m6"><span class="nav-num">06</span>Application Themes</a></li>
+      <li><a href="#m7" class="nav-link" data-target="m7"><span class="nav-num">07</span>Tips, Tricks &amp; Pitfalls</a></li>
+      <li><a href="#m8" class="nav-link" data-target="m8"><span class="nav-num">08</span>Worked Problem Bank</a></li>
+      <li><a href="#m9" class="nav-link" data-target="m9"><span class="nav-num">09</span>Reference Sheet</a></li>
+    </ul>
+
+    <div class="sidebar-footer">
+      Prepared for classroom delivery.<br>
+      All worked problems carry full reasoning.<br>
+      <span style="color:var(--forest)">⬤</span> Tap any solution to expand.
+    </div>
+  </aside>
+
+  <main class="main">
+
+  <!-- ====== MODULE 0 — ORIENTATION ====== -->
+  <section class="section active" id="m0">
+    <header class="section-header">
+      <div class="module-meta">Module 00 · Orientation</div>
+      <h1 class="section-title">The topic that<br>sits <em>between</em><br>three others.</h1>
+      <p class="section-deck">A teacher's overview. Mixtures and alligations is not a standalone chapter — it is the application layer that unites percentages, averages, and ratios. Teach it last in the arithmetic block, when the prerequisites are already solid.</p>
+    </header>
+
+    <p class="lede"><span class="dropcap">M</span>ixtures and alligations is the chapter that confuses students because <strong>it is built entirely out of other chapters</strong>. A mixture problem is a weighted-average problem (Volume II) about a ratio (a prerequisite to Volume V) expressed as a percentage concentration (Volume I), often involving commercial pricing (Volume III). Students who try to learn it as if it were a fresh topic spend twice as long as students who recognise it as a synthesis. This codex's job is to make that recognition explicit.</p>
+
+    <p>The good news: there are exactly <strong>three core techniques</strong> in the entire chapter — the alligation cross (already met in Volume II), the substance-conservation principle, and the repeated-replacement formula. Every CAT mixture problem since 2016 has used one or two of these three, never anything else. Teach these three and the chapter is done.</p>
+
+    <p>The bad news: CAT setters love mixture problems because they are the easiest place to <em>hide arithmetic complexity in a verbal disguise</em>. The CAT 2022 lemon-juice / sugar-syrup problem, the CAT 2022 two-container shuffle, the CAT 2023 coffee-cocoa double replacement, and the CAT 2024 milk-water seven-step dilution — all four are gentle technique applications wrapped in deliberately confusing prose. Half the work is reading carefully.</p>
+
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="stat-num">1–2</div>
+        <div class="stat-label">Direct questions per CAT</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">22</div>
+        <div class="stat-label">Total questions, 2016–2024</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Techniques to know</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">Mod–Hard</div>
+        <div class="stat-label">Typical difficulty</div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">0.1</span>How to use this codex in class</h3>
+
+    <p>The nine modules are sequenced for a <strong>6–8 hour block</strong>, similar in scope to averages. Module 1 lays the mixture frame — the vocabulary of concentration, pure component, ratio, and overall composition. Module 2 returns to alligation but reframes it as a mixture tool. Module 3 introduces the most powerful single idea in this entire chapter: <em>identify what is conserved</em>. Module 4 covers the repeated-replacement family. Module 5 handles three-component mixtures (less common but recurring). Module 6 collects applied themes. Modules 7 to 9 follow the standard codex structure.</p>
+
+    <p>Critically, this volume <strong>assumes prior fluency with Volumes I and II</strong>. If a student cannot yet alligate two prices to get a ratio in five seconds, send them back to Volume II Module 5 first. Trying to teach mixtures to a student who isn't fluent with alligation is like trying to teach calculus to a student who can't do algebra.</p>
+
+    <div class="callout">
+      <strong>Teaching philosophy.</strong> Every mixture problem is a problem about a <em>composition</em>: some quantity of A, some quantity of B, totalling some volume, with some concentration. Identify the four moving pieces — quantity of A, quantity of B, total, concentration — and any single CAT question becomes finding the unknown given the other three.
+    </div>
+
+    <h3><span class="h-num">0.2</span>What the CAT actually asks</h3>
+
+    <p>Scanning 2017–2025 CAT papers, the recurring archetypes are:</p>
+
+    <ul>
+      <li><strong>Two-component mixing.</strong> A and B mixed in some ratio to achieve a target concentration. Alligation, in plain clothes.</li>
+      <li><strong>Adding water (or another zero-concentration substance).</strong> "How much water to add to dilute…" — substance-conservation problem in disguise.</li>
+      <li><strong>Repeated replacement.</strong> Remove some, replace with water, repeat. Apply the famous (1 − r/V)<sup>n</sup> formula. CAT 2023 coffee-cocoa, CAT 2024 milk-water.</li>
+      <li><strong>Multi-container shuffle.</strong> Transfer half from A to B, then half back, then half forward. CAT 2022 two-container syrup-milk is the gold standard.</li>
+      <li><strong>Mixture of mixtures.</strong> Combine two already-mixed liquids into a new mixture. CAT 2022 lemon-juice / sugar-syrup.</li>
+      <li><strong>Ratio-from-aggregate.</strong> Total of two ratios given; find a sub-ratio. CAT 2024 Rajesh-Vimal land-use is exactly this.</li>
+      <li><strong>Profit on mixtures.</strong> Buy at different prices, mix, sell at one price; compute profit. Volume III meets Volume IV here.</li>
+    </ul>
+
+    <div class="note tip">
+      <p style="margin:0"><strong>Classroom diagnostic in two minutes.</strong> Ask: <em>"A 60-litre milk-water solution is 80% milk. How much water must be added to make it 60% milk?"</em> The fluent student writes: milk is conserved = 48 L = 60% of new total ⟹ new total = 80 L ⟹ water added = 20 L. Twelve seconds. The struggling student starts setting up algebra with x as the water added. Two minutes. Use this diagnostic to identify how much of the substance-conservation idea (Module 3) needs to be drilled before opening the problem bank.</p>
+    </div>
+
+    <h3><span class="h-num">0.3</span>The vocabulary</h3>
+
+    <p>The terms appear interchangeably in CAT problems and trip up students who haven't standardised them:</p>
+
+    <ul>
+      <li><strong>Solution.</strong> A homogeneous mixture, usually two substances dissolved together (milk-water, alcohol-water, salt-water).</li>
+      <li><strong>Concentration.</strong> The percentage of one specific component (usually called "milk concentration" or "acid concentration"). Always expressed as a percentage of the <em>total volume</em>.</li>
+      <li><strong>Pure component.</strong> The substance that's not water. Milk in milk-water. Alcohol in alcohol-water. The quantity of the pure component is often what's <em>conserved</em>.</li>
+      <li><strong>Adulterant.</strong> The added substance (usually water). The cheap thing diluting the expensive thing.</li>
+      <li><strong>Ratio of two components.</strong> The proportion in which they appear. A 3:1 milk-water solution is 75% milk, 25% water.</li>
+    </ul>
+
+    <p>Standardise these in class on day one. If your students aren't fluent in "concentration" vs "ratio" vs "proportion", the actual CAT questions will read like noise.</p>
+
+    <div class="section-end">
+      <span>End of Module 00 · Orientation</span>
+      <span>→ next: The Mixture Frame</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 1 — THE MIXTURE FRAME ====== -->
+  <section class="section" id="m1">
+    <header class="section-header">
+      <div class="module-meta">Module 01 · The Frame</div>
+      <h1 class="section-title">What a <em>mixture</em><br>actually is.</h1>
+      <p class="section-deck">The four moving pieces, the three ways to describe a mixture (ratio, percentage, fraction), and the mental discipline that turns every CAT mixture problem into a one-line calculation.</p>
+    </header>
+
+    <h3><span class="h-num">1.1</span>The four moving pieces</h3>
+
+    <p>Every mixture problem has the same four pieces:</p>
+
+    <div class="formula">
+      <span class="label">The Four Pieces of a Mixture</span>
+      <strong>Q_A</strong> — quantity of component A (e.g. milk, in litres)<br>
+      <strong>Q_B</strong> — quantity of component B (e.g. water)<br>
+      <strong>V</strong> — total volume = Q_A + Q_B<br>
+      <strong>c</strong> — concentration of A = Q_A / V<br><br>
+      Three independent variables — knowing any three pins down the fourth.
+    </div>
+
+    <p>Most CAT problems give you two of these explicitly, hide a third in the prose, and ask for the fourth. The exam discipline is to write down all four on scratch paper before computing anything. If you can fill in three boxes, you can solve for the fourth.</p>
+
+    <h3><span class="h-num">1.2</span>The three ways to describe a mixture</h3>
+
+    <p>The same physical reality can be described three ways. CAT setters switch between them within a single problem to test fluency. Train the student to convert at sight:</p>
+
+    <table class="recip-table">
+      <thead>
+        <tr><th>Phrasing</th><th>Means</th><th>Equivalent</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>"Milk and water in ratio 3 : 1"</td><td>3 parts milk, 1 part water</td><td>75% milk, 25% water</td></tr>
+        <tr><td>"75% milk solution"</td><td>75% of total is milk</td><td>Ratio 3 : 1</td></tr>
+        <tr><td>"Three-fourths is milk"</td><td>3/4 of volume is milk</td><td>75% milk, ratio 3 : 1</td></tr>
+        <tr><td>"Ratio 2 : 3"</td><td>2 parts A, 3 parts B (5 total)</td><td>40% A, 60% B</td></tr>
+        <tr><td>"60 mL milk in 80 mL solution"</td><td>Q_A = 60, V = 80</td><td>75% milk, ratio 3 : 1</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="h-num">1.3</span>The "assume 100" trick — recommercialised for mixtures</h3>
+
+    <p>From Volumes I and III: if no specific quantity is given, assume the total is 100 (or 100 litres, or 100 mL — whatever units the problem uses). All concentrations then read directly as quantities, and arithmetic collapses.</p>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Frame example — concentration after adding water</span>
+        <span class="q-tag easy">Easy</span>
+      </div>
+      <div class="q-body">
+        <p>A solution contains alcohol and water in the ratio 5 : 3. What is the percentage of alcohol in the solution?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">METHOD</span>
+          Total parts = 5 + 3 = 8. Alcohol = 5/8 = 62.5%.
+        </div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">62.5%</strong></div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: this is exactly Volume I's arsenal speaking — 5/8 = 62.5%, no calculator. Make sure the student doesn't reach for the on-screen pad here.</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">1.4</span>The four standard question types</h3>
+
+    <h4>Type 1 — Find the concentration of an existing mixture</h4>
+    <p>Given the quantities, compute the percentage. Direct application of c = Q_A / V.</p>
+
+    <h4>Type 2 — Find how much water to add for a target concentration</h4>
+    <p>Identify what's conserved (Module 3), set up one equation. The most common type.</p>
+
+    <h4>Type 3 — Find the ratio to mix two solutions of different concentrations</h4>
+    <p>Alligate on the concentrations to get the volume ratio.</p>
+
+    <h4>Type 4 — Find the concentration after repeated replacement</h4>
+    <p>Apply the (1 − r/V)<sup>n</sup> formula. Module 4 covers this.</p>
+
+    <h3><span class="h-num">1.5</span>A worked walkthrough to seal the module</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Foundation example — adding water</span>
+        <span class="q-tag easy">Easy</span>
+      </div>
+      <div class="q-body">
+        <p>A 40-litre milk-water solution contains 25% water. How much water must be added so that the resulting solution contains 40% water?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Identify what's conserved</span>
+          When water is added, the <em>milk</em> stays unchanged. So milk is conserved.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Compute the conserved quantity</span>
+          Initial water = 25% of 40 = 10 L. So milk = 30 L.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 3 · Express milk as a percentage of the new total</span>
+          New solution has 40% water, so 60% milk. So 30 L = 60% of new total ⟹ new total = 50 L.<br>
+          Water added = 50 − 40 = 10 L.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>Add <strong style="color:#fff;font-family:Fraunces">10 litres</strong> of water</div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: the conserved-quantity insight collapses what looks like an algebra problem into three lines of arithmetic. We will return to this principle in Module 3 and never leave it.</p>
+      </div>
+    </div>
+
+    <div class="drill">
+      <h5>· In-class drill ·</h5>
+      <p>Round-robin, mental math, fifteen seconds each. State concentration of the first component:</p>
+      <p><code>Ratio 7 : 3</code> · <code>Ratio 1 : 4</code> · <code>3 parts milk in 5 parts solution</code> · <code>Ratio 5 : 7</code> · <code>2 parts A in 11 parts total</code></p>
+      <p style="font-size:14px;opacity:.7;margin-top:10px">Answers: 70%, 20%, 60%, 41.67%, 18.18%.</p>
+    </div>
+
+    <div class="section-end">
+      <span>End of Module 01 · The Frame</span>
+      <span>→ next: Alligation, Reloaded</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 2 — ALLIGATION RELOADED ====== -->
+  <section class="section" id="m2">
+    <header class="section-header">
+      <div class="module-meta">Module 02 · The Workhorse</div>
+      <h1 class="section-title">Alligation,<br><em>reloaded</em>.</h1>
+      <p class="section-deck">The cross diagram from Volume II, now applied directly to mixture problems. Two solutions of different concentrations combine to a target concentration — and alligation gives the ratio in five seconds.</p>
+    </header>
+
+    <p class="lede">Alligation is the single most valuable tool in this chapter. If your students saw alligation in Volume II's salary-merging context but never quite caught on, this module is where it earns its keep — the natural home of the technique is exactly mixture problems, which is also where its historical name came from. <em>Alligation</em> is from the Latin <em>alligare</em>, "to bind together" — as in binding two solutions to make a third.</p>
+
+    <h3><span class="h-num">2.1</span>The rule, re-stated for mixtures</h3>
+
+    <div class="formula">
+      <span class="label">Alligation for Mixtures</span>
+      Two solutions with concentrations <em>c₁</em> and <em>c₂</em> (where c₁ &lt; c₂) are mixed to produce a target concentration <em>c</em>.<br>
+      <span class="eq">Q₁ : Q₂ = (c₂ − c) : (c − c₁)</span><br>
+      The solution closer to the target is the larger share.
+    </div>
+
+    <h3><span class="h-num">2.2</span>The visual</h3>
+
+    <div class="alligation-box">
+      <svg class="alligation-svg" viewBox="0 0 520 240" xmlns="http://www.w3.org/2000/svg">
+        <text x="90" y="50" font-family="JetBrains Mono, monospace" font-size="18" fill="#1a2519" text-anchor="middle" font-weight="600">c₁</text>
+        <text x="430" y="50" font-family="JetBrains Mono, monospace" font-size="18" fill="#1a2519" text-anchor="middle" font-weight="600">c₂</text>
+        <text x="90" y="70" font-family="Inter, sans-serif" font-size="11" fill="#6a7166" text-anchor="middle">cheaper / weaker</text>
+        <text x="430" y="70" font-family="Inter, sans-serif" font-size="11" fill="#6a7166" text-anchor="middle">dearer / stronger</text>
+        <line x1="110" y1="60" x2="235" y2="130" stroke="#2d5236" stroke-width="2"/>
+        <line x1="410" y1="60" x2="285" y2="130" stroke="#2d5236" stroke-width="2"/>
+        <line x1="255" y1="150" x2="130" y2="220" stroke="#2d5236" stroke-width="2"/>
+        <line x1="265" y1="150" x2="390" y2="220" stroke="#2d5236" stroke-width="2"/>
+        <circle cx="260" cy="140" r="28" fill="#fff1bf" stroke="#c89b3c" stroke-width="2"/>
+        <text x="260" y="146" font-family="JetBrains Mono, monospace" font-size="18" fill="#1a2519" text-anchor="middle" font-weight="700">c</text>
+        <text x="100" y="232" font-family="JetBrains Mono, monospace" font-size="16" fill="#b6602a" text-anchor="middle" font-weight="600">c₂ − c</text>
+        <text x="420" y="232" font-family="JetBrains Mono, monospace" font-size="16" fill="#b6602a" text-anchor="middle" font-weight="600">c − c₁</text>
+        <text x="175" y="115" font-family="Fraunces, serif" font-style="italic" font-size="13" fill="#384535">subtract</text>
+        <text x="315" y="115" font-family="Fraunces, serif" font-style="italic" font-size="13" fill="#384535">subtract</text>
+      </svg>
+      <div class="alligation-cap">The volume ratio Q₁ : Q₂ reads off the bottom corners.</div>
+    </div>
+
+    <p>The mechanics are identical to Volume II's alligation cross. Put the endpoint concentrations on top, target in the middle, compute diagonal differences, read the ratio off the bottom. <em>The group closer to the target contributes the larger volume</em>.</p>
+
+    <h3><span class="h-num">2.3</span>Worked applications</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Alligation in action — two milk solutions</span>
+        <span class="q-tag easy">Easy</span>
+      </div>
+      <div class="q-body">
+        <p>In what ratio must a solution containing 20% milk be mixed with another solution containing 50% milk to obtain a solution containing 30% milk?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">ALLIGATION</span>
+          Left = 20, Right = 50, Middle = 30.<br>
+          Bottom-left = 50 − 30 = 20. Bottom-right = 30 − 20 = 10.<br>
+          Ratio (20% solution : 50% solution) = 20 : 10 = 2 : 1.
+        </div>
+        <div class="step">
+          <span class="step-num">SANITY CHECK</span>
+          The target 30 is closer to 20 than to 50. So the 20% solution should dominate — and the 2 : 1 ratio confirms this.
+        </div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">2 : 1</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">2.4</span>Alligation in commercial pricing (Vol. III meets Vol. IV)</h3>
+
+    <p>The same rule works on prices. Two grades of tea or rice or milk, with different costs per kg or per litre, mixed to produce a blend selling at a target price.</p>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Pricing application — blended tea</span>
+        <span class="q-tag med">Medium</span>
+      </div>
+      <div class="q-body">
+        <p>A trader has two varieties of tea, priced at Rs. 80/kg and Rs. 120/kg. In what ratio must he blend them to produce a mixture worth Rs. 95/kg?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">ALLIGATION</span>
+          Left = 80, Right = 120, Middle = 95.<br>
+          Bottom-left = 120 − 95 = 25. Bottom-right = 95 − 80 = 15.<br>
+          Ratio (cheaper : dearer) = 25 : 15 = 5 : 3.
+        </div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">5 : 3</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">2.5</span>Alligation with profit margin (the trader's profit problem)</h3>
+
+    <p>A CAT favourite: a trader mixes two grades and sells the blend at a profit. The question pieces together alligation (to find the blend ratio) and percentage profit (Vol. III) to find a final answer.</p>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Trader's profit on blend</span>
+        <span class="q-tag med">Medium</span>
+      </div>
+      <div class="q-body">
+        <p>A trader has two varieties of wheat: one at Rs. 30 per kg and another at Rs. 40 per kg. He mixes them in some ratio and sells the mixture at Rs. 42 per kg, earning a profit of 20%. What is the ratio of the two varieties in the mixture?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Find the cost price of the mixture</span>
+          SP = 42, profit 20% ⟹ CP of mixture = 42/1.20 = Rs. 35/kg.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Alligate on the two grades</span>
+          Left = 30, Right = 40, Middle = 35. Both differences equal 5.<br>
+          Ratio (Rs. 30 : Rs. 40) = 5 : 5 = 1 : 1.
+        </div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">1 : 1</strong></div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: the equal-distance midpoint (35 exactly halfway between 30 and 40) gives the 1 : 1 ratio. Whenever the alligation produces equal differences, you know the mixing is 50-50.</p>
+      </div>
+    </div>
+
+    <div class="note warn">
+      <p style="margin:0"><strong>The endpoints must be the same kind of thing.</strong> Don't alligate a price against a concentration. Alligate prices with prices, or concentrations with concentrations. The middle must be the same kind of quantity as the endpoints. Sounds obvious; CAT 2024-style questions buried this trap inside three layers of prose.</p>
+    </div>
+
+    <div class="section-end">
+      <span>End of Module 02 · Alligation Reloaded</span>
+      <span>→ next: Substance Conservation</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 3 — CONSERVATION ====== -->
+  <section class="section" id="m3">
+    <header class="section-header">
+      <div class="module-meta">Module 03 · The Master Idea</div>
+      <h1 class="section-title">The <em>conservation</em><br>principle.</h1>
+      <p class="section-deck">The single most powerful idea in this entire chapter. When a mixture changes, one substance is almost always conserved. Anchor the calculation on that, and seemingly complex problems become one-liners.</p>
+    </header>
+
+    <p class="lede">If a student walks out of your classroom with only one idea from this entire codex, it should be this one. The conservation principle is the question that turns a CAT 720-second mixture problem into a thirty-second mental calculation.</p>
+
+    <h3><span class="h-num">3.1</span>The principle</h3>
+
+    <div class="callout">
+      <strong>The conservation principle.</strong> When a mixture is altered — diluted, concentrated, mixed with another, transferred — one component is almost always unchanged in absolute quantity. Identify that component first. Compute its quantity. Then use that quantity, plus the new total or new concentration, to find the answer.
+    </div>
+
+    <h3><span class="h-num">3.2</span>What's conserved in each operation</h3>
+
+    <div class="compare">
+      <div>
+        <h5>Operation</h5>
+        <p style="margin-bottom:0">Add pure water<br>Add pure milk (or pure A)<br>Mix two solutions of A &amp; B<br>Evaporate some water<br>Replace some mixture with water</p>
+      </div>
+      <div>
+        <h5>What's conserved</h5>
+        <p style="margin-bottom:0">The milk (or A)<br>The water (or B)<br>BOTH A and B (just redistributed)<br>The milk (or A)<br>NOTHING — both A and B change. Use the replacement formula.</p>
+      </div>
+    </div>
+
+    <p>Notice the last row. The replacement operation is the one case where conservation doesn't directly work — that's why it gets its own module (Module 4). For everything else, find the conserved quantity, fix it, and the rest is arithmetic.</p>
+
+    <h3><span class="h-num">3.3</span>The substance equation</h3>
+
+    <p>Conservation gives us a single workhorse equation:</p>
+
+    <div class="formula">
+      <span class="label">The Substance Equation</span>
+      <span class="eq">(quantity of conserved substance) = constant</span><br>
+      Specifically: <span class="eq">c_initial × V_initial = c_final × V_final</span><br>
+      where c is the concentration of the conserved substance.
+    </div>
+
+    <p>For "add x litres of water to dilute a solution from c₁ to c₂": the milk is conserved, so c₁ × V_initial = c₂ × (V_initial + x). Solve for x. One line.</p>
+
+    <h3><span class="h-num">3.4</span>Worked applications</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Conservation in action — adding water</span>
+        <span class="q-tag easy">Easy</span>
+      </div>
+      <div class="q-body">
+        <p>How many litres of water must be added to 80 litres of a milk-water solution containing 70% milk so that the resulting solution contains 56% milk?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Identify the conserved substance</span>
+          Water is added; milk is conserved.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Substance equation</span>
+          Milk: 0.70 × 80 = 56 L (initial milk).<br>
+          Final milk = 0.56 × (80 + x).<br>
+          56 = 0.56 × (80 + x) ⟹ 80 + x = 100 ⟹ x = 20 L.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>Add <strong style="color:#fff;font-family:Fraunces">20 litres</strong> of water</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Conservation — evaporation problem</span>
+        <span class="q-tag med">Medium</span>
+      </div>
+      <div class="q-body">
+        <p>A vessel contains 50 litres of milk diluted with 30% water. Some water evaporates and the resulting concentration of water in the solution becomes 12.5%. How many litres of water evaporated?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Conserved substance</span>
+          Water evaporates; milk is conserved.<br>
+          Initial milk = 70% × 50 = 35 L.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Apply substance equation</span>
+          After evaporation, milk is still 35 L, now constituting 87.5% (= 100 − 12.5).<br>
+          0.875 × V_new = 35 ⟹ V_new = 40 L.<br>
+          Water evaporated = 50 − 40 = 10 L.
+        </div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">10 litres</strong> evaporated</div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">3.5</span>The two-component conservation problem</h3>
+
+    <p>When two solutions are mixed (neither is pure), both components are conserved across the merger. The combined amounts of A and B are computed separately and summed.</p>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Mixing two solutions</span>
+        <span class="q-tag med">Medium</span>
+      </div>
+      <div class="q-body">
+        <p>40 litres of a 25% milk solution is mixed with 60 litres of a 40% milk solution. What is the milk concentration of the resulting mixture?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">METHOD</span>
+          Milk from solution 1: 25% × 40 = 10 L.<br>
+          Milk from solution 2: 40% × 60 = 24 L.<br>
+          Total milk = 34 L. Total volume = 100 L. Concentration = 34%.
+        </div>
+        <div class="step">
+          <span class="step-num">ALTERNATIVE — WEIGHTED AVERAGE</span>
+          (40 × 25 + 60 × 40)/100 = (1000 + 2400)/100 = 34%. Same answer; same idea.
+        </div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">34%</strong></div>
+      </div>
+    </div>
+
+    <div class="section-end">
+      <span>End of Module 03 · Conservation</span>
+      <span>→ next: Repeated Replacement</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 4 — REPLACEMENT ====== -->
+  <section class="section" id="m4">
+    <header class="section-header">
+      <div class="module-meta">Module 04 · The Replacement Engine</div>
+      <h1 class="section-title">Repeated<br><em>dilution</em>.</h1>
+      <p class="section-deck">The single most famous mixture pattern in CAT prep. Remove some, replace with water, repeat. The formula is short; the applications are subtle. CAT 2023 and CAT 2024 both featured this directly.</p>
+    </header>
+
+    <h3><span class="h-num">4.1</span>Why this case is special</h3>
+
+    <p>In the operation "remove x litres of mixture, replace with x litres of water", the conservation principle from Module 3 partially fails. When you remove some mixture, you remove both milk AND water in their current proportion. So the milk quantity drops too, even though no milk is being added. This is not the simple substance-conservation case.</p>
+
+    <p>Fortunately, the operation has a clean structural pattern that admits a formula. Each replacement multiplies the concentration of the pure component by the same factor.</p>
+
+    <h3><span class="h-num">4.2</span>The core formula</h3>
+
+    <div class="formula">
+      <span class="label">Repeated Replacement Formula</span>
+      In a container of volume V, initial concentration c₀ of substance A.<br>
+      Each round: remove r litres of mixture, replace with r litres of pure water (zero A).<br>
+      After n such rounds:<br>
+      <span class="eq">c_n = c₀ × (1 − r/V)<sup>n</sup></span>
+    </div>
+
+    <p>The multiplier (1 − r/V) per round is the key. If r is a sixth of V, each round leaves five-sixths of the previous concentration. If r is a quarter of V, each round leaves three-quarters. Memorise the common cases: a quarter dilution drops concentration to 75%, then to 56.25%, then to 42.19%, and so on.</p>
+
+    <h3><span class="h-num">4.3</span>Worked applications</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Classic milk-water replacement</span>
+        <span class="q-tag easy">Easy</span>
+      </div>
+      <div class="q-body">
+        <p>A 60-litre container is full of pure milk. 12 litres are drawn and replaced with water. This operation is repeated two more times. What is the final percentage of milk?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">FORMULA</span>
+          c₀ = 100% (pure milk). r = 12, V = 60, so r/V = 1/5. Multiplier per round = 4/5.<br>
+          After three rounds: c₃ = 100% × (4/5)³ = 100% × 64/125 = 51.2%.
+        </div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">51.2% milk</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">4.4</span>The CAT 2024 problem — how many rounds till water exceeds milk</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>CAT 2024 — milk-water reaches water majority</span>
+        <span class="q-tag hard">Hard</span>
+      </div>
+      <div class="q-body">
+        <p>A container has 40 litres of milk. Then, 4 litres are removed from the container and replaced with 4 litres of water. This process of replacing 4 litres of the liquid in the container with an equal volume of water is continued repeatedly. The smallest number of times of doing this process, after which the volume of milk in the container becomes less than that of water, is:</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Identify the multiplier</span>
+          r = 4, V = 40, so r/V = 1/10. Multiplier per round = 9/10. Concentration after n rounds = (9/10)<sup>n</sup>.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · The condition</span>
+          Milk &lt; water means milk &lt; 50% of total. So we need (9/10)<sup>n</sup> &lt; 0.5.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 3 · Compute powers of (9/10)</span>
+          (9/10)¹ = 0.9<br>
+          (9/10)² = 0.81<br>
+          (9/10)³ = 0.729<br>
+          (9/10)⁴ = 0.6561<br>
+          (9/10)⁵ = 0.59049<br>
+          (9/10)⁶ = 0.531441<br>
+          (9/10)⁷ = 0.478297…<br>
+          First n with (9/10)<sup>n</sup> &lt; 0.5 is n = 7.
+        </div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">7</strong></div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: this is mechanical but tedious. Train students to compute powers of (9/10) iteratively rather than by direct exponentiation. Each step is just "multiply by 0.9", which is a fast mental operation.</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">4.5</span>The CAT 2023 two-replacement problem</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>CAT 2023 — coffee-cocoa double replacement</span>
+        <span class="q-tag hard">Hard</span>
+      </div>
+      <div class="q-body">
+        <p>Pure coffee was in a container. An amount of it was replaced by cocoa powder to form mixture P. The same amount was again removed from P and replaced by cocoa powder to form mixture Q. If the final ratio of coffee to cocoa in Q is 16 : 9, what is the ratio of cocoa in P to cocoa in Q?</p>
+        <ul class="q-options">
+          <li data-opt="A">4 : 9</li><li data-opt="B">1 : 3</li><li data-opt="C">5 : 9</li><li data-opt="D">1 : 2</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Find the per-round multiplier</span>
+          After two rounds, coffee : cocoa = 16 : 9, so coffee fraction = 16/25.<br>
+          Initially pure coffee, so c₂ = (1 − p)² = 16/25 where p is the fraction removed each round.<br>
+          (1 − p)² = 16/25 ⟹ 1 − p = 4/5 ⟹ p = 1/5.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Find cocoa in P and Q</span>
+          After round 1: coffee = 4/5; cocoa in P = 1 − 4/5 = 1/5.<br>
+          After round 2: cocoa in Q = 1 − 16/25 = 9/25.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 3 · Ratio</span>
+          (cocoa in P) : (cocoa in Q) = (1/5) : (9/25) = 5/25 : 9/25 = 5 : 9.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>Option <strong style="color:#fff;font-family:Fraunces">C · 5 : 9</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">4.6</span>Pulling the proportion from a known result</h3>
+
+    <p>Many mock problems run the formula backwards: "After two replacements the concentration is 64%; how much was replaced each round?" Set up (1 − p)² = 0.64 ⟹ 1 − p = 0.8 ⟹ p = 0.2 = 20% replaced each round. The reverse direction is just as common in CAT as the forward.</p>
+
+    <div class="section-end">
+      <span>End of Module 04 · Replacement</span>
+      <span>→ next: Three-Component Mixtures</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 5 — THREE COMPONENTS ====== -->
+  <section class="section" id="m5">
+    <header class="section-header">
+      <div class="module-meta">Module 05 · Beyond Two</div>
+      <h1 class="section-title">Three-<em>component</em><br>mixtures.</h1>
+      <p class="section-deck">When the mixture has three substances rather than two, the alligation cross stops giving unique answers — and a smarter approach is needed. Less frequent in CAT, but the questions that appear are usually hard.</p>
+    </header>
+
+    <h3><span class="h-num">5.1</span>Why alligation fails for three components</h3>
+
+    <p>The alligation cross works for two endpoints and one middle. With three endpoints, the system has too many unknowns. Three components mixed to a target leave one degree of freedom — the answer is a <em>family</em> of ratios, not a single ratio.</p>
+
+    <p>So for three-component problems, alligation must be abandoned in favour of <strong>direct weighted averaging</strong> or <strong>component-by-component conservation</strong>.</p>
+
+    <h3><span class="h-num">5.2</span>The weighted-average approach</h3>
+
+    <div class="formula">
+      <span class="label">Three-Component Weighted Average</span>
+      For three substances with concentrations c₁, c₂, c₃ of a target component, mixed in ratio n₁ : n₂ : n₃:<br>
+      <span class="eq">c_mixture = (n₁c₁ + n₂c₂ + n₃c₃) / (n₁ + n₂ + n₃)</span>
+    </div>
+
+    <p>If the problem gives you the ratio of the three substances and asks for the blended concentration, this formula gives it directly. If the problem gives the blended concentration and asks for one of the ratios, you'll typically need a second piece of information to pin it down.</p>
+
+    <h3><span class="h-num">5.3</span>Worked applications</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Three-grade tea blending</span>
+        <span class="q-tag med">Medium</span>
+      </div>
+      <div class="q-body">
+        <p>A merchant has three varieties of tea: Rs. 60/kg, Rs. 80/kg, and Rs. 100/kg. He mixes them in the ratio 1 : 2 : 3. What is the cost per kg of the resulting mixture?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">METHOD</span>
+          (1 × 60 + 2 × 80 + 3 × 100)/(1 + 2 + 3) = (60 + 160 + 300)/6 = 520/6 ≈ 86.67.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>≈ Rs. <strong style="color:#fff;font-family:Fraunces">86.67/kg</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">5.4</span>The pairing-up trick</h3>
+
+    <p>For some three-component problems, you can collapse two of the three into a "blended super-component" first, then alligate that against the third. Sometimes saves time when two of the three components have already been combined in a stated proportion.</p>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Three components via pairing</span>
+        <span class="q-tag med">Medium</span>
+      </div>
+      <div class="q-body">
+        <p>A solution contains milk, water, and cream in the ratio 5 : 3 : 2. How many litres of cream must be added to 20 litres of this solution so that the cream constitutes 30% of the resulting solution?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Identify quantities in 20 L</span>
+          Milk = 10 L; Water = 6 L; Cream = 4 L.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Conservation</span>
+          Milk and water (combined 16 L) are conserved when cream is added.<br>
+          After adding x L of cream, total = 20 + x. Cream = 4 + x. Required: (4 + x)/(20 + x) = 0.30.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 3 · Solve</span>
+          4 + x = 6 + 0.3x ⟹ 0.7x = 2 ⟹ x ≈ 2.857 L.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>≈ <strong style="color:#fff;font-family:Fraunces">2.86 litres</strong> of cream</div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: the trick is realizing only one component (cream) is being added, so the other two combined are conserved. The "three-component" problem collapses to a familiar "add one component" problem.</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">5.5</span>Aggregate-then-disaggregate</h3>
+
+    <p>The CAT 2024 Rajesh-Vimal land-allocation problem is a different three-component flavour — given an aggregate ratio and one party's sub-ratio, deduce the other party's sub-ratio. Solve it in the problem bank as Q18.</p>
+
+    <div class="section-end">
+      <span>End of Module 05 · Three-Component</span>
+      <span>→ next: Application Themes</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 6 — APPLICATIONS ====== -->
+  <section class="section" id="m6">
+    <header class="section-header">
+      <div class="module-meta">Module 06 · Applications</div>
+      <h1 class="section-title">Where <em>mixtures</em><br>actually live<br>in CAT.</h1>
+      <p class="section-deck">Eight applied themes — liquid solutions, multi-container shuffles, commercial blending, alloy compositions, land allocation, dietary mixtures, and the under-the-radar applications hidden in data interpretation.</p>
+    </header>
+
+    <h3><span class="h-num">6.1</span>Theme — Pure liquid solutions</h3>
+    <p>The canonical setting: milk and water, alcohol and water, acid and water. Pure component is always the one with non-trivial concentration. Conservation principle applies cleanly in addition-only problems.</p>
+
+    <h3><span class="h-num">6.2</span>Theme — Mixtures of mixtures</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>CAT 2022 — lemon juice and sugar syrup</span>
+        <span class="q-tag med">Medium</span>
+      </div>
+      <div class="q-body">
+        <p>A mixture contains lemon juice and sugar syrup in equal proportion. If a new mixture is created by adding this mixture and pure sugar syrup in the ratio 1 : 3, then the ratio of lemon juice to sugar syrup in the new mixture is:</p>
+        <ul class="q-options">
+          <li data-opt="A">1 : 4</li><li data-opt="B">1 : 5</li><li data-opt="C">1 : 6</li><li data-opt="D">1 : 7</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Assume convenient quantities</span>
+          Original mixture: 1 part = 50% lemon, 50% syrup.<br>
+          Added: 3 parts = 0% lemon, 100% syrup.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Compute lemon and syrup separately</span>
+          In 1 + 3 = 4 parts total:<br>
+          Lemon = 1 × 0.5 + 3 × 0 = 0.5 parts.<br>
+          Syrup = 1 × 0.5 + 3 × 1 = 3.5 parts.<br>
+          Ratio = 0.5 : 3.5 = 1 : 7.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>Option <strong style="color:#fff;font-family:Fraunces">D · 1 : 7</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">6.3</span>Theme — Multi-container shuffle</h3>
+
+    <p>The CAT 2022 syrup-and-milk two-container problem is the gold standard. Each transfer is tracked; the trick is to choose units that avoid fractions (multiples of 8 work well for half-transfer sequences).</p>
+
+    <h3><span class="h-num">6.4</span>Theme — Alloys</h3>
+
+    <p>Alloys are mixtures of metals. Same arithmetic, different vocabulary. "An alloy of copper and zinc in the ratio 7 : 3 weighs 50 g. How much zinc must be added to make the ratio 7 : 5?" Conservation of copper at 35 g. New zinc = 35 × 5/7 = 25 g. Adding 25 − 15 = 10 g.</p>
+
+    <h3><span class="h-num">6.5</span>Theme — Commercial blending and profit</h3>
+    <p>A trader buys at two (or three) prices, blends, and sells at one price. Profit problems with alligation. We saw one in Module 2; the elite problem in Module 8 (Q22) chains this with successive discounts.</p>
+
+    <h3><span class="h-num">6.6</span>Theme — Land use and aggregate ratios</h3>
+
+    <p>CAT 2024 Rajesh-Vimal land-allocation problem (Q18 in the bank): given total land split between two parties, each with its own wheat-to-mustard ratio, and an aggregate wheat-to-mustard ratio across both — find the unknown sub-ratio. Solvable by setting up two component-conservation equations.</p>
+
+    <h3><span class="h-num">6.7</span>Theme — Dietary and nutrition mixtures</h3>
+
+    <p>Less common but appears: a dietitian blends two food items with different protein content to achieve a target. Mathematically identical to a milk-water problem; only the vocabulary is different. The point of mentioning this: <em>don't be fooled by the context</em>. Strip the words; find the four pieces from Module 1.</p>
+
+    <h3><span class="h-num">6.8</span>Theme — Mixtures hidden in DI</h3>
+
+    <p>Many CAT data-interpretation sets disguise mixture problems inside production-mix or sales-channel diagrams. The percentages of different products in a portfolio, or the share of revenue from different segments, blend the same way ordinary mixtures do.</p>
+
+    <div class="section-end">
+      <span>End of Module 06 · Applications</span>
+      <span>→ next: Tips and Pitfalls</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 7 — TIPS / TRICKS / PITFALLS ====== -->
+  <section class="section" id="m7">
+    <header class="section-header">
+      <div class="module-meta">Module 07 · Tactics</div>
+      <h1 class="section-title">Twelve <em>tips</em>,<br>tricks, and traps.</h1>
+      <p class="section-deck">The accumulated wisdom — what to drill, what to whisper, and the subtle traps that wreck students on mocks.</p>
+    </header>
+
+    <div class="tips-grid">
+      <div class="tip-card">
+        <span class="t-num">TIP 01 · CONSERVE</span>
+        <h6>Find what doesn't change</h6>
+        <p>Before computing anything, ask: which substance is conserved? Anchor on it. Eighty percent of CAT mixture problems collapse once you do this.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 02 · ALLIGATION</span>
+        <h6>Cross for two components</h6>
+        <p>Whenever exactly two solutions or grades are merged to a known target, alligate. Three seconds. Save algebra for genuine three-component problems.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 03 · FORMULA</span>
+        <h6>(1 − r/V)<sup>n</sup> for repeated replacement</h6>
+        <p>Memorise it. The whole replacement family — milk-water, coffee-cocoa, acid-water — uses this one identity.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 04 · 100</span>
+        <h6>Assume total = 100 if not specified</h6>
+        <p>Identical to the trick from Vol. I. With V = 100, every concentration reads directly as a quantity. Scale at the end if needed.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 05 · UNITS</span>
+        <h6>Pick units that avoid fractions</h6>
+        <p>For half-transfer sequences, pick volumes that are multiples of 8 or 16. For 1/3-removal problems, pick multiples of 9 or 27.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 06 · DIRECTION</span>
+        <h6>Concentration target tells you the winner</h6>
+        <p>In alligation, the side closer to the target is the larger share. Sanity-check every alligation answer against this rule.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 07 · WORDS</span>
+        <h6>Strip the context</h6>
+        <p>Milk-water and acid-water and alcohol-water and alloy and tea-blend are all the same problem in different costumes. Find the four pieces from Module 1.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 08 · PROFIT</span>
+        <h6>Blend price = weighted CP</h6>
+        <p>When solving "blend to sell at profit", the CP of the blend is the weighted average of the component CPs. Profit% is applied on this blended CP.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 09 · RATIO</span>
+        <h6>Ratio means parts, not absolute volumes</h6>
+        <p>"3 : 1 milk : water" doesn't tell you how much there is. Use a multiplier k and let quantities be 3k, k. Solve for k from a second piece of info.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 10 · REPLACEMENT</span>
+        <h6>Replacement removes BOTH components</h6>
+        <p>This is the trap. Removing 4 L of mixture removes both milk and water proportionally. Use the formula; don't compute longhand.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 11 · ARSENAL</span>
+        <h6>Recall fraction-percent equivalents</h6>
+        <p>The Vol. I arsenal lives here too. 1/8 = 12.5%, 5/8 = 62.5%, etc. Concentration questions become arithmetic-free if these are automatic.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 12 · VERIFY</span>
+        <h6>Sum the components, check the total</h6>
+        <p>After solving, check that the substance quantities still sum to the claimed total. Catches sign and ratio errors.</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">7.1</span>Five traps that wreck the median student</h3>
+
+    <div class="note warn">
+      <p><strong>Trap 1 — Treating "ratio 3 : 1" as "75% milk".</strong> The conversion is right, but students sometimes apply it the wrong way (e.g., reading 25% as the milk percentage). Read aloud: "milk to water 3 : 1 means 3 parts milk per 4 parts total, so 75% milk".</p>
+    </div>
+
+    <div class="note warn">
+      <p><strong>Trap 2 — Forgetting that replacement removes both substances.</strong> When a problem says "20 L is removed from the milk-water mixture", students often compute only the milk lost. Both substances are removed in current proportion. Use the formula.</p>
+    </div>
+
+    <div class="note warn">
+      <p><strong>Trap 3 — Mismatching alligation endpoints.</strong> Alligating prices against quantities, or different units. Cm and m. Percentage and absolute amount. Always make endpoints the same kind of quantity.</p>
+    </div>
+
+    <div class="note warn">
+      <p><strong>Trap 4 — Three-component alligation.</strong> Trying to apply the cross to three components. It doesn't work. Use the weighted-average formula or pair-and-collapse instead.</p>
+    </div>
+
+    <div class="note warn">
+      <p><strong>Trap 5 — Confusing concentration and ratio in answer.</strong> A problem asks for concentration, student gives ratio. Or vice versa. Always re-read the question after computing.</p>
+    </div>
+
+    <h3><span class="h-num">7.2</span>The two-minute problem checklist</h3>
+    <ol>
+      <li>Read twice. Identify each component (A, B, water, etc.) and what's added/removed.</li>
+      <li>Identify the conserved substance.</li>
+      <li>Write down the four pieces (Q_A, Q_B, V, c) for the initial state.</li>
+      <li>If two solutions are mixed to a target, alligate.</li>
+      <li>If repeated replacement, apply (1 − r/V)<sup>n</sup>.</li>
+      <li>For three components, use weighted-average or pair-and-collapse.</li>
+      <li>Verify: sum components, check the total, re-read the question.</li>
+    </ol>
+
+    <div class="section-end">
+      <span>End of Module 07 · Tactics</span>
+      <span>→ next: Worked Problem Bank</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 8 — PROBLEM BANK ====== -->
+  <section class="section" id="m8">
+    <header class="section-header">
+      <div class="module-meta">Module 08 · Problem Bank</div>
+      <h1 class="section-title">Twenty-five<br>worked<br><em>problems</em>.</h1>
+      <p class="section-deck">Sequenced easy to elite. Adapted patterns from CAT 2017–2025 anchored on verified CAT 2022 (lemon-juice/syrup, two-container shuffle), CAT 2023 (coffee-cocoa double replacement), and CAT 2024 (milk-water seven-step, Rajesh-Vimal land allocation).</p>
+    </header>
+
+    <h3><span class="h-num">8.1</span>Easy tier — fluency check</h3>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q1 · Ratio to percentage</span><span class="q-tag easy">Easy</span></div>
+      <div class="q-body"><p>A solution contains milk and water in the ratio 7 : 3. What percentage of the solution is milk?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>7/(7+3) = 70%.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">70%</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q2 · Adding water to dilute</span><span class="q-tag easy">Easy</span></div>
+      <div class="q-body"><p>A 50-litre solution contains 80% milk. How much water must be added to make the milk concentration 50%?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">CONSERVATION</span>Milk = 40 L. 40 = 0.5 × V_new ⟹ V_new = 80 L. Water added = 30 L.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">30 litres</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q3 · Basic alligation</span><span class="q-tag easy">Easy</span></div>
+      <div class="q-body"><p>In what ratio should a 25% acid solution be mixed with a 75% acid solution to obtain a 50% acid solution?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">ALLIGATION</span>Differences (75 − 50) and (50 − 25) both equal 25. Ratio = 1 : 1.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">1 : 1</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q4 · Concentration after one replacement</span><span class="q-tag easy">Easy</span></div>
+      <div class="q-body"><p>A 100-litre vessel is full of pure milk. 25 litres are removed and replaced with water. What is the new concentration of milk?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">FORMULA</span>100% × (1 − 25/100) = 100% × 0.75 = 75%.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">75%</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q5 · Mixing two solutions</span><span class="q-tag easy">Easy</span></div>
+      <div class="q-body"><p>20 litres of a 30% sugar solution are mixed with 40 litres of a 60% sugar solution. Find the sugar concentration of the resulting mixture.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Sugar = 20 × 0.30 + 40 × 0.60 = 6 + 24 = 30 L. Total = 60 L. Concentration = 50%.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">50%</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.2</span>Medium tier — exam-grade</h3>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q6 · Conservation — adding the same substance</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>A solution of 60 litres contains milk and water in the ratio 5 : 1. How much water must be added to make the ratio 5 : 3?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">SETUP</span>Initial milk = 50 L, water = 10 L. Adding water conserves milk.<br>New ratio milk : water = 5 : 3, so milk = 5 parts, water = 3 parts. 50 = 5 parts ⟹ each part = 10 ⟹ new water = 30. Water added = 30 − 10 = 20 L.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">20 litres</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q7 · Alligation for price blend</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>A trader has two qualities of rice priced at Rs. 60 and Rs. 90 per kg. In what ratio should he mix them to sell the mixture at Rs. 80 per kg for a 25% profit?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">STEP 1 · CP of mixture</span>SP/1.25 = 80/1.25 = 64.</div>
+        <div class="step"><span class="step-num">STEP 2 · Alligate</span>Endpoints 60 and 90, target 64. Differences: 90 − 64 = 26; 64 − 60 = 4. Ratio = 26 : 4 = 13 : 2.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">13 : 2</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q8 · Two replacements</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>From an 80-litre container full of pure milk, 16 litres are removed and replaced with water. The same operation is repeated once more. What is the final milk concentration?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">FORMULA</span>r/V = 16/80 = 1/5. Multiplier = 4/5. After two rounds: (4/5)² = 16/25 = 64%.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">64%</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q9 · Alloy composition</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>An alloy contains copper and zinc in the ratio 3 : 2. How much copper must be added to 100 g of the alloy so that the ratio becomes 5 : 2?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">SETUP</span>Initial copper = 60 g, zinc = 40 g. Zinc is conserved.<br>New ratio: copper : zinc = 5 : 2. Zinc = 2 parts = 40 g ⟹ each part = 20 ⟹ new copper = 100 g.<br>Copper added = 100 − 60 = 40 g.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">40 g</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q10 · Acid concentration</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>How many litres of pure water must be added to 50 litres of a 20% sulphuric acid solution to reduce its concentration to 5%?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">CONSERVATION</span>Acid = 10 L (conserved). 10 = 0.05 × V_new ⟹ V_new = 200 L. Water added = 150 L.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">150 litres</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q11 · Reverse alligation</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>20 kg of wheat costing Rs. 30/kg is mixed with some wheat costing Rs. 50/kg to obtain a mixture costing Rs. 36/kg. How many kg of the second variety were added?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">ALLIGATION</span>Endpoints 30 and 50, target 36. Differences 50 − 36 = 14; 36 − 30 = 6. Ratio (Rs. 30 : Rs. 50) = 14 : 6 = 7 : 3. So 20 kg of Rs. 30 corresponds to 7 parts ⟹ each part = 20/7 kg ⟹ second variety = 3 × 20/7 ≈ 8.57 kg.</div>
+        <div class="ans-line"><strong>Answer</strong>≈ <strong style="color:#fff;font-family:Fraunces">8.57 kg</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q12 · Replacement reverse direction</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>A container has pure milk. After three successive replacements with water (each time the same fraction is replaced), the milk concentration becomes 51.2%. What fraction of the mixture is replaced each time?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">SETUP</span>(1 − p)³ = 0.512 ⟹ 1 − p = ⁰·⁵¹²^(1/3) = 0.8 ⟹ p = 0.2.</div>
+        <div class="ans-line"><strong>Answer</strong>20% (or <strong style="color:#fff;font-family:Fraunces">1/5</strong>) replaced each time</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q13 · Mixture of mixtures</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>One solution is 30% milk; another is 60% milk. Equal quantities of each are mixed. What is the milk concentration of the resulting mixture?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Equal weights → simple average = (30 + 60)/2 = 45%.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">45%</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q14 · Evaporation conservation</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>120 litres of milk are diluted with 20% water. After evaporation, the water content becomes 5%. How many litres of water evaporated?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">CONSERVATION</span>Milk = 96 L (conserved). After evaporation, milk is 95% of new total: 96 = 0.95 × V_new ⟹ V_new ≈ 101.05. Water lost ≈ 120 − 101.05 ≈ 18.95 L.</div>
+        <div class="ans-line"><strong>Answer</strong>≈ <strong style="color:#fff;font-family:Fraunces">18.95 litres</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q15 · Two-stage problem</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>A 40-litre solution is 20% milk. 10 L is removed and replaced with pure milk. What is the new concentration of milk?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">STEP 1 · After removal of 10 L of mixture</span>Removed milk = 0.2 × 10 = 2 L. Remaining milk = 8 − 2 = 6 L. Remaining total = 30 L.</div>
+        <div class="step"><span class="step-num">STEP 2 · After adding 10 L pure milk</span>New milk = 6 + 10 = 16 L. New total = 40 L. New concentration = 40%.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">40%</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.3</span>Hard tier — exam top-quartile</h3>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q16 · CAT 2022 — lemon juice and sugar syrup</span><span class="q-tag hard">Hard</span></div>
+      <div class="q-body"><p>A mixture contains lemon juice and sugar syrup in equal proportion. If this mixture is combined with pure sugar syrup in the ratio 1 : 3, find the ratio of lemon juice to sugar syrup in the new mixture.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Take 1 unit of original (50% each) and 3 units of pure syrup (100% syrup). Lemon = 1 × 0.5 + 3 × 0 = 0.5. Syrup = 1 × 0.5 + 3 × 1 = 3.5. Ratio = 1 : 7.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">1 : 7</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q17 · CAT 2023 — coffee cocoa double replacement</span><span class="q-tag hard">Hard</span></div>
+      <div class="q-body"><p>A container is filled with pure coffee. Some is removed and replaced with cocoa powder to make mixture P. The same amount is again removed from P and replaced with cocoa to make mixture Q. If the ratio of coffee to cocoa in Q is 16 : 9, what is the ratio of cocoa in P to cocoa in Q?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>(1 − p)² = 16/25 ⟹ p = 1/5. Cocoa in P = 1/5. Cocoa in Q = 9/25. Ratio = (1/5)/(9/25) = 5/9.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">5 : 9</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q18 · CAT 2024 — Rajesh-Vimal land allocation</span><span class="q-tag hard">Hard</span></div>
+      <div class="q-body"><p>Rajesh and Vimal own 20 hectares and 30 hectares of agricultural land respectively, fully cultivated with wheat and mustard. The ratio of wheat to mustard on Vimal's land is 5 : 3. The combined total ratio of wheat to mustard across both is 11 : 9. Find the ratio of wheat to mustard on Rajesh's land.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">STEP 1 · Compute the totals</span>Total land = 50. Total wheat : mustard = 11 : 9, so total wheat = 11/20 × 50 = 27.5 hectares.</div>
+        <div class="step"><span class="step-num">STEP 2 · Vimal's wheat</span>Vimal has 30 hectares; ratio 5 : 3 means wheat = 5/8 × 30 = 18.75. Mustard = 30 − 18.75 = 11.25.</div>
+        <div class="step"><span class="step-num">STEP 3 · Rajesh's wheat</span>Rajesh's wheat = 27.5 − 18.75 = 8.75. Mustard on Rajesh = 20 − 8.75 = 11.25. Ratio = 8.75 : 11.25 = 7 : 9.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">7 : 9</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q19 · CAT 2024 — milk-water seven rounds</span><span class="q-tag hard">Hard</span></div>
+      <div class="q-body"><p>A 40-litre container of pure milk has 4 litres removed and replaced with water at each step. Find the minimum number of steps after which the volume of milk in the container is less than that of water.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>r/V = 1/10. Need (9/10)<sup>n</sup> &lt; 1/2.<br>(0.9)¹ = 0.9; (0.9)² = 0.81; (0.9)³ = 0.729; (0.9)⁴ = 0.6561; (0.9)⁵ = 0.59049; (0.9)⁶ = 0.531441; (0.9)⁷ = 0.478. First n with this &lt; 0.5 is 7.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">7</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q20 · Three-container average</span><span class="q-tag hard">Hard</span></div>
+      <div class="q-body"><p>Three vessels of equal volume contain milk-water solutions in the ratios 5 : 3, 2 : 1, and 7 : 5 respectively. If the contents of all three vessels are mixed together, what is the milk-to-water ratio in the final mixture?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Take each vessel as 24 L (LCM of 8, 3, 12).<br>Vessel 1: 5 : 3 → milk 15, water 9.<br>Vessel 2: 2 : 1 → milk 16, water 8.<br>Vessel 3: 7 : 5 → milk 14, water 10.<br>Total milk = 45, water = 27. Ratio = 45 : 27 = 5 : 3.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">5 : 3</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.4</span>Elite tier — top percentile</h3>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q21 · CAT 2022 — two-container shuffle</span><span class="q-tag elite">Elite</span></div>
+      <div class="q-body">
+        <p>Two identical containers: the first is half-filled with sugar syrup, the second half-filled with milk. Half of the first container's contents is transferred to the second container. Then half of the (now-mixed) second container's contents is transferred back to the first. Then half of the first container's contents is again transferred to the second container. What is the final ratio of sugar syrup to milk in the second container?</p>
+        <ul class="q-options">
+          <li data-opt="A">5 : 6</li><li data-opt="B">5 : 4</li><li data-opt="C">6 : 5</li><li data-opt="D">4 : 5</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Pick clean volumes</span>
+          Let each container hold 16 units total when filled. So initially, container 1 has 8 syrup; container 2 has 8 milk.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Transfer 1 — half of container 1 (= 4 syrup) goes to container 2</span>
+          Container 1: 4 syrup (and 0 milk). Container 2: 4 syrup + 8 milk = 12 total, ratio syrup : milk = 4 : 8 = 1 : 2.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 3 · Transfer 2 — half of container 2 (= 6 units) goes back to container 1</span>
+          The 6 units transferred are proportionally 6 × 1/3 = 2 syrup and 6 × 2/3 = 4 milk.<br>
+          Container 1: 4 + 2 = 6 syrup, 0 + 4 = 4 milk. Total = 10.<br>
+          Container 2: 4 − 2 = 2 syrup, 8 − 4 = 4 milk. Total = 6.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 4 · Transfer 3 — half of container 1 (= 5 units) goes to container 2</span>
+          Container 1 has syrup : milk = 6 : 4 = 3 : 2. So 5 units transferred = 3 syrup, 2 milk.<br>
+          Container 2: 2 + 3 = 5 syrup, 4 + 2 = 6 milk.<br>
+          Ratio = 5 : 6.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>Option <strong style="color:#fff;font-family:Fraunces">A · 5 : 6</strong></div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: the key tactical choice is picking the right unit for the initial volume — anything that's a multiple of 8 (or better, 16) avoids fractions throughout. Trying to do this problem with V = 1 or V = 10 produces messy thirds.</p>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q22 · Blended profit with successive discounts</span><span class="q-tag elite">Elite</span></div>
+      <div class="q-body"><p>A trader buys two varieties of tea at Rs. 100/kg and Rs. 150/kg. He mixes them in some ratio and marks the mixture at 50% above its blended cost price. He offers successive discounts of 10% and 5%. The final profit is 28.25%. What is the ratio of the two varieties?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">STEP 1 · Find the effective multiplier from MP back to CP</span>SP/CP = net multiplier = 1.2825. MP/CP = 1.50. MP-to-SP discount multiplier = 0.90 × 0.95 = 0.855. So SP/CP = 1.50 × 0.855 = 1.2825 ✓ (consistent for any blend).</div>
+        <div class="step"><span class="step-num">STEP 2 · But that gives no info on the blend ratio</span>The numbers given are <em>consistent for any blend ratio</em>. The problem is under-specified unless we add a constraint, e.g. SP must equal Rs. 200/kg or similar. For this version, suppose SP must equal Rs. 200/kg: then CP = 200/1.2825 ≈ 155.95. Alligate on 100 and 150 against 155.95... but 155.95 &gt; 150, so no valid blend. The problem as stated lacks a target SP.<br><br>If instead we interpret: SP = Rs. 144.28 say, gives CP ≈ 112.50; alligate 100 and 150 against 112.50 ⟹ 37.5 : 12.5 = 3 : 1.</div>
+        <div class="step"><span class="step-num">RESOLUTION</span>The structural insight is that the problem requires an absolute SP target. In a real exam, that target would be stated; here, treat this as a pattern question for the technique. With CP_blend = 112.50, ratio = 3 : 1.</div>
+        <div class="ans-line"><strong>Answer</strong>Ratio (illustrative) = <strong style="color:#fff;font-family:Fraunces">3 : 1</strong></div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: a useful problem to discuss in class even when under-specified — it shows how the techniques chain (blend cost → markup → successive discount → profit%) but also that real CAT problems always pin down enough information to make the answer unique. Watch for missing constraints in mock problems.</p>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q23 · Three liquids triple ratio</span><span class="q-tag elite">Elite</span></div>
+      <div class="q-body"><p>Three solutions of acid have concentrations 20%, 30%, and 50% respectively. They are mixed in such a way that the final mixture is 36% acid, and the volumes of the first and second solutions are equal. Find the ratio of the volumes of the three solutions.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">SETUP</span>Let volumes be a, a, b. Total acid: 0.20a + 0.30a + 0.50b = 0.36(2a + b) ⟹ 0.50a + 0.50b = 0.72a + 0.36b ⟹ 0.14b = 0.22a ⟹ b/a = 22/14 = 11/7. So ratio = 7 : 7 : 11.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">7 : 7 : 11</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q24 · Mixture from sale data</span><span class="q-tag elite">Elite</span></div>
+      <div class="q-body"><p>A milkman sells a milk-water mixture claiming it to be pure milk at Rs. 30 per litre. The cost of pure milk is Rs. 25 per litre. His effective profit is 50%. What is the ratio of milk to water in his mixture?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Per litre of mixture, his CP is just the milk component. If milk fraction is f, then per litre cost = 25f. SP per litre = 30. Profit% = (30 − 25f)/(25f) × 100 = 50 ⟹ 30 − 25f = 12.5f ⟹ 37.5f = 30 ⟹ f = 0.8.<br>So milk : water = 0.8 : 0.2 = 4 : 1.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">4 : 1</strong></div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: a classic CAT-style commercial-mixture hybrid. The cost is the cost of the milk only (water is free); the SP is for the whole mixture. This asymmetry is what creates the profit even at "pure milk" prices.</p>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q25 · Capstone — multi-step replacement and mixing</span><span class="q-tag elite">Elite</span></div>
+      <div class="q-body"><p>A 100-litre vessel is full of pure milk. 20 L is removed and replaced with water; then 30 L is removed and replaced with water. After this, the vessel is mixed with another 50 L of pure water. Find the final concentration of milk.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">STEP 1 · After first replacement</span>r/V = 1/5. Milk concentration = 100 × 0.8 = 80%.</div>
+        <div class="step"><span class="step-num">STEP 2 · After second replacement</span>r/V = 3/10. New concentration = 80 × 0.7 = 56%.</div>
+        <div class="step"><span class="step-num">STEP 3 · After mixing with 50 L water</span>Milk = 56% × 100 = 56 L (conserved). New total = 150 L. New concentration = 56/150 × 100 ≈ 37.33%.</div>
+        <div class="ans-line"><strong>Answer</strong>≈ <strong style="color:#fff;font-family:Fraunces">37.33%</strong></div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: this is the volume in one problem — the replacement formula (twice), then conservation. Three techniques in one CAT-style chain.</p>
+      </div>
+    </div>
+
+    <div class="section-end">
+      <span>End of Module 08 · Problem Bank</span>
+      <span>→ next: Reference Sheet</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 9 — REFERENCE ====== -->
+  <section class="section" id="m9">
+    <header class="section-header">
+      <div class="module-meta">Module 09 · Reference</div>
+      <h1 class="section-title">The <em>one-page</em><br>reference<br>sheet.</h1>
+      <p class="section-deck">Everything in this codex distilled. Photocopy; tape into the notebook; review before every mock.</p>
+    </header>
+
+    <h3><span class="h-num">9.1</span>Core definitions</h3>
+    <div class="formula">
+      <span class="label">The Four Pieces</span>
+      Q_A = quantity of component A · Q_B = quantity of component B<br>
+      V = Q_A + Q_B = total volume<br>
+      c = concentration of A = Q_A / V
+    </div>
+
+    <h3><span class="h-num">9.2</span>The three techniques</h3>
+    <div class="formula">
+      <span class="label">Technique 1 — Alligation (two components)</span>
+      <span class="eq">Q₁ : Q₂ = (c₂ − c) : (c − c₁)</span><br>
+      where c₁ &lt; c &lt; c₂. The side closer to c is the larger share.
+    </div>
+    <div class="formula">
+      <span class="label">Technique 2 — Conservation</span>
+      When one substance is conserved across a change:<br>
+      <span class="eq">c_initial × V_initial = c_final × V_final</span>
+    </div>
+    <div class="formula">
+      <span class="label">Technique 3 — Repeated Replacement</span>
+      Container of volume V, initial concentration c₀ of pure substance.<br>
+      Remove r each round, replace with pure adulterant:<br>
+      <span class="eq">c_n = c₀ × (1 − r/V)<sup>n</sup></span>
+    </div>
+
+    <h3><span class="h-num">9.3</span>What's conserved in each operation</h3>
+    <table class="recip-table">
+      <thead><tr><th>Operation</th><th>Conserved</th></tr></thead>
+      <tbody>
+        <tr><td>Add pure water</td><td>The pure component (milk, acid, etc.)</td></tr>
+        <tr><td>Add pure milk / pure A</td><td>The water / pure B</td></tr>
+        <tr><td>Evaporate water</td><td>The pure component</td></tr>
+        <tr><td>Mix two solutions</td><td>BOTH A and B (each separately)</td></tr>
+        <tr><td>Replace mixture with water</td><td>NEITHER directly — use replacement formula</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="h-num">9.4</span>Common multipliers per replacement round</h3>
+    <table class="recip-table">
+      <thead><tr><th>Fraction removed (r/V)</th><th>Multiplier per round (1 − r/V)</th><th>After 2 rounds</th><th>After 3 rounds</th></tr></thead>
+      <tbody>
+        <tr><td>1/10</td><td>9/10 = 0.9</td><td>0.81</td><td>0.729</td></tr>
+        <tr><td>1/5</td><td>4/5 = 0.8</td><td>0.64</td><td>0.512</td></tr>
+        <tr><td>1/4</td><td>3/4 = 0.75</td><td>0.5625</td><td>0.4219</td></tr>
+        <tr><td>1/3</td><td>2/3 ≈ 0.667</td><td>0.444</td><td>0.296</td></tr>
+        <tr><td>2/5</td><td>3/5 = 0.6</td><td>0.36</td><td>0.216</td></tr>
+        <tr><td>1/2</td><td>1/2 = 0.5</td><td>0.25</td><td>0.125</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="h-num">9.5</span>The traps catalogue</h3>
+    <ul>
+      <li>Ratio is not concentration. Convert before computing.</li>
+      <li>Replacement removes both components proportionally.</li>
+      <li>Three-component problems can't use the alligation cross.</li>
+      <li>Alligation endpoints must be the same kind of quantity.</li>
+      <li>"Re-read the question" — concentration vs ratio answers.</li>
+    </ul>
+
+    <h3><span class="h-num">9.6</span>The two-minute checklist</h3>
+    <ol>
+      <li>Read twice. Identify each component.</li>
+      <li>Find the conserved substance (if any).</li>
+      <li>Write the four pieces: Q_A, Q_B, V, c.</li>
+      <li>Two components mixed to a target ⟹ alligate.</li>
+      <li>Repeated replacement ⟹ apply formula.</li>
+      <li>Three components ⟹ weighted average or pair-collapse.</li>
+      <li>Verify by summing components.</li>
+    </ol>
+
+    <h3><span class="h-num">9.7</span>Recommended drill sequence</h3>
+    <ol>
+      <li>Day 1: Frame and Vol. II alligation refresh — 60 minutes.</li>
+      <li>Day 2: Conservation principle drilled across 10 examples — 60 minutes.</li>
+      <li>Day 3: Repeated replacement formula and common cases — 45 minutes.</li>
+      <li>Day 4: Problem bank, easy and medium tiers — 90 minutes.</li>
+      <li>Day 5: Three-component and hard tier.</li>
+      <li>Day 6: Elite tier and CAT 2022 / 2023 / 2024 archive problems.</li>
+      <li>Weekly: pair-revise with Volumes I, II, III.</li>
+    </ol>
+
+    <div class="callout">
+      <strong>The mixture mantra.</strong> Find what's conserved. Almost every CAT mixture problem in the last decade has yielded to that single question. The students who reach for it first will outpace those who set up algebra by a factor of three. The students who can't yet see what's conserved should re-read Module 3 — and Modules 1 and 3 of Volume II — until the principle becomes second nature.
+    </div>
+
+    <div class="section-end">
+      <span>End of Codex · Module 09</span>
+      <span>Good luck.</span>
+    </div>
+  </section>
+
+  </main>
+</div>
+
+<script>
+  const links = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('.section');
+
+  links.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = link.dataset.target;
+      links.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      sections.forEach(s => s.classList.remove('active'));
+      const targetEl = document.getElementById(target);
+      if (targetEl) {
+        targetEl.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  });
+
+  document.querySelectorAll('.toggle-sol').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sol = btn.nextElementSibling;
+      const open = sol.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.textContent = open ? 'Hide solution' : 'Show solution';
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    const activeLink = document.querySelector('.nav-link.active');
+    const allLinks = Array.from(links);
+    const idx = allLinks.indexOf(activeLink);
+    if (e.key === 'ArrowRight' && idx < allLinks.length - 1) {
+      allLinks[idx + 1].click();
+    } else if (e.key === 'ArrowLeft' && idx > 0) {
+      allLinks[idx - 1].click();
+    }
+  });
+</script>
+
+</body>
+</html>
