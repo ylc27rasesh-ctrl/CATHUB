@@ -1,0 +1,1865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The CAT Commercial Math Codex — A Teaching Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3eadc;
+  --paper-2:#e9dec7;
+  --ink:#1c1a26;
+  --ink-soft:#3c3a47;
+  --ink-faint:#6a6675;
+  --wine:#7a1f3d;
+  --wine-deep:#52132a;
+  --brass:#b48a2f;
+  --ochre:#c89b3c;
+  --olive:#5a6b3e;
+  --teal:#1f6b6b;
+  --rust:#a23f24;
+  --rule:#c6b598;
+  --rule-soft:#dccdb0;
+  --highlight:#fff1bf;
+  --shadow:0 1px 0 rgba(28,26,38,.06), 0 2px 6px rgba(28,26,38,.04);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Fraunces',Georgia,serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.65;
+  font-size:17px;
+  background-image:
+    radial-gradient(circle at 12% 14%, rgba(122,31,61,.05) 0%, transparent 42%),
+    radial-gradient(circle at 88% 78%, rgba(180,138,47,.05) 0%, transparent 45%);
+  min-height:100vh;
+}
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .32 0 0 0 0 .26 0 0 0 0 .18 0 0 0 .04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:1;opacity:.55;
+}
+
+.layout{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  min-height:100vh;
+  position:relative;z-index:2;
+}
+@media (max-width:980px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{position:static!important;height:auto!important;border-right:none!important;border-bottom:2px solid var(--ink)}
+}
+
+.sidebar{
+  position:sticky;top:0;
+  height:100vh;
+  border-right:1px solid var(--rule);
+  background:linear-gradient(180deg,var(--paper-2) 0%,var(--paper) 100%);
+  padding:32px 26px 24px;
+  overflow-y:auto;
+  display:flex;flex-direction:column;
+}
+.back-link{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'Inter',sans-serif;
+  font-size:10.5px;letter-spacing:.22em;
+  text-transform:uppercase;font-weight:600;
+  color:var(--ink-faint);
+  text-decoration:none;
+  padding-bottom:18px;
+  margin-bottom:18px;
+  border-bottom:1px dotted var(--rule);
+  transition:color .2s ease, gap .2s ease;
+}
+.back-link::before{
+  content:"←";font-size:14px;
+  transition:transform .2s ease;
+}
+.back-link:hover{color:var(--wine);gap:12px}
+.back-link:hover::before{transform:translateX(-3px)}
+
+.brand{
+  border-bottom:2px solid var(--ink);
+  padding-bottom:22px;margin-bottom:24px;
+}
+.brand-eyebrow{
+  font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--wine);font-weight:600;margin-bottom:8px;
+}
+.brand-title{
+  font-family:'Fraunces',serif;
+  font-weight:900;font-size:28px;line-height:1;
+  letter-spacing:-.02em;
+}
+.brand-title em{
+  font-style:italic;font-weight:400;color:var(--wine);
+  font-size:24px;
+}
+.brand-sub{
+  font-family:'Inter',sans-serif;
+  font-size:11px;color:var(--ink-faint);
+  margin-top:10px;letter-spacing:.05em;
+}
+.companion-tag{
+  margin-top:14px;
+  padding:6px 10px;
+  font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;font-weight:600;
+  color:var(--brass);
+  background:rgba(180,138,47,.10);
+  border-left:2px solid var(--brass);
+}
+.nav-label{
+  font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--ink-faint);font-weight:600;
+  margin-bottom:10px;
+}
+.nav-list{
+  list-style:none;
+  font-family:'Inter',sans-serif;
+  flex:1;
+}
+.nav-list li{
+  position:relative;
+  border-bottom:1px dotted var(--rule);
+}
+.nav-list li:last-child{border-bottom:none}
+.nav-list a{
+  display:flex;align-items:baseline;gap:10px;
+  padding:11px 0 11px 8px;
+  text-decoration:none;
+  color:var(--ink-soft);
+  font-size:13.5px;font-weight:500;
+  transition:all .2s ease;
+}
+.nav-list a:hover{color:var(--wine);padding-left:14px}
+.nav-list a.active{
+  color:var(--ink);font-weight:600;
+  padding-left:14px;
+}
+.nav-list a.active::before{
+  content:"";position:absolute;left:0;top:50%;
+  width:5px;height:5px;background:var(--wine);
+  border-radius:50%;transform:translateY(-50%);
+}
+.nav-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;color:var(--ink-faint);
+  font-weight:400;min-width:24px;
+}
+.nav-list a.active .nav-num{color:var(--wine)}
+
+.sidebar-footer{
+  margin-top:22px;padding-top:18px;
+  border-top:1px solid var(--rule);
+  font-family:'Inter',sans-serif;
+  font-size:10.5px;color:var(--ink-faint);
+  letter-spacing:.04em;
+}
+
+.main{
+  padding:48px 64px 96px;
+  max-width:1080px;
+}
+@media (max-width:980px){.main{padding:32px 22px 64px}}
+
+.section{display:none;animation:fadeUp .4s ease}
+.section.active{display:block}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:none}
+}
+
+.section-header{
+  border-bottom:2px solid var(--ink);
+  padding-bottom:28px;margin-bottom:42px;
+  position:relative;
+}
+.module-meta{
+  display:flex;align-items:center;gap:16px;
+  font-family:'Inter',sans-serif;
+  font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--wine);
+  font-weight:600;margin-bottom:14px;
+}
+.module-meta::after{
+  content:"";flex:1;height:1px;background:var(--rule);
+}
+.section-title{
+  font-family:'Fraunces',serif;
+  font-weight:900;font-size:56px;line-height:1;
+  letter-spacing:-.035em;margin-bottom:14px;
+  color:var(--ink);
+}
+.section-title em{
+  font-style:italic;font-weight:400;color:var(--wine);
+}
+.section-deck{
+  font-family:'Fraunces',serif;font-style:italic;
+  font-size:21px;line-height:1.5;color:var(--ink-soft);
+  max-width:680px;font-weight:400;
+}
+
+h3{
+  font-family:'Fraunces',serif;
+  font-weight:700;font-size:30px;line-height:1.15;
+  letter-spacing:-.02em;margin:42px 0 18px;
+  color:var(--ink);
+  border-bottom:1px solid var(--rule);
+  padding-bottom:8px;
+  display:flex;align-items:baseline;gap:14px;
+}
+h3 .h-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;color:var(--wine);
+  font-weight:500;letter-spacing:.05em;
+}
+h4{
+  font-family:'Fraunces',serif;
+  font-weight:600;font-size:22px;
+  margin:32px 0 12px;color:var(--ink);
+  letter-spacing:-.01em;
+}
+h5{
+  font-family:'Inter',sans-serif;
+  font-weight:600;font-size:12px;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--wine);margin:24px 0 10px;
+}
+p{margin:0 0 16px;font-size:17.5px}
+p.lede{font-size:20px;line-height:1.55;color:var(--ink-soft);margin-bottom:24px}
+strong{color:var(--ink);font-weight:600}
+em{color:var(--ink-soft)}
+ul,ol{margin:8px 0 18px 22px}
+li{margin-bottom:8px}
+code{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.88em;background:rgba(122,31,61,.09);
+  padding:1px 6px;border-radius:3px;
+  color:var(--wine-deep);
+}
+.kbd-math{
+  font-family:'JetBrains Mono',monospace;
+  font-size:15px;
+  background:rgba(28,26,38,.05);
+  padding:2px 8px;border-radius:3px;
+  display:inline-block;
+  border:1px solid var(--rule-soft);
+}
+
+.callout{
+  border-left:3px solid var(--wine);
+  background:linear-gradient(90deg,rgba(122,31,61,.06),transparent);
+  padding:18px 22px;margin:24px 0;
+  font-family:'Fraunces',serif;
+  font-style:italic;font-size:18px;
+  line-height:1.5;color:var(--ink-soft);
+}
+.callout strong{font-style:normal;color:var(--wine-deep)}
+
+.note{
+  background:var(--paper-2);
+  border:1px solid var(--rule);
+  border-radius:2px;
+  padding:18px 22px;margin:22px 0;
+  position:relative;
+}
+.note::before{
+  content:"NOTE";
+  position:absolute;top:-10px;left:18px;
+  background:var(--paper);
+  padding:0 8px;font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.22em;
+  color:var(--ink-faint);font-weight:600;
+}
+.note.tip::before{content:"TIP";color:var(--olive)}
+.note.tip{border-color:var(--olive);background:rgba(90,107,62,.07)}
+.note.warn::before{content:"WATCH OUT";color:var(--rust)}
+.note.warn{border-color:var(--rust);background:rgba(162,63,36,.05)}
+
+.formula{
+  background:#fbf6ec;
+  border:1px solid var(--rule);
+  border-left:4px solid var(--brass);
+  padding:20px 24px;margin:20px 0;
+  font-family:'Fraunces',serif;
+  font-size:19px;line-height:1.7;
+  position:relative;
+  box-shadow:var(--shadow);
+}
+.formula .label{
+  font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--brass);
+  font-weight:700;margin-bottom:6px;display:block;
+}
+.formula .eq{
+  font-family:'JetBrains Mono',monospace;
+  font-size:16px;background:rgba(0,0,0,.04);
+  padding:8px 14px;border-radius:2px;
+  display:inline-block;margin:6px 0;
+  font-weight:500;color:var(--ink);
+}
+
+.recip-table{
+  width:100%;
+  border-collapse:collapse;
+  font-family:'JetBrains Mono',monospace;
+  font-size:14px;
+  margin:20px 0;
+  background:#fbf6ec;
+  border:1px solid var(--rule);
+}
+.recip-table th, .recip-table td{
+  padding:10px 14px;
+  text-align:left;
+  border-bottom:1px solid var(--rule-soft);
+}
+.recip-table th{
+  background:var(--ink);color:var(--paper);
+  font-family:'Inter',sans-serif;
+  font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;font-weight:600;
+}
+.recip-table tr:hover{background:rgba(122,31,61,.05)}
+.recip-table td:first-child{font-weight:600;color:var(--wine-deep)}
+
+.q-card{
+  background:#fdfaf2;
+  border:1px solid var(--rule);
+  border-radius:2px;
+  margin:24px 0;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.q-head{
+  background:var(--ink);color:var(--paper);
+  padding:14px 22px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:'Inter',sans-serif;
+  font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;font-weight:600;
+}
+.q-tag{
+  display:inline-block;
+  padding:3px 10px;border-radius:2px;
+  font-size:10px;letter-spacing:.15em;
+}
+.q-tag.easy{background:var(--olive);color:#f5efe4}
+.q-tag.med{background:var(--ochre);color:#1a2332}
+.q-tag.hard{background:var(--wine);color:#f5efe4}
+.q-tag.elite{background:var(--wine-deep);color:#f5efe4}
+.q-body{padding:20px 24px 8px;font-size:17px;line-height:1.6}
+.q-body p{margin-bottom:10px}
+.q-options{
+  font-family:'Fraunces',serif;
+  margin:10px 0 0 0;list-style:none;
+  padding:0;
+}
+.q-options li{
+  padding:4px 0 4px 28px;
+  position:relative;
+}
+.q-options li::before{
+  content:attr(data-opt);
+  font-family:'JetBrains Mono',monospace;
+  position:absolute;left:0;top:4px;
+  width:20px;height:20px;
+  background:var(--paper-2);
+  border:1px solid var(--rule);
+  border-radius:50%;text-align:center;
+  font-size:11px;font-weight:600;
+  line-height:18px;color:var(--ink-soft);
+}
+.toggle-sol{
+  width:100%;
+  background:var(--paper-2);
+  border:none;border-top:1px dashed var(--rule);
+  padding:12px 24px;
+  font-family:'Inter',sans-serif;
+  font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;font-weight:600;
+  color:var(--wine);cursor:pointer;
+  text-align:left;
+  display:flex;justify-content:space-between;align-items:center;
+  transition:background .2s ease;
+}
+.toggle-sol:hover{background:rgba(122,31,61,.10)}
+.toggle-sol::after{
+  content:"▾";font-size:14px;
+  transition:transform .25s ease;
+}
+.toggle-sol.open::after{transform:rotate(180deg)}
+.sol{
+  display:none;
+  padding:20px 26px 26px;
+  background:var(--paper-2);
+  border-top:1px solid var(--rule);
+  font-size:16.5px;
+  line-height:1.65;
+}
+.sol.open{display:block;animation:fadeUp .25s ease}
+.sol .ans-line{
+  display:flex;align-items:center;gap:12px;
+  padding:10px 14px;
+  background:var(--ink);color:var(--paper);
+  border-radius:2px;margin-top:14px;
+  font-family:'Fraunces',serif;
+  font-size:17px;
+}
+.sol .ans-line strong{color:var(--brass);font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.sol p{margin-bottom:12px}
+.sol .step{
+  border-left:2px solid var(--rule);
+  padding-left:14px;margin:10px 0;
+}
+.sol .step-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;color:var(--wine);
+  font-weight:600;letter-spacing:.05em;
+  display:block;margin-bottom:3px;
+}
+
+.stat-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0;margin:36px 0 8px;
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+}
+@media (max-width:760px){.stat-grid{grid-template-columns:repeat(2,1fr)}}
+.stat{
+  padding:22px 18px;
+  border-right:1px solid var(--rule);
+  text-align:left;
+}
+.stat:last-child{border-right:none}
+@media (max-width:760px){
+  .stat:nth-child(2){border-right:none}
+  .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--rule)}
+}
+.stat-num{
+  font-family:'Fraunces',serif;
+  font-weight:900;font-size:44px;line-height:.9;
+  letter-spacing:-.03em;color:var(--wine);
+}
+.stat-num span{font-size:22px;color:var(--ink-soft);font-weight:400}
+.stat-label{
+  font-family:'Inter',sans-serif;
+  font-size:10.5px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink-faint);
+  margin-top:8px;font-weight:600;
+}
+
+.compare{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:0;margin:24px 0;
+  border:1px solid var(--rule);
+}
+@media (max-width:760px){.compare{grid-template-columns:1fr}}
+.compare > div{padding:18px 22px}
+.compare > div:first-child{border-right:1px solid var(--rule);background:rgba(162,63,36,.05)}
+.compare > div:last-child{background:rgba(31,107,107,.05)}
+@media (max-width:760px){
+  .compare > div:first-child{border-right:none;border-bottom:1px solid var(--rule)}
+}
+.compare h5{margin-top:0}
+
+.section-end{
+  margin-top:56px;padding-top:24px;
+  border-top:2px solid var(--ink);
+  font-family:'Fraunces',serif;font-style:italic;
+  font-size:15px;color:var(--ink-faint);
+  display:flex;justify-content:space-between;
+}
+
+.dropcap{
+  font-family:'Fraunces',serif;
+  font-weight:900;font-size:64px;line-height:.85;
+  float:left;padding:6px 12px 0 0;
+  color:var(--wine);
+}
+
+.tips-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:18px;margin:24px 0;
+}
+@media (max-width:760px){.tips-grid{grid-template-columns:1fr}}
+.tip-card{
+  background:#fbf6ec;
+  border:1px solid var(--rule);
+  border-top:3px solid var(--brass);
+  padding:20px 22px;
+  position:relative;
+}
+.tip-card .t-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;color:var(--brass);
+  letter-spacing:.1em;font-weight:600;
+}
+.tip-card h6{
+  font-family:'Fraunces',serif;
+  font-size:19px;font-weight:700;
+  margin:4px 0 10px;color:var(--ink);
+}
+.tip-card p{font-size:15.5px;margin-bottom:0;line-height:1.55}
+
+.drill{
+  background:var(--ink);
+  color:var(--paper);
+  padding:24px 28px;
+  margin:24px 0;
+  border-radius:2px;
+}
+.drill h5{color:var(--brass);margin-top:0}
+.drill p{color:var(--paper);font-family:'Fraunces',serif;font-size:17px}
+.drill code{background:rgba(245,239,228,.1);color:var(--brass)}
+
+/* Glossary table for prices */
+.gloss-svg{
+  display:block;margin:24px auto;
+  max-width:560px;width:100%;height:auto;
+}
+
+a.inline{color:var(--wine);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+a.inline:hover{color:var(--wine-deep)}
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <a href="index.html" class="back-link">Back to series</a>
+    <div class="brand">
+      <div class="brand-eyebrow">Quantitative Aptitude · CAT Prep</div>
+      <div class="brand-title">The <em>Commercial<br>Math</em> Codex</div>
+      <div class="brand-sub">Profit, loss, discount, simple &amp; compound interest · 9 modules · 25 worked problems</div>
+      <div class="companion-tag">Companion · Vol. III</div>
+    </div>
+
+    <div class="nav-label">Modules</div>
+    <ul class="nav-list">
+      <li><a href="#m0" class="nav-link active" data-target="m0"><span class="nav-num">00</span>Orientation</a></li>
+      <li><a href="#m1" class="nav-link" data-target="m1"><span class="nav-num">01</span>The Commercial-Math Frame</a></li>
+      <li><a href="#m2" class="nav-link" data-target="m2"><span class="nav-num">02</span>Profit, Loss &amp; The Markup–Discount Chain</a></li>
+      <li><a href="#m3" class="nav-link" data-target="m3"><span class="nav-num">03</span>False Weights &amp; Two-Object Pricing</a></li>
+      <li><a href="#m4" class="nav-link" data-target="m4"><span class="nav-num">04</span>Simple Interest — The Linear Engine</a></li>
+      <li><a href="#m5" class="nav-link" data-target="m5"><span class="nav-num">05</span>Compound Interest — The Exponential Engine</a></li>
+      <li><a href="#m6" class="nav-link" data-target="m6"><span class="nav-num">06</span>SI vs CI &amp; Hybrid Schemes</a></li>
+      <li><a href="#m7" class="nav-link" data-target="m7"><span class="nav-num">07</span>Tips, Tricks &amp; Pitfalls</a></li>
+      <li><a href="#m8" class="nav-link" data-target="m8"><span class="nav-num">08</span>Worked Problem Bank</a></li>
+      <li><a href="#m9" class="nav-link" data-target="m9"><span class="nav-num">09</span>Reference Sheet</a></li>
+    </ul>
+
+    <div class="sidebar-footer">
+      Prepared for classroom delivery.<br>
+      All worked problems carry full reasoning.<br>
+      <span style="color:var(--wine)">⬤</span> Tap any solution to expand.
+    </div>
+  </aside>
+
+  <main class="main">
+
+  <!-- ====== MODULE 0 — ORIENTATION ====== -->
+  <section class="section active" id="m0">
+    <header class="section-header">
+      <div class="module-meta">Module 00 · Orientation</div>
+      <h1 class="section-title">Why this is<br>one topic,<br>not three.</h1>
+      <p class="section-deck">A teacher's overview. Profit-and-loss, discount, simple interest, and compound interest are not separate chapters. They are one chapter — commercial math — told from four different vantage points. Teach them together and the entire block makes sense.</p>
+    </header>
+
+    <p class="lede"><span class="dropcap">M</span>ost CAT prep books treat profit-and-loss in chapter four, simple interest in chapter seven, compound interest in chapter eight, and discount somewhere in the middle. This is a teaching disaster. The four topics share one underlying idea — <strong>money changes hands, and we account for the difference as a percentage of some reference</strong>. Once a student sees this, the four topics dissolve into one set of techniques applied to four contexts. Two weeks of confused study become two days of clarity.</p>
+
+    <p>This is also why the percentages codex (Volume I) is the prerequisite for everything in this volume. If your student is still struggling with "20% off then 10% extra discount" as a successive-change problem, send them back to Volume I before opening this one. The arithmetic here is not new; the application is.</p>
+
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="stat-num">3–5</div>
+        <div class="stat-label">Direct questions per CAT</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">~15<span>%</span></div>
+        <div class="stat-label">Of Quant section marks</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">Yes</div>
+        <div class="stat-label">Every CAT, every year</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">Mod–Hard</div>
+        <div class="stat-label">Typical difficulty</div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">0.1</span>How to use this codex in class</h3>
+
+    <p>The nine modules are sequenced for an <strong>8–10 hour block</strong> of teaching, structured as one continuous narrative rather than four mini-chapters. Module 1 lays the unified commercial-math frame — the same Cost Price–Selling Price–Marked Price–Discount vocabulary will reappear, dressed slightly differently, in interest problems as Principal–Amount–Rate–Time. Modules 2 and 3 are the profit-loss-discount block, modules 4 and 5 the interest block, module 6 the hybrids, and the remainder follows the standard codex structure.</p>
+
+    <p>The recent CAT trend (especially 2023 and 2024) is toward <strong>multi-stage commercial problems</strong> — Minu sells to Kanu who sells back to Minu who sells to Tanu; Bina sells to Shyam who sells to Hari; Anil borrows at compound interest, repays partially, then pays off the rest. These are CAT setters explicitly testing the unified frame. If your student thinks of profit-loss and interest as separate topics, they will lose these questions in the first ten seconds.</p>
+
+    <div class="callout">
+      <strong>The unifying claim.</strong> Every problem in this volume is a problem about a <em>quantity that changes from a reference value</em>. Profit/loss is a change from Cost Price. Discount is a change from Marked Price. Interest is a change in Principal. The mechanics — multipliers, percentages, ratios — are identical across all four. Only the labels change.
+    </div>
+
+    <h3><span class="h-num">0.2</span>What the CAT actually asks</h3>
+
+    <p>From the 2017–2025 CAT papers, the recurring archetypes are:</p>
+
+    <ul>
+      <li><strong>Direct profit/loss percentage problems.</strong> Two prices given; compute the third quantity (often as a percentage). Gentle warm-ups.</li>
+      <li><strong>Markup-then-discount chains.</strong> Mark up by X%, discount by Y%, what's the net profit? Successive-percentage thinking from Volume I, dressed in commercial vocabulary.</li>
+      <li><strong>Two-object pricing.</strong> One item profits by X%, the other loses by Y%, both sold at the same price. Find net effect. CAT 2023 Gita's two objects is the gold-standard problem here.</li>
+      <li><strong>Multi-party transactions.</strong> A sells to B who sells to C; the chain accumulates profits and losses. Recent CAT favourite.</li>
+      <li><strong>False weights / dishonest dealer.</strong> "Charges for 1 kg but gives 950 g." A subtle effective-rate calculation.</li>
+      <li><strong>Cost-restructuring problems.</strong> "If cost were 40% lower, profit would be…" — CAT 2024 archetype.</li>
+      <li><strong>Simple interest splits.</strong> Capital divided across rates; find the unknown rate. CAT 2022 Nitu's banks is the classic.</li>
+      <li><strong>Compound interest with partial payments.</strong> Loan with intermediate repayments — CAT 2023 Anil's loan.</li>
+      <li><strong>SI–CI hybrids.</strong> Money in CI scheme, then moved to SI scheme — CAT 2023 Anil–Sunil.</li>
+      <li><strong>SI–CI difference problems.</strong> "Difference between CI and SI for two years at r% is Rs. X; find the principal." A formula-driven micro-genre.</li>
+    </ul>
+
+    <div class="note tip">
+      <p style="margin:0"><strong>Classroom diagnostic in two minutes.</strong> Ask: <em>"A shopkeeper marks up by 25% and then offers a 20% discount. Is there profit or loss, and how much?"</em> Strong students answer instantly: 1.25 × 0.80 = 1.00, so neither profit nor loss. Median students compute the markup and discount separately and get tangled. Weak students answer "5% loss" by subtracting the percentages. Use this diagnostic to identify how much of Volume I needs to be re-anchored before pushing into the question bank.</p>
+    </div>
+
+    <h3><span class="h-num">0.3</span>The vocabulary problem</h3>
+
+    <p>The single greatest barrier to fluency in this topic is the <strong>volume of vocabulary</strong>. Cost price, selling price, marked price, list price, discount, markup, profit, loss, principal, amount, interest, rate, time, compounded annually, compounded half-yearly. Eight terms in P&amp;L; six in interest; and CAT setters routinely use the technical names without defining them. A student who cannot rapidly translate "marked price" to MP and "selling price" to SP is already behind. Module 1 gives the full glossary and the standard symbols. Memorise them.</p>
+
+    <div class="section-end">
+      <span>End of Module 00 · Orientation</span>
+      <span>→ next: The Commercial-Math Frame</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 1 — THE FRAME ====== -->
+  <section class="section" id="m1">
+    <header class="section-header">
+      <div class="module-meta">Module 01 · The Frame</div>
+      <h1 class="section-title">The <em>commercial</em><br>math frame:<br>one vocabulary,<br>one engine.</h1>
+      <p class="section-deck">The glossary, the symbols, and the single mental model that turns four chapters into one. By the end of this module, students should be fluent in moving between CP, SP, MP, P, MP × (1 − d) — and seeing the parallel with Principal, Rate, Time.</p>
+    </header>
+
+    <h3><span class="h-num">1.1</span>The four terms of P&amp;L — defined, distinguished, drilled</h3>
+
+    <div class="formula">
+      <span class="label">The Profit-Loss Vocabulary</span>
+      <strong>CP</strong> · Cost Price: what the seller paid<br>
+      <strong>SP</strong> · Selling Price: what the seller charged the buyer<br>
+      <strong>MP</strong> · Marked Price: the sticker / list price before discount<br>
+      <strong>Discount</strong>: the reduction from MP to SP<br>
+      <strong>Markup</strong>: the increase from CP to MP<br>
+      <strong>Profit</strong>: SP − CP (when positive)<br>
+      <strong>Loss</strong>: CP − SP (when positive)
+    </div>
+
+    <p>Notice the four quantities are linked by a chain:</p>
+
+    <svg class="gloss-svg" viewBox="0 0 600 180" xmlns="http://www.w3.org/2000/svg">
+      <!-- CP block -->
+      <rect x="20" y="60" width="120" height="60" fill="#fbf6ec" stroke="#7a1f3d" stroke-width="2"/>
+      <text x="80" y="86" font-family="Fraunces, serif" font-size="20" font-weight="700" text-anchor="middle" fill="#1c1a26">CP</text>
+      <text x="80" y="106" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#6a6675">cost paid</text>
+      <!-- arrow + markup -->
+      <line x1="145" y1="90" x2="225" y2="90" stroke="#1c1a26" stroke-width="2"/>
+      <polygon points="220,85 235,90 220,95" fill="#1c1a26"/>
+      <text x="185" y="80" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle" fill="#7a1f3d" font-weight="600">+ markup</text>
+      <!-- MP block -->
+      <rect x="240" y="60" width="120" height="60" fill="#fbf6ec" stroke="#b48a2f" stroke-width="2"/>
+      <text x="300" y="86" font-family="Fraunces, serif" font-size="20" font-weight="700" text-anchor="middle" fill="#1c1a26">MP</text>
+      <text x="300" y="106" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#6a6675">sticker price</text>
+      <!-- arrow + discount -->
+      <line x1="365" y1="90" x2="445" y2="90" stroke="#1c1a26" stroke-width="2"/>
+      <polygon points="440,85 455,90 440,95" fill="#1c1a26"/>
+      <text x="405" y="80" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle" fill="#7a1f3d" font-weight="600">− discount</text>
+      <!-- SP block -->
+      <rect x="460" y="60" width="120" height="60" fill="#fbf6ec" stroke="#1f6b6b" stroke-width="2"/>
+      <text x="520" y="86" font-family="Fraunces, serif" font-size="20" font-weight="700" text-anchor="middle" fill="#1c1a26">SP</text>
+      <text x="520" y="106" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#6a6675">final price</text>
+      <!-- profit annotation -->
+      <line x1="80" y1="135" x2="520" y2="135" stroke="#6a6675" stroke-width="1" stroke-dasharray="3 3"/>
+      <text x="300" y="160" font-family="Fraunces, serif" font-style="italic" font-size="13" text-anchor="middle" fill="#7a1f3d">net effect across the chain: SP − CP = profit (or loss if negative)</text>
+    </svg>
+
+    <p>This single diagram is the entire profit-loss-discount topic. Read it left-to-right: the seller starts with cost (CP), marks it up to MP, may offer a discount, lands at SP. The difference between SP and CP is the profit or loss. <em>Markup is on CP. Discount is on MP. These are NOT the same base.</em> Half the trap problems in CAT exploit this distinction.</p>
+
+    <h3><span class="h-num">1.2</span>The four key formulas of P&amp;L</h3>
+
+    <div class="formula">
+      <span class="label">The Four Core Formulas</span>
+      <span class="eq">MP = CP × (1 + markup%/100)</span><br>
+      <span class="eq">SP = MP × (1 − discount%/100)</span><br>
+      <span class="eq">Profit% = (SP − CP)/CP × 100</span><br>
+      <span class="eq">Loss% = (CP − SP)/CP × 100</span>
+    </div>
+
+    <p>Note: profit and loss are always computed against <strong>cost price</strong>, never against selling price. Discount is computed against marked price. Markup is computed against cost price. The three percentages have three different bases. The student who internalises this is two-thirds of the way through this entire volume.</p>
+
+    <h3><span class="h-num">1.3</span>The interest vocabulary — and its parallel</h3>
+
+    <div class="formula">
+      <span class="label">The Interest Vocabulary</span>
+      <strong>P</strong> · Principal: the original sum<br>
+      <strong>R</strong> · Rate of interest, % per period<br>
+      <strong>T</strong> · Time, in number of periods<br>
+      <strong>SI</strong> · Simple Interest (the linear engine)<br>
+      <strong>CI</strong> · Compound Interest (the exponential engine)<br>
+      <strong>A</strong> · Amount: Principal + accumulated Interest
+    </div>
+
+    <p>Look at the parallel:</p>
+
+    <div class="compare">
+      <div>
+        <h5>Profit-loss</h5>
+        <p style="margin-bottom:0"><strong>CP</strong> is the reference. The transaction is a one-step change. <strong>SP</strong> is the final value. The change is expressed as <strong>profit% on CP</strong>.</p>
+      </div>
+      <div>
+        <h5>Interest</h5>
+        <p style="margin-bottom:0"><strong>P</strong> is the reference. The transaction is a multi-period change. <strong>A</strong> is the final value. The change is expressed as <strong>rate% per period</strong>.</p>
+      </div>
+    </div>
+
+    <p>Same idea, slightly different temporal scaling. Profit-loss is interest with the time component collapsed to one transaction. Compound interest is profit-loss with the markup applied repeatedly. Once a student sees this — and Volume I has taught them successive percentage change — they don't need to learn compound interest as a new topic. They already know it.</p>
+
+    <h3><span class="h-num">1.4</span>The master identity for the entire volume</h3>
+
+    <div class="callout">
+      <strong>The unifying identity.</strong> Every commercial-math problem can be rewritten as: <em>Final = Initial × (multiplier)</em>. The multiplier is (1 + p%/100) for a profit, (1 − d%/100) for a discount, (1 + r/100) per period for compound interest, and the more elaborate (1 + RT/100) for the entire simple-interest stretch. Once a student writes down the multiplier, the rest of the problem is arithmetic.
+    </div>
+
+    <h3><span class="h-num">1.5</span>A worked walkthrough to seal the module</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Foundation example — markup, discount, and net profit</span>
+        <span class="q-tag easy">Easy</span>
+      </div>
+      <div class="q-body">
+        <p>A shopkeeper buys an article for Rs. 800. He marks it up by 50% and then gives the customer a 20% discount. What is his profit percentage?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Build the multipliers</span>
+          Markup multiplier on CP: 1.50.<br>
+          Discount multiplier on MP: 0.80.<br>
+          Net multiplier on CP: 1.50 × 0.80 = 1.20.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Translate to percentage</span>
+          SP = 1.20 × CP, so profit% = 20%.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 3 · Sanity-check with rupee figures</span>
+          MP = 800 × 1.50 = 1200. SP = 1200 × 0.80 = 960. Profit = 960 − 800 = 160. Profit% = 160/800 = 20%. ✓
+        </div>
+        <div class="ans-line"><strong>Answer</strong>Profit = <strong style="color:#fff;font-family:Fraunces">20%</strong></div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: the multiplier method handles markup–discount problems in three seconds. Without it, a student writes three equations. Drill this until automatic.</p>
+      </div>
+    </div>
+
+    <div class="drill">
+      <h5>· In-class drill ·</h5>
+      <p>Round-robin, mental math, ten seconds each. Compute the net effect (profit% or loss%):</p>
+      <p><code>+25% markup, 20% discount</code> · <code>+40% markup, 25% discount</code> · <code>+33% markup, 25% discount</code> · <code>+20% markup, 25% discount</code></p>
+      <p style="font-size:14px;opacity:.7;margin-top:10px">Answers: 0% (1.25 × 0.80 = 1.00). +5% (1.40 × 0.75 = 1.05). −0.25% (≈ break-even). −10% (1.20 × 0.75 = 0.90).</p>
+    </div>
+
+    <div class="section-end">
+      <span>End of Module 01 · The Frame</span>
+      <span>→ next: Markup–Discount Chain</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 2 — P&L AND THE MARKUP-DISCOUNT CHAIN ====== -->
+  <section class="section" id="m2">
+    <header class="section-header">
+      <div class="module-meta">Module 02 · Engines I</div>
+      <h1 class="section-title">The <em>markup</em>–<br><em>discount</em> chain.</h1>
+      <p class="section-deck">The first engine. Markup, discount, profit, loss, all as one chain — solved with the multiplier method from Volume I. No new formulas; only new applications.</p>
+    </header>
+
+    <h3><span class="h-num">2.1</span>The multiplier method, recommercialised</h3>
+
+    <p>From Volume I: every percentage change is a multiplier. Marked up by 25%? Multiply by 1.25. Discounted by 20%? Multiply by 0.80. Apply both? Multiply the multipliers. <em>This is the entire chapter on profit-loss-discount</em>, expressed in eight words.</p>
+
+    <div class="formula">
+      <span class="label">The Master Multiplier for P&amp;L</span>
+      <span class="eq">SP / CP = (1 + markup) × (1 − discount)</span><br><br>
+      The right-hand side is the net multiplier. If &gt; 1, profit. If &lt; 1, loss. If = 1, break-even.
+    </div>
+
+    <h3><span class="h-num">2.2</span>The four standard question types</h3>
+
+    <h4>Type 1 — Given markup and discount, find profit%</h4>
+    <p>Compute the net multiplier directly. <em>Marked up by 30%, discount of 10%: net = 1.30 × 0.90 = 1.17, profit = 17%.</em> Five seconds, no algebra.</p>
+
+    <h4>Type 2 — Given net profit% and one of markup/discount, find the other</h4>
+    <p>Equate the multipliers. <em>If 20% profit is desired after a 25% discount: 1 + markup = 1.20 / 0.75 = 1.60, so markup = 60%.</em></p>
+
+    <h4>Type 3 — Find the SP, given everything but the rupee figure</h4>
+    <p>Apply the net multiplier to the CP. <em>If CP = 500, markup 40%, discount 10%: SP = 500 × 1.40 × 0.90 = 630.</em></p>
+
+    <h4>Type 4 — Reverse-engineer the CP from a stated profit</h4>
+    <p>Divide the SP by the net multiplier. <em>If SP = 920, profit 15%: CP = 920 / 1.15 = 800.</em></p>
+
+    <h3><span class="h-num">2.3</span>Successive discounts</h3>
+
+    <p>A favourite CAT trick: two discounts in succession (often expressed as "20% off, plus another 15% off at checkout"). The two discounts <strong>multiply</strong>, never add.</p>
+
+    <div class="formula">
+      <span class="label">Successive Discounts</span>
+      Net discount multiplier = (1 − d₁/100) × (1 − d₂/100)<br>
+      For 20% and 15%: 0.80 × 0.85 = 0.68 → net 32% off.
+    </div>
+
+    <div class="note warn">
+      <p style="margin:0"><strong>The trap.</strong> 20% off and 15% off does NOT equal 35% off. The second discount applies to the price after the first discount, which is already smaller. The net is 32%, not 35%. CAT setters embed this in option (D) every chance they get.</p>
+    </div>
+
+    <h3><span class="h-num">2.4</span>Worked applications</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>CAT 2024 — Gopi marks for 20% profit, Ravi gets 10% discount</span>
+        <span class="q-tag med">Medium</span>
+      </div>
+      <div class="q-body">
+        <p>Gopi marks a price on a product in order to make 20% profit. Ravi gets a 10% discount on this marked price, and thus saves Rs. 15. The profit, in rupees, made by Gopi by selling the product to Ravi, is:</p>
+        <ul class="q-options">
+          <li data-opt="A">10</li><li data-opt="B">20</li><li data-opt="C">15</li><li data-opt="D">25</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Set up the chain</span>
+          Let CP = x. Then MP = 1.20x. Ravi's SP after 10% discount = 0.90 × 1.20x = 1.08x.<br>
+          Ravi's saving = MP − SP = 1.20x − 1.08x = 0.12x = 15.<br>
+          So x = 125.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Compute Gopi's profit</span>
+          Profit = SP − CP = 1.08x − x = 0.08x = 0.08 × 125 = <strong>10</strong>.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>Option <strong style="color:#fff;font-family:Fraunces">A · Rs. 10</strong></div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: the question is verbal but the underlying structure is one chain — CP → MP → SP. Drilled chains take ninety seconds; algebraic guesswork takes five minutes.</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">2.5</span>The "find profit if cost-restructured" problem</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>CAT 2024 — selling price unchanged, cost reduced</span>
+        <span class="q-tag med">Medium</span>
+      </div>
+      <div class="q-body">
+        <p>The selling price of a product is fixed to ensure 40% profit. If the product had cost 40% less and had been sold for 5 rupees less, then the resulting profit would have been 50%. The original selling price, in rupees, of the product is:</p>
+        <ul class="q-options">
+          <li data-opt="A">10</li><li data-opt="B">14</li><li data-opt="C">15</li><li data-opt="D">20</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Original</span>
+          Let CP = C. SP = 1.40 C.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Restructured</span>
+          New CP = 0.6 C. New SP = 1.40 C − 5. New profit% = 50%, so new SP = 1.5 × 0.6 C = 0.9 C.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 3 · Solve</span>
+          1.40 C − 5 = 0.9 C ⟹ 0.5 C = 5 ⟹ C = 10. Original SP = 1.40 × 10 = <strong>14</strong>.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>Option <strong style="color:#fff;font-family:Fraunces">B · Rs. 14</strong></div>
+      </div>
+    </div>
+
+    <div class="section-end">
+      <span>End of Module 02 · Markup-Discount Chain</span>
+      <span>→ next: False Weights &amp; Two-Object Pricing</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 3 — FALSE WEIGHTS / TWO OBJECT ====== -->
+  <section class="section" id="m3">
+    <header class="section-header">
+      <div class="module-meta">Module 03 · Engines II</div>
+      <h1 class="section-title">False weights<br>and the <em>two-object</em><br>parity problem.</h1>
+      <p class="section-deck">Two specialised P&amp;L sub-genres that CAT setters love. Each has a one-line trick once understood — and each humiliates students who try to solve it longhand.</p>
+    </header>
+
+    <h3><span class="h-num">3.1</span>The two-object problem — the parity trap</h3>
+
+    <p>The classic setup: a seller sells two articles at the <strong>same SP</strong>. On one she gains x%, on the other she loses x%. What's the overall effect? The naive answer — break-even — is wrong. There is always a <strong>net loss</strong>, of <kbd-math>x²/100 %</kbd-math>.</p>
+
+    <div class="formula">
+      <span class="label">The Two-Object Identity (equal gain/loss %)</span>
+      Two items sold at the same SP, one at +x% profit, one at −x% loss.<br>
+      <span class="eq">Net loss% on total transaction = x²/100</span><br>
+      (Always a loss, never a profit, regardless of x.)
+    </div>
+
+    <p>Worked: two articles sold at the same SP, profit 10% on one, loss 10% on the other. Net = 100/100 = 1% loss. Sold at 20% each? 400/100 = 4% loss. Sold at 25%? 625/100 = 6.25% loss. Memorise the small cases.</p>
+
+    <div class="callout">
+      <strong>Why does this happen?</strong> Because the two articles have <em>different cost prices</em>. The one sold at a loss had a higher cost than its SP; the one sold at a profit had a lower cost than its SP. The two SPs are equal — but the two CPs are not. The higher-CP object dominates and drags the average into loss territory.
+    </div>
+
+    <h3><span class="h-num">3.2</span>The asymmetric variant — different gain and loss percentages</h3>
+
+    <p>If the percentages are different — sells one at +20%, the other at −10% — the formula breaks down and you must compute directly. Pick a clean SP and back-out two CPs.</p>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>CAT 2023 — Gita's two objects (full solution)</span>
+        <span class="q-tag hard">Hard</span>
+      </div>
+      <div class="q-body">
+        <p>Gita sells two objects A and B at the same price such that she makes a profit of 20% on object A and a loss of 10% on object B. If she increases the selling price such that objects A and B are still sold at an equal price and a profit of 10% is made on object B, then the profit made on object A will be nearest to:</p>
+        <ul class="q-options">
+          <li data-opt="A">42%</li><li data-opt="B">47%</li><li data-opt="C">45%</li><li data-opt="D">49%</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Find the cost prices of A and B</span>
+          Let common SP = 60. (Picked because 1.2 and 0.9 both give clean CPs.)<br>
+          CP of A = 60/1.20 = 50. CP of B = 60/0.90 = 66.67.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · New scenario — B now at +10% profit</span>
+          New SP of B = 1.10 × 66.67 = 73.33. Since A is also at this new common SP, SP of A = 73.33.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 3 · A's new profit</span>
+          A's profit = (73.33 − 50)/50 = 23.33/50 = 46.66% ≈ 47%.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>Option <strong style="color:#fff;font-family:Fraunces">B · 47%</strong></div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: choosing 60 as the common SP was the key. Picking 100 would give CP of B = 111.11 — workable but messier. Always pick a common SP that makes the two profit/loss multipliers clean dividers.</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">3.3</span>The dishonest dealer — false weights</h3>
+
+    <p>A merchant claims to sell at cost price but uses a faulty balance: claims 1 kg, gives 950 g. What's the effective profit percentage?</p>
+
+    <div class="formula">
+      <span class="label">False Weight Profit</span>
+      If the dealer claims weight W but actually delivers weight w (with w &lt; W) at the cost-price rate per kg:<br>
+      <span class="eq">Profit% = ((W − w)/w) × 100</span><br>
+      Note the denominator is <em>w</em>, the actual amount delivered — not the claimed amount.
+    </div>
+
+    <p>Worked: claims 1000 g, gives 950 g. Profit% = (1000 − 950)/950 × 100 = 50/950 × 100 ≈ 5.26%. The naive answer "5%" (i.e. 50/1000) is wrong; the dealer's profit is on what he actually parted with.</p>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>False weight with markup and discount — CAT-style hybrid</span>
+        <span class="q-tag hard">Hard</span>
+      </div>
+      <div class="q-body">
+        <p>A merchant purchases cloth at Rs. 100 per metre and receives 5 cm of cloth free for every 100 cm purchased. He sells the same cloth at Rs. 110 per metre but cheats his customers by giving 95 cm of cloth for every 100 cm purchased by the customers. If the merchant also offers a 5% discount on the selling price, what is the resulting profit percentage earned by him?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Effective CP per cm of cloth</span>
+          For every Rs. 100 he spends, he gets 105 cm. So his cost per cm = 100/105 = 20/21 rupees.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Effective SP per cm</span>
+          He claims to sell 1 metre = 100 cm but only gives 95 cm. He charges Rs. 110 per claimed metre, but with 5% discount that's 110 × 0.95 = Rs. 104.50 for 95 cm. So SP per cm = 104.50/95 = 11/10 = 1.10 rupees.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 3 · Profit%</span>
+          Profit% = ((SP − CP)/CP) × 100 = ((1.10 − 20/21) / (20/21)) × 100 = ((23.1/21 − 20/21) / (20/21)) × 100 = (3.1/20) × 100 = 15.5%.
+        </div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">15.5%</strong></div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: this is a CAT-style hybrid combining three commercial-math tricks at once — false weight on purchase, false weight on sale, and a discount. The discipline of computing "per cm" rates from both directions reveals the structure.</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">3.4</span>The multi-party transaction</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>CAT 2023 — Minu, Kanu, Tanu</span>
+        <span class="q-tag hard">Hard</span>
+      </div>
+      <div class="q-body">
+        <p>Minu purchases a pair of sunglasses at Rs. 1000 and sells to Kanu at 20% profit. Then, Kanu sells it back to Minu at 20% loss. Finally, Minu sells the same pair of sunglasses to Tanu. If the total profit made by Minu from all her transactions is Rs. 500, then the percentage of profit made by Minu when she sold the pair of sunglasses to Tanu is:</p>
+        <ul class="q-options">
+          <li data-opt="A">35.42%</li><li data-opt="B">31.25%</li><li data-opt="C">52%</li><li data-opt="D">26%</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Transaction 1 — Minu sells to Kanu</span>
+          Minu's cost = 1000. SP to Kanu = 1.20 × 1000 = 1200. Minu profit so far = +200.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Transaction 2 — Kanu sells back to Minu at 20% loss</span>
+          Kanu's CP = 1200. SP = 0.80 × 1200 = 960. Minu now buys back at 960.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 3 · Transaction 3 — Minu sells to Tanu</span>
+          Minu needs total profit of 500, has 200 already from transaction 1. So transaction 3 must contribute 300.<br>
+          Minu's CP for this sale = 960. SP = 960 + 300 = 1260.<br>
+          Profit% = 300/960 × 100 = 31.25%.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>Option <strong style="color:#fff;font-family:Fraunces">B · 31.25%</strong></div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: the trap is forgetting that Minu's profit accumulates across transactions. The first profit doesn't reset when she buys back. Track Minu's cumulative rupee position.</p>
+      </div>
+    </div>
+
+    <div class="section-end">
+      <span>End of Module 03 · False Weights &amp; Two-Object</span>
+      <span>→ next: Simple Interest</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 4 — SIMPLE INTEREST ====== -->
+  <section class="section" id="m4">
+    <header class="section-header">
+      <div class="module-meta">Module 04 · The Linear Engine</div>
+      <h1 class="section-title">Simple<br><em>interest.</em></h1>
+      <p class="section-deck">The cleaner, easier of the two interest engines. Linear in time, additive across periods, and CAT's gentle on-ramp to compound interest in the next module.</p>
+    </header>
+
+    <h3><span class="h-num">4.1</span>The core formula</h3>
+
+    <div class="formula">
+      <span class="label">Simple Interest</span>
+      <span class="eq">SI = P × R × T / 100</span><br>
+      <span class="eq">Amount A = P + SI = P × (1 + RT/100)</span><br>
+      where R is the rate per period and T is the number of periods.
+    </div>
+
+    <p>The defining property of simple interest: the interest is paid only on the <strong>original</strong> principal. Each period adds the same rupee amount of interest, regardless of how long the money has been deposited. Hence "linear in time".</p>
+
+    <h3><span class="h-num">4.2</span>The split-investment problem — CAT's favourite SI archetype</h3>
+
+    <p>A person has total capital C; divides it across two or three accounts with different rates; total interest is given; find an unknown rate or principal split. CAT 2022 (Nitu's banks, Mr. Pinto's capital) had two such problems. The technique is always: <em>sum the rupee interests across accounts; equate to the total; solve</em>.</p>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>CAT 2022 — Nitu's bank investments</span>
+        <span class="q-tag hard">Hard</span>
+      </div>
+      <div class="q-body">
+        <p>Nitu has an initial capital of Rs. 20,000. Out of this, she invests Rs. 8,000 at 5.5% in bank A, Rs. 5,000 at 5.6% in bank B, and the remaining amount at x% in bank C, each rate being simple interest per annum. Her combined annual interest income from these investments is equal to 5% of the initial capital. If she had invested her entire initial capital in bank C alone, then her annual interest income, in rupees, would have been:</p>
+        <ul class="q-options">
+          <li data-opt="A">900</li><li data-opt="B">700</li><li data-opt="C">1000</li><li data-opt="D">800</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Set up</span>
+          Total income = 5% × 20,000 = Rs. 1,000.<br>
+          Income from A = 8,000 × 0.055 = 440.<br>
+          Income from B = 5,000 × 0.056 = 280.<br>
+          Income from C = 1,000 − 440 − 280 = 280.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Find rate x</span>
+          Principal in C = 20,000 − 8,000 − 5,000 = 7,000.<br>
+          7,000 × x/100 = 280 ⟹ x = 4%.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 3 · Compute hypothetical full-capital income at 4%</span>
+          20,000 × 4% = Rs. 800.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>Option <strong style="color:#fff;font-family:Fraunces">D · Rs. 800</strong></div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: the "surplus tracking" shortcut. A &amp; B each return slightly more than 5%; their excess pulls them above the 5% blended target. C must therefore return less than 5% to bring the blend down. Strong students can spot the answer in under a minute by tracking the deviations.</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">4.3</span>SI problems with installments</h3>
+
+    <p>Less common but appears in mocks: a debt is repaid in equal installments. The total interest is computed as if each installment is a mini-loan held for the relevant period. The key idea: each rupee earns interest only for the time it remained with the borrower.</p>
+
+    <h3><span class="h-num">4.4</span>SI rate-doubling, money-tripling</h3>
+
+    <p>A standard short problem: "At what rate does a sum double itself in 8 years under simple interest?" Use the multiplier: A/P = 2 = 1 + RT/100 ⟹ RT = 100 ⟹ R = 100/8 = 12.5%.</p>
+
+    <div class="formula">
+      <span class="label">SI Doubling/Tripling Identities</span>
+      To double: <span class="eq">RT = 100</span><br>
+      To triple: <span class="eq">RT = 200</span><br>
+      To become n-fold: <span class="eq">RT = (n − 1) × 100</span>
+    </div>
+
+    <h3><span class="h-num">4.5</span>The shortcut for split principals — alligation again</h3>
+
+    <p>When a sum is split across two SI rates and a blended overall rate is given, alligation (from Volume II) gives the ratio of the splits in under five seconds.</p>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>SI with alligation</span>
+        <span class="q-tag med">Medium</span>
+      </div>
+      <div class="q-body">
+        <p>A man invests a total of Rs. 12,000 — partly at 8% per annum simple interest and partly at 12% per annum simple interest. His total annual interest is Rs. 1,160. How much did he invest at each rate?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Blended rate</span>
+          Total interest / total capital = 1160/12,000 = 9.67% (i.e. 29/3 %).
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Alligate</span>
+          Endpoints 8 and 12, middle 29/3 ≈ 9.67. Bottom-left = 12 − 29/3 = 7/3. Bottom-right = 29/3 − 8 = 5/3.<br>
+          Ratio (8% : 12%) = 7 : 5. So 7/12 × 12,000 = 7,000 at 8%, and 5,000 at 12%.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 3 · Verify</span>
+          7,000 × 0.08 + 5,000 × 0.12 = 560 + 600 = 1160 ✓.
+        </div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">Rs. 7,000 at 8% and Rs. 5,000 at 12%</strong></div>
+      </div>
+    </div>
+
+    <div class="section-end">
+      <span>End of Module 04 · Simple Interest</span>
+      <span>→ next: Compound Interest</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 5 — COMPOUND INTEREST ====== -->
+  <section class="section" id="m5">
+    <header class="section-header">
+      <div class="module-meta">Module 05 · The Exponential Engine</div>
+      <h1 class="section-title">Compound<br><em>interest.</em></h1>
+      <p class="section-deck">The harder, richer engine. Interest on interest. Each period's interest joins the principal for the next period, producing a multiplier that compounds. CAT loves CI because it tests the same successive-percentage logic students learned in Volume I — disguised as a banking problem.</p>
+    </header>
+
+    <h3><span class="h-num">5.1</span>The core formula</h3>
+
+    <div class="formula">
+      <span class="label">Compound Interest</span>
+      <span class="eq">A = P × (1 + R/100)<sup>n</sup></span><br>
+      <span class="eq">CI = A − P</span><br>
+      For half-yearly compounding: <span class="eq">A = P × (1 + R/200)<sup>2n</sup></span><br>
+      For quarterly compounding: <span class="eq">A = P × (1 + R/400)<sup>4n</sup></span>
+    </div>
+
+    <p>This is identical to the Module 4 compound-growth formula from Volume I. Same multiplier compounding, same exponential structure. The only difference is that banks talk about "interest" and "rate per annum"; population problems talk about "growth rate per year". The arithmetic is the same.</p>
+
+    <h3><span class="h-num">5.2</span>The two-year shortcut</h3>
+
+    <p>For exactly two years at rate R%, the compound interest equals:</p>
+
+    <div class="formula">
+      <span class="label">CI for 2 years — the algebraic shortcut</span>
+      <span class="eq">CI₂ = P × (2R/100 + R²/10000)</span><br>
+      Equivalently, the multiplier expands to 1 + 2R/100 + R²/10000.
+    </div>
+
+    <p>Worked: P = 10,000 at 10% for 2 years. CI = 10,000 × (0.20 + 0.01) = 2,100. Or longhand: 10,000 × 1.21 − 10,000 = 12,100 − 10,000 = 2,100 ✓.</p>
+
+    <h3><span class="h-num">5.3</span>Half-yearly and quarterly compounding</h3>
+
+    <p>When interest is compounded more frequently than once a year, the effective annual yield exceeds the stated rate. The CAT trap: students forget to double the time period and halve the rate (for half-yearly), or quadruple time and quarter the rate (for quarterly).</p>
+
+    <div class="formula">
+      <span class="label">The Compounding-Frequency Mantra</span>
+      Compounded n times per year over t years at R% per annum:<br>
+      <span class="eq">A = P × (1 + R/(100n))<sup>n × t</sup></span><br>
+      Half-yearly: n = 2. Quarterly: n = 4. Monthly: n = 12.
+    </div>
+
+    <h3><span class="h-num">5.4</span>The CI-with-partial-payment problem — CAT 2023 archetype</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>CAT 2023 — Anil's compounded loan</span>
+        <span class="q-tag elite">Elite</span>
+      </div>
+      <div class="q-body">
+        <p>Anil borrows Rs. 2 lakhs at an interest rate of 8% per annum, compounded half-yearly. He repays Rs. 10,320 at the end of the first year and closes the loan by paying the outstanding amount at the end of the third year. Then, the total interest, in rupees, paid over the three years is nearest to:</p>
+        <ul class="q-options">
+          <li data-opt="A">45,311</li><li data-opt="B">51,311</li><li data-opt="C">33,130</li><li data-opt="D">40,991</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Identify the half-yearly multiplier</span>
+          R = 8% per annum, compounded half-yearly ⟹ 4% per half-year. Half-year multiplier = 1.04. So annual multiplier = 1.04² = 1.0816.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Balance after year 1</span>
+          2,00,000 × 1.0816 = 2,16,320. Anil pays 10,320, leaving 2,16,320 − 10,320 = 2,06,000.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 3 · Compound 2,06,000 for the next 2 years</span>
+          2,06,000 × 1.0816² = 2,06,000 × 1.16985856 = 2,40,990.86… ≈ 2,40,991.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 4 · Total interest</span>
+          Total paid = 10,320 + 2,40,991 = 2,51,311. Total interest = 2,51,311 − 2,00,000 = <strong>51,311</strong>.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>Option <strong style="color:#fff;font-family:Fraunces">B · Rs. 51,311</strong></div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: the killer mechanic is the half-yearly compounding turning an annual 8% into an effective 8.16% yield. Students who miss this end up with option D. Track every multiplier explicitly.</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">5.5</span>Money-doubling under CI — Rule of 72</h3>
+
+    <p>A widely useful approximation: a sum compounded at R% per annum doubles in approximately <strong>72/R</strong> years. Worked: at 8% per annum, money doubles in 72/8 = 9 years. At 12%, in 6 years. At 6%, in 12 years. Exact for very specific rates, accurate to about ±5% for typical CAT rates.</p>
+
+    <div class="formula">
+      <span class="label">The Rule of 72</span>
+      <span class="eq">Years to double ≈ 72/R</span><br>
+      Useful for mental sanity checks and quick eliminations.
+    </div>
+
+    <div class="section-end">
+      <span>End of Module 05 · Compound Interest</span>
+      <span>→ next: SI vs CI &amp; Hybrids</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 6 — SI vs CI HYBRIDS ====== -->
+  <section class="section" id="m6">
+    <header class="section-header">
+      <div class="module-meta">Module 06 · Hybrids</div>
+      <h1 class="section-title">SI vs CI<br>and <em>hybrid</em><br>schemes.</h1>
+      <p class="section-deck">The fine print of how the two engines compare, the famous CI−SI difference identity, and the CAT 2023 hybrid problem that asks a student to compare two parallel investments.</p>
+    </header>
+
+    <h3><span class="h-num">6.1</span>The fundamental asymmetry</h3>
+
+    <p>For the same P, R, and T (with T &gt; 1), <strong>CI &gt; SI</strong>, always. Equality holds when T = 1 (one period earns the same interest in both schemes). For T &gt; 1, the difference grows.</p>
+
+    <div class="compare">
+      <div>
+        <h5>Simple interest</h5>
+        <p>Interest only on principal. Linear growth in T. Slower in the long run.</p>
+      </div>
+      <div>
+        <h5>Compound interest</h5>
+        <p>Interest on principal AND on accumulated interest. Exponential growth in T. Pulls away from SI for large T.</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">6.2</span>The CI−SI difference identity</h3>
+
+    <p>A formula CAT setters rely on heavily — gives the difference between CI and SI for short time periods cleanly:</p>
+
+    <div class="formula">
+      <span class="label">CI − SI Difference Identities</span>
+      For 2 years: <span class="eq">CI₂ − SI₂ = P × (R/100)²</span><br>
+      For 3 years: <span class="eq">CI₃ − SI₃ = P × (R/100)² × (3 + R/100)</span>
+    </div>
+
+    <p>The 2-year version is the workhorse. Worked: P = 10,000 at 10% for 2 years. SI₂ = 2,000. CI₂ = 2,100. Difference = 100 = P × (R/100)² = 10,000 × 0.01 = 100 ✓.</p>
+
+    <p>The 3-year version is uglier but still useful. Worked: P = 10,000 at 10% for 3 years. SI₃ = 3,000. CI₃ = 13,310 − 10,000 = 3,310. Difference = 310 = P × (R/100)² × (3 + R/100) = 10,000 × 0.01 × 3.1 = 310 ✓.</p>
+
+    <div class="callout">
+      <strong>Why the formula?</strong> Because the difference is exactly the interest-on-interest component that CI captures but SI doesn't. For 2 years that's just P × R% × R% — one period of interest on one period of interest. For 3 years it's a cleverer combination of three such cross-terms.
+    </div>
+
+    <h3><span class="h-num">6.3</span>The CAT 2023 SI–CI hybrid problem</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>CAT 2023 — Anil's CI scheme vs Sunil's hybrid</span>
+        <span class="q-tag elite">Elite</span>
+      </div>
+      <div class="q-body">
+        <p>Anil invests Rs. 22,000 for 6 years in a certain scheme with 4% interest per annum, compounded half-yearly. Sunil invests in the same scheme for 5 years, and then reinvests the entire amount received at the end of 5 years for one year at 10% simple interest. If the amounts received by both at the end of 6 years are the same, then the initial investment made by Sunil, in rupees, is:</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Anil's final amount</span>
+          4% per annum compounded half-yearly = 2% per half-year, over 12 half-years.<br>
+          Anil's amount = 22,000 × 1.02¹².
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Sunil's final amount</span>
+          Sunil's first 5 years: P × 1.02¹⁰. Then this amount earns 10% SI for 1 year: multiplier = 1.10.<br>
+          Sunil's amount = P × 1.02¹⁰ × 1.10.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 3 · Equate</span>
+          22,000 × 1.02¹² = P × 1.02¹⁰ × 1.10<br>
+          P = 22,000 × 1.02² / 1.10 = 22,000 × 1.0404 / 1.10 = 22,000 × 0.945818… ≈ <strong>20,808</strong>.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>Rs. <strong style="color:#fff;font-family:Fraunces">20,808</strong></div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: the elegance is recognising that 1.02¹⁰ cancels from both sides, leaving a much simpler comparison between 1.02² and 1.10. This is structural cancellation — and a hallmark of well-set CAT problems.</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">6.4</span>The "what rate at what time" comparison problem</h3>
+
+    <p>A standard CAT mock problem: "What is the difference between CI and SI on Rs. 6,000 for 2 years at 10% per annum?" Use the identity. CI₂ − SI₂ = 6,000 × (0.10)² = 60. Five seconds.</p>
+
+    <div class="section-end">
+      <span>End of Module 06 · Hybrids</span>
+      <span>→ next: Tips and Pitfalls</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 7 — TIPS / TRICKS / PITFALLS ====== -->
+  <section class="section" id="m7">
+    <header class="section-header">
+      <div class="module-meta">Module 07 · Tactics</div>
+      <h1 class="section-title">Twelve <em>tips</em>,<br>tricks, and traps.</h1>
+      <p class="section-deck">The accumulated wisdom. What to drill, what to whisper, the traps you will see repeatedly in mocks, and the moves that save thirty seconds per question on the actual paper.</p>
+    </header>
+
+    <div class="tips-grid">
+      <div class="tip-card">
+        <span class="t-num">TIP 01 · BASE</span>
+        <h6>Profit is on CP, discount is on MP</h6>
+        <p>The two percentages have different bases. A 20% markup and 20% discount do NOT cancel — they leave you 4% in the loss. Always identify the base before computing.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 02 · MULTIPLIER</span>
+        <h6>SP/CP is one number</h6>
+        <p>Treat SP/CP as a single net multiplier. Then 1 + profit% = multiplier directly. No need to compute markup and discount separately if you only want the bottom line.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 03 · 100</span>
+        <h6>Pick CP = 100 if no rupee figure given</h6>
+        <p>The same trick from Volume I. With CP = 100, every percentage becomes a rupee figure, and arithmetic vanishes. Scale at the end if a final figure is needed.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 04 · TWO OBJECTS</span>
+        <h6>Equal % up and down → always a loss</h6>
+        <p>If two articles sold at the same SP, one at +x% and one at −x%, the net is ALWAYS a loss of x²/100 %. Memorise the small cases — 1%, 4%, 6.25%, 9%, 25%.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 05 · CHAIN</span>
+        <h6>Multi-party problems track cumulative position</h6>
+        <p>In CAT 2023 Minu-Kanu-Tanu type problems, each transaction adds to Minu's running balance. Don't reset on each transaction.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 06 · FREQUENCY</span>
+        <h6>Halve the rate, double the periods</h6>
+        <p>For half-yearly CI: R becomes R/2, T becomes 2T. For quarterly: R/4, 4T. The exponent and the rate scale together. Memorise this and you'll never miss a compounding-frequency question.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 07 · CI−SI</span>
+        <h6>Difference for 2 years = P(R/100)²</h6>
+        <p>Cleanest one-line formula in this volume. Whenever a question gives CI−SI difference for 2 years, plug it in. Five seconds.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 08 · 72</span>
+        <h6>Rule of 72 for sanity checks</h6>
+        <p>Money doubles in approximately 72/R years under CI. Use this for quick eliminations on multiple-choice problems involving doubling, tripling, or quadrupling.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 09 · WORDS</span>
+        <h6>Read transaction direction carefully</h6>
+        <p>"A sells to B at 20% profit" means A's profit; B's CP is whatever A charged. Don't mix up whose profit is whose. Underline the seller in every transaction.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 10 · ALLIGATION</span>
+        <h6>Two-rate SI problems are alligation problems</h6>
+        <p>Whenever capital is split between two SI rates with a known blended return, alligate on the rates. Volume II's cross diagram applies directly.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 11 · WEIGHTS</span>
+        <h6>False weight: divide by what was delivered</h6>
+        <p>Effective profit% in false-weight problems uses what was actually delivered as denominator, not what was claimed. The dealer's gain is on what he parted with.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 12 · VERIFY</span>
+        <h6>Plug back the rupee figure</h6>
+        <p>For complex chains, after solving, compute the full rupee trail one more time. Catches sign and base errors.</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">7.1</span>Six traps that wreck the median student</h3>
+
+    <div class="note warn">
+      <p><strong>Trap 1 — Profit on selling price.</strong> A student computes "profit% = (SP − CP)/SP × 100". Wrong. Profit and loss are always on cost price. The wrong formula gives smaller percentages and matches option (B) of distractor sets.</p>
+    </div>
+
+    <div class="note warn">
+      <p><strong>Trap 2 — Markup and discount additive.</strong> "Marked up 25%, discount 25%" → student concludes "break-even". Wrong: 1.25 × 0.75 = 0.9375, so 6.25% loss. Multiplier method prevents this.</p>
+    </div>
+
+    <div class="note warn">
+      <p><strong>Trap 3 — Two-object problem solved as "break-even".</strong> Equal % gain and loss on equal SPs always loses money. Always.</p>
+    </div>
+
+    <div class="note warn">
+      <p><strong>Trap 4 — SI rate substituted directly for CI.</strong> The SI for 3 years at 10% is 30% of P. The CI for 3 years at 10% is 33.1% of P. Different. Always compute each from its own formula.</p>
+    </div>
+
+    <div class="note warn">
+      <p><strong>Trap 5 — Compounded half-yearly: forgetting to adjust the rate.</strong> 8% per annum compounded half-yearly is NOT 8% per half-year. It is 4% per half-year. Half the rate, double the periods.</p>
+    </div>
+
+    <div class="note warn">
+      <p><strong>Trap 6 — Treating Discount as profit reduction on CP.</strong> A 20% discount does not directly reduce profit by 20% of CP. It reduces SP from MP, which separately affects the SP − CP gap. Compute the chain, not the shortcut.</p>
+    </div>
+
+    <h3><span class="h-num">7.2</span>The two-minute problem checklist</h3>
+
+    <p>Print this and tape it inside the student's notebook:</p>
+    <ol>
+      <li>Identify the entities. CP, SP, MP for P&amp;L. P, R, T, A for interest.</li>
+      <li>Underline every transaction direction (who sells to whom).</li>
+      <li>If no rupee figure is given, set CP = 100 (or P = 100, depending on topic).</li>
+      <li>Translate every percentage change into a multiplier.</li>
+      <li>Chain the multipliers: net multiplier = product of stage multipliers.</li>
+      <li>For SI splits, alligate. For CI partial payments, balance forward.</li>
+      <li>Verify by computing the full rupee trail one more time.</li>
+    </ol>
+
+    <div class="section-end">
+      <span>End of Module 07 · Tactics</span>
+      <span>→ next: Worked Problem Bank</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 8 — PROBLEM BANK ====== -->
+  <section class="section" id="m8">
+    <header class="section-header">
+      <div class="module-meta">Module 08 · Problem Bank</div>
+      <h1 class="section-title">Twenty-five<br>worked<br><em>problems</em>.</h1>
+      <p class="section-deck">Sequenced easy to elite. Adapted patterns from CAT 2017 through CAT 2025 including verified problems from CAT 2022 (Nitu's banks), CAT 2023 (Anil's loan, Gita's two objects, Minu-Kanu-Tanu, Anil-Sunil hybrid), and CAT 2024 (Gopi-Ravi, cost-restructured, Bina-Shyam-Hari).</p>
+    </header>
+
+    <h3><span class="h-num">8.1</span>Easy tier — fluency check</h3>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q1 · Basic profit%</span><span class="q-tag easy">Easy</span></div>
+      <div class="q-body"><p>A shopkeeper buys an article for Rs. 400 and sells it for Rs. 480. Find the profit percentage.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Profit = 80. Profit% = 80/400 × 100 = 20%.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">20%</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q2 · Reverse profit</span><span class="q-tag easy">Easy</span></div>
+      <div class="q-body"><p>An article is sold at a profit of 15% for Rs. 575. What was the cost price?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>CP × 1.15 = 575 ⟹ CP = 500.</div>
+        <div class="ans-line"><strong>Answer</strong>Rs. <strong style="color:#fff;font-family:Fraunces">500</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q3 · Markup &amp; discount chain</span><span class="q-tag easy">Easy</span></div>
+      <div class="q-body"><p>A trader marks his goods 40% above the cost price and gives a discount of 10%. What is his net profit percentage?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">MULTIPLIER</span>1.40 × 0.90 = 1.26 ⟹ 26% profit.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">26%</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q4 · Successive discounts</span><span class="q-tag easy">Easy</span></div>
+      <div class="q-body"><p>An article marked at Rs. 1000 is sold after successive discounts of 20% and 10%. What is the selling price?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>1000 × 0.80 × 0.90 = 720.</div>
+        <div class="ans-line"><strong>Answer</strong>Rs. <strong style="color:#fff;font-family:Fraunces">720</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q5 · Simple interest direct</span><span class="q-tag easy">Easy</span></div>
+      <div class="q-body"><p>Find the simple interest on Rs. 8000 at 5% per annum for 3 years.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>SI = 8000 × 5 × 3 / 100 = 1200.</div>
+        <div class="ans-line"><strong>Answer</strong>Rs. <strong style="color:#fff;font-family:Fraunces">1,200</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.2</span>Medium tier — exam-grade</h3>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q6 · Markup needed for target profit</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>A trader offers a discount of 20% on the marked price and still makes a profit of 25%. By what percentage above the cost price was the marked price set?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Let CP = 100. SP = 125 (profit of 25%). SP = MP × 0.80, so MP = 125/0.80 = 156.25.<br>Markup = 56.25%.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">56.25%</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q7 · Two articles, equal % up and down</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>A man sold two horses for Rs. 10,000 each. On one he gained 25% and on the other he lost 25%. Find the overall profit or loss.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">SHORTCUT</span>Equal % gain and loss → net loss of x²/100 = 625/100 = 6.25%.</div>
+        <div class="step"><span class="step-num">VERIFY</span>CP of horse 1 = 10,000/1.25 = 8,000. CP of horse 2 = 10,000/0.75 = 13,333.33. Total CP = 21,333.33. Total SP = 20,000. Loss = 1,333.33. Loss% = 1333.33/21333.33 = 6.25% ✓.</div>
+        <div class="ans-line"><strong>Answer</strong>Net loss of <strong style="color:#fff;font-family:Fraunces">6.25%</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q8 · CAT 2024 — Gopi-Ravi</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>Gopi marks a price on a product in order to make 20% profit. Ravi gets a 10% discount on this marked price, and thus saves Rs. 15. Find the profit, in rupees, made by Gopi by selling the product to Ravi.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">SETUP</span>CP = x. MP = 1.20x. SP = 0.90 × 1.20x = 1.08x. Saving = 0.12x = 15 ⟹ x = 125. Profit = 1.08x − x = 0.08x = 10.</div>
+        <div class="ans-line"><strong>Answer</strong>Rs. <strong style="color:#fff;font-family:Fraunces">10</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q9 · CAT 2024 — restructured cost</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>The selling price of a product is fixed to ensure 40% profit. If the product had cost 40% less and had been sold for 5 rupees less, then the resulting profit would have been 50%. The original selling price, in rupees, of the product is:</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">SETUP</span>SP = 1.40C. New: SP − 5 = 1.5 × 0.6C = 0.9C ⟹ 1.40C − 5 = 0.9C ⟹ 0.5C = 5 ⟹ C = 10. SP = 14.</div>
+        <div class="ans-line"><strong>Answer</strong>Rs. <strong style="color:#fff;font-family:Fraunces">14</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q10 · SI rate split</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>A sum of Rs. 1500 is divided into two parts and lent at SI at 6% and 8% respectively. If the total annual interest is Rs. 106, how much was lent at 6%?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">ALLIGATION</span>Blended rate = 106/1500 = 7.07%. Endpoints 6 and 8; middle 106/15. Differences: 8 − 106/15 = 14/15; 106/15 − 6 = 16/15. Ratio (at 6% : at 8%) = 14 : 16 = 7 : 8. So at 6%: 1500 × 7/15 = 700.</div>
+        <div class="ans-line"><strong>Answer</strong>Rs. <strong style="color:#fff;font-family:Fraunces">700</strong> at 6%</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q11 · CI for 2 years</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>Find the compound interest on Rs. 10,000 at 8% per annum for 2 years, compounded annually.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>A = 10,000 × 1.08² = 10,000 × 1.1664 = 11,664. CI = 1,664.</div>
+        <div class="ans-line"><strong>Answer</strong>Rs. <strong style="color:#fff;font-family:Fraunces">1,664</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q12 · CI−SI difference</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>The difference between the compound and simple interests on a certain sum of money for 2 years at 5% per annum is Rs. 1. What is the sum?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">FORMULA</span>CI − SI for 2 years = P × (R/100)² = P × 0.0025. So 0.0025P = 1 ⟹ P = 400.</div>
+        <div class="ans-line"><strong>Answer</strong>Rs. <strong style="color:#fff;font-family:Fraunces">400</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q13 · Money tripling under SI</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>At what rate of simple interest per annum will a sum of money triple itself in 16 years?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>RT = 200 for tripling. R × 16 = 200 ⟹ R = 12.5%.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">12.5%</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q14 · Discount reverse engineering</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>An article was marked 30% above the cost price. After a discount, it was sold at a profit of 11%. What was the discount percentage offered?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>CP = 100. MP = 130. SP = 111. Discount = (130 − 111)/130 × 100 = 19/130 × 100 ≈ 14.6%.</div>
+        <div class="ans-line"><strong>Answer</strong>≈ <strong style="color:#fff;font-family:Fraunces">14.6%</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q15 · CI doubling</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>A certain sum of money becomes 4 times itself in 8 years under compound interest, compounded annually. In how many years will the same sum become 16 times itself under the same rate?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>If it 4× in 8 years, then (1+R/100)⁸ = 4. So (1+R/100)¹⁶ = 16. Answer is 16 years.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">16 years</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.3</span>Hard tier — exam top-quartile</h3>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q16 · CAT 2023 — Gita's two objects</span><span class="q-tag hard">Hard</span></div>
+      <div class="q-body"><p>Gita sells objects A and B at the same price, with 20% profit on A and 10% loss on B. If she raises the price so that B yields 10% profit (still equal prices on A and B), find the resulting profit% on A.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">SETUP</span>Common SP = 60. CP(A) = 50; CP(B) = 200/3 ≈ 66.67. New SP = 1.10 × 200/3 = 220/3. A's new profit% = (220/3 − 50)/50 × 100 = (70/3)/50 × 100 = 7000/150 ≈ 46.67% ≈ 47%.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">≈ 47%</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q17 · CAT 2023 — Minu, Kanu, Tanu</span><span class="q-tag hard">Hard</span></div>
+      <div class="q-body"><p>Minu buys sunglasses at Rs. 1000, sells to Kanu at 20% profit, who sells back to Minu at 20% loss. Minu then sells to Tanu. Her total profit across all transactions is Rs. 500. Find Minu's profit% on the sale to Tanu.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">CHAIN</span>Minu sells to Kanu at 1200 (profit 200). Kanu sells back at 0.80 × 1200 = 960. Minu now must net 300 from selling to Tanu. SP = 960 + 300 = 1260. Profit% = 300/960 = 31.25%.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">31.25%</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q18 · CAT 2024 — Bina, Shyam, Hari</span><span class="q-tag hard">Hard</span></div>
+      <div class="q-body"><p>Bina incurs a 19% loss when she sells a product at Rs. 4860 to Shyam, who in turn sells it to Hari. If Bina would have sold this product to Shyam at the purchase price of Hari, she would have obtained a 17% profit. Then, the profit, in rupees, made by Shyam is:</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">STEP 1 · Find Bina's CP</span>Bina sold at 19% loss for 4860: 0.81 × CP = 4860 ⟹ CP = 6000.</div>
+        <div class="step"><span class="step-num">STEP 2 · Find Hari's purchase price</span>If Bina sold at 17% profit, that would be 1.17 × 6000 = 7020. This was Hari's purchase price (what Shyam charged Hari).</div>
+        <div class="step"><span class="step-num">STEP 3 · Shyam's profit</span>Shyam bought from Bina at 4860, sold to Hari at 7020. Profit = 2160.</div>
+        <div class="ans-line"><strong>Answer</strong>Rs. <strong style="color:#fff;font-family:Fraunces">2,160</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q19 · CAT 2024 — grain shop halving (the structural)</span><span class="q-tag hard">Hard</span></div>
+      <div class="q-body"><p>A shop has a stock (in kg) of grain. It sells half the stock plus 3 kg more to customer 1; then half the remaining plus 3 kg to customer 2; then half the new remaining plus 3 kg to customer 3 — leaving zero. Find the original stock.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">SETUP</span>Let X = stock. After customer 1: X − (X/2 + 3) = X/2 − 3 remains.<br>After customer 2: X/2 − 3 − ((X/2 − 3)/2 + 3) = X/4 − 9/2 remains.<br>After customer 3: X/4 − 9/2 − ((X/4 − 9/2)/2 + 3) = X/8 − 21/4 remains.<br>Set this to 0: X/8 = 21/4 ⟹ X = 42.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">42 kg</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q20 · False weight cloth merchant</span><span class="q-tag hard">Hard</span></div>
+      <div class="q-body"><p>A merchant purchases cloth at Rs. 100 per metre and receives 5 cm free for every 100 cm. He sells at Rs. 110 per metre, giving only 95 cm per claimed metre, and offers 5% discount. Find his effective profit%.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">CP per cm</span>100/105 = 20/21 rupees per cm.</div>
+        <div class="step"><span class="step-num">SP per cm</span>(110 × 0.95)/95 = 104.50/95 = 11/10 = 1.10 rupees per cm.</div>
+        <div class="step"><span class="step-num">PROFIT%</span>(1.10 − 20/21) / (20/21) × 100 = ((23.1 − 20)/21) / (20/21) × 100 = 3.1/20 × 100 = 15.5%.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">15.5%</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.4</span>Elite tier — top percentile</h3>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q21 · CAT 2023 — Anil's compounded loan</span><span class="q-tag elite">Elite</span></div>
+      <div class="q-body"><p>Anil borrows Rs. 2 lakhs at 8% per annum, compounded half-yearly. He repays Rs. 10,320 at the end of year 1, and closes the loan at the end of year 3. Find the total interest paid.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Year 1</span>Balance grows: 2,00,000 × 1.04² = 2,16,320. Payment 10,320 leaves 2,06,000.</div>
+        <div class="step"><span class="step-num">Years 2 and 3</span>2,06,000 × 1.04⁴ = 2,40,991 (approx).</div>
+        <div class="step"><span class="step-num">Total</span>Total paid = 10,320 + 2,40,991 = 2,51,311. Total interest = 51,311.</div>
+        <div class="ans-line"><strong>Answer</strong>Rs. <strong style="color:#fff;font-family:Fraunces">51,311</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q22 · CAT 2023 — Anil-Sunil hybrid scheme</span><span class="q-tag elite">Elite</span></div>
+      <div class="q-body"><p>Anil invests Rs. 22,000 for 6 years at 4% p.a. compounded half-yearly. Sunil invests in the same scheme for 5 years, then re-invests the amount received for 1 year at 10% SI. If both end with the same amount, find Sunil's initial investment.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">SETUP</span>Anil's final = 22,000 × 1.02¹². Sunil's final = P × 1.02¹⁰ × 1.10.</div>
+        <div class="step"><span class="step-num">EQUATE</span>22,000 × 1.02² = P × 1.10 ⟹ P = 22,000 × 1.0404 / 1.10 ≈ 20,808.</div>
+        <div class="ans-line"><strong>Answer</strong>Rs. <strong style="color:#fff;font-family:Fraunces">20,808</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q23 · CAT 2022 — Nitu's three banks</span><span class="q-tag elite">Elite</span></div>
+      <div class="q-body"><p>Nitu has Rs. 20,000 capital, invests 8,000 at 5.5% in A, 5,000 at 5.6% in B, and the rest at x% in C. Total annual SI = 5% of 20,000. Find income if all 20,000 were in C alone.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">SETUP</span>Target total = 1,000. From A: 440; from B: 280. From C: 1,000 − 720 = 280 on 7,000 ⟹ x = 4%.</div>
+        <div class="step"><span class="step-num">FULL</span>20,000 at 4% = 800.</div>
+        <div class="ans-line"><strong>Answer</strong>Rs. <strong style="color:#fff;font-family:Fraunces">800</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q24 · CI from 2-year and 3-year amounts</span><span class="q-tag elite">Elite</span></div>
+      <div class="q-body"><p>On a certain sum, the compound interest earned at the end of 2 years is Rs. 880, and at the end of 3 years is Rs. 1,456. Find the principal.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">STEP 1 · Interest accrued in year 3</span>CI₃ − CI₂ = 1,456 − 880 = 576. This is the interest in year 3 alone.<br>The year-3 interest is computed on the amount at the start of year 3, which is P + CI₂ = P + 880.</div>
+        <div class="step"><span class="step-num">STEP 2 · Find the rate</span>Year 2 alone interest = CI₂ − CI₁. CI₁ = P × R/100. CI₂ = P × ((1+R/100)² − 1). Year 2 interest = CI₂ − CI₁ = P × R/100 × (1 + R/100) − P × R/100 = P × R²/10000.<br>Also, ratio: year-3 interest / year-2 interest = (P + 880) × R/100 / [P × R/100 × (1+R/100)] = (P + 880)/(P × (1 + R/100)).<br>But more directly: year-3 = year-2 × (1+R/100). So 576/(year-2 interest) = 1 + R/100.</div>
+        <div class="step"><span class="step-num">STEP 3 · Year-2 interest</span>Year-2 interest = year-1 interest × (1+R/100). And year-1 interest = P × R/100.<br>Take an alternative route. Let r = R/100. CI₂ = P((1+r)² − 1) = P(2r + r²) = 880. CI₃ = P((1+r)³ − 1) = P(3r + 3r² + r³) = 1,456.<br>Divide: (3r + 3r² + r³)/(2r + r²) = 1,456/880 = 26/15 × something… let's compute: 1456/880 = 1.6545… = 182/110 = 91/55.<br>Try r = 0.20 (i.e. 20%): (0.6 + 0.12 + 0.008)/(0.4 + 0.04) = 0.728/0.44 = 1.654 ✓.<br>So r = 0.20, R = 20%. Then P × (0.4 + 0.04) = 880 ⟹ P × 0.44 = 880 ⟹ P = 2,000.</div>
+        <div class="ans-line"><strong>Answer</strong>Principal = Rs. <strong style="color:#fff;font-family:Fraunces">2,000</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q25 · Capstone — multi-stage mixed commercial</span><span class="q-tag elite">Elite</span></div>
+      <div class="q-body"><p>A trader buys an article for Rs. 1,000. He marks it up by 50%, then offers two successive discounts of 10% and 5%. He invests the resulting profit at 8% per annum compound interest for 2 years. Find the final value of his investment.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">STEP 1 · The trade</span>CP = 1,000. MP = 1,500. SP = 1,500 × 0.90 × 0.95 = 1,282.50. Profit = 282.50.</div>
+        <div class="step"><span class="step-num">STEP 2 · Compound the profit</span>282.50 × 1.08² = 282.50 × 1.1664 = 329.51 (rounded).</div>
+        <div class="ans-line"><strong>Answer</strong>≈ Rs. <strong style="color:#fff;font-family:Fraunces">329.51</strong></div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: the elegance of the unified frame — the same multiplier method handles both the commercial transaction (1.50 × 0.90 × 0.95) and the interest compounding (1.08²). One technique, three contexts.</p>
+      </div>
+    </div>
+
+    <div class="section-end">
+      <span>End of Module 08 · Problem Bank</span>
+      <span>→ next: Reference Sheet</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 9 — REFERENCE ====== -->
+  <section class="section" id="m9">
+    <header class="section-header">
+      <div class="module-meta">Module 09 · Reference</div>
+      <h1 class="section-title">The <em>one-page</em><br>reference<br>sheet.</h1>
+      <p class="section-deck">Everything in this codex distilled. Photocopy; tape into the notebook; review before every mock.</p>
+    </header>
+
+    <h3><span class="h-num">9.1</span>Profit, loss, discount</h3>
+    <div class="formula">
+      <span class="label">The Chain</span>
+      <span class="eq">MP = CP × (1 + markup%/100)</span><br>
+      <span class="eq">SP = MP × (1 − discount%/100)</span><br>
+      <span class="eq">Profit% = (SP − CP)/CP × 100</span><br>
+      <span class="eq">Loss% = (CP − SP)/CP × 100</span>
+    </div>
+    <div class="formula">
+      <span class="label">Two-Object Identity</span>
+      Two SPs equal, gains x% and loses x% → <span class="eq">net loss = x²/100 %</span>
+    </div>
+    <div class="formula">
+      <span class="label">False Weight</span>
+      <span class="eq">Profit% = (claimed − actual)/actual × 100</span><br>
+      (Denominator is what the dealer actually delivered.)
+    </div>
+
+    <h3><span class="h-num">9.2</span>Simple interest</h3>
+    <div class="formula">
+      <span class="label">SI Identities</span>
+      <span class="eq">SI = P × R × T / 100</span><br>
+      <span class="eq">A = P × (1 + RT/100)</span><br>
+      Doubling: <span class="eq">RT = 100</span> · Tripling: <span class="eq">RT = 200</span>
+    </div>
+
+    <h3><span class="h-num">9.3</span>Compound interest</h3>
+    <div class="formula">
+      <span class="label">CI Identities</span>
+      <span class="eq">A = P × (1 + R/100)<sup>n</sup></span><br>
+      Half-yearly: <span class="eq">A = P × (1 + R/200)<sup>2n</sup></span><br>
+      Quarterly: <span class="eq">A = P × (1 + R/400)<sup>4n</sup></span><br>
+      Rule of 72: years to double ≈ <span class="eq">72/R</span>
+    </div>
+
+    <h3><span class="h-num">9.4</span>CI − SI difference identities</h3>
+    <div class="formula">
+      <span class="label">The Difference Identities</span>
+      For 2 years: <span class="eq">CI − SI = P × (R/100)²</span><br>
+      For 3 years: <span class="eq">CI − SI = P × (R/100)² × (3 + R/100)</span>
+    </div>
+
+    <h3><span class="h-num">9.5</span>The traps catalogue</h3>
+    <ul>
+      <li>Profit/loss is on CP, never on SP.</li>
+      <li>Markup is on CP; discount is on MP. Different bases.</li>
+      <li>Equal % gain + equal % loss on two equal SPs → always net loss.</li>
+      <li>Successive discounts multiply; never add.</li>
+      <li>Half-yearly CI: halve R, double n.</li>
+      <li>For SI splits, alligate.</li>
+      <li>In multi-party chains, track cumulative profit, don't reset.</li>
+    </ul>
+
+    <h3><span class="h-num">9.6</span>The two-minute checklist</h3>
+    <ol>
+      <li>Identify entities (CP, SP, MP for P&amp;L; P, R, T, A for interest).</li>
+      <li>Underline transaction directions.</li>
+      <li>Set CP = 100 (or P = 100) if no rupee figure is given.</li>
+      <li>Translate every percentage change to a multiplier.</li>
+      <li>Chain the multipliers.</li>
+      <li>For SI splits, alligate. For CI partials, balance forward.</li>
+      <li>Verify by walking the rupee trail.</li>
+    </ol>
+
+    <h3><span class="h-num">9.7</span>Recommended drill sequence</h3>
+    <ol>
+      <li>Day 1: P&amp;L frame and the markup-discount chain — 60 minutes.</li>
+      <li>Day 2: Two-object and false weight — 60 minutes plus drills.</li>
+      <li>Day 3: Simple interest — formula and split-investment problems.</li>
+      <li>Day 4: Compound interest — multipliers, compounding frequency.</li>
+      <li>Day 5: SI−CI difference and hybrid schemes.</li>
+      <li>Day 6: Problem bank, easy and medium tiers.</li>
+      <li>Day 7: Hard and elite tier. Pair with Volume I percentages drills.</li>
+    </ol>
+
+    <div class="callout">
+      <strong>The commercial-math mantra.</strong> Cost is the reference; selling is the change; profit is the percentage. Principal is the reference; amount is the change; rate is the percentage per period. Same skeleton, same multipliers, different timelines. The student who sees this sees through every CAT commercial-math question — even the ones disguised as banking, retail, or three-party transactions.
+    </div>
+
+    <div class="section-end">
+      <span>End of Codex · Module 09</span>
+      <span>Good luck.</span>
+    </div>
+  </section>
+
+  </main>
+</div>
+
+<script>
+  const links = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('.section');
+
+  links.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = link.dataset.target;
+      links.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      sections.forEach(s => s.classList.remove('active'));
+      const targetEl = document.getElementById(target);
+      if (targetEl) {
+        targetEl.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  });
+
+  document.querySelectorAll('.toggle-sol').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sol = btn.nextElementSibling;
+      const open = sol.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.textContent = open ? 'Hide solution' : 'Show solution';
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    const activeLink = document.querySelector('.nav-link.active');
+    const allLinks = Array.from(links);
+    const idx = allLinks.indexOf(activeLink);
+    if (e.key === 'ArrowRight' && idx < allLinks.length - 1) {
+      allLinks[idx + 1].click();
+    } else if (e.key === 'ArrowLeft' && idx > 0) {
+      allLinks[idx - 1].click();
+    }
+  });
+</script>
+
+</body>
+</html>
