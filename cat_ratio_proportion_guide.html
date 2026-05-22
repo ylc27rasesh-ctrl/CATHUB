@@ -1,0 +1,1802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The CAT Ratio, Proportion &amp; Variation Codex — A Teaching Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f1e9d8;
+  --paper-2:#e6dbc4;
+  --ink:#161e2e;
+  --ink-soft:#323b4d;
+  --ink-faint:#646e80;
+  --slate:#3b5a86;
+  --slate-deep:#243b5c;
+  --amber:#c47a1f;
+  --amber-soft:#dca54a;
+  --ochre:#c89b3c;
+  --olive:#5a6b3e;
+  --teal:#1f6b6b;
+  --rust:#a23f24;
+  --rule:#c3b497;
+  --rule-soft:#d7c9aa;
+  --highlight:#fff1bf;
+  --shadow:0 1px 0 rgba(22,30,46,.06), 0 2px 6px rgba(22,30,46,.04);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Fraunces',Georgia,serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.65;
+  font-size:17px;
+  background-image:
+    radial-gradient(circle at 14% 14%, rgba(59,90,134,.05) 0%, transparent 42%),
+    radial-gradient(circle at 86% 80%, rgba(196,122,31,.05) 0%, transparent 45%);
+  min-height:100vh;
+}
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .32 0 0 0 0 .27 0 0 0 0 .19 0 0 0 .04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:1;opacity:.55;
+}
+
+.layout{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  min-height:100vh;
+  position:relative;z-index:2;
+}
+@media (max-width:980px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{position:static!important;height:auto!important;border-right:none!important;border-bottom:2px solid var(--ink)}
+}
+
+.sidebar{
+  position:sticky;top:0;
+  height:100vh;
+  border-right:1px solid var(--rule);
+  background:linear-gradient(180deg,var(--paper-2) 0%,var(--paper) 100%);
+  padding:32px 26px 24px;
+  overflow-y:auto;
+  display:flex;flex-direction:column;
+}
+.back-link{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'Inter',sans-serif;
+  font-size:10.5px;letter-spacing:.22em;
+  text-transform:uppercase;font-weight:600;
+  color:var(--ink-faint);
+  text-decoration:none;
+  padding-bottom:18px;
+  margin-bottom:18px;
+  border-bottom:1px dotted var(--rule);
+  transition:color .2s ease, gap .2s ease;
+}
+.back-link::before{
+  content:"←";font-size:14px;
+  transition:transform .2s ease;
+}
+.back-link:hover{color:var(--slate);gap:12px}
+.back-link:hover::before{transform:translateX(-3px)}
+
+.brand{
+  border-bottom:2px solid var(--ink);
+  padding-bottom:22px;margin-bottom:24px;
+}
+.brand-eyebrow{
+  font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--slate);font-weight:600;margin-bottom:8px;
+}
+.brand-title{
+  font-family:'Fraunces',serif;
+  font-weight:900;font-size:28px;line-height:1;
+  letter-spacing:-.02em;
+}
+.brand-title em{
+  font-style:italic;font-weight:400;color:var(--slate);
+  font-size:24px;
+}
+.brand-sub{
+  font-family:'Inter',sans-serif;
+  font-size:11px;color:var(--ink-faint);
+  margin-top:10px;letter-spacing:.05em;
+}
+.companion-tag{
+  margin-top:14px;
+  padding:6px 10px;
+  font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;font-weight:600;
+  color:var(--amber);
+  background:rgba(196,122,31,.10);
+  border-left:2px solid var(--amber);
+}
+.nav-label{
+  font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--ink-faint);font-weight:600;
+  margin-bottom:10px;
+}
+.nav-list{
+  list-style:none;
+  font-family:'Inter',sans-serif;
+  flex:1;
+}
+.nav-list li{
+  position:relative;
+  border-bottom:1px dotted var(--rule);
+}
+.nav-list li:last-child{border-bottom:none}
+.nav-list a{
+  display:flex;align-items:baseline;gap:10px;
+  padding:11px 0 11px 8px;
+  text-decoration:none;
+  color:var(--ink-soft);
+  font-size:13.5px;font-weight:500;
+  transition:all .2s ease;
+}
+.nav-list a:hover{color:var(--slate);padding-left:14px}
+.nav-list a.active{
+  color:var(--ink);font-weight:600;
+  padding-left:14px;
+}
+.nav-list a.active::before{
+  content:"";position:absolute;left:0;top:50%;
+  width:5px;height:5px;background:var(--slate);
+  border-radius:50%;transform:translateY(-50%);
+}
+.nav-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;color:var(--ink-faint);
+  font-weight:400;min-width:24px;
+}
+.nav-list a.active .nav-num{color:var(--slate)}
+
+.sidebar-footer{
+  margin-top:22px;padding-top:18px;
+  border-top:1px solid var(--rule);
+  font-family:'Inter',sans-serif;
+  font-size:10.5px;color:var(--ink-faint);
+  letter-spacing:.04em;
+}
+
+.main{
+  padding:48px 64px 96px;
+  max-width:1080px;
+}
+@media (max-width:980px){.main{padding:32px 22px 64px}}
+
+.section{display:none;animation:fadeUp .4s ease}
+.section.active{display:block}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:none}
+}
+
+.section-header{
+  border-bottom:2px solid var(--ink);
+  padding-bottom:28px;margin-bottom:42px;
+  position:relative;
+}
+.module-meta{
+  display:flex;align-items:center;gap:16px;
+  font-family:'Inter',sans-serif;
+  font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--slate);
+  font-weight:600;margin-bottom:14px;
+}
+.module-meta::after{
+  content:"";flex:1;height:1px;background:var(--rule);
+}
+.section-title{
+  font-family:'Fraunces',serif;
+  font-weight:900;font-size:56px;line-height:1;
+  letter-spacing:-.035em;margin-bottom:14px;
+  color:var(--ink);
+}
+.section-title em{
+  font-style:italic;font-weight:400;color:var(--slate);
+}
+.section-deck{
+  font-family:'Fraunces',serif;font-style:italic;
+  font-size:21px;line-height:1.5;color:var(--ink-soft);
+  max-width:680px;font-weight:400;
+}
+
+h3{
+  font-family:'Fraunces',serif;
+  font-weight:700;font-size:30px;line-height:1.15;
+  letter-spacing:-.02em;margin:42px 0 18px;
+  color:var(--ink);
+  border-bottom:1px solid var(--rule);
+  padding-bottom:8px;
+  display:flex;align-items:baseline;gap:14px;
+}
+h3 .h-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;color:var(--slate);
+  font-weight:500;letter-spacing:.05em;
+}
+h4{
+  font-family:'Fraunces',serif;
+  font-weight:600;font-size:22px;
+  margin:32px 0 12px;color:var(--ink);
+  letter-spacing:-.01em;
+}
+h5{
+  font-family:'Inter',sans-serif;
+  font-weight:600;font-size:12px;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--slate);margin:24px 0 10px;
+}
+p{margin:0 0 16px;font-size:17.5px}
+p.lede{font-size:20px;line-height:1.55;color:var(--ink-soft);margin-bottom:24px}
+strong{color:var(--ink);font-weight:600}
+em{color:var(--ink-soft)}
+ul,ol{margin:8px 0 18px 22px}
+li{margin-bottom:8px}
+code{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.88em;background:rgba(59,90,134,.10);
+  padding:1px 6px;border-radius:3px;
+  color:var(--slate-deep);
+}
+.kbd-math{
+  font-family:'JetBrains Mono',monospace;
+  font-size:15px;
+  background:rgba(22,30,46,.05);
+  padding:2px 8px;border-radius:3px;
+  display:inline-block;
+  border:1px solid var(--rule-soft);
+}
+
+.callout{
+  border-left:3px solid var(--slate);
+  background:linear-gradient(90deg,rgba(59,90,134,.06),transparent);
+  padding:18px 22px;margin:24px 0;
+  font-family:'Fraunces',serif;
+  font-style:italic;font-size:18px;
+  line-height:1.5;color:var(--ink-soft);
+}
+.callout strong{font-style:normal;color:var(--slate-deep)}
+
+.note{
+  background:var(--paper-2);
+  border:1px solid var(--rule);
+  border-radius:2px;
+  padding:18px 22px;margin:22px 0;
+  position:relative;
+}
+.note::before{
+  content:"NOTE";
+  position:absolute;top:-10px;left:18px;
+  background:var(--paper);
+  padding:0 8px;font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.22em;
+  color:var(--ink-faint);font-weight:600;
+}
+.note.tip::before{content:"TIP";color:var(--olive)}
+.note.tip{border-color:var(--olive);background:rgba(90,107,62,.07)}
+.note.warn::before{content:"WATCH OUT";color:var(--rust)}
+.note.warn{border-color:var(--rust);background:rgba(162,63,36,.05)}
+
+.formula{
+  background:#fbf6ec;
+  border:1px solid var(--rule);
+  border-left:4px solid var(--amber);
+  padding:20px 24px;margin:20px 0;
+  font-family:'Fraunces',serif;
+  font-size:19px;line-height:1.7;
+  position:relative;
+  box-shadow:var(--shadow);
+}
+.formula .label{
+  font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--amber);
+  font-weight:700;margin-bottom:6px;display:block;
+}
+.formula .eq{
+  font-family:'JetBrains Mono',monospace;
+  font-size:16px;background:rgba(0,0,0,.04);
+  padding:8px 14px;border-radius:2px;
+  display:inline-block;margin:6px 0;
+  font-weight:500;color:var(--ink);
+}
+
+.recip-table{
+  width:100%;
+  border-collapse:collapse;
+  font-family:'JetBrains Mono',monospace;
+  font-size:14px;
+  margin:20px 0;
+  background:#fbf6ec;
+  border:1px solid var(--rule);
+}
+.recip-table th, .recip-table td{
+  padding:10px 14px;
+  text-align:left;
+  border-bottom:1px solid var(--rule-soft);
+}
+.recip-table th{
+  background:var(--ink);color:var(--paper);
+  font-family:'Inter',sans-serif;
+  font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;font-weight:600;
+}
+.recip-table tr:hover{background:rgba(59,90,134,.05)}
+.recip-table td:first-child{font-weight:600;color:var(--slate-deep)}
+
+.q-card{
+  background:#fdfaf2;
+  border:1px solid var(--rule);
+  border-radius:2px;
+  margin:24px 0;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.q-head{
+  background:var(--ink);color:var(--paper);
+  padding:14px 22px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:'Inter',sans-serif;
+  font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;font-weight:600;
+}
+.q-tag{
+  display:inline-block;
+  padding:3px 10px;border-radius:2px;
+  font-size:10px;letter-spacing:.15em;
+}
+.q-tag.easy{background:var(--olive);color:#f5efe4}
+.q-tag.med{background:var(--ochre);color:#1a2332}
+.q-tag.hard{background:var(--slate);color:#f5efe4}
+.q-tag.elite{background:var(--slate-deep);color:#f5efe4}
+.q-body{padding:20px 24px 8px;font-size:17px;line-height:1.6}
+.q-body p{margin-bottom:10px}
+.q-options{
+  font-family:'Fraunces',serif;
+  margin:10px 0 0 0;list-style:none;
+  padding:0;
+}
+.q-options li{
+  padding:4px 0 4px 28px;
+  position:relative;
+}
+.q-options li::before{
+  content:attr(data-opt);
+  font-family:'JetBrains Mono',monospace;
+  position:absolute;left:0;top:4px;
+  width:20px;height:20px;
+  background:var(--paper-2);
+  border:1px solid var(--rule);
+  border-radius:50%;text-align:center;
+  font-size:11px;font-weight:600;
+  line-height:18px;color:var(--ink-soft);
+}
+.toggle-sol{
+  width:100%;
+  background:var(--paper-2);
+  border:none;border-top:1px dashed var(--rule);
+  padding:12px 24px;
+  font-family:'Inter',sans-serif;
+  font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;font-weight:600;
+  color:var(--slate);cursor:pointer;
+  text-align:left;
+  display:flex;justify-content:space-between;align-items:center;
+  transition:background .2s ease;
+}
+.toggle-sol:hover{background:rgba(59,90,134,.10)}
+.toggle-sol::after{
+  content:"▾";font-size:14px;
+  transition:transform .25s ease;
+}
+.toggle-sol.open::after{transform:rotate(180deg)}
+.sol{
+  display:none;
+  padding:20px 26px 26px;
+  background:var(--paper-2);
+  border-top:1px solid var(--rule);
+  font-size:16.5px;
+  line-height:1.65;
+}
+.sol.open{display:block;animation:fadeUp .25s ease}
+.sol .ans-line{
+  display:flex;align-items:center;gap:12px;
+  padding:10px 14px;
+  background:var(--ink);color:var(--paper);
+  border-radius:2px;margin-top:14px;
+  font-family:'Fraunces',serif;
+  font-size:17px;
+}
+.sol .ans-line strong{color:var(--amber-soft);font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.sol p{margin-bottom:12px}
+.sol .step{
+  border-left:2px solid var(--rule);
+  padding-left:14px;margin:10px 0;
+}
+.sol .step-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;color:var(--slate);
+  font-weight:600;letter-spacing:.05em;
+  display:block;margin-bottom:3px;
+}
+
+.stat-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0;margin:36px 0 8px;
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+}
+@media (max-width:760px){.stat-grid{grid-template-columns:repeat(2,1fr)}}
+.stat{
+  padding:22px 18px;
+  border-right:1px solid var(--rule);
+  text-align:left;
+}
+.stat:last-child{border-right:none}
+@media (max-width:760px){
+  .stat:nth-child(2){border-right:none}
+  .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--rule)}
+}
+.stat-num{
+  font-family:'Fraunces',serif;
+  font-weight:900;font-size:44px;line-height:.9;
+  letter-spacing:-.03em;color:var(--slate);
+}
+.stat-num span{font-size:22px;color:var(--ink-soft);font-weight:400}
+.stat-label{
+  font-family:'Inter',sans-serif;
+  font-size:10.5px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink-faint);
+  margin-top:8px;font-weight:600;
+}
+
+.compare{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:0;margin:24px 0;
+  border:1px solid var(--rule);
+}
+@media (max-width:760px){.compare{grid-template-columns:1fr}}
+.compare > div{padding:18px 22px}
+.compare > div:first-child{border-right:1px solid var(--rule);background:rgba(196,122,31,.05)}
+.compare > div:last-child{background:rgba(59,90,134,.05)}
+@media (max-width:760px){
+  .compare > div:first-child{border-right:none;border-bottom:1px solid var(--rule)}
+}
+.compare h5{margin-top:0}
+
+.section-end{
+  margin-top:56px;padding-top:24px;
+  border-top:2px solid var(--ink);
+  font-family:'Fraunces',serif;font-style:italic;
+  font-size:15px;color:var(--ink-faint);
+  display:flex;justify-content:space-between;
+}
+
+.dropcap{
+  font-family:'Fraunces',serif;
+  font-weight:900;font-size:64px;line-height:.85;
+  float:left;padding:6px 12px 0 0;
+  color:var(--slate);
+}
+
+.tips-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:18px;margin:24px 0;
+}
+@media (max-width:760px){.tips-grid{grid-template-columns:1fr}}
+.tip-card{
+  background:#fbf6ec;
+  border:1px solid var(--rule);
+  border-top:3px solid var(--amber);
+  padding:20px 22px;
+  position:relative;
+}
+.tip-card .t-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;color:var(--amber);
+  letter-spacing:.1em;font-weight:600;
+}
+.tip-card h6{
+  font-family:'Fraunces',serif;
+  font-size:19px;font-weight:700;
+  margin:4px 0 10px;color:var(--ink);
+}
+.tip-card p{font-size:15.5px;margin-bottom:0;line-height:1.55}
+
+.drill{
+  background:var(--ink);
+  color:var(--paper);
+  padding:24px 28px;
+  margin:24px 0;
+  border-radius:2px;
+}
+.drill h5{color:var(--amber-soft);margin-top:0}
+.drill p{color:var(--paper);font-family:'Fraunces',serif;font-size:17px}
+.drill code{background:rgba(241,233,216,.1);color:var(--amber-soft)}
+
+a.inline{color:var(--slate);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+a.inline:hover{color:var(--slate-deep)}
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <a href="index.html" class="back-link">Back to series</a>
+    <div class="brand">
+      <div class="brand-eyebrow">Quantitative Aptitude · CAT Prep</div>
+      <div class="brand-title">The <em>Ratio,<br>Proportion &amp;<br>Variation</em><br>Codex</div>
+      <div class="brand-sub">A teacher's companion · 9 modules · 25 worked problems</div>
+      <div class="companion-tag">Companion · Vol. V</div>
+    </div>
+
+    <div class="nav-label">Modules</div>
+    <ul class="nav-list">
+      <li><a href="#m0" class="nav-link active" data-target="m0"><span class="nav-num">00</span>Orientation</a></li>
+      <li><a href="#m1" class="nav-link" data-target="m1"><span class="nav-num">01</span>The Ratio Frame</a></li>
+      <li><a href="#m2" class="nav-link" data-target="m2"><span class="nav-num">02</span>Manipulating Ratios</a></li>
+      <li><a href="#m3" class="nav-link" data-target="m3"><span class="nav-num">03</span>Proportion &amp; Its Properties</a></li>
+      <li><a href="#m4" class="nav-link" data-target="m4"><span class="nav-num">04</span>Variation — Direct, Inverse, Joint</a></li>
+      <li><a href="#m5" class="nav-link" data-target="m5"><span class="nav-num">05</span>Multi-Quantity Ratios</a></li>
+      <li><a href="#m6" class="nav-link" data-target="m6"><span class="nav-num">06</span>Application Themes</a></li>
+      <li><a href="#m7" class="nav-link" data-target="m7"><span class="nav-num">07</span>Tips, Tricks &amp; Pitfalls</a></li>
+      <li><a href="#m8" class="nav-link" data-target="m8"><span class="nav-num">08</span>Worked Problem Bank</a></li>
+      <li><a href="#m9" class="nav-link" data-target="m9"><span class="nav-num">09</span>Reference Sheet</a></li>
+    </ul>
+
+    <div class="sidebar-footer">
+      Prepared for classroom delivery.<br>
+      All worked problems carry full reasoning.<br>
+      <span style="color:var(--slate)">⬤</span> Tap any solution to expand.
+    </div>
+  </aside>
+
+  <main class="main">
+
+  <!-- ====== MODULE 0 — ORIENTATION ====== -->
+  <section class="section active" id="m0">
+    <header class="section-header">
+      <div class="module-meta">Module 00 · Orientation</div>
+      <h1 class="section-title">The <em>language</em><br>of relationships<br>between quantities.</h1>
+      <p class="section-deck">A teacher's overview. Ratio and proportion is the grammar of comparison. It runs underneath mixtures, partnership problems, ages, work-rate, and half of geometry. Teach it well and a dozen later chapters become easier.</p>
+    </header>
+
+    <p class="lede"><span class="dropcap">R</span>atio is the most under-appreciated topic in the CAT syllabus. It generates only two to four direct questions per CAT, but it is the silent prerequisite for mixtures (Vol. IV), partnership profit-sharing, work-rate (Vol. VII), speed-time-distance (Vol. VI), and geometric similarity. A student fluent in ratios moves through the arithmetic block effortlessly; a student weak in ratios stumbles in every chapter that follows.</p>
+
+    <p>The good news: there are exactly four core ideas. The notion of a ratio as a <strong>multiplier of an unknown</strong>. The notion of proportion as <strong>equal ratios</strong>. The notion of variation as <strong>functional relationship</strong>. And the technique of combining two-quantity ratios into multi-quantity ratios. Master these four, and the entire chapter unfolds.</p>
+
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="stat-num">2–4</div>
+        <div class="stat-label">Direct questions per CAT</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">12<span>+</span></div>
+        <div class="stat-label">Topics built on ratios</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Core ideas to know</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">Easy–Mod</div>
+        <div class="stat-label">Typical difficulty</div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">0.1</span>How to use this codex in class</h3>
+
+    <p>The nine modules are sequenced for a <strong>6–8 hour block</strong>. Module 1 establishes the most important reframe in the entire chapter — a ratio is not just <em>a : b</em>, it is the assertion that <em>some unknown</em> k exists such that quantities are <em>ak</em> and <em>bk</em>. Once a student writes things this way, ratio problems become algebra problems with a single variable. Module 2 covers the standard operations (combining, splitting, scaling). Module 3 covers proportion and its classical properties. Module 4 covers variation, which is functional thinking dressed in arithmetic clothes. Module 5 tackles multi-quantity ratio compounding — the hardest technique in this chapter.</p>
+
+    <div class="callout">
+      <strong>Teaching philosophy.</strong> The unifying claim of this volume: <em>every ratio is a multiplier waiting for its multiplicand</em>. Write 3 : 4 as 3k : 4k. Now you have algebra. Now solve. This single move converts CAT 2023 (coin collectors), CAT 2024 (fruit-seller's 187 fruits), and CAT 2024 (Rajesh-Garima ages) into one-line problems.
+    </div>
+
+    <h3><span class="h-num">0.2</span>What the CAT actually asks</h3>
+
+    <p>From the 2017–2025 CAT papers, the recurring archetypes are:</p>
+
+    <ul>
+      <li><strong>Two-quantity ratio with a condition.</strong> "A : B = 3 : 4, and A − B = 25; find A". Use the multiplier method, one line.</li>
+      <li><strong>Ratio changes after an event.</strong> "Original ratio is 3 : 4; A spends some, ratio becomes 2 : 3; find original amount". Two unknowns, one event, two equations.</li>
+      <li><strong>Multi-quantity ratios.</strong> "A : B = 2 : 3, B : C = 4 : 5; find A : B : C". The compounding technique from Module 5.</li>
+      <li><strong>Ages and time.</strong> "Five years ago their ages were in ratio 3 : 4; five years from now they will be in ratio 5 : 6; find their present ages". Two equations, two unknowns.</li>
+      <li><strong>Direct variation.</strong> "Y varies directly as X²; when X = 2, Y = 12; find Y when X = 5". Substitute and solve.</li>
+      <li><strong>Inverse variation.</strong> Number of workers and time, speed and time, pressure and volume. Product is constant.</li>
+      <li><strong>Joint variation.</strong> Volume varies as length × breadth × height. Compound the variations.</li>
+      <li><strong>Partition / partnership problems.</strong> Splitting a profit or a total in a given ratio. Add the parts, divide.</li>
+      <li><strong>Integer-constraint ratio problems.</strong> "Three numbers in ratio 3 : 4 : 5, all integers, total under 100; how many such sets exist?". The CAT 2023 coin-collector problem is this archetype.</li>
+    </ul>
+
+    <div class="note tip">
+      <p style="margin:0"><strong>Classroom diagnostic in two minutes.</strong> Ask: <em>"The ratio of A's salary to B's salary is 5 : 7. If A's salary increases by Rs. 4000 and B's by Rs. 6000, the new ratio is 7 : 10. What was A's original salary?"</em> The fluent student writes 5k and 7k, sets up (5k + 4000)/(7k + 6000) = 7/10, solves k = 2000, gets A = 10,000. Forty-five seconds. The struggling student starts assigning two separate variables and gets tangled in cross-multiplication. Use this diagnostic to identify how much Module 1 needs to be drilled.</p>
+    </div>
+
+    <h3><span class="h-num">0.3</span>The vocabulary</h3>
+
+    <ul>
+      <li><strong>Ratio.</strong> A comparison of two quantities of the same kind, written a : b. Means a/b. Order matters.</li>
+      <li><strong>Antecedent and consequent.</strong> In a : b, a is the antecedent, b the consequent. Rarely used in CAT questions but appears occasionally.</li>
+      <li><strong>Proportion.</strong> An equality of two ratios: a : b = c : d. Equivalent to ad = bc.</li>
+      <li><strong>Means and extremes.</strong> In a : b = c : d, the means are b and c (middle terms); the extremes are a and d (outer terms). Product of means = product of extremes.</li>
+      <li><strong>Direct variation.</strong> Y = kX. When X doubles, Y doubles.</li>
+      <li><strong>Inverse variation.</strong> Y = k/X. When X doubles, Y halves.</li>
+      <li><strong>Joint variation.</strong> Y depends on more than one variable, multiplicatively. E.g. Y = kXZ or Y = kX²/Z.</li>
+    </ul>
+
+    <div class="section-end">
+      <span>End of Module 00 · Orientation</span>
+      <span>→ next: The Ratio Frame</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 1 — THE RATIO FRAME ====== -->
+  <section class="section" id="m1">
+    <header class="section-header">
+      <div class="module-meta">Module 01 · The Frame</div>
+      <h1 class="section-title">A ratio is<br>a <em>multiplier</em><br>in disguise.</h1>
+      <p class="section-deck">The single reframing that makes this entire chapter easy. Stop reading a : b as a comparison. Start reading it as the algebraic assertion that quantities equal ak and bk for some k. Then solve for k.</p>
+    </header>
+
+    <h3><span class="h-num">1.1</span>The definition</h3>
+
+    <p>A ratio of two quantities A and B of the same kind is written <strong>A : B</strong> and means <strong>A/B</strong>. The colon is just notation for division. So "milk to water in ratio 3 : 1" means milk/water = 3, equivalently milk = 3 × water.</p>
+
+    <p>Three subtle features worth noting on day one:</p>
+
+    <ul>
+      <li><strong>Same kind.</strong> A ratio compares quantities of the same kind — litres to litres, rupees to rupees, kilograms to kilograms. Comparing rupees to kilograms is not a ratio; it's a rate (we'll meet rates in variation, Module 4).</li>
+      <li><strong>Order matters.</strong> A : B and B : A are not the same. 3 : 4 is not 4 : 3.</li>
+      <li><strong>Scale invariant.</strong> Multiplying both sides by the same number doesn't change the ratio. 3 : 4 = 6 : 8 = 9 : 12 = 30 : 40. This is the key to the entire chapter.</li>
+    </ul>
+
+    <h3><span class="h-num">1.2</span>The k-multiplier framing — the key move</h3>
+
+    <p>When a problem says "the ratio of A to B is 3 : 4", you should not write "A = 3, B = 4". That makes A and B specific numbers, which they almost never are. Instead, write:</p>
+
+    <div class="formula">
+      <span class="label">The k-Multiplier Framing</span>
+      "A : B = 3 : 4" means there exists some unknown k &gt; 0 such that<br>
+      <span class="eq">A = 3k</span> and <span class="eq">B = 4k</span><br><br>
+      The number k is what you solve for.
+    </div>
+
+    <p>The number k captures the actual scale. If we later learn A − B = 10, then 3k − 4k = −k = something, no wait — let's check direction: actually let's try a different example. If A − B = 5 and A : B = 7 : 4, then 7k − 4k = 3k = 5, so k = 5/3, giving A = 35/3, B = 20/3. The point is: <strong>one ratio plus one additional equation pins down the actual quantities</strong>.</p>
+
+    <h3><span class="h-num">1.3</span>Why this beats the alternative</h3>
+
+    <p>The alternative is to write A and B as two separate variables — A and B — and solve a system. This works but is slow. The k-multiplier compresses two unknowns into one, because the ratio already tells you the relationship between them. Why carry two variables when one will do?</p>
+
+    <div class="compare">
+      <div>
+        <h5>Slow approach</h5>
+        <p style="margin-bottom:0">Let A and B be salaries. Set up A/B = 5/7 and a second equation (e.g. A + B = 12,000). Solve two equations in two unknowns. Cross-multiply, substitute, simplify.</p>
+      </div>
+      <div>
+        <h5>Fast approach</h5>
+        <p style="margin-bottom:0">Let A = 5k, B = 7k. Then 5k + 7k = 12k = 12,000, so k = 1,000, A = 5,000, B = 7,000. One variable, one equation, one minute.</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">1.4</span>Simplifying ratios — the canonical form</h3>
+
+    <p>The canonical form of a ratio is the one in lowest terms. 12 : 18 simplifies to 2 : 3 (divide both by 6). 25 : 75 to 1 : 3. Always simplify before computing — the smaller numbers are easier to work with.</p>
+
+    <p>Fractional ratios should be cleared. 1/2 : 1/3 becomes 3 : 2 (multiply both by 6). 0.4 : 0.5 becomes 4 : 5. 2.5 : 7.5 becomes 1 : 3.</p>
+
+    <h3><span class="h-num">1.5</span>Worked walkthrough — the k-multiplier in action</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Foundation example — ratio change after spending</span>
+        <span class="q-tag easy">Easy</span>
+      </div>
+      <div class="q-body">
+        <p>The ratio of A's money to B's money is 5 : 7. A spends Rs. 200 and B spends Rs. 100. The new ratio of their money becomes 1 : 2. How much money did A originally have?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Frame</span>
+          A = 5k, B = 7k.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Apply the condition</span>
+          After spending: (5k − 200)/(7k − 100) = 1/2.<br>
+          Cross-multiply: 2(5k − 200) = 7k − 100 ⟹ 10k − 400 = 7k − 100 ⟹ 3k = 300 ⟹ k = 100.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 3 · Recover A</span>
+          A = 5k = Rs. 500.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>A originally had Rs. <strong style="color:#fff;font-family:Fraunces">500</strong></div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: the entire problem collapses to a single linear equation in k. Without the k-framing, you'd need two variables and a longer setup.</p>
+      </div>
+    </div>
+
+    <div class="drill">
+      <h5>· In-class drill ·</h5>
+      <p>For each ratio, state the simplest form. Mental math, fifteen seconds each:</p>
+      <p><code>20 : 35</code> · <code>0.6 : 0.9</code> · <code>1/4 : 1/6</code> · <code>2.5 : 10</code> · <code>121 : 11</code></p>
+      <p style="font-size:14px;opacity:.7;margin-top:10px">Answers: 4:7, 2:3, 3:2, 1:4, 11:1.</p>
+    </div>
+
+    <div class="section-end">
+      <span>End of Module 01 · The Frame</span>
+      <span>→ next: Manipulating Ratios</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 2 — MANIPULATING RATIOS ====== -->
+  <section class="section" id="m2">
+    <header class="section-header">
+      <div class="module-meta">Module 02 · Operations</div>
+      <h1 class="section-title">Manipulating<br><em>ratios</em>.</h1>
+      <p class="section-deck">The standard moves — adding the parts, dividing a total, combining two ratios into a chain, and the small algebraic identities (componendo, dividendo) that occasionally win seconds in elite problems.</p>
+    </header>
+
+    <h3><span class="h-num">2.1</span>Dividing a total in a ratio — the most common operation</h3>
+
+    <p>If a total T is divided in the ratio a : b, the parts are:</p>
+
+    <div class="formula">
+      <span class="label">Partition in Ratio a : b</span>
+      <span class="eq">Part 1 = T × a/(a + b)</span><br>
+      <span class="eq">Part 2 = T × b/(a + b)</span><br><br>
+      For three parts in ratio a : b : c:<br>
+      <span class="eq">Each part = T × (a or b or c)/(a + b + c)</span>
+    </div>
+
+    <p>Worked: Rs. 2,400 divided between A and B in ratio 5 : 7. A's share = 2400 × 5/12 = 1000. B's share = 2400 × 7/12 = 1400. Total parts = 12; each part is worth 200.</p>
+
+    <h3><span class="h-num">2.2</span>Scaling and equivalent ratios</h3>
+
+    <p>Multiplying both terms by the same number preserves the ratio. This lets us match scales when comparing ratios from different sources. If A : B = 2 : 3 and C : D = 4 : 6, both ratios are 2 : 3.</p>
+
+    <h3><span class="h-num">2.3</span>The compounding identity — combining two ratios into a multi-quantity ratio</h3>
+
+    <p>If A : B = 2 : 3 and B : C = 4 : 5, what is A : B : C? Naive students plug in numbers and get confused. The technique: <strong>scale both ratios so they share the same number for B</strong>.</p>
+
+    <p>A : B = 2 : 3. Multiply by 4: A : B = 8 : 12.<br>
+    B : C = 4 : 5. Multiply by 3: B : C = 12 : 15.<br>
+    Now B is 12 in both. So A : B : C = 8 : 12 : 15.</p>
+
+    <div class="formula">
+      <span class="label">The Compound Ratio Technique</span>
+      To combine A : B = p : q and B : C = r : s:<br>
+      Scale to make the B-values match (LCM of q and r).<br>
+      Result: <span class="eq">A : B : C = pr : qr : qs</span>
+    </div>
+
+    <h3><span class="h-num">2.4</span>Adding ratios — when it's valid and when it isn't</h3>
+
+    <div class="note warn">
+      <p style="margin:0"><strong>Adding ratios is NOT what students think.</strong> If A : B = 2 : 3 and C : D = 4 : 5, then (A + C) : (B + D) is NOT 6 : 8 or 2 : 3 generally. It depends on the absolute values, not just the ratios. To add quantities given by ratios, you must first know the actual scale of each.</p>
+    </div>
+
+    <h3><span class="h-num">2.5</span>The classical properties — componendo, dividendo, alternendo</h3>
+
+    <p>These are old algebraic identities that occasionally simplify elite problems. Worth knowing but rarely worth memorising as named techniques.</p>
+
+    <div class="formula">
+      <span class="label">Properties of Equal Ratios</span>
+      Given a/b = c/d:<br>
+      <strong>Alternendo:</strong> a/c = b/d<br>
+      <strong>Invertendo:</strong> b/a = d/c<br>
+      <strong>Componendo:</strong> (a + b)/b = (c + d)/d<br>
+      <strong>Dividendo:</strong> (a − b)/b = (c − d)/d<br>
+      <strong>Componendo &amp; Dividendo:</strong> (a + b)/(a − b) = (c + d)/(c − d)
+    </div>
+
+    <p>The componendo-dividendo identity is occasionally useful when CAT gives you (a + b)/(a − b) and asks for a/b or vice versa. Worth recognising on sight.</p>
+
+    <h3><span class="h-num">2.6</span>Worked applications</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Compounding two ratios</span>
+        <span class="q-tag med">Medium</span>
+      </div>
+      <div class="q-body">
+        <p>The ratio of A's age to B's age is 3 : 4. The ratio of B's age to C's age is 5 : 6. If C is 36 years old, how old is A?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Compound</span>
+          A : B = 3 : 4. B : C = 5 : 6. Scale to match B: multiply first by 5 (giving 15 : 20), second by 4 (giving 20 : 24). So A : B : C = 15 : 20 : 24.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Use C's age</span>
+          C corresponds to 24 parts. 24 parts = 36 years ⟹ each part = 1.5. A = 15 × 1.5 = 22.5 years.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>A is <strong style="color:#fff;font-family:Fraunces">22.5 years</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Partition with multiple unknowns</span>
+        <span class="q-tag med">Medium</span>
+      </div>
+      <div class="q-body">
+        <p>A sum of Rs. 5,500 is divided among A, B, and C such that A gets 3/5 of what B gets, and B gets 2/3 of what C gets. Find C's share.</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Build the ratio</span>
+          A = (3/5)B and B = (2/3)C, so A = (3/5)(2/3)C = (2/5)C.<br>
+          So A : B : C = (2/5)C : (2/3)C : C. Multiply by 15 to clear fractions: 6 : 10 : 15. Total parts = 31.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Compute C</span>
+          C = 5500 × 15/31 ≈ Rs. 2661.29.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>C ≈ <strong style="color:#fff;font-family:Fraunces">Rs. 2,661.29</strong></div>
+      </div>
+    </div>
+
+    <div class="section-end">
+      <span>End of Module 02 · Manipulating Ratios</span>
+      <span>→ next: Proportion</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 3 — PROPORTION ====== -->
+  <section class="section" id="m3">
+    <header class="section-header">
+      <div class="module-meta">Module 03 · Equal Ratios</div>
+      <h1 class="section-title">When two ratios<br>are <em>equal</em>.</h1>
+      <p class="section-deck">Proportion is the assertion that two ratios are equal. The classical name carries algebraic identities that occasionally win seconds, and a small family of CAT question patterns that are unmistakable once recognised.</p>
+    </header>
+
+    <h3><span class="h-num">3.1</span>The definition</h3>
+
+    <div class="formula">
+      <span class="label">Proportion</span>
+      Four quantities a, b, c, d are in proportion if<br>
+      <span class="eq">a : b = c : d</span>, equivalently <span class="eq">a/b = c/d</span>, equivalently <span class="eq">ad = bc</span><br><br>
+      a and d are the <strong>extremes</strong>; b and c are the <strong>means</strong>.<br>
+      <strong>Product of means = Product of extremes.</strong>
+    </div>
+
+    <h3><span class="h-num">3.2</span>The continued proportion and the mean proportional</h3>
+
+    <p>If three quantities a, b, c satisfy a/b = b/c (the middle quantity equals itself), they are said to be in <strong>continued proportion</strong>. The middle quantity b is called the <strong>mean proportional</strong> between a and c, and:</p>
+
+    <div class="formula">
+      <span class="label">Mean Proportional</span>
+      If a, b, c are in continued proportion, then<br>
+      <span class="eq">b² = ac</span>, so <span class="eq">b = √(ac)</span><br><br>
+      The mean proportional is the geometric mean.
+    </div>
+
+    <p>Worked: Find the mean proportional between 4 and 16. b = √(4 × 16) = √64 = 8. Sanity check: 4 : 8 = 8 : 16 = 1 : 2 ✓.</p>
+
+    <h3><span class="h-num">3.3</span>Fourth proportional and third proportional</h3>
+
+    <p>Two more named quantities that CAT occasionally tests:</p>
+
+    <ul>
+      <li><strong>Fourth proportional</strong> to a, b, c is the d such that a : b = c : d. So d = bc/a.</li>
+      <li><strong>Third proportional</strong> to a, b is the c such that a : b = b : c. So c = b²/a.</li>
+    </ul>
+
+    <p>Worked: Third proportional to 4 and 8 is 8²/4 = 16. Check: 4 : 8 = 8 : 16 ✓.</p>
+
+    <h3><span class="h-num">3.4</span>Worked applications</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Mean proportional</span>
+        <span class="q-tag easy">Easy</span>
+      </div>
+      <div class="q-body">
+        <p>Find the mean proportional between 0.32 and 0.18.</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">METHOD</span>
+          Mean proportional = √(0.32 × 0.18) = √0.0576 = 0.24.
+        </div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">0.24</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Componendo-dividendo trick</span>
+        <span class="q-tag med">Medium</span>
+      </div>
+      <div class="q-body">
+        <p>Given (3x + 5y)/(3x − 5y) = 7/3, find x/y.</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">METHOD</span>
+          The form (a + b)/(a − b) suggests componendo-dividendo applied in reverse.<br>
+          If (a + b)/(a − b) = 7/3, then a/b = (7 + 3)/(7 − 3) = 10/4 = 5/2.<br>
+          So 3x/(5y) = 5/2 ⟹ x/y = 25/6.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>x/y = <strong style="color:#fff;font-family:Fraunces">25/6</strong></div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: the same problem solved by cross-multiplication takes four lines. Componendo-dividendo collapses it to one.</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">3.5</span>The standard proportion check</h3>
+
+    <p>To check if four numbers a, b, c, d are in proportion, compute ad and bc. If equal, they are.</p>
+
+    <p>Example: Are 4, 6, 14, 21 in proportion? Compute 4 × 21 = 84 and 6 × 14 = 84. Equal ⟹ yes, 4 : 6 = 14 : 21 (both equal 2 : 3).</p>
+
+    <div class="section-end">
+      <span>End of Module 03 · Proportion</span>
+      <span>→ next: Variation</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 4 — VARIATION ====== -->
+  <section class="section" id="m4">
+    <header class="section-header">
+      <div class="module-meta">Module 04 · Functional Relationships</div>
+      <h1 class="section-title">Direct, inverse,<br><em>joint</em> variation.</h1>
+      <p class="section-deck">When two quantities move in a predictable functional relationship — they multiply each other, or are inversely proportional, or one depends on two others. The three patterns and how CAT disguises them.</p>
+    </header>
+
+    <h3><span class="h-num">4.1</span>Direct variation</h3>
+
+    <p>Y varies directly as X means Y/X is constant. Doubling X doubles Y. The relationship is linear through the origin.</p>
+
+    <div class="formula">
+      <span class="label">Direct Variation</span>
+      <span class="eq">Y ∝ X</span>, or equivalently <span class="eq">Y = kX</span> for some constant k.<br>
+      So <span class="eq">Y₁/X₁ = Y₂/X₂ = k</span>.<br>
+      Cross-multiplying: <span class="eq">Y₁ × X₂ = Y₂ × X₁</span>.
+    </div>
+
+    <p>Common contexts: cost ∝ quantity, weight ∝ volume, distance ∝ time at constant speed. Sometimes Y varies as a power of X — Y ∝ X² means Y = kX², and doubling X quadruples Y.</p>
+
+    <h3><span class="h-num">4.2</span>Inverse variation</h3>
+
+    <p>Y varies inversely as X means Y × X is constant. Doubling X halves Y. The relationship is a rectangular hyperbola.</p>
+
+    <div class="formula">
+      <span class="label">Inverse Variation</span>
+      <span class="eq">Y ∝ 1/X</span>, or equivalently <span class="eq">Y = k/X</span>, or <span class="eq">YX = k</span>.<br>
+      So <span class="eq">Y₁ × X₁ = Y₂ × X₂ = k</span>.
+    </div>
+
+    <p>Common contexts: number of workers ∝ 1/time (more workers, less time). Pressure ∝ 1/volume at constant temperature. Speed ∝ 1/time at fixed distance.</p>
+
+    <h3><span class="h-num">4.3</span>Joint variation</h3>
+
+    <p>Y depends on more than one variable, multiplicatively. Most common form: Y ∝ XZ (Y is jointly proportional to X and Z), so Y = kXZ. Or Y ∝ X/Z (directly with X, inversely with Z).</p>
+
+    <div class="formula">
+      <span class="label">Joint Variation</span>
+      <span class="eq">Y ∝ X × Z</span> means <span class="eq">Y = kXZ</span><br>
+      <span class="eq">Y ∝ X/Z</span> means <span class="eq">Y = kX/Z</span>
+    </div>
+
+    <p>Common contexts: Volume of a box ∝ length × breadth × height. Area of a triangle ∝ base × height. Force ∝ mass × acceleration.</p>
+
+    <h3><span class="h-num">4.4</span>The standard CAT variation problem</h3>
+
+    <p>Almost every CAT variation problem has the same structure: a functional relationship is stated; one set of values is given; a second set is requested.</p>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Direct variation with a power</span>
+        <span class="q-tag easy">Easy</span>
+      </div>
+      <div class="q-body">
+        <p>The cost of a diamond varies directly as the square of its weight. A diamond weighing 6 grams costs Rs. 7,200. What is the cost of a diamond weighing 10 grams?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Set up</span>
+          Cost = k × weight². 7200 = k × 36 ⟹ k = 200.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Apply to new weight</span>
+          New cost = 200 × 100 = Rs. 20,000.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>Rs. <strong style="color:#fff;font-family:Fraunces">20,000</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">4.5</span>The diamond-breaking classic</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Diamond breaks into pieces — classic variation problem</span>
+        <span class="q-tag hard">Hard</span>
+      </div>
+      <div class="q-body">
+        <p>The value of a diamond is proportional to the square of its weight. A diamond weighing 10 grams accidentally breaks into three pieces whose weights are in the ratio 1 : 2 : 2. The total loss in value due to the breakage is Rs. 9,000. What was the original value of the diamond?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Set up</span>
+          Value = k × weight². Original value = k × 100 = 100k.<br>
+          The three pieces have weights in ratio 1 : 2 : 2 with total 5 parts = 10 g. So pieces weigh 2 g, 4 g, 4 g.<br>
+          Total new value = k(4 + 16 + 16) = 36k.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · The loss</span>
+          Loss = 100k − 36k = 64k = 9000 ⟹ k = 140.625.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 3 · Original value</span>
+          100k = 14,062.50.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>Rs. <strong style="color:#fff;font-family:Fraunces">14,062.50</strong></div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: the key insight is that <em>value is conserved only if weight is conserved AND the value-weight relationship is linear</em>. Since value goes as weight², breaking the diamond reduces total value even though total weight is unchanged.</p>
+      </div>
+    </div>
+
+    <div class="section-end">
+      <span>End of Module 04 · Variation</span>
+      <span>→ next: Multi-Quantity Ratios</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 5 — MULTI-QUANTITY ====== -->
+  <section class="section" id="m5">
+    <header class="section-header">
+      <div class="module-meta">Module 05 · Three and More</div>
+      <h1 class="section-title">Multi-quantity<br><em>ratios</em>.</h1>
+      <p class="section-deck">Three-, four-, even five-quantity ratios. The chaining technique, partnership profit-sharing, and the elite CAT 2024 fruit-seller problem that uses multi-quantity ratio thinking.</p>
+    </header>
+
+    <h3><span class="h-num">5.1</span>The chaining technique — recap</h3>
+
+    <p>From Module 2: combining two two-quantity ratios requires scaling them to share a common middle term. Worked: A : B = 2 : 3 and B : C = 4 : 5 combine to A : B : C = 8 : 12 : 15.</p>
+
+    <h3><span class="h-num">5.2</span>Beyond three — chains of four or more</h3>
+
+    <p>Extends naturally. If A : B = 1 : 2, B : C = 3 : 4, and C : D = 5 : 6, find A : B : C : D.</p>
+
+    <p>Method: scale step by step.<br>
+    A : B = 1 : 2. Multiply by 3: A : B = 3 : 6.<br>
+    B : C = 3 : 4. Multiply by 2: B : C = 6 : 8.<br>
+    So A : B : C = 3 : 6 : 8.<br>
+    C : D = 5 : 6. Multiply by 8/5: C : D = 8 : 48/5. Or scale all by 5: A : B : C : D = 15 : 30 : 40 : 48.</p>
+
+    <h3><span class="h-num">5.3</span>Partnership and profit-sharing</h3>
+
+    <p>When two or more people invest in a business, profits are typically split in proportion to (capital invested) × (time invested). The CAT setup: two partners invest different amounts for different durations; how should profit be split?</p>
+
+    <div class="formula">
+      <span class="label">Partnership Profit Ratio</span>
+      Profit share of each partner ∝ Capital × Time<br>
+      <span class="eq">Profit ratio = (C₁ × T₁) : (C₂ × T₂) : …</span>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Partnership — different start times</span>
+        <span class="q-tag med">Medium</span>
+      </div>
+      <div class="q-body">
+        <p>A invests Rs. 30,000 in a business. After 4 months, B joins with Rs. 40,000. At the end of the year, the total profit is Rs. 22,400. What is A's share?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Capital × Time</span>
+          A: 30,000 × 12 = 3,60,000.<br>
+          B: 40,000 × 8 = 3,20,000.<br>
+          Ratio = 36 : 32 = 9 : 8.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · A's share</span>
+          A = 22,400 × 9/17 ≈ Rs. 11,858.82.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>A's share ≈ <strong style="color:#fff;font-family:Fraunces">Rs. 11,859</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">5.4</span>The CAT 2023 coin-collector problem</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>CAT 2023 — coin collectors with integer constraints</span>
+        <span class="q-tag elite">Elite</span>
+      </div>
+      <div class="q-body">
+        <p>The number of coins collected per week by two coin-collectors A and B are in the ratio 3 : 4. If the total number of coins collected by A in 5 weeks is a multiple of 7, and the total number of coins collected by B in 3 weeks is a multiple of 24, then the minimum possible number of coins collected by A in one week is:</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · k-framing</span>
+          Let A = 3x per week, B = 4x per week (where x is a positive integer).
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · A's constraint</span>
+          A's 5-week total = 15x. For 15x to be divisible by 7, since gcd(15, 7) = 1, we need x divisible by 7.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 3 · B's constraint</span>
+          B's 3-week total = 12x. For 12x divisible by 24, we need x divisible by 2.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 4 · LCM</span>
+          x must be divisible by lcm(7, 2) = 14. Minimum x = 14. So A's weekly coins = 3 × 14 = 42.
+        </div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">42</strong></div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: this problem perfectly illustrates the multiplier framing. The "common multiplier" k captures the unknown scale, and the integer constraints fix k via divisibility logic.</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">5.5</span>The CAT 2024 fruit-seller problem</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>CAT 2024 — fruit-seller's 187 fruits</span>
+        <span class="q-tag elite">Elite</span>
+      </div>
+      <div class="q-body">
+        <p>A fruit seller has a total of 187 fruits consisting of apples, mangoes and oranges. The number of apples and mangoes are in the ratio 5 : 2. After she sells 75 apples, 26 mangoes and half of the oranges, the ratio of number of unsold apples to number of unsold oranges becomes 3 : 2. The total number of unsold fruits is:</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · k-framing</span>
+          Apples = 5x, Mangoes = 2x, Oranges = 187 − 7x.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Unsold quantities</span>
+          Apples left = 5x − 75. Mangoes left = 2x − 26. Oranges left = (187 − 7x)/2.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 3 · The new ratio</span>
+          (5x − 75) / ((187 − 7x)/2) = 3/2<br>
+          2(5x − 75) / (187 − 7x) = 3/2<br>
+          4(5x − 75) = 3(187 − 7x)<br>
+          20x − 300 = 561 − 21x<br>
+          41x = 861<br>
+          x = 21.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 4 · Compute unsold total</span>
+          Apples left = 5(21) − 75 = 30. Mangoes left = 2(21) − 26 = 16. Oranges left = (187 − 147)/2 = 20.<br>
+          Total = 30 + 16 + 20 = 66.
+        </div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">66 fruits</strong></div>
+      </div>
+    </div>
+
+    <div class="section-end">
+      <span>End of Module 05 · Multi-Quantity</span>
+      <span>→ next: Application Themes</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 6 — APPLICATIONS ====== -->
+  <section class="section" id="m6">
+    <header class="section-header">
+      <div class="module-meta">Module 06 · Applications</div>
+      <h1 class="section-title">Where <em>ratios</em><br>actually live<br>in CAT.</h1>
+      <p class="section-deck">Eight applied themes — partnership and profit sharing, ages, mixtures (re-met from Vol. IV), salaries, work and time, ratio shifts after events, integer-constrained ratio problems, and the hidden ratios in geometry.</p>
+    </header>
+
+    <h3><span class="h-num">6.1</span>Theme — Partnership and profit sharing</h3>
+    <p>Already met in Module 5. Profit ratio = (Capital × Time) ratio. Variants include partners who join late, leave early, or change their investment mid-year.</p>
+
+    <h3><span class="h-num">6.2</span>Theme — Ages and time</h3>
+
+    <p>The most common ratio archetype in mocks. Two people's ages now in some ratio; some years ago (or hence) in another ratio. Always solvable by k-framing and one or two equations.</p>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>CAT 2024 — Rajesh and Garima's ages</span>
+        <span class="q-tag hard">Hard</span>
+      </div>
+      <div class="q-body">
+        <p>When Rajesh's age was the same as Garima's present age, the ratio of their ages was 3 : 2. When Garima's age becomes the same as Rajesh's present age, what will be the ratio of Rajesh's age to Garima's age?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Set up variables</span>
+          Let Rajesh's present age = R, Garima's = G.<br>
+          "When Rajesh's age was G" — this was R − G years ago. At that time Rajesh was G; Garima was G − (R − G) = 2G − R.<br>
+          The ratio Rajesh : Garima at that time was G : (2G − R) = 3 : 2.<br>
+          So 2G = 3(2G − R) ⟹ 2G = 6G − 3R ⟹ 3R = 4G ⟹ R/G = 4/3. So R = 4k, G = 3k for some k.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · "When Garima's age becomes R"</span>
+          That's R − G = 4k − 3k = k years from now.<br>
+          At that time, Rajesh will be R + k = 5k. Garima will be R = 4k.<br>
+          Ratio = 5k : 4k = 5 : 4.
+        </div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">5 : 4</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">6.3</span>Theme — Mixtures revisited</h3>
+    <p>From Volume IV. Every mixture problem is a ratio problem. Now you have the ratio toolkit and the conservation principle. They unite cleanly.</p>
+
+    <h3><span class="h-num">6.4</span>Theme — Salary and income splits</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Salary ratio after increment</span>
+        <span class="q-tag med">Medium</span>
+      </div>
+      <div class="q-body">
+        <p>The salaries of A and B are in the ratio 4 : 7. If A's salary increases by 25% and B's salary increases by 20%, what is the new ratio?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">METHOD</span>
+          Take A = 400, B = 700. New A = 500. New B = 840. Ratio = 500 : 840 = 25 : 42.
+        </div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">25 : 42</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">6.5</span>Theme — Work and time (preview of Volume VII)</h3>
+
+    <p>If A and B together complete a task in a given time, their work-rates are inversely proportional to the time. Volume VII will treat this in full. Worth previewing here that the inverse-variation logic of Module 4 is the structural engine.</p>
+
+    <h3><span class="h-num">6.6</span>Theme — Ratio shifts after events</h3>
+
+    <p>"Original ratio 3 : 4; A spends some, ratio becomes 1 : 2." Solve with k-framing and one event-equation.</p>
+
+    <h3><span class="h-num">6.7</span>Theme — Integer-constrained ratios</h3>
+
+    <p>The CAT 2023 coin-collector problem we solved in Module 5. The setup is a ratio with both quantities required to be integers and satisfying additional divisibility constraints. The technique: parametrise with k, apply each constraint as a divisibility condition on k, find the LCM.</p>
+
+    <h3><span class="h-num">6.8</span>Theme — Hidden ratios in geometry</h3>
+
+    <p>Two similar triangles have all corresponding sides in the same ratio. Areas scale as the square of that ratio. Volumes scale as the cube. This is direct variation in disguise and an essential bridge to geometry (Volume XI).</p>
+
+    <div class="section-end">
+      <span>End of Module 06 · Applications</span>
+      <span>→ next: Tips and Pitfalls</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 7 — TIPS / TRICKS / PITFALLS ====== -->
+  <section class="section" id="m7">
+    <header class="section-header">
+      <div class="module-meta">Module 07 · Tactics</div>
+      <h1 class="section-title">Twelve <em>tips</em>,<br>tricks, and traps.</h1>
+      <p class="section-deck">The accumulated wisdom — what to drill, what to whisper, and the predictable mistakes you'll see in mocks again and again.</p>
+    </header>
+
+    <div class="tips-grid">
+      <div class="tip-card">
+        <span class="t-num">TIP 01 · K-MULTIPLIER</span>
+        <h6>Always write A = 3k, not A = 3</h6>
+        <p>The k-framing is the single most important habit in this chapter. Every problem becomes a linear equation in k.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 02 · SIMPLIFY</span>
+        <h6>Reduce ratios before computing</h6>
+        <p>12 : 18 → 2 : 3 before doing anything else. Small numbers prevent arithmetic errors.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 03 · MATCH</span>
+        <h6>To combine ratios, match common terms</h6>
+        <p>For A : B and B : C, scale to make B equal in both. LCM of the B-values is the cleanest approach.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 04 · NEVER ADD</span>
+        <h6>Ratios cannot be added directly</h6>
+        <p>(A + C) : (B + D) is NOT determined by A:B and C:D. You need absolute values.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 05 · MEAN PROP</span>
+        <h6>Mean proportional is √(ac)</h6>
+        <p>For continued proportion a, b, c, the middle b satisfies b² = ac. Spot this pattern.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 06 · POWERS</span>
+        <h6>Direct variation can be Y ∝ X<sup>n</sup></h6>
+        <p>If Y ∝ X², doubling X quadruples Y. Watch for "varies as the square of" or "as the cube of" in problem stems.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 07 · INVERSE</span>
+        <h6>Inverse variation means product constant</h6>
+        <p>Y × X = k. When X doubles, Y halves. Common in workers-and-time and pressure-volume problems.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 08 · PARTNERSHIP</span>
+        <h6>Profit ratio = Capital × Time</h6>
+        <p>Standard partnership rule. Compute each partner's (capital × time) product and take the ratio.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 09 · INTEGER</span>
+        <h6>Integer constraints become divisibility</h6>
+        <p>If A = 3x and A must be a multiple of 7, then x must be a multiple of 7 (since gcd(3, 7) = 1).</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 10 · COMP-DIV</span>
+        <h6>(a+b)/(a−b) form invites componendo-dividendo</h6>
+        <p>When CAT gives this exact form, the identity (a+b)/(a−b) = (c+d)/(c−d) collapses three lines of algebra to one.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 11 · ORDER</span>
+        <h6>A : B is not B : A</h6>
+        <p>Read the problem statement carefully. Re-read to confirm the order of the requested answer.</p>
+      </div>
+      <div class="tip-card">
+        <span class="t-num">TIP 12 · VERIFY</span>
+        <h6>Plug back into the original constraint</h6>
+        <p>After solving for k, substitute back to check the ratio still holds. Catches sign errors.</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">7.1</span>Five traps</h3>
+
+    <div class="note warn">
+      <p><strong>Trap 1 — Adding ratios.</strong> "A : B = 2 : 3 and C : D = 4 : 5. Find (A+C) : (B+D)." Students answer 6 : 8 = 3 : 4. Wrong, unless A=C and B=D in absolute terms, which is not given.</p>
+    </div>
+
+    <div class="note warn">
+      <p><strong>Trap 2 — Reversing the direction of variation.</strong> "Y varies inversely as X" doesn't mean Y = −X or Y = 1 − X. It means Y = k/X.</p>
+    </div>
+
+    <div class="note warn">
+      <p><strong>Trap 3 — Forgetting the power.</strong> "Varies as the square of" means Y = kX². Treating it as Y = kX gives wrong answers in elite variation problems.</p>
+    </div>
+
+    <div class="note warn">
+      <p><strong>Trap 4 — Wrong order in answer.</strong> Problem asks "A's share to B's share", student gives B : A. Always re-read.</p>
+    </div>
+
+    <div class="note warn">
+      <p><strong>Trap 5 — Mismatched scaling in multi-quantity ratios.</strong> Trying to combine A : B = 2 : 3 and B : C = 4 : 5 by lining them up directly. Must rescale to match B.</p>
+    </div>
+
+    <h3><span class="h-num">7.2</span>The two-minute checklist</h3>
+    <ol>
+      <li>Read twice. Identify the quantities and the relationship.</li>
+      <li>Write each ratio in k-multiplier form (A = 3k, B = 4k, etc.).</li>
+      <li>Translate every additional condition into an equation in k.</li>
+      <li>For multi-quantity ratios, chain by matching common terms.</li>
+      <li>For variation, identify direct vs inverse, set Y = kX (or k/X), solve for k.</li>
+      <li>Plug k back; verify the original ratio holds.</li>
+      <li>Re-read the question; answer in the order asked.</li>
+    </ol>
+
+    <div class="section-end">
+      <span>End of Module 07 · Tactics</span>
+      <span>→ next: Worked Problem Bank</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 8 — PROBLEM BANK ====== -->
+  <section class="section" id="m8">
+    <header class="section-header">
+      <div class="module-meta">Module 08 · Problem Bank</div>
+      <h1 class="section-title">Twenty-five<br>worked<br><em>problems</em>.</h1>
+      <p class="section-deck">Sequenced easy to elite. Anchored on verified CAT 2023 (coin collectors) and CAT 2024 (fruit-seller, Rajesh-Garima ages) problems with classical patterns interleaved.</p>
+    </header>
+
+    <h3><span class="h-num">8.1</span>Easy tier — fluency check</h3>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q1 · Basic division</span><span class="q-tag easy">Easy</span></div>
+      <div class="q-body"><p>Divide Rs. 2,100 between A and B in the ratio 4 : 3.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Total parts = 7. A = 2100 × 4/7 = 1200. B = 900.</div>
+        <div class="ans-line"><strong>Answer</strong>A = <strong style="color:#fff;font-family:Fraunces">Rs. 1,200</strong>; B = Rs. 900</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q2 · Ratio with difference</span><span class="q-tag easy">Easy</span></div>
+      <div class="q-body"><p>The ratio of two numbers is 5 : 8. Their difference is 24. Find the larger number.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Numbers are 5k and 8k. Difference 3k = 24 ⟹ k = 8. Larger = 64.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">64</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q3 · Mean proportional</span><span class="q-tag easy">Easy</span></div>
+      <div class="q-body"><p>Find the mean proportional between 9 and 25.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>√(9 × 25) = √225 = 15.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">15</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q4 · Direct variation</span><span class="q-tag easy">Easy</span></div>
+      <div class="q-body"><p>If 8 kg of sugar costs Rs. 240, what is the cost of 15 kg of sugar?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Cost per kg = 30. 15 kg = 450.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">Rs. 450</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q5 · Inverse variation</span><span class="q-tag easy">Easy</span></div>
+      <div class="q-body"><p>15 workers can build a wall in 8 days. How many days will 20 workers take to build the same wall?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Inverse variation: 15 × 8 = 20 × t ⟹ t = 120/20 = 6 days.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">6 days</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.2</span>Medium tier — exam-grade</h3>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q6 · Ratio shift after event</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>The ratio of two numbers is 3 : 5. If 8 is added to each, the ratio becomes 5 : 7. Find the two numbers.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Numbers 3k and 5k. After: (3k + 8)/(5k + 8) = 5/7 ⟹ 7(3k + 8) = 5(5k + 8) ⟹ 21k + 56 = 25k + 40 ⟹ 4k = 16 ⟹ k = 4. Numbers: 12 and 20.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">12 and 20</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q7 · Compound ratio</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>A : B = 2 : 3 and B : C = 5 : 7. Find A : B : C.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Scale A : B by 5 → 10 : 15. Scale B : C by 3 → 15 : 21. So A : B : C = 10 : 15 : 21.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">10 : 15 : 21</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q8 · Ages backward and forward</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>5 years ago, the ratio of A's age to B's age was 3 : 4. 5 years hence, it will be 5 : 6. Find their present ages.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">SETUP</span>Let present ages be A and B.<br>5 years ago: (A − 5)/(B − 5) = 3/4 ⟹ 4A − 20 = 3B − 15 ⟹ 4A − 3B = 5.<br>5 years hence: (A + 5)/(B + 5) = 5/6 ⟹ 6A + 30 = 5B + 25 ⟹ 6A − 5B = −5.</div>
+        <div class="step"><span class="step-num">SOLVE</span>From first: 4A − 3B = 5. From second: 6A − 5B = −5. Multiply first by 5: 20A − 15B = 25. Multiply second by 3: 18A − 15B = −15. Subtract: 2A = 40 ⟹ A = 20. Then B = (4×20 − 5)/3 = 25.</div>
+        <div class="ans-line"><strong>Answer</strong>A = <strong style="color:#fff;font-family:Fraunces">20</strong>, B = <strong style="color:#fff;font-family:Fraunces">25</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q9 · Joint variation</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>The volume of a gas varies directly as its temperature and inversely as its pressure. If V = 240 when T = 60 and P = 5, find V when T = 90 and P = 8.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>V = kT/P. 240 = k × 60/5 = 12k ⟹ k = 20. New V = 20 × 90/8 = 225.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">225</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q10 · Partnership profit</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>A and B invest Rs. 25,000 and Rs. 30,000 respectively in a business. After 6 months, A withdraws Rs. 5,000. At the end of the year, the profit is Rs. 13,440. Find A's share.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>A: 25000 × 6 + 20000 × 6 = 150,000 + 120,000 = 270,000. B: 30000 × 12 = 360,000. Ratio = 27 : 36 = 3 : 4. A's share = 13,440 × 3/7 = 5,760.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">Rs. 5,760</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q11 · Three-quantity split with constraint</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>Three numbers in the ratio 2 : 3 : 5 have a sum of 200. What is the largest number?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Total parts = 10. Each part = 20. Largest = 5 × 20 = 100.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">100</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q12 · Diamond breaking</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>The cost of a diamond varies as the square of its weight. A diamond worth Rs. 25,600 breaks into two pieces in the ratio 3 : 5. What is the loss?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Original: weight W, cost kW² = 25600.<br>Pieces: 3W/8 and 5W/8. Costs: k(3W/8)² = 9kW²/64 and k(5W/8)² = 25kW²/64. Total = 34kW²/64 = 34/64 × 25600 = 13600.<br>Loss = 25600 − 13600 = 12000.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">Rs. 12,000</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q13 · Compound proportion</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>If 12 workers can build a wall 100 m long in 8 days, how many workers are needed to build a wall 200 m long in 10 days?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Workers × Days ∝ Length. 12 × 8 / 100 = W × 10 / 200 ⟹ W = 12 × 8 × 200 / (100 × 10) = 19.2 ≈ 20.</div>
+        <div class="ans-line"><strong>Answer</strong>About <strong style="color:#fff;font-family:Fraunces">20 workers</strong> (19.2 strictly)</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q14 · Percentage of mixture from ratio</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>If the ratio of milk to water in a 50-litre mixture is 4 : 1, how much water must be added to make the ratio 4 : 3?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Milk = 40 L, water = 10 L. Adding water conserves milk. New ratio milk : water = 4 : 3, so milk = 4 parts and 4 parts = 40 L ⟹ each part = 10 ⟹ new water = 30 L. Added = 20 L.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">20 L</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q15 · Fourth proportional</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>Find the fourth proportional to 8, 12, and 18.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>8 : 12 = 18 : x ⟹ 8x = 12 × 18 ⟹ x = 27.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">27</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.3</span>Hard tier — exam top-quartile</h3>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q16 · CAT 2024 — Rajesh and Garima ages</span><span class="q-tag hard">Hard</span></div>
+      <div class="q-body"><p>When Rajesh's age was the same as Garima's present age, the ratio of their ages was 3 : 2. When Garima's age becomes the same as Rajesh's present age, what will be the ratio of Rajesh's age to Garima's age?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">SETUP</span>R now, G now. Past: Rajesh was G (which is R − G years ago). Then Garima was 2G − R. Ratio = G/(2G − R) = 3/2 ⟹ 2G = 6G − 3R ⟹ R = 4G/3, so R : G = 4 : 3.</div>
+        <div class="step"><span class="step-num">FUTURE</span>When Garima reaches R, that's R − G = k years hence (where R = 4k, G = 3k). Then Rajesh = 5k, Garima = 4k. Ratio = 5 : 4.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">5 : 4</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q17 · Three-number ratio with constraint</span><span class="q-tag hard">Hard</span></div>
+      <div class="q-body"><p>Three numbers a, b, c are such that a : b = 3 : 5 and b : c = 4 : 7. If a + b + c = 207, find b.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">CHAIN</span>Scale a : b by 4 → 12 : 20. Scale b : c by 5 → 20 : 35. So a : b : c = 12 : 20 : 35. Total parts = 67.</div>
+        <div class="step"><span class="step-num">COMPUTE</span>Each part = 207/67 ≈ 3.09 ⟹ b = 20 × 207/67 ≈ 61.8 (assuming non-integer values allowed). If integer constraint, the problem has no exact integer solution at this total; closest "neat" total would be 67k for integer k.</div>
+        <div class="ans-line"><strong>Answer</strong>b ≈ <strong style="color:#fff;font-family:Fraunces">61.8</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q18 · Componendo-dividendo</span><span class="q-tag hard">Hard</span></div>
+      <div class="q-body"><p>If (3a + 2b)/(3a − 2b) = 11/7, find a/b.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>(3a + 2b)/(3a − 2b) = 11/7. Apply componendo-dividendo in reverse: 3a/(2b) = (11 + 7)/(11 − 7) = 18/4 = 9/2 ⟹ a/b = 9/2 × 2/3 = 3.</div>
+        <div class="ans-line"><strong>Answer</strong>a/b = <strong style="color:#fff;font-family:Fraunces">3</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q19 · Variation with reverse direction</span><span class="q-tag hard">Hard</span></div>
+      <div class="q-body"><p>The time taken by a swimmer to swim a fixed distance varies directly with the distance and inversely with his speed. If he doubles his speed and the distance is also increased by 50%, what fraction of the original time will the new swim take?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>T = kd/s. New T' = k × 1.5d / (2s) = 0.75 × kd/s = 0.75 T. So 3/4.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">3/4</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q20 · Partnership with time-shift</span><span class="q-tag hard">Hard</span></div>
+      <div class="q-body"><p>A starts a business with Rs. 50,000. After 3 months, B joins with Rs. 75,000. After another 6 months, C joins with Rs. 100,000. At the end of the year, the total profit is Rs. 70,000. Find C's share.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">CAPITAL × TIME</span>A: 50000 × 12 = 600,000. B: 75000 × 9 = 675,000. C: 100000 × 3 = 300,000.<br>Ratio = 6 : 6.75 : 3 = 24 : 27 : 12 = 8 : 9 : 4. Total = 21.</div>
+        <div class="step"><span class="step-num">COMPUTE</span>C's share = 70,000 × 4/21 ≈ 13,333.</div>
+        <div class="ans-line"><strong>Answer</strong>≈ <strong style="color:#fff;font-family:Fraunces">Rs. 13,333</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.4</span>Elite tier — top percentile</h3>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q21 · CAT 2023 — coin collectors</span><span class="q-tag elite">Elite</span></div>
+      <div class="q-body"><p>A and B collect coins weekly in the ratio 3 : 4. A's total over 5 weeks is a multiple of 7; B's total over 3 weeks is a multiple of 24. Find the minimum weekly coins for A.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>A = 3x, B = 4x weekly. 15x divisible by 7 ⟹ x divisible by 7. 12x divisible by 24 ⟹ x divisible by 2. Min x = 14. A = 42.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">42</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q22 · CAT 2024 — fruit seller</span><span class="q-tag elite">Elite</span></div>
+      <div class="q-body"><p>A fruit seller has 187 fruits (apples, mangoes, oranges). Apples : mangoes = 5 : 2. She sells 75 apples, 26 mangoes, half the oranges. Unsold apples : unsold oranges = 3 : 2. Find total unsold.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">SETUP</span>Apples = 5x, Mangoes = 2x, Oranges = 187 − 7x. Unsold apples = 5x − 75, unsold mangoes = 2x − 26, unsold oranges = (187 − 7x)/2.</div>
+        <div class="step"><span class="step-num">CONSTRAINT</span>(5x − 75) / ((187 − 7x)/2) = 3/2 ⟹ 4(5x − 75) = 3(187 − 7x) ⟹ 20x − 300 = 561 − 21x ⟹ 41x = 861 ⟹ x = 21.</div>
+        <div class="step"><span class="step-num">TOTAL UNSOLD</span>Apples 30 + Mangoes 16 + Oranges 20 = 66.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">66</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q23 · Five-quantity chain</span><span class="q-tag elite">Elite</span></div>
+      <div class="q-body"><p>A : B = 2 : 3, B : C = 4 : 5, C : D = 3 : 4, D : E = 2 : 1. Find A : E.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">CHAIN</span>A/E = (A/B)(B/C)(C/D)(D/E) = (2/3)(4/5)(3/4)(2/1) = (2 × 4 × 3 × 2)/(3 × 5 × 4 × 1) = 48/60 = 4/5. So A : E = 4 : 5.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">4 : 5</strong></div>
+        <p style="margin-top:14px;font-style:italic;color:var(--ink-faint)">Teaching note: multi-quantity chains can be computed by direct multiplication of the fractional forms. No need to build the full ratio if only the endpoint ratio is wanted.</p>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q24 · Diamond breakage three pieces</span><span class="q-tag elite">Elite</span></div>
+      <div class="q-body"><p>A diamond worth Rs. 200,000 (whose value varies as the square of its weight) breaks into three pieces in the ratio 1 : 2 : 3. Find the loss in value.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Pieces are W/6, 2W/6 = W/3, 3W/6 = W/2 of original weight W. Squared: W²/36, 4W²/36, 9W²/36. Total = 14W²/36 = 7W²/18. So fraction retained = 7/18.<br>Loss fraction = 11/18. Loss = 200,000 × 11/18 ≈ 122,222.</div>
+        <div class="ans-line"><strong>Answer</strong>≈ <strong style="color:#fff;font-family:Fraunces">Rs. 1,22,222</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q25 · Capstone — Anjali, Mohan, Rama</span><span class="q-tag elite">Elite</span></div>
+      <div class="q-body"><p>In an examination, Rama's score was one-twelfth of the sum of Mohan's and Anjali's scores. After review, each scored 6 more. The revised scores of Anjali, Mohan, and Rama were in the ratio 11 : 10 : 3. By how much did Anjali's score exceed Rama's?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">SETUP</span>Revised scores: Anjali = 11x, Mohan = 10x, Rama = 3x.<br>Original: Anjali − 6 = 11x − 6, Mohan − 6 = 10x − 6, Rama − 6 = 3x − 6.</div>
+        <div class="step"><span class="step-num">CONSTRAINT</span>Rama (original) = (Mohan + Anjali) (original) / 12<br>3x − 6 = (11x − 6 + 10x − 6)/12 = (21x − 12)/12<br>12(3x − 6) = 21x − 12<br>36x − 72 = 21x − 12 ⟹ 15x = 60 ⟹ x = 4.</div>
+        <div class="step"><span class="step-num">FINAL</span>Revised Anjali = 44, Rama = 12. Difference = 32.</div>
+        <div class="ans-line"><strong>Answer</strong>Anjali exceeded Rama by <strong style="color:#fff;font-family:Fraunces">32 marks</strong></div>
+      </div>
+    </div>
+
+    <div class="section-end">
+      <span>End of Module 08 · Problem Bank</span>
+      <span>→ next: Reference Sheet</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 9 — REFERENCE ====== -->
+  <section class="section" id="m9">
+    <header class="section-header">
+      <div class="module-meta">Module 09 · Reference</div>
+      <h1 class="section-title">The <em>one-page</em><br>reference<br>sheet.</h1>
+      <p class="section-deck">Everything in this codex distilled. Photocopy; tape into the notebook; review before every mock.</p>
+    </header>
+
+    <h3><span class="h-num">9.1</span>Core definitions</h3>
+    <div class="formula">
+      <span class="label">Ratio &amp; Multiplier</span>
+      A : B = a : b means A = ak, B = bk for some k &gt; 0.<br>
+      Total parts = a + b. Each part = total/(a+b).
+    </div>
+    <div class="formula">
+      <span class="label">Proportion</span>
+      a : b = c : d ⟺ ad = bc<br>
+      Mean proportional of a, c: <span class="eq">b = √(ac)</span><br>
+      Fourth proportional to a, b, c: <span class="eq">d = bc/a</span>
+    </div>
+
+    <h3><span class="h-num">9.2</span>Variation identities</h3>
+    <div class="formula">
+      <span class="label">Variation Formulas</span>
+      Direct: <span class="eq">Y = kX</span> · <span class="eq">Y/X = constant</span><br>
+      Inverse: <span class="eq">Y = k/X</span> · <span class="eq">YX = constant</span><br>
+      Joint: <span class="eq">Y = kXZ</span> or <span class="eq">Y = kX/Z</span><br>
+      Power: <span class="eq">Y = kX<sup>n</sup></span>
+    </div>
+
+    <h3><span class="h-num">9.3</span>Manipulating ratios</h3>
+    <ul>
+      <li>To combine A : B and B : C, scale both to have the same value of B (LCM trick).</li>
+      <li>Ratios cannot be added directly.</li>
+      <li>Scaling both sides by the same factor preserves the ratio.</li>
+    </ul>
+
+    <h3><span class="h-num">9.4</span>The classical properties</h3>
+    <div class="formula">
+      <span class="label">Properties of Equal Ratios</span>
+      Alternendo: a/c = b/d<br>
+      Invertendo: b/a = d/c<br>
+      Componendo: (a + b)/b = (c + d)/d<br>
+      Dividendo: (a − b)/b = (c − d)/d<br>
+      Comp-Div: (a + b)/(a − b) = (c + d)/(c − d)
+    </div>
+
+    <h3><span class="h-num">9.5</span>Partnership formula</h3>
+    <div class="formula">
+      <span class="label">Profit Sharing</span>
+      Profit ratio ∝ Capital × Time<br>
+      <span class="eq">Share of partner i = Total profit × (Cᵢ × Tᵢ) / Σ (CⱼTⱼ)</span>
+    </div>
+
+    <h3><span class="h-num">9.6</span>The traps catalogue</h3>
+    <ul>
+      <li>Adding ratios is not allowed in general.</li>
+      <li>"Varies as the square of X" means kX², not kX.</li>
+      <li>Inverse variation means YX = k, not Y = −X.</li>
+      <li>Order matters: A : B ≠ B : A.</li>
+      <li>For integer-constrained ratios, parametrise and use divisibility.</li>
+    </ul>
+
+    <h3><span class="h-num">9.7</span>Drill sequence</h3>
+    <ol>
+      <li>Day 1: K-multiplier framing + basic partition — 60 minutes.</li>
+      <li>Day 2: Compounding multi-quantity ratios — 60 minutes.</li>
+      <li>Day 3: Proportion identities and mean proportional.</li>
+      <li>Day 4: Variation — direct, inverse, joint, power.</li>
+      <li>Day 5: Partnership, ages, ratio-shift problems.</li>
+      <li>Day 6: Problem bank easy and medium tiers.</li>
+      <li>Day 7: Hard and elite tier with CAT 2023, 2024 problems.</li>
+    </ol>
+
+    <div class="callout">
+      <strong>The ratio mantra.</strong> Every ratio is a multiplier in disguise. Write the multiplier. Solve for it. Recover the quantities. This single discipline turns the entire chapter from a maze of cross-multiplications into a sequence of one-variable linear equations.
+    </div>
+
+    <div class="section-end">
+      <span>End of Codex · Module 09</span>
+      <span>Good luck.</span>
+    </div>
+  </section>
+
+  </main>
+</div>
+
+<script>
+  const links = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('.section');
+
+  links.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = link.dataset.target;
+      links.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      sections.forEach(s => s.classList.remove('active'));
+      const targetEl = document.getElementById(target);
+      if (targetEl) {
+        targetEl.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  });
+
+  document.querySelectorAll('.toggle-sol').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sol = btn.nextElementSibling;
+      const open = sol.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.textContent = open ? 'Hide solution' : 'Show solution';
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    const activeLink = document.querySelector('.nav-link.active');
+    const allLinks = Array.from(links);
+    const idx = allLinks.indexOf(activeLink);
+    if (e.key === 'ArrowRight' && idx < allLinks.length - 1) {
+      allLinks[idx + 1].click();
+    } else if (e.key === 'ArrowLeft' && idx > 0) {
+      allLinks[idx - 1].click();
+    }
+  });
+</script>
+
+</body>
+</html>

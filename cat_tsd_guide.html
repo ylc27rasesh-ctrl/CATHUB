@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The CAT Time, Speed &amp; Distance Codex — A Teaching Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3ead8;
+  --paper-2:#e8dcc3;
+  --ink:#181a2c;
+  --ink-soft:#363a4d;
+  --ink-faint:#666c80;
+  --indigo:#2e3d75;
+  --indigo-deep:#1c2851;
+  --copper:#b8632b;
+  --copper-soft:#d18a52;
+  --ochre:#c89b3c;
+  --olive:#5a6b3e;
+  --teal:#1f6b6b;
+  --rust:#a23f24;
+  --rule:#c2b497;
+  --rule-soft:#d7c9aa;
+  --highlight:#fff1bf;
+  --shadow:0 1px 0 rgba(24,26,44,.06), 0 2px 6px rgba(24,26,44,.04);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Fraunces',Georgia,serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.65;
+  font-size:17px;
+  background-image:
+    radial-gradient(circle at 14% 14%, rgba(46,61,117,.05) 0%, transparent 42%),
+    radial-gradient(circle at 86% 80%, rgba(184,99,43,.05) 0%, transparent 45%);
+  min-height:100vh;
+}
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .32 0 0 0 0 .26 0 0 0 0 .19 0 0 0 .04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:1;opacity:.55;
+}
+
+.layout{display:grid;grid-template-columns:280px 1fr;min-height:100vh;position:relative;z-index:2}
+@media (max-width:980px){.layout{grid-template-columns:1fr}.sidebar{position:static!important;height:auto!important;border-right:none!important;border-bottom:2px solid var(--ink)}}
+
+.sidebar{position:sticky;top:0;height:100vh;border-right:1px solid var(--rule);background:linear-gradient(180deg,var(--paper-2) 0%,var(--paper) 100%);padding:32px 26px 24px;overflow-y:auto;display:flex;flex-direction:column}
+.back-link{display:inline-flex;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--ink-faint);text-decoration:none;padding-bottom:18px;margin-bottom:18px;border-bottom:1px dotted var(--rule);transition:color .2s ease, gap .2s ease}
+.back-link::before{content:"←";font-size:14px;transition:transform .2s ease}
+.back-link:hover{color:var(--indigo);gap:12px}
+.back-link:hover::before{transform:translateX(-3px)}
+.brand{border-bottom:2px solid var(--ink);padding-bottom:22px;margin-bottom:24px}
+.brand-eyebrow{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--indigo);font-weight:600;margin-bottom:8px}
+.brand-title{font-family:'Fraunces',serif;font-weight:900;font-size:28px;line-height:1;letter-spacing:-.02em}
+.brand-title em{font-style:italic;font-weight:400;color:var(--indigo);font-size:24px}
+.brand-sub{font-family:'Inter',sans-serif;font-size:11px;color:var(--ink-faint);margin-top:10px;letter-spacing:.05em}
+.companion-tag{margin-top:14px;padding:6px 10px;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--copper);background:rgba(184,99,43,.10);border-left:2px solid var(--copper)}
+.nav-label{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:10px}
+.nav-list{list-style:none;font-family:'Inter',sans-serif;flex:1}
+.nav-list li{position:relative;border-bottom:1px dotted var(--rule)}
+.nav-list li:last-child{border-bottom:none}
+.nav-list a{display:flex;align-items:baseline;gap:10px;padding:11px 0 11px 8px;text-decoration:none;color:var(--ink-soft);font-size:13.5px;font-weight:500;transition:all .2s ease}
+.nav-list a:hover{color:var(--indigo);padding-left:14px}
+.nav-list a.active{color:var(--ink);font-weight:600;padding-left:14px}
+.nav-list a.active::before{content:"";position:absolute;left:0;top:50%;width:5px;height:5px;background:var(--indigo);border-radius:50%;transform:translateY(-50%)}
+.nav-num{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-faint);font-weight:400;min-width:24px}
+.nav-list a.active .nav-num{color:var(--indigo)}
+.sidebar-footer{margin-top:22px;padding-top:18px;border-top:1px solid var(--rule);font-family:'Inter',sans-serif;font-size:10.5px;color:var(--ink-faint);letter-spacing:.04em}
+
+.main{padding:48px 64px 96px;max-width:1080px}
+@media (max-width:980px){.main{padding:32px 22px 64px}}
+.section{display:none;animation:fadeUp .4s ease}
+.section.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.section-header{border-bottom:2px solid var(--ink);padding-bottom:28px;margin-bottom:42px;position:relative}
+.module-meta{display:flex;align-items:center;gap:16px;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--indigo);font-weight:600;margin-bottom:14px}
+.module-meta::after{content:"";flex:1;height:1px;background:var(--rule)}
+.section-title{font-family:'Fraunces',serif;font-weight:900;font-size:56px;line-height:1;letter-spacing:-.035em;margin-bottom:14px;color:var(--ink)}
+.section-title em{font-style:italic;font-weight:400;color:var(--indigo)}
+.section-deck{font-family:'Fraunces',serif;font-style:italic;font-size:21px;line-height:1.5;color:var(--ink-soft);max-width:680px;font-weight:400}
+
+h3{font-family:'Fraunces',serif;font-weight:700;font-size:30px;line-height:1.15;letter-spacing:-.02em;margin:42px 0 18px;color:var(--ink);border-bottom:1px solid var(--rule);padding-bottom:8px;display:flex;align-items:baseline;gap:14px}
+h3 .h-num{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--indigo);font-weight:500;letter-spacing:.05em}
+h4{font-family:'Fraunces',serif;font-weight:600;font-size:22px;margin:32px 0 12px;color:var(--ink);letter-spacing:-.01em}
+h5{font-family:'Inter',sans-serif;font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--indigo);margin:24px 0 10px}
+p{margin:0 0 16px;font-size:17.5px}
+p.lede{font-size:20px;line-height:1.55;color:var(--ink-soft);margin-bottom:24px}
+strong{color:var(--ink);font-weight:600}
+em{color:var(--ink-soft)}
+ul,ol{margin:8px 0 18px 22px}
+li{margin-bottom:8px}
+code{font-family:'JetBrains Mono',monospace;font-size:.88em;background:rgba(46,61,117,.10);padding:1px 6px;border-radius:3px;color:var(--indigo-deep)}
+.kbd-math{font-family:'JetBrains Mono',monospace;font-size:15px;background:rgba(24,26,44,.05);padding:2px 8px;border-radius:3px;display:inline-block;border:1px solid var(--rule-soft)}
+
+.callout{border-left:3px solid var(--indigo);background:linear-gradient(90deg,rgba(46,61,117,.06),transparent);padding:18px 22px;margin:24px 0;font-family:'Fraunces',serif;font-style:italic;font-size:18px;line-height:1.5;color:var(--ink-soft)}
+.callout strong{font-style:normal;color:var(--indigo-deep)}
+
+.note{background:var(--paper-2);border:1px solid var(--rule);border-radius:2px;padding:18px 22px;margin:22px 0;position:relative}
+.note::before{content:"NOTE";position:absolute;top:-10px;left:18px;background:var(--paper);padding:0 8px;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.22em;color:var(--ink-faint);font-weight:600}
+.note.tip::before{content:"TIP";color:var(--olive)}
+.note.tip{border-color:var(--olive);background:rgba(90,107,62,.07)}
+.note.warn::before{content:"WATCH OUT";color:var(--rust)}
+.note.warn{border-color:var(--rust);background:rgba(162,63,36,.05)}
+
+.formula{background:#fbf6ec;border:1px solid var(--rule);border-left:4px solid var(--copper);padding:20px 24px;margin:20px 0;font-family:'Fraunces',serif;font-size:19px;line-height:1.7;position:relative;box-shadow:var(--shadow)}
+.formula .label{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--copper);font-weight:700;margin-bottom:6px;display:block}
+.formula .eq{font-family:'JetBrains Mono',monospace;font-size:16px;background:rgba(0,0,0,.04);padding:8px 14px;border-radius:2px;display:inline-block;margin:6px 0;font-weight:500;color:var(--ink)}
+
+.recip-table{width:100%;border-collapse:collapse;font-family:'JetBrains Mono',monospace;font-size:14px;margin:20px 0;background:#fbf6ec;border:1px solid var(--rule)}
+.recip-table th, .recip-table td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--rule-soft)}
+.recip-table th{background:var(--ink);color:var(--paper);font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600}
+.recip-table tr:hover{background:rgba(46,61,117,.05)}
+.recip-table td:first-child{font-weight:600;color:var(--indigo-deep)}
+
+.q-card{background:#fdfaf2;border:1px solid var(--rule);border-radius:2px;margin:24px 0;box-shadow:var(--shadow);overflow:hidden}
+.q-head{background:var(--ink);color:var(--paper);padding:14px 22px;display:flex;justify-content:space-between;align-items:center;font-family:'Inter',sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.q-tag{display:inline-block;padding:3px 10px;border-radius:2px;font-size:10px;letter-spacing:.15em}
+.q-tag.easy{background:var(--olive);color:#f5efe4}
+.q-tag.med{background:var(--ochre);color:#1a2332}
+.q-tag.hard{background:var(--indigo);color:#f5efe4}
+.q-tag.elite{background:var(--indigo-deep);color:#f5efe4}
+.q-body{padding:20px 24px 8px;font-size:17px;line-height:1.6}
+.q-body p{margin-bottom:10px}
+.q-options{font-family:'Fraunces',serif;margin:10px 0 0 0;list-style:none;padding:0}
+.q-options li{padding:4px 0 4px 28px;position:relative}
+.q-options li::before{content:attr(data-opt);font-family:'JetBrains Mono',monospace;position:absolute;left:0;top:4px;width:20px;height:20px;background:var(--paper-2);border:1px solid var(--rule);border-radius:50%;text-align:center;font-size:11px;font-weight:600;line-height:18px;color:var(--ink-soft)}
+.toggle-sol{width:100%;background:var(--paper-2);border:none;border-top:1px dashed var(--rule);padding:12px 24px;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--indigo);cursor:pointer;text-align:left;display:flex;justify-content:space-between;align-items:center;transition:background .2s ease}
+.toggle-sol:hover{background:rgba(46,61,117,.10)}
+.toggle-sol::after{content:"▾";font-size:14px;transition:transform .25s ease}
+.toggle-sol.open::after{transform:rotate(180deg)}
+.sol{display:none;padding:20px 26px 26px;background:var(--paper-2);border-top:1px solid var(--rule);font-size:16.5px;line-height:1.65}
+.sol.open{display:block;animation:fadeUp .25s ease}
+.sol .ans-line{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--ink);color:var(--paper);border-radius:2px;margin-top:14px;font-family:'Fraunces',serif;font-size:17px}
+.sol .ans-line strong{color:var(--copper-soft);font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.sol p{margin-bottom:12px}
+.sol .step{border-left:2px solid var(--rule);padding-left:14px;margin:10px 0}
+.sol .step-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--indigo);font-weight:600;letter-spacing:.05em;display:block;margin-bottom:3px}
+
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:36px 0 8px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+@media (max-width:760px){.stat-grid{grid-template-columns:repeat(2,1fr)}}
+.stat{padding:22px 18px;border-right:1px solid var(--rule);text-align:left}
+.stat:last-child{border-right:none}
+@media (max-width:760px){.stat:nth-child(2){border-right:none}.stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--rule)}}
+.stat-num{font-family:'Fraunces',serif;font-weight:900;font-size:44px;line-height:.9;letter-spacing:-.03em;color:var(--indigo)}
+.stat-num span{font-size:22px;color:var(--ink-soft);font-weight:400}
+.stat-label{font-family:'Inter',sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-top:8px;font-weight:600}
+
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:24px 0;border:1px solid var(--rule)}
+@media (max-width:760px){.compare{grid-template-columns:1fr}}
+.compare > div{padding:18px 22px}
+.compare > div:first-child{border-right:1px solid var(--rule);background:rgba(184,99,43,.05)}
+.compare > div:last-child{background:rgba(46,61,117,.05)}
+@media (max-width:760px){.compare > div:first-child{border-right:none;border-bottom:1px solid var(--rule)}}
+.compare h5{margin-top:0}
+
+.section-end{margin-top:56px;padding-top:24px;border-top:2px solid var(--ink);font-family:'Fraunces',serif;font-style:italic;font-size:15px;color:var(--ink-faint);display:flex;justify-content:space-between}
+
+.dropcap{font-family:'Fraunces',serif;font-weight:900;font-size:64px;line-height:.85;float:left;padding:6px 12px 0 0;color:var(--indigo)}
+
+.tips-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:24px 0}
+@media (max-width:760px){.tips-grid{grid-template-columns:1fr}}
+.tip-card{background:#fbf6ec;border:1px solid var(--rule);border-top:3px solid var(--copper);padding:20px 22px;position:relative}
+.tip-card .t-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--copper);letter-spacing:.1em;font-weight:600}
+.tip-card h6{font-family:'Fraunces',serif;font-size:19px;font-weight:700;margin:4px 0 10px;color:var(--ink)}
+.tip-card p{font-size:15.5px;margin-bottom:0;line-height:1.55}
+
+.drill{background:var(--ink);color:var(--paper);padding:24px 28px;margin:24px 0;border-radius:2px}
+.drill h5{color:var(--copper-soft);margin-top:0}
+.drill p{color:var(--paper);font-family:'Fraunces',serif;font-size:17px}
+.drill code{background:rgba(243,234,216,.1);color:var(--copper-soft)}
+
+.tsd-svg{display:block;margin:24px auto;max-width:560px;width:100%;height:auto;background:#fbf6ec;border:1px solid var(--rule);padding:20px}
+
+a.inline{color:var(--indigo);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+a.inline:hover{color:var(--indigo-deep)}
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <a href="index.html" class="back-link">Back to series</a>
+    <div class="brand">
+      <div class="brand-eyebrow">Quantitative Aptitude · CAT Prep</div>
+      <div class="brand-title">The <em>Time, Speed<br>&amp; Distance</em><br>Codex</div>
+      <div class="brand-sub">A teacher's companion · 9 modules · 25 worked problems</div>
+      <div class="companion-tag">Companion · Vol. VI</div>
+    </div>
+
+    <div class="nav-label">Modules</div>
+    <ul class="nav-list">
+      <li><a href="#m0" class="nav-link active" data-target="m0"><span class="nav-num">00</span>Orientation</a></li>
+      <li><a href="#m1" class="nav-link" data-target="m1"><span class="nav-num">01</span>The Triangle of Motion</a></li>
+      <li><a href="#m2" class="nav-link" data-target="m2"><span class="nav-num">02</span>Relative Speed</a></li>
+      <li><a href="#m3" class="nav-link" data-target="m3"><span class="nav-num">03</span>Trains, Length &amp; Crossings</a></li>
+      <li><a href="#m4" class="nav-link" data-target="m4"><span class="nav-num">04</span>Boats &amp; Streams</a></li>
+      <li><a href="#m5" class="nav-link" data-target="m5"><span class="nav-num">05</span>Circular Motion &amp; Races</a></li>
+      <li><a href="#m6" class="nav-link" data-target="m6"><span class="nav-num">06</span>Average Speed &amp; Variable Motion</a></li>
+      <li><a href="#m7" class="nav-link" data-target="m7"><span class="nav-num">07</span>Tips, Tricks &amp; Pitfalls</a></li>
+      <li><a href="#m8" class="nav-link" data-target="m8"><span class="nav-num">08</span>Worked Problem Bank</a></li>
+      <li><a href="#m9" class="nav-link" data-target="m9"><span class="nav-num">09</span>Reference Sheet</a></li>
+    </ul>
+
+    <div class="sidebar-footer">
+      Prepared for classroom delivery.<br>
+      All worked problems carry full reasoning.<br>
+      <span style="color:var(--indigo)">⬤</span> Tap any solution to expand.
+    </div>
+  </aside>
+
+  <main class="main">
+
+  <!-- MODULE 0 -->
+  <section class="section active" id="m0">
+    <header class="section-header">
+      <div class="module-meta">Module 00 · Orientation</div>
+      <h1 class="section-title">The <em>most-tested</em><br>arithmetic chapter<br>in CAT.</h1>
+      <p class="section-deck">A teacher's overview. Time, Speed and Distance produces three to four CAT questions every year — more than any other arithmetic topic. The technique surface is wider than most chapters, but the underlying mental model is just one triangle.</p>
+    </header>
+
+    <p class="lede"><span class="dropcap">T</span>SD is the chapter that punishes weak fundamentals more than any other in the arithmetic block. The formula <em>distance = speed × time</em> is grade-school level. But CAT setters layer the formula with relative motion, lengthy trains, downstream-upstream complications, circular tracks, and meeting-time twists — each producing recognizable archetypes that only fluency unlocks. Strong TSD students are almost always strong CAT students. Weak TSD students rarely break the 95th percentile.</p>
+
+    <p>The technique surface includes: <strong>basic triangle</strong> (Module 1), <strong>relative speed</strong> (Module 2), <strong>trains and crossings</strong> (Module 3), <strong>boats and streams</strong> (Module 4), <strong>circular tracks</strong> (Module 5), and <strong>average and variable speed</strong> (Module 6). Six modules, each a self-contained sub-topic. Drill them in order.</p>
+
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="stat-num">3–4</div>
+        <div class="stat-label">Direct questions per CAT</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">15<span>%</span></div>
+        <div class="stat-label">Of QA section</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">6</div>
+        <div class="stat-label">Sub-topics to master</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">Mod–Hard</div>
+        <div class="stat-label">Typical difficulty</div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">0.1</span>How to use this codex in class</h3>
+
+    <p>The nine modules are sequenced for an <strong>8–10 hour block</strong>. Module 1 is the foundational triangle. Modules 2 through 6 cover the five major application contexts. Each is partially independent — once Module 1 is solid, a teacher can dip into any later module by topic. Module 7 collects tactics, Module 8 is the question bank, Module 9 is the wall poster.</p>
+
+    <div class="callout">
+      <strong>Teaching philosophy.</strong> Every TSD problem is a triangle: <em>speed × time = distance</em>. Three quantities, three equations, one unknown. Reveal the triangle in every problem you teach. The complexity of CAT TSD problems comes from <em>which</em> triangle is being asked about (the train? the man? the relative motion?) — never from new physics. Identify the right triangle, write its three sides, solve.
+    </div>
+
+    <h3><span class="h-num">0.2</span>What the CAT actually asks</h3>
+
+    <ul>
+      <li><strong>Direct distance/speed/time computation.</strong> Find the third given the other two. Five seconds.</li>
+      <li><strong>Two travelers meeting head-on.</strong> Relative speed addition. CAT 2024 Anil-Sunil at 45 km is this archetype.</li>
+      <li><strong>Two travelers chasing.</strong> Relative speed subtraction.</li>
+      <li><strong>Trains crossing each other or a pole or a platform.</strong> Length matters. Crossing-time problems are mechanical once the framework is in place.</li>
+      <li><strong>Boats in still water vs streams.</strong> Downstream = boat + stream; upstream = boat − stream. CAT 2024 had two boats with constant water flow.</li>
+      <li><strong>Circular tracks.</strong> Meeting points, first meetings, when do they meet again at the start?</li>
+      <li><strong>Average speed (with equal distances).</strong> Harmonic mean — already met in Volume II.</li>
+      <li><strong>Bus/train/man arriving early or late.</strong> Two-scenario problems with shared distance.</li>
+      <li><strong>Meeting-then-completing problems.</strong> "After meeting, A takes a hours, B takes b hours." The √(a/b) speed-ratio trick.</li>
+    </ul>
+
+    <div class="note tip">
+      <p style="margin:0"><strong>Classroom diagnostic in two minutes.</strong> Ask: <em>"A train 200 m long, running at 72 km/h, crosses a man walking at 18 km/h in the same direction. How long does it take?"</em> The fluent student converts speeds to m/s (72 → 20, 18 → 5), computes relative speed (20 − 5 = 15), divides length by relative speed (200/15 ≈ 13.33 s). Forty seconds. The struggling student leaves units in km/h, gets entangled. Use the diagnostic to gauge module-2 readiness.</p>
+    </div>
+
+    <h3><span class="h-num">0.3</span>Unit conversions — the silent killer</h3>
+
+    <p>Most TSD errors come from mismatched units. Train length in metres, speed in km/h, time in seconds. Convert everything to a consistent system before computing. The most useful conversion to memorise:</p>
+
+    <div class="formula">
+      <span class="label">The Conversion Identity</span>
+      <span class="eq">1 km/h = 5/18 m/s</span><br>
+      <span class="eq">1 m/s = 18/5 km/h = 3.6 km/h</span><br><br>
+      So 72 km/h = 72 × 5/18 = 20 m/s.
+    </div>
+
+    <p>Train problems live almost entirely in metres and seconds. Long-distance problems live in km and hours. Convert at the start; never midway.</p>
+
+    <div class="section-end">
+      <span>End of Module 00 · Orientation</span>
+      <span>→ next: The Triangle of Motion</span>
+    </div>
+  </section>
+
+  <!-- MODULE 1 -->
+  <section class="section" id="m1">
+    <header class="section-header">
+      <div class="module-meta">Module 01 · The Triangle</div>
+      <h1 class="section-title">The <em>triangle</em><br>of motion.</h1>
+      <p class="section-deck">Three quantities — speed, time, distance — connected by one identity. Every TSD problem in the entire chapter is an exercise in choosing which side of the triangle to compute.</p>
+    </header>
+
+    <h3><span class="h-num">1.1</span>The core identity</h3>
+
+    <div class="formula">
+      <span class="label">The Triangle</span>
+      <span class="eq">Distance = Speed × Time</span><br>
+      Equivalently: <span class="eq">Speed = Distance / Time</span><br>
+      And: <span class="eq">Time = Distance / Speed</span><br><br>
+      Three quantities, three rearrangements. One identity rules them all.
+    </div>
+
+    <h3><span class="h-num">1.2</span>The two variation patterns hidden in the triangle</h3>
+
+    <p>From Volume V's variation framework:</p>
+
+    <div class="compare">
+      <div>
+        <h5>For a fixed distance</h5>
+        <p style="margin-bottom:0">Speed and time are <strong>inversely proportional</strong>. Double the speed, halve the time. <code>Speed × Time = Distance = constant</code>.</p>
+      </div>
+      <div>
+        <h5>For a fixed time</h5>
+        <p style="margin-bottom:0">Speed and distance are <strong>directly proportional</strong>. Double the speed, double the distance. <code>Distance = Speed × Time</code> where Time is constant.</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">1.3</span>The "scenario-comparison" archetype</h3>
+
+    <p>Many CAT TSD problems describe two scenarios with the same distance. Use inverse proportion of speed and time to set up one equation.</p>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Foundation example — late vs early</span>
+        <span class="q-tag easy">Easy</span>
+      </div>
+      <div class="q-body">
+        <p>A man walks at 12 km/h and reaches the railway station 10 minutes after the train has departed. If he had walked at 15 km/h, he would have reached 10 minutes before the train's departure. Find the distance from his home to the station.</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Frame</span>
+          Let distance = d km. Time at 12 km/h = d/12 hours. Time at 15 km/h = d/15 hours.<br>
+          Difference in times = (10 min late) − (−10 min early) = 20 minutes = 1/3 hour.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Equation</span>
+          d/12 − d/15 = 1/3<br>
+          (5d − 4d)/60 = 1/3 ⟹ d/60 = 1/3 ⟹ d = 20 km.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>Distance = <strong style="color:#fff;font-family:Fraunces">20 km</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">1.4</span>The CAT 2024 train-trouble problem</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>CAT 2024 — train speed and time saved</span>
+        <span class="q-tag med">Medium</span>
+      </div>
+      <div class="q-body">
+        <p>A train traveled a certain distance at a uniform speed. Had the speed been 6 km/h more, it would have needed 4 hours less. Had the speed been 6 km/h less, it would have needed 6 hours more. Find the distance.</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Set up</span>
+          Let original speed = s, time = t. Distance d = st.<br>
+          At s + 6: d = (s + 6)(t − 4) = st − 4s + 6t − 24 ⟹ 4s − 6t + 24 = 0 ⟹ 2s − 3t + 12 = 0.<br>
+          At s − 6: d = (s − 6)(t + 6) = st + 6s − 6t − 36 ⟹ 6s − 6t − 36 = 0 ⟹ s − t − 6 = 0 ⟹ s = t + 6.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Solve</span>
+          Substitute s = t + 6 into 2s − 3t + 12 = 0: 2(t + 6) − 3t + 12 = 0 ⟹ −t + 24 = 0 ⟹ t = 24. So s = 30.<br>
+          Distance = 30 × 24 = 720 km.
+        </div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">720 km</strong></div>
+      </div>
+    </div>
+
+    <div class="drill">
+      <h5>· In-class drill ·</h5>
+      <p>Mental math, ten seconds each. Find the third quantity:</p>
+      <p><code>240 km in 4 h: speed?</code> · <code>72 km/h for 2.5 h: distance?</code> · <code>540 km at 60 km/h: time?</code> · <code>54 km/h = ? m/s</code> · <code>30 m/s = ? km/h</code></p>
+      <p style="font-size:14px;opacity:.7;margin-top:10px">Answers: 60 km/h, 180 km, 9 hours, 15 m/s, 108 km/h.</p>
+    </div>
+
+    <div class="section-end">
+      <span>End of Module 01 · The Triangle</span>
+      <span>→ next: Relative Speed</span>
+    </div>
+  </section>
+
+  <!-- MODULE 2 -->
+  <section class="section" id="m2">
+    <header class="section-header">
+      <div class="module-meta">Module 02 · Relative Motion</div>
+      <h1 class="section-title">Relative<br><em>speed</em>.</h1>
+      <p class="section-deck">When two objects move simultaneously, their relative speed determines when they meet or how long one takes to catch the other. Two rules — same direction subtracts, opposite direction adds — and you handle most TSD problems.</p>
+    </header>
+
+    <h3><span class="h-num">2.1</span>The two cases</h3>
+
+    <div class="formula">
+      <span class="label">Relative Speed</span>
+      Two objects moving <strong>in opposite directions</strong>:<br>
+      <span class="eq">Relative speed = s₁ + s₂</span><br><br>
+      Two objects moving <strong>in the same direction</strong>:<br>
+      <span class="eq">Relative speed = |s₁ − s₂|</span>
+    </div>
+
+    <p>The intuition is mechanical. If you and your friend are walking toward each other, you close the gap fast — your speeds add. If she's walking ahead of you in the same direction, you only close the gap by the <em>difference</em> in your speeds.</p>
+
+    <h3><span class="h-num">2.2</span>Time to meet — head-on case</h3>
+
+    <p>Two travelers start from points A and B (distance d apart) moving toward each other at speeds s₁ and s₂. Time to meet:</p>
+
+    <div class="formula">
+      <span class="label">Head-on meeting</span>
+      <span class="eq">Time to meet = d / (s₁ + s₂)</span>
+    </div>
+
+    <p>Worked: A and B are 60 km apart, walking toward each other at 4 and 6 km/h. They meet after 60/(4+6) = 6 hours.</p>
+
+    <h3><span class="h-num">2.3</span>Time to catch up — chasing case</h3>
+
+    <div class="formula">
+      <span class="label">Chasing</span>
+      <span class="eq">Time to catch up = gap / (s_faster − s_slower)</span>
+    </div>
+
+    <p>If A is 12 km ahead of B, and A walks at 3 km/h while B walks at 5 km/h, B catches up in 12/(5−3) = 6 hours.</p>
+
+    <h3><span class="h-num">2.4</span>The CAT 2024 Anil-Sunil problem</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>CAT 2024 — Anil and Sunil cross</span>
+        <span class="q-tag hard">Hard</span>
+      </div>
+      <div class="q-body">
+        <p>Two places A and B are 45 km apart and connected by a straight road. Anil goes from A to B while Sunil goes from B to A. Starting at the same time, they cross each other in exactly 1 hour 30 minutes. If Anil reaches B exactly 1 hour 15 minutes after Sunil reaches A, find Anil's speed in km/h.</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Set up variables</span>
+          Let Anil's speed = a km/h; Sunil's speed = s km/h.<br>
+          They meet after 1.5 h: a + s = 45/1.5 = 30 ⟹ a + s = 30.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Times taken</span>
+          Anil's total time = 45/a. Sunil's total time = 45/s.<br>
+          Anil reaches B 1.25 h after Sunil reaches A: 45/a − 45/s = 1.25.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 3 · Solve</span>
+          From step 1: s = 30 − a. Substitute: 45/a − 45/(30 − a) = 1.25.<br>
+          45[(30 − a) − a] / [a(30 − a)] = 1.25<br>
+          45(30 − 2a) = 1.25 × a(30 − a)<br>
+          (30 − 2a) × 45 = 1.25a(30 − a)<br>
+          1350 − 90a = 37.5a − 1.25a²<br>
+          1.25a² − 127.5a + 1350 = 0<br>
+          a² − 102a + 1080 = 0<br>
+          a = (102 ± √(10404 − 4320))/2 = (102 ± √6084)/2 = (102 ± 78)/2.<br>
+          So a = 90 (impossible, since then s &lt; 0) or a = 12.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>Anil's speed = <strong style="color:#fff;font-family:Fraunces">12 km/h</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">2.5</span>The "meeting-and-completing" trick</h3>
+
+    <p>A famous structural shortcut: two travelers start from opposite ends, meet somewhere in between, and continue to their destinations. If after meeting, A takes <em>a</em> hours and B takes <em>b</em> hours, the speed ratio satisfies:</p>
+
+    <div class="formula">
+      <span class="label">Meet-and-Complete Identity</span>
+      <span class="eq">Speed_A / Speed_B = √(b/a)</span><br>
+      Where <em>a</em> is A's time after meeting and <em>b</em> is B's time after meeting.
+    </div>
+
+    <p>This identity comes from the fact that the distance each covered <em>after</em> the meeting equals what the other covered <em>before</em> the meeting (because they meet at the same point).</p>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Meet-and-Complete — Arvind and Surbhi</span>
+        <span class="q-tag hard">Hard</span>
+      </div>
+      <div class="q-body">
+        <p>Arvind travels from town A to town B, and Surbhi from town B to town A, starting simultaneously along the same route. After meeting, Arvind takes 6 hours to reach B while Surbhi takes 24 hours to reach A. If Arvind's speed is 54 km/h, find the distance between A and B.</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Speed ratio</span>
+          Arvind/Surbhi = √(24/6) = √4 = 2. So Surbhi = 27 km/h.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Time to meeting</span>
+          Let total distance = D and time to meet = t. Distance Arvind covered before meeting = 54t; this equals distance Surbhi covers after meeting in 24 hours = 27 × 24 = 648.<br>
+          So 54t = 648 ⟹ t = 12 hours.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 3 · Total distance</span>
+          D = (54 + 27) × 12 = 81 × 12 = 972 km.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>Distance = <strong style="color:#fff;font-family:Fraunces">972 km</strong></div>
+      </div>
+    </div>
+
+    <div class="section-end">
+      <span>End of Module 02 · Relative Speed</span>
+      <span>→ next: Trains</span>
+    </div>
+  </section>
+
+  <!-- MODULE 3 -->
+  <section class="section" id="m3">
+    <header class="section-header">
+      <div class="module-meta">Module 03 · Trains</div>
+      <h1 class="section-title">Trains, length,<br>and <em>crossings</em>.</h1>
+      <p class="section-deck">When the moving object has length itself. The total distance to cover during a "crossing" is the sum of lengths of all objects involved. This single insight unlocks the entire train-problem family.</p>
+    </header>
+
+    <h3><span class="h-num">3.1</span>The four crossing scenarios</h3>
+
+    <p>Train problems vary by what the train is crossing — and what counts as "distance covered":</p>
+
+    <div class="formula">
+      <span class="label">Train Crossing Formulas</span>
+      Train of length L crossing a <strong>stationary point</strong> (pole, man standing): distance = L<br>
+      Train of length L crossing a <strong>platform</strong> of length P: distance = L + P<br>
+      Train of length L₁ crossing another train of length L₂: distance = L₁ + L₂<br><br>
+      In each case: <span class="eq">Time = distance / relative speed</span>
+    </div>
+
+    <h3><span class="h-num">3.2</span>Two trains — opposite vs same direction</h3>
+
+    <p>Two trains crossing each other can move in opposite or same direction. Their relative speed is computed accordingly:</p>
+
+    <ul>
+      <li><strong>Opposite directions:</strong> relative speed = s₁ + s₂. Crossing time = (L₁ + L₂) / (s₁ + s₂).</li>
+      <li><strong>Same direction:</strong> relative speed = |s₁ − s₂|. Crossing time = (L₁ + L₂) / |s₁ − s₂|.</li>
+    </ul>
+
+    <h3><span class="h-num">3.3</span>Worked example — fundamental</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Train crossing a platform</span>
+        <span class="q-tag easy">Easy</span>
+      </div>
+      <div class="q-body">
+        <p>A train 200 m long, running at 72 km/h, crosses a platform 300 m long. Find the crossing time.</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">CONVERT</span>
+          72 km/h = 72 × 5/18 = 20 m/s.
+        </div>
+        <div class="step">
+          <span class="step-num">COMPUTE</span>
+          Total distance = 200 + 300 = 500 m. Time = 500/20 = 25 s.
+        </div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">25 seconds</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">3.4</span>The CAT 2017 trains-meeting problem</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>CAT 2017 — trains A and B meeting</span>
+        <span class="q-tag hard">Hard</span>
+      </div>
+      <div class="q-body">
+        <p>Trains A and B start traveling at the same time towards each other with constant speeds from stations X and Y, respectively. Train A reaches station Y in 10 minutes while train B takes 9 minutes to reach station X after meeting train A. Find the total time, in minutes, taken by train B to travel from Y to X.</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">SETUP</span>
+          Let t = time to meet. After meeting, A takes (10 − t) min to reach Y; B takes 9 min to reach X.
+        </div>
+        <div class="step">
+          <span class="step-num">APPLY THE MEET-COMPLETE IDENTITY</span>
+          t² = (10 − t) × 9 ⟹ t² + 9t − 90 = 0 ⟹ (t + 15)(t − 6) = 0 ⟹ t = 6.
+        </div>
+        <div class="step">
+          <span class="step-num">TOTAL TIME FOR B</span>
+          B takes t + 9 = 6 + 9 = 15 minutes.
+        </div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">15 minutes</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">3.5</span>The two-stage crossing — front-end vs rear-end</h3>
+
+    <p>Some CAT problems ask about partial crossings: "the front of train A crossed the rear of train B X seconds before…". The trick is to recognize that the front-to-rear crossing covers a distance equal to the <em>length of one train</em>, while the full crossing covers <em>both lengths</em>.</p>
+
+    <div class="section-end">
+      <span>End of Module 03 · Trains</span>
+      <span>→ next: Boats &amp; Streams</span>
+    </div>
+  </section>
+
+  <!-- MODULE 4 -->
+  <section class="section" id="m4">
+    <header class="section-header">
+      <div class="module-meta">Module 04 · Boats &amp; Streams</div>
+      <h1 class="section-title">Boats and<br><em>streams</em>.</h1>
+      <p class="section-deck">When the medium itself moves. Downstream = boat + stream. Upstream = boat − stream. Two equations, two unknowns. Every CAT boat problem is a two-line solve once the frame is in place.</p>
+    </header>
+
+    <h3><span class="h-num">4.1</span>The framework</h3>
+
+    <div class="formula">
+      <span class="label">Boat in Stream — Two Speeds</span>
+      Let b = boat speed in still water, s = stream speed.<br>
+      <span class="eq">Downstream speed = b + s</span><br>
+      <span class="eq">Upstream speed = b − s</span><br><br>
+      Equivalently:<br>
+      <span class="eq">b = (down + up)/2</span><br>
+      <span class="eq">s = (down − up)/2</span>
+    </div>
+
+    <h3><span class="h-num">4.2</span>The standard problem</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Boat — direct still-water speed</span>
+        <span class="q-tag easy">Easy</span>
+      </div>
+      <div class="q-body">
+        <p>A boat covers 20 km downstream in 2 hours and 16 km upstream in 4 hours. Find the speed of the boat in still water and the stream.</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">METHOD</span>
+          Downstream = 20/2 = 10 km/h. Upstream = 16/4 = 4 km/h.<br>
+          Boat in still water = (10 + 4)/2 = 7 km/h. Stream = (10 − 4)/2 = 3 km/h.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>Boat = <strong style="color:#fff;font-family:Fraunces">7 km/h</strong>; Stream = <strong style="color:#fff;font-family:Fraunces">3 km/h</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">4.3</span>The CAT 2024 two-boat problem</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>CAT 2024 — Two boats with constant river</span>
+        <span class="q-tag elite">Elite</span>
+      </div>
+      <div class="q-body">
+        <p>A boat takes 2 hours to travel downstream from port A to port B, and 3 hours to return to port A. Another boat takes a total of 6 hours to travel from B to A and return to B. If the speeds of the boats and the river are constant, find the time taken by the slower boat to travel from A to B.</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · First boat</span>
+          Let d = distance AB, r = stream speed.<br>
+          d/(b₁ + r) = 2 and d/(b₁ − r) = 3.<br>
+          So b₁ + r = d/2 and b₁ − r = d/3. Adding: 2b₁ = 5d/6 ⟹ b₁ = 5d/12. Subtracting: 2r = d/6 ⟹ r = d/12.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Second boat</span>
+          Total time = d/(b₂ + r) + d/(b₂ − r) = 6.<br>
+          Substituting r = d/12: d/(b₂ + d/12) + d/(b₂ − d/12) = 6.<br>
+          Let x = 12b₂/d. Then: 12/(x + 1) + 12/(x − 1) = 6 ⟹ 2/(x + 1) + 2/(x − 1) = 1 ⟹ [2(x − 1) + 2(x + 1)]/[(x+1)(x−1)] = 1 ⟹ 4x/(x² − 1) = 1 ⟹ x² − 4x − 1 = 0 ⟹ x = (4 ± √20)/2 = 2 ± √5.<br>
+          Take x = 2 + √5 ≈ 4.236 (must be positive). So 12b₂/d = 2 + √5 ⟹ b₂ = d(2 + √5)/12.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 3 · Identify slower</span>
+          b₁ = 5d/12 ≈ 0.417d. b₂ ≈ d × 4.236/12 ≈ 0.353d. So boat 2 is slower.<br>
+          Slower boat A → B time = d/(b₂ + r) = d / (d(2 + √5)/12 + d/12) = 12/(3 + √5).<br>
+          Rationalize: 12(3 − √5)/((3+√5)(3−√5)) = 12(3 − √5)/(9 − 5) = 3(3 − √5) = 9 − 3√5 ≈ 9 − 6.71 ≈ 2.29 hours.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>≈ <strong style="color:#fff;font-family:Fraunces">9 − 3√5 hours</strong> (≈ 2.29 h)</div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">4.4</span>The "current makes no difference" insight</h3>
+
+    <p>If a boat travels a round trip (downstream then upstream over the same distance), the stream's contribution doesn't cancel — average speed is the harmonic mean of downstream and upstream speeds. This is the same identity from Volume II's average-speed module.</p>
+
+    <div class="section-end">
+      <span>End of Module 04 · Boats &amp; Streams</span>
+      <span>→ next: Circular Motion</span>
+    </div>
+  </section>
+
+  <!-- MODULE 5 -->
+  <section class="section" id="m5">
+    <header class="section-header">
+      <div class="module-meta">Module 05 · Circular Motion</div>
+      <h1 class="section-title">Circular tracks<br>and <em>races</em>.</h1>
+      <p class="section-deck">When the path closes on itself. New questions become possible — "when do they meet again at the start?" — but the relative-speed engine still runs everything.</p>
+    </header>
+
+    <h3><span class="h-num">5.1</span>Meeting on a circular track</h3>
+
+    <p>Two runners on a circular track of length L starting at the same point:</p>
+
+    <div class="formula">
+      <span class="label">First Meeting on a Circular Track</span>
+      <strong>Opposite directions:</strong> First meeting after time <span class="eq">L / (s₁ + s₂)</span><br>
+      <strong>Same direction:</strong> First meeting after time <span class="eq">L / |s₁ − s₂|</span> (faster laps the slower by one full loop)
+    </div>
+
+    <h3><span class="h-num">5.2</span>Number of meeting points</h3>
+
+    <p>Over many laps, where do the two runners meet? This depends on the ratio of their speeds.</p>
+
+    <div class="formula">
+      <span class="label">Meeting Points on a Circular Track</span>
+      If speed ratio is <em>a : b</em> in lowest form:<br>
+      <strong>Opposite directions:</strong> <span class="eq">a + b</span> distinct meeting points.<br>
+      <strong>Same direction:</strong> <span class="eq">|a − b|</span> distinct meeting points.
+    </div>
+
+    <h3><span class="h-num">5.3</span>When do they meet at the starting point?</h3>
+
+    <p>Each runner returns to the starting point after their own lap time. They simultaneously return to the start at the LCM of their lap times.</p>
+
+    <div class="formula">
+      <span class="label">First Meeting at Start</span>
+      Lap time of runner i = L/sᵢ.<br>
+      <span class="eq">First meeting at start = LCM(L/s₁, L/s₂)</span>
+    </div>
+
+    <h3><span class="h-num">5.4</span>Worked example</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>Circular track — meeting</span>
+        <span class="q-tag med">Medium</span>
+      </div>
+      <div class="q-body">
+        <p>Two runners A and B start running on a circular track of length 360 m from the same point at the same time. A runs at 6 m/s and B at 4 m/s. If they run in opposite directions, when do they first meet? When do they first meet again at the starting point?</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">FIRST MEETING</span>
+          Opposite directions, relative speed = 10 m/s. First meeting after 360/10 = 36 s.
+        </div>
+        <div class="step">
+          <span class="step-num">MEETING AT START</span>
+          Lap times: A = 360/6 = 60 s, B = 360/4 = 90 s. LCM = 180 s = 3 minutes.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>First meeting: <strong style="color:#fff;font-family:Fraunces">36 s</strong>; at start: <strong style="color:#fff;font-family:Fraunces">180 s</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">5.5</span>Races and head-starts</h3>
+
+    <p>"A gives B a head start of x metres in a race of distance d." This is a CAT variant of relative speed — A starts behind by x and must close the gap before the finish line.</p>
+
+    <p>The condition "A beats B by x metres" means A finishes the race while B is x metres short. Useful identity: in a race of length d, if A beats B by x metres, then A's distance is d when B's is d − x. The speed ratio: s_A / s_B = d / (d − x).</p>
+
+    <div class="section-end">
+      <span>End of Module 05 · Circular Motion</span>
+      <span>→ next: Average Speed &amp; Variable Motion</span>
+    </div>
+  </section>
+
+  <!-- MODULE 6 -->
+  <section class="section" id="m6">
+    <header class="section-header">
+      <div class="module-meta">Module 06 · Average &amp; Variable</div>
+      <h1 class="section-title">Average speed<br>and <em>variable</em><br>motion.</h1>
+      <p class="section-deck">When the speed changes during the journey. The wrong instinct is to average the speeds; the right one is to compute total distance over total time. The harmonic mean returns.</p>
+    </header>
+
+    <h3><span class="h-num">6.1</span>The definition</h3>
+
+    <div class="formula">
+      <span class="label">Average Speed</span>
+      <span class="eq">Average speed = Total distance / Total time</span><br><br>
+      <strong>Never</strong> the average of speeds, unless the times are equal.
+    </div>
+
+    <h3><span class="h-num">6.2</span>The equal-distance shortcut — harmonic mean</h3>
+
+    <p>If a body covers two equal distances at speeds u and v, the average speed is:</p>
+
+    <div class="formula">
+      <span class="label">Equal Distances — Harmonic Mean</span>
+      <span class="eq">Avg speed = 2uv / (u + v)</span><br><br>
+      Always less than the arithmetic mean. The slower leg takes more time, dragging the average down.
+    </div>
+
+    <p>Worked: 100 km at 40 km/h and 100 km at 60 km/h. Harmonic mean = 2 × 40 × 60 / (40 + 60) = 4800/100 = 48 km/h. Not 50.</p>
+
+    <h3><span class="h-num">6.3</span>Three or more legs</h3>
+
+    <p>For three equal distances at speeds u, v, w: average = 3/(1/u + 1/v + 1/w). The harmonic mean of n speeds.</p>
+
+    <h3><span class="h-num">6.4</span>The CAT 2024 bus scheduling problem</h3>
+
+    <div class="q-card">
+      <div class="q-head">
+        <span>CAT 2024 — bus scheduling</span>
+        <span class="q-tag elite">Elite</span>
+      </div>
+      <div class="q-body">
+        <p>A bus starts at 9 am and follows a fixed route every day. One day, it traveled at a constant speed of 60 km/h and reached its destination 3.5 hours later than its scheduled arrival time. The next day, it traveled two-thirds of its route in one-third of its total scheduled travel time, and the remaining part of the route at 40 km/h to reach just on time. Find the scheduled arrival time.</p>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step">
+          <span class="step-num">STEP 1 · Set up variables</span>
+          Let D = total distance, T = scheduled travel time. Scheduled speed = D/T.<br>
+          Day 1: 60 km/h, time = D/60, which is T + 3.5. So D/60 = T + 3.5 ⟹ D = 60T + 210.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 2 · Day 2 conditions</span>
+          First leg: 2D/3 covered in T/3.<br>
+          Second leg: D/3 at 40 km/h, takes D/120.<br>
+          Total time = T/3 + D/120 = T (just on time). So D/120 = 2T/3 ⟹ D = 80T.
+        </div>
+        <div class="step">
+          <span class="step-num">STEP 3 · Solve</span>
+          80T = 60T + 210 ⟹ 20T = 210 ⟹ T = 10.5 hours.<br>
+          Bus starts 9 am; arrives at 9 am + 10.5 h = 7:30 pm.
+        </div>
+        <div class="ans-line"><strong>Answer</strong>Scheduled arrival = <strong style="color:#fff;font-family:Fraunces">7:30 pm</strong></div>
+      </div>
+    </div>
+
+    <div class="section-end">
+      <span>End of Module 06 · Average Speed</span>
+      <span>→ next: Tips and Pitfalls</span>
+    </div>
+  </section>
+
+  <!-- MODULE 7 -->
+  <section class="section" id="m7">
+    <header class="section-header">
+      <div class="module-meta">Module 07 · Tactics</div>
+      <h1 class="section-title">Twelve <em>tips</em>,<br>tricks, and traps.</h1>
+      <p class="section-deck">The accumulated wisdom from teaching TSD — what to drill, what to whisper, and the recurring mistakes that wreck students under time pressure.</p>
+    </header>
+
+    <div class="tips-grid">
+      <div class="tip-card"><span class="t-num">TIP 01 · UNITS</span><h6>Convert first, compute later</h6><p>Train problems: m and s. Long-distance: km and h. Mixing units within a single computation is the most common error in this chapter.</p></div>
+      <div class="tip-card"><span class="t-num">TIP 02 · 5/18</span><h6>Memorise the conversion factor</h6><p>km/h × 5/18 = m/s. m/s × 18/5 = km/h. Drill until automatic.</p></div>
+      <div class="tip-card"><span class="t-num">TIP 03 · TRIANGLE</span><h6>Identify the triangle first</h6><p>What's the distance, what's the speed, what's the time? Write all three on scratch paper before equations.</p></div>
+      <div class="tip-card"><span class="t-num">TIP 04 · RELATIVE</span><h6>Same direction subtracts, opposite adds</h6><p>The basic rule of relative motion. Read the problem twice to confirm direction.</p></div>
+      <div class="tip-card"><span class="t-num">TIP 05 · LENGTH</span><h6>Train crossings include both lengths</h6><p>Train + platform: L + P. Train + train: L₁ + L₂. Train + pole: just L. Get the total distance right.</p></div>
+      <div class="tip-card"><span class="t-num">TIP 06 · √RATIO</span><h6>Meet-complete identity: speeds in √ ratio of times</h6><p>If A takes <em>a</em> hours after meeting and B takes <em>b</em>, then s_A / s_B = √(b/a). Memorise.</p></div>
+      <div class="tip-card"><span class="t-num">TIP 07 · BOATS</span><h6>(down + up)/2 and (down − up)/2</h6><p>Boat speed = average. Stream speed = half difference. Always.</p></div>
+      <div class="tip-card"><span class="t-num">TIP 08 · CIRCULAR</span><h6>LCM of lap times for start-meetings</h6><p>For meeting at the starting point: LCM of individual lap times. For first meeting anywhere: relative-speed formula.</p></div>
+      <div class="tip-card"><span class="t-num">TIP 09 · AVERAGE</span><h6>Harmonic mean for equal distances</h6><p>2uv/(u+v) for equal-distance round trips. Never the arithmetic mean.</p></div>
+      <div class="tip-card"><span class="t-num">TIP 10 · TIME GAPS</span><h6>For "x min late vs y min early" problems</h6><p>Time difference = (x + y) minutes. Convert to hours and solve d/v₁ − d/v₂ = (x + y)/60.</p></div>
+      <div class="tip-card"><span class="t-num">TIP 11 · RATIOS</span><h6>For fixed distance, time ∝ 1/speed</h6><p>Speed ratio 3 : 4 means time ratio 4 : 3 for the same distance. Use this to skip computation.</p></div>
+      <div class="tip-card"><span class="t-num">TIP 12 · SANITY</span><h6>Plug back into the scenario</h6><p>After solving, verify each piece of info in the problem. Often catches sign errors.</p></div>
+    </div>
+
+    <h3><span class="h-num">7.1</span>Five traps</h3>
+
+    <div class="note warn"><p><strong>Trap 1 — Mixing units.</strong> Speeds in km/h, distances in m, times in s. Always pick one system and convert everything before computing.</p></div>
+    <div class="note warn"><p><strong>Trap 2 — Averaging speeds.</strong> "60 km/h going, 40 km/h returning" — the average is NOT 50. It's the harmonic mean = 48.</p></div>
+    <div class="note warn"><p><strong>Trap 3 — Forgetting train length.</strong> "Train crosses a man in 20 seconds" — distance is the train length, not zero. Easy to overlook in haste.</p></div>
+    <div class="note warn"><p><strong>Trap 4 — Wrong direction for relative speed.</strong> Re-read whether trains/boats are going in the same or opposite direction. Adding when you should subtract halves the answer.</p></div>
+    <div class="note warn"><p><strong>Trap 5 — Boat in still water vs downstream.</strong> The boat's "speed" in problem statements is usually still-water speed unless otherwise stated. Don't confuse it with downstream speed.</p></div>
+
+    <h3><span class="h-num">7.2</span>The two-minute checklist</h3>
+    <ol>
+      <li>Read twice. Identify what's moving and in which direction.</li>
+      <li>Note all given quantities with units.</li>
+      <li>Convert to a single unit system (m/s and m, or km/h and km).</li>
+      <li>Identify the triangle: which is distance, which is speed, which is time?</li>
+      <li>If two objects: compute relative speed.</li>
+      <li>If trains: include both lengths in distance.</li>
+      <li>Set up the equation; solve.</li>
+      <li>Plug back to verify.</li>
+    </ol>
+
+    <div class="section-end">
+      <span>End of Module 07 · Tactics</span>
+      <span>→ next: Worked Problem Bank</span>
+    </div>
+  </section>
+
+  <!-- MODULE 8 -->
+  <section class="section" id="m8">
+    <header class="section-header">
+      <div class="module-meta">Module 08 · Problem Bank</div>
+      <h1 class="section-title">Twenty-five<br>worked<br><em>problems</em>.</h1>
+      <p class="section-deck">Sequenced easy to elite. Anchored on verified CAT 2017–2024 problems with classical archetypes interleaved.</p>
+    </header>
+
+    <h3><span class="h-num">8.1</span>Easy tier — fluency check</h3>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q1 · Basic triangle</span><span class="q-tag easy">Easy</span></div>
+      <div class="q-body"><p>A car travels 360 km in 6 hours. Find its speed.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>360/6 = 60 km/h.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">60 km/h</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q2 · Conversion</span><span class="q-tag easy">Easy</span></div>
+      <div class="q-body"><p>Convert 90 km/h to m/s.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>90 × 5/18 = 25 m/s.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">25 m/s</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q3 · Train crossing pole</span><span class="q-tag easy">Easy</span></div>
+      <div class="q-body"><p>A train 150 m long, traveling at 54 km/h, crosses a pole. Find the time taken.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Speed = 15 m/s. Distance = 150 m. Time = 10 s.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">10 seconds</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q4 · Average speed round trip</span><span class="q-tag easy">Easy</span></div>
+      <div class="q-body"><p>A man travels at 30 km/h to office and returns at 60 km/h along the same route. Find his average speed.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Harmonic mean: 2 × 30 × 60/90 = 40 km/h.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">40 km/h</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q5 · Boat still water</span><span class="q-tag easy">Easy</span></div>
+      <div class="q-body"><p>A boat covers 24 km downstream in 2 hours and 12 km upstream in 2 hours. Find the speed of the boat in still water.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Down = 12, up = 6. Boat = (12+6)/2 = 9 km/h.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">9 km/h</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.2</span>Medium tier — exam-grade</h3>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q6 · Late vs early</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>A man walks at 12 km/h and reaches the station 10 minutes after the train departs. At 15 km/h, he would reach 10 minutes early. Find the distance.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>d/12 − d/15 = 20/60 = 1/3 ⟹ d(5−4)/60 = 1/3 ⟹ d = 20 km.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">20 km</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q7 · Trains crossing each other</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>Two trains 200 m and 300 m long run at 72 km/h and 54 km/h respectively in opposite directions. Find the time they take to fully cross each other.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Relative speed = 72 + 54 = 126 km/h = 35 m/s. Distance = 500 m. Time = 500/35 ≈ 14.29 s.</div>
+        <div class="ans-line"><strong>Answer</strong>≈ <strong style="color:#fff;font-family:Fraunces">14.29 seconds</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q8 · Catching up</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>A starts from a point and walks at 4 km/h. After 2 hours, B starts from the same point in the same direction at 6 km/h. How long does B take to catch up with A?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>A's head start in 2 hours = 8 km. Relative speed = 2 km/h. Time = 8/2 = 4 hours.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">4 hours</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q9 · Circular track meeting</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>Two runners on a 400 m circular track move in opposite directions at 8 m/s and 12 m/s. When do they first meet?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Relative speed = 20 m/s. Time = 400/20 = 20 s.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">20 seconds</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q10 · Boat downstream-upstream</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>A boat goes 30 km downstream in 2 hours and returns in 3 hours. Find the speed of the boat in still water and the stream.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Down = 15, up = 10. Boat = 12.5; stream = 2.5.</div>
+        <div class="ans-line"><strong>Answer</strong>Boat = <strong style="color:#fff;font-family:Fraunces">12.5 km/h</strong>; Stream = 2.5 km/h</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q11 · Train passing a man on platform</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>A train 200 m long passes a man walking at 6 km/h in the same direction in 18 seconds. Find the speed of the train.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Relative speed = 200/18 = 100/9 m/s = 40 km/h. Train speed = 40 + 6 = 46 km/h.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">46 km/h</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q12 · Race head start</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>In a 200 m race, A beats B by 40 m or 5 seconds. Find A's speed.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>B covers 40 m in 5 s, so B's speed = 8 m/s. B covers 160 m (in time A covers 200) at 8 m/s = 20 s. A's speed = 200/20 = 10 m/s.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">10 m/s</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q13 · Three-leg journey</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>A man travels a third of the distance at 30 km/h, the next third at 40 km/h, and the last third at 60 km/h. Find his average speed.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Average = 3/(1/30 + 1/40 + 1/60) = 3/(4/120 + 3/120 + 2/120) = 3/(9/120) = 40 km/h.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">40 km/h</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q14 · Boat downstream time given</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>A boat travels 36 km downstream in 4 hours and 28 km upstream in 7 hours. Find the speed of the stream.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Down = 9, up = 4. Stream = (9−4)/2 = 2.5 km/h.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">2.5 km/h</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q15 · Variable speed scenarios</span><span class="q-tag med">Medium</span></div>
+      <div class="q-body"><p>A man covers a distance in 3 hours at 50 km/h. If he had increased his speed by 25%, by how much time would the journey have been shorter?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Distance = 150 km. New speed = 62.5 km/h. New time = 2.4 h. Saved = 0.6 h = 36 min.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">36 minutes</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.3</span>Hard tier — exam top-quartile</h3>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q16 · CAT 2024 — Anil and Sunil</span><span class="q-tag hard">Hard</span></div>
+      <div class="q-body"><p>A and B are 45 km apart. Anil from A, Sunil from B, start simultaneously, meet after 1 h 30 min. Anil reaches B 1 h 15 min after Sunil reaches A. Find Anil's speed.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">SETUP</span>a + s = 30 km/h (relative speed × meeting time = 45).<br>45/a − 45/s = 5/4 h.</div>
+        <div class="step"><span class="step-num">SOLVE</span>Substituting s = 30 − a leads to a² − 102a + 1080 = 0 ⟹ a = 12.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">12 km/h</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q17 · CAT 2017 — trains meeting</span><span class="q-tag hard">Hard</span></div>
+      <div class="q-body"><p>Trains A and B from X and Y move toward each other. After meeting, A takes 10 − t min to reach Y; B takes 9 min to reach X. Find B's total time Y → X.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Meet-complete: t² = 9(10−t) ⟹ t² + 9t − 90 = 0 ⟹ t = 6. B's total = 6 + 9 = 15 min.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">15 minutes</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q18 · Boat doubling trick</span><span class="q-tag hard">Hard</span></div>
+      <div class="q-body"><p>A boat travels downstream to office and back. If the boat's speed is doubled (river unchanged), the total time is reduced by 75%. Find the ratio of the original boat speed to river speed.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">SETUP</span>Let b = boat, r = river, d = distance. Original time T = d/(b+r) + d/(b−r) = d × 2b/(b²−r²).<br>New time with 2b: T' = d × 2(2b)/((2b)²−r²) = 4bd/(4b²−r²).<br>T' = T/4: 4bd/(4b²−r²) = (1/4) × 2bd/(b²−r²) = bd/(2(b²−r²)).</div>
+        <div class="step"><span class="step-num">SOLVE</span>Cross-multiply: 8(b² − r²) = 4b² − r² ⟹ 4b² = 7r² ⟹ b² = 7r²/4 ⟹ b/r = √7/2.<br>So ratio = √7 : 2.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">√7 : 2</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q19 · Two ships heading to port</span><span class="q-tag hard">Hard</span></div>
+      <div class="q-body"><p>Two ships sail directly toward each other at 5 and 10 km/h, starting 20 km apart. How far apart are they one minute before colliding?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Relative speed = 15 km/h = 250 m/min. One minute before collision: 250 m apart.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">250 metres</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q20 · Arvind and Surbhi meet-complete</span><span class="q-tag hard">Hard</span></div>
+      <div class="q-body"><p>Arvind from A and Surbhi from B start simultaneously. After meeting, Arvind takes 6 h to reach B, Surbhi takes 24 h to reach A. Arvind's speed = 54 km/h. Find distance.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Speed ratio = √(24/6) = 2. So Surbhi = 27 km/h. Arvind covers 54t before meeting = Surbhi's distance after = 27 × 24 = 648. So t = 12 h. Distance = 81 × 12 = 972 km.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">972 km</strong></div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.4</span>Elite tier — top percentile</h3>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q21 · CAT 2024 — bus scheduling</span><span class="q-tag elite">Elite</span></div>
+      <div class="q-body"><p>Bus at 9 am. Day 1: 60 km/h, arrives 3.5 h late. Day 2: 2/3 of route in 1/3 of scheduled time, rest at 40 km/h, on time. Find scheduled arrival.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">SETUP</span>D = 60(T+3.5). And D/3 at 40 in time T − T/3 = 2T/3, so D/3 = 80T/3, i.e. D = 80T.</div>
+        <div class="step"><span class="step-num">SOLVE</span>80T = 60T + 210 ⟹ T = 10.5 h. Arrival = 9 am + 10.5 h = 7:30 pm.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">7:30 pm</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q22 · CAT 2024 — train speed +6/−6</span><span class="q-tag elite">Elite</span></div>
+      <div class="q-body"><p>A train traveled a certain distance at uniform speed. At +6 km/h, 4 hours less; at −6 km/h, 6 hours more. Find distance.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>(s+6)(t−4) = st ⟹ 6t − 4s = 24. (s−6)(t+6) = st ⟹ 6s − 6t = 36 ⟹ s − t = 6. From the first: 3t − 2s = 12. Substituting s = t + 6: 3t − 2t − 12 = 12 ⟹ t = 24. s = 30. d = 720 km.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">720 km</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q23 · Circular meeting points</span><span class="q-tag elite">Elite</span></div>
+      <div class="q-body"><p>Two runners on a circular track, in opposite directions, have speed ratio 5 : 3. They run for an hour. How many distinct meeting points have they crossed?</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Opposite directions, speeds 5 : 3 (lowest form). Distinct meeting points = 5 + 3 = 8.</div>
+        <div class="ans-line"><strong>Answer</strong><strong style="color:#fff;font-family:Fraunces">8 meeting points</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q24 · CAT 2024 — two boats slower</span><span class="q-tag elite">Elite</span></div>
+      <div class="q-body"><p>Boat 1: A→B downstream 2 h, B→A upstream 3 h. Boat 2: A→B and back total 6 h. Find time for slower boat A→B.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>From boat 1: r = d/12, b₁ = 5d/12. Boat 2: d/(b₂+r) + d/(b₂−r) = 6 ⟹ algebra gives b₂ = d(2+√5)/12, so b₂ &lt; b₁. Slower boat time A→B = d/(b₂+r) = 12/(3+√5) = 9 − 3√5 ≈ 2.29 h.</div>
+        <div class="ans-line"><strong>Answer</strong>≈ <strong style="color:#fff;font-family:Fraunces">9 − 3√5 hours</strong></div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><span>Q25 · Capstone — multi-stage motion</span><span class="q-tag elite">Elite</span></div>
+      <div class="q-body"><p>A man walks half his journey at 4 km/h, the next quarter at 6 km/h, and the last quarter at 12 km/h. Find his average speed for the entire journey.</p></div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">METHOD</span>Take D = 12 km. Half = 6 at 4 km/h: t₁ = 1.5 h. Quarter = 3 at 6 km/h: t₂ = 0.5 h. Quarter = 3 at 12 km/h: t₃ = 0.25 h. Total time = 2.25 h. Avg = 12/2.25 ≈ 5.33 km/h.</div>
+        <div class="ans-line"><strong>Answer</strong>≈ <strong style="color:#fff;font-family:Fraunces">5.33 km/h</strong></div>
+      </div>
+    </div>
+
+    <div class="section-end">
+      <span>End of Module 08 · Problem Bank</span>
+      <span>→ next: Reference Sheet</span>
+    </div>
+  </section>
+
+  <!-- MODULE 9 -->
+  <section class="section" id="m9">
+    <header class="section-header">
+      <div class="module-meta">Module 09 · Reference</div>
+      <h1 class="section-title">The <em>one-page</em><br>reference<br>sheet.</h1>
+      <p class="section-deck">Everything in this codex distilled.</p>
+    </header>
+
+    <h3><span class="h-num">9.1</span>Core identity</h3>
+    <div class="formula">
+      <span class="label">The Triangle</span>
+      <span class="eq">D = S × T</span> · <span class="eq">S = D/T</span> · <span class="eq">T = D/S</span>
+    </div>
+
+    <h3><span class="h-num">9.2</span>Conversions</h3>
+    <div class="formula">
+      <span class="label">Conversions</span>
+      <span class="eq">km/h → m/s : ×5/18</span><br>
+      <span class="eq">m/s → km/h : ×18/5</span>
+    </div>
+
+    <h3><span class="h-num">9.3</span>Relative speed</h3>
+    <div class="formula">
+      <span class="label">Relative Motion</span>
+      Same direction: <span class="eq">|s₁ − s₂|</span><br>
+      Opposite directions: <span class="eq">s₁ + s₂</span>
+    </div>
+
+    <h3><span class="h-num">9.4</span>Train crossings</h3>
+    <ul>
+      <li>Train crossing pole: distance = L (train length)</li>
+      <li>Train crossing platform: distance = L + P</li>
+      <li>Two trains crossing each other: distance = L₁ + L₂</li>
+    </ul>
+
+    <h3><span class="h-num">9.5</span>Boats &amp; streams</h3>
+    <div class="formula">
+      <span class="label">Boat–Stream</span>
+      <span class="eq">Downstream = b + s</span> · <span class="eq">Upstream = b − s</span><br>
+      <span class="eq">b = (down + up)/2</span> · <span class="eq">s = (down − up)/2</span>
+    </div>
+
+    <h3><span class="h-num">9.6</span>Meet-and-complete identity</h3>
+    <div class="formula">
+      <span class="label">After-Meeting Times</span>
+      <span class="eq">s_A / s_B = √(t_B / t_A)</span><br>
+      where t_X is X's time after meeting.
+    </div>
+
+    <h3><span class="h-num">9.7</span>Circular track</h3>
+    <ul>
+      <li>First meeting (opposite): L/(s₁+s₂)</li>
+      <li>First meeting (same dir): L/|s₁−s₂|</li>
+      <li>Meeting at start: LCM of lap times</li>
+      <li>Distinct meeting points: a+b (opp) or |a−b| (same), where speed ratio is a:b</li>
+    </ul>
+
+    <h3><span class="h-num">9.8</span>Average speed</h3>
+    <div class="formula">
+      <span class="label">Average Speed</span>
+      <span class="eq">Avg = Total distance / Total time</span><br>
+      For equal distances: harmonic mean = 2uv/(u+v)
+    </div>
+
+    <h3><span class="h-num">9.9</span>The traps catalogue</h3>
+    <ul>
+      <li>Always convert units first.</li>
+      <li>Don't average speeds — average distances / total times.</li>
+      <li>Train problems include train length.</li>
+      <li>Read direction carefully — same vs opposite.</li>
+      <li>Boat speed in stream ≠ boat speed in still water.</li>
+    </ul>
+
+    <h3><span class="h-num">9.10</span>Recommended drill sequence</h3>
+    <ol>
+      <li>Day 1: Triangle and basic conversions.</li>
+      <li>Day 2: Relative speed — meeting and chasing.</li>
+      <li>Day 3: Trains and crossings.</li>
+      <li>Day 4: Boats and streams.</li>
+      <li>Day 5: Circular tracks and races.</li>
+      <li>Day 6: Average speed and variable motion.</li>
+      <li>Day 7: Problem bank — all tiers.</li>
+    </ol>
+
+    <div class="callout">
+      <strong>The TSD mantra.</strong> Identify the triangle. Write the three sides. Convert units. Apply relative motion if there are two objects. The complexity of CAT TSD problems is verbal; the math is always a single triangle in disguise.
+    </div>
+
+    <div class="section-end">
+      <span>End of Codex · Module 09</span>
+      <span>Good luck.</span>
+    </div>
+  </section>
+
+  </main>
+</div>
+
+<script>
+  const links = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('.section');
+
+  links.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = link.dataset.target;
+      links.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      sections.forEach(s => s.classList.remove('active'));
+      const targetEl = document.getElementById(target);
+      if (targetEl) {
+        targetEl.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  });
+
+  document.querySelectorAll('.toggle-sol').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sol = btn.nextElementSibling;
+      const open = sol.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.textContent = open ? 'Hide solution' : 'Show solution';
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    const activeLink = document.querySelector('.nav-link.active');
+    const allLinks = Array.from(links);
+    const idx = allLinks.indexOf(activeLink);
+    if (e.key === 'ArrowRight' && idx < allLinks.length - 1) {
+      allLinks[idx + 1].click();
+    } else if (e.key === 'ArrowLeft' && idx > 0) {
+      allLinks[idx - 1].click();
+    }
+  });
+</script>
+
+</body>
+</html>
