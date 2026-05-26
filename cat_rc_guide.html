@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The CAT Reading Comprehension Codex — A Teaching Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4ebd9;
+  --paper-2:#ebe0c8;
+  --ink:#1a0e12;
+  --ink-soft:#3d2329;
+  --ink-faint:#6a4b52;
+  --accent:#6e1f2a;
+  --accent-deep:#4a121b;
+  --ochre:#c89b3c;
+  --olive:#5a6b3e;
+  --rust:#a23f24;
+  --teal:#1f6b6b;
+  --rule:#c5b698;
+  --rule-soft:#dbcdaf;
+  --highlight:#fff1bf;
+  --shadow:0 1px 0 rgba(26,14,18,.06), 0 2px 6px rgba(26,14,18,.04);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Fraunces',Georgia,serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.65;
+  font-size:17px;
+  background-image:
+    radial-gradient(circle at 15% 12%, rgba(110,31,42,.06) 0%, transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(200,155,60,.04) 0%, transparent 45%);
+  min-height:100vh;
+}
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .28 0 0 0 0 .18 0 0 0 .04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:1;opacity:.55;
+}
+
+.layout{display:grid;grid-template-columns:280px 1fr;min-height:100vh;position:relative;z-index:2}
+@media (max-width:980px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{position:static!important;height:auto!important;border-right:none!important;border-bottom:2px solid var(--ink)}
+}
+
+.sidebar{
+  position:sticky;top:0;height:100vh;
+  border-right:1px solid var(--rule);
+  background:linear-gradient(180deg,var(--paper-2) 0%,var(--paper) 100%);
+  padding:32px 26px 24px;
+  overflow-y:auto;
+  display:flex;flex-direction:column;
+}
+.back-link{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'Inter',sans-serif;
+  font-size:10.5px;letter-spacing:.22em;
+  text-transform:uppercase;font-weight:600;
+  color:var(--ink-faint);
+  text-decoration:none;
+  padding-bottom:18px;margin-bottom:18px;
+  border-bottom:1px dotted var(--rule);
+  transition:color .2s ease, gap .2s ease;
+}
+.back-link::before{content:"←";font-size:14px;transition:transform .2s ease}
+.back-link:hover{color:var(--accent);gap:12px}
+.back-link:hover::before{transform:translateX(-3px)}
+
+.brand{border-bottom:2px solid var(--ink);padding-bottom:22px;margin-bottom:24px}
+.brand-eyebrow{
+  font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--accent);font-weight:600;margin-bottom:8px;
+}
+.brand-title{
+  font-family:'Fraunces',serif;
+  font-weight:900;font-size:28px;line-height:1;
+  letter-spacing:-.02em;
+}
+.brand-title em{font-style:italic;font-weight:400;color:var(--accent);font-size:24px}
+.brand-sub{
+  font-family:'Inter',sans-serif;
+  font-size:11px;color:var(--ink-faint);
+  margin-top:10px;letter-spacing:.05em;
+}
+.nav-label{
+  font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--ink-faint);font-weight:600;margin-bottom:10px;
+}
+.nav-list{list-style:none;font-family:'Inter',sans-serif;flex:1}
+.nav-list li{position:relative;border-bottom:1px dotted var(--rule)}
+.nav-list li:last-child{border-bottom:none}
+.nav-list a{
+  display:flex;align-items:baseline;gap:10px;
+  padding:11px 0 11px 8px;
+  text-decoration:none;color:var(--ink-soft);
+  font-size:13.5px;font-weight:500;
+  transition:all .2s ease;
+}
+.nav-list a:hover{color:var(--accent);padding-left:14px}
+.nav-list a.active{color:var(--ink);font-weight:600;padding-left:14px}
+.nav-list a.active::before{
+  content:"";position:absolute;left:0;top:50%;
+  width:5px;height:5px;background:var(--accent);
+  border-radius:50%;transform:translateY(-50%);
+}
+.nav-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;color:var(--ink-faint);
+  font-weight:400;min-width:24px;
+}
+.nav-list a.active .nav-num{color:var(--accent)}
+.sidebar-footer{
+  margin-top:22px;padding-top:18px;
+  border-top:1px solid var(--rule);
+  font-family:'Inter',sans-serif;
+  font-size:10.5px;color:var(--ink-faint);
+  letter-spacing:.04em;
+}
+
+.main{padding:48px 64px 96px;max-width:1080px}
+@media (max-width:980px){.main{padding:32px 22px 64px}}
+
+.section{display:none;animation:fadeUp .4s ease}
+.section.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.section-header{border-bottom:2px solid var(--ink);padding-bottom:28px;margin-bottom:42px}
+.module-meta{
+  display:flex;align-items:center;gap:16px;
+  font-family:'Inter',sans-serif;
+  font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--accent);
+  font-weight:600;margin-bottom:14px;
+}
+.module-meta::after{content:"";flex:1;height:1px;background:var(--rule)}
+.section-title{
+  font-family:'Fraunces',serif;
+  font-weight:900;font-size:54px;line-height:1;
+  letter-spacing:-.035em;margin-bottom:14px;color:var(--ink);
+}
+.section-title em{font-style:italic;font-weight:400;color:var(--accent)}
+.section-deck{
+  font-family:'Fraunces',serif;font-style:italic;
+  font-size:21px;line-height:1.5;color:var(--ink-soft);
+  max-width:680px;font-weight:400;
+}
+
+h3{
+  font-family:'Fraunces',serif;
+  font-weight:700;font-size:30px;line-height:1.15;
+  letter-spacing:-.02em;margin:42px 0 18px;color:var(--ink);
+  border-bottom:1px solid var(--rule);padding-bottom:8px;
+  display:flex;align-items:baseline;gap:14px;
+}
+h3 .h-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;color:var(--accent);
+  font-weight:500;letter-spacing:.05em;
+}
+h4{font-family:'Fraunces',serif;font-weight:600;font-size:22px;margin:32px 0 12px;color:var(--ink);letter-spacing:-.01em}
+h5{font-family:'Inter',sans-serif;font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:24px 0 10px}
+p{margin:0 0 16px;font-size:17.5px}
+p.lede{font-size:20px;line-height:1.55;color:var(--ink-soft);margin-bottom:24px}
+strong{color:var(--ink);font-weight:600}
+em{color:var(--ink-soft)}
+ul,ol{margin:8px 0 18px 22px}
+li{margin-bottom:8px}
+code{font-family:'JetBrains Mono',monospace;font-size:.88em;background:rgba(110,31,42,.08);padding:1px 6px;border-radius:3px;color:var(--accent-deep)}
+.kbd-math{font-family:'JetBrains Mono',monospace;font-size:15px;background:rgba(26,14,18,.04);padding:2px 8px;border-radius:3px;display:inline-block;border:1px solid var(--rule-soft)}
+
+.callout{
+  border-left:3px solid var(--accent);
+  background:linear-gradient(90deg,rgba(110,31,42,.06),transparent);
+  padding:18px 22px;margin:24px 0;
+  font-family:'Fraunces',serif;font-style:italic;font-size:18px;
+  line-height:1.5;color:var(--ink-soft);
+}
+.callout strong{font-style:normal;color:var(--accent-deep)}
+.note{background:var(--paper-2);border:1px solid var(--rule);padding:18px 22px;margin:22px 0;position:relative}
+.note::before{
+  content:"NOTE";position:absolute;top:-10px;left:18px;background:var(--paper);
+  padding:0 8px;font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.22em;color:var(--ink-faint);font-weight:600;
+}
+.note.tip::before{content:"TIP";color:var(--olive)}
+.note.tip{border-color:var(--olive);background:rgba(90,107,62,.06)}
+.note.warn::before{content:"WATCH OUT";color:var(--rust)}
+.note.warn{border-color:var(--rust);background:rgba(162,63,36,.05)}
+
+.formula{
+  background:#fbf6ec;border:1px solid var(--rule);
+  border-left:4px solid var(--ochre);
+  padding:20px 24px;margin:20px 0;
+  font-family:'Fraunces',serif;font-size:19px;line-height:1.7;
+  box-shadow:var(--shadow);
+}
+.formula .label{
+  font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ochre);font-weight:700;margin-bottom:6px;display:block;
+}
+.formula .eq{
+  font-family:'JetBrains Mono',monospace;font-size:16px;
+  background:rgba(0,0,0,.04);padding:8px 14px;border-radius:2px;
+  display:inline-block;margin:6px 0;font-weight:500;color:var(--ink);
+}
+
+table.di-table{
+  width:100%;border-collapse:collapse;
+  font-family:'JetBrains Mono',monospace;font-size:13.5px;
+  margin:18px 0;background:#fbf6ec;border:1px solid var(--rule);
+}
+table.di-table th,table.di-table td{padding:9px 12px;text-align:left;border:1px solid var(--rule-soft)}
+table.di-table th{background:var(--ink);color:var(--paper);font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+table.di-table tr:nth-child(even) td{background:rgba(110,31,42,.025)}
+
+/* Passage display block — distinctive of the RC codex */
+.passage{
+  background:#fdfaf2;border:1px solid var(--rule);
+  border-left:4px solid var(--accent);
+  padding:24px 30px;margin:22px 0;
+  font-family:'Fraunces',serif;font-size:16.5px;line-height:1.7;
+  box-shadow:var(--shadow);
+  position:relative;
+}
+.passage::before{
+  content:"PASSAGE";position:absolute;top:-10px;left:24px;background:var(--paper);
+  padding:0 10px;font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.22em;color:var(--accent);font-weight:700;
+}
+.passage .meta{
+  font-family:'Inter',sans-serif;font-size:10.5px;
+  letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-faint);margin-bottom:10px;font-weight:600;
+}
+.passage p{font-size:16px;margin-bottom:14px;text-indent:1.4em}
+.passage p:first-of-type{text-indent:0}
+.passage p:last-child{margin-bottom:0}
+
+/* The annotation/anatomy display */
+.anatomy{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:24px 0;border:1px solid var(--rule)}
+@media (max-width:760px){.anatomy{grid-template-columns:1fr}}
+.anatomy > div{padding:20px 24px}
+.anatomy > div:first-child{border-right:1px solid var(--rule);background:#fdfaf2}
+.anatomy > div:last-child{background:rgba(110,31,42,.04)}
+@media (max-width:760px){.anatomy > div:first-child{border-right:none;border-bottom:1px solid var(--rule)}}
+.anatomy h5{margin-top:0;color:var(--accent)}
+.anatomy .sentence{font-family:'Fraunces',serif;font-size:16px;line-height:1.6;color:var(--ink-soft);margin-bottom:0;font-style:italic}
+.anatomy .read{font-family:'Inter',sans-serif;font-size:13.5px;line-height:1.55;color:var(--ink);margin-bottom:0}
+
+.q-card{
+  background:#fdfaf2;border:1px solid var(--rule);
+  border-radius:2px;margin:24px 0;box-shadow:var(--shadow);
+}
+.q-head{
+  background:var(--accent);color:var(--paper);
+  padding:12px 22px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:'Inter',sans-serif;font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;font-weight:600;flex-wrap:wrap;gap:10px;
+}
+.q-head .q-id{display:flex;gap:14px;align-items:center}
+.q-head .q-id .yr{background:rgba(245,239,228,.18);padding:3px 10px;border-radius:2px;font-size:10px;letter-spacing:.18em}
+.q-head .q-tag{font-size:10px;opacity:.85;font-family:'JetBrains Mono',monospace;letter-spacing:.08em}
+.q-body{padding:22px 26px 4px}
+.q-text{font-family:'Fraunces',serif;font-size:16.5px;line-height:1.65;margin-bottom:10px}
+.q-options{font-family:'Fraunces',serif;list-style:none;padding:0;margin:8px 0}
+.q-options li{padding:3px 0 3px 28px;position:relative;font-size:15.5px}
+.q-options li::before{
+  content:attr(data-opt);font-family:'JetBrains Mono',monospace;
+  position:absolute;left:0;top:3px;
+  width:20px;height:20px;background:var(--paper-2);
+  border:1px solid var(--rule);border-radius:50%;text-align:center;
+  font-size:11px;font-weight:600;line-height:18px;color:var(--ink-soft);
+}
+.toggle-sol{
+  width:100%;background:var(--paper-2);
+  border:none;border-top:1px dashed var(--rule);padding:12px 24px;
+  font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;font-weight:600;color:var(--accent);cursor:pointer;
+  text-align:left;display:flex;justify-content:space-between;align-items:center;
+  transition:background .2s ease;
+}
+.toggle-sol:hover{background:rgba(110,31,42,.08)}
+.toggle-sol::after{content:"▾";font-size:14px;transition:transform .25s ease}
+.toggle-sol.open::after{transform:rotate(180deg)}
+.sol{display:none;padding:20px 26px 26px;background:var(--paper-2);border-top:1px solid var(--rule);font-size:16.5px;line-height:1.65}
+.sol.open{display:block;animation:fadeUp .25s ease}
+.sol .ans-line{
+  display:flex;align-items:center;gap:12px;padding:10px 14px;
+  background:var(--ink);color:var(--paper);border-radius:2px;margin-top:14px;
+  font-family:'Fraunces',serif;font-size:17px;
+}
+.sol .ans-line strong{color:var(--ochre);font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.sol p{margin-bottom:12px}
+.sol .step{border-left:2px solid var(--rule);padding-left:14px;margin:10px 0}
+.sol .step-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);font-weight:600;letter-spacing:.05em;display:block;margin-bottom:3px}
+
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:36px 0 8px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+@media (max-width:760px){.stat-grid{grid-template-columns:repeat(2,1fr)}}
+.stat{padding:22px 18px;border-right:1px solid var(--rule)}
+.stat:last-child{border-right:none}
+@media (max-width:760px){
+  .stat:nth-child(2){border-right:none}
+  .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--rule)}
+}
+.stat-num{font-family:'Fraunces',serif;font-weight:900;font-size:42px;line-height:.9;letter-spacing:-.03em;color:var(--accent)}
+.stat-num span{font-size:20px;color:var(--ink-soft);font-weight:400}
+.stat-label{font-family:'Inter',sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-top:8px;font-weight:600}
+
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:24px 0;border:1px solid var(--rule)}
+@media (max-width:760px){.compare{grid-template-columns:1fr}}
+.compare > div{padding:18px 22px}
+.compare > div:first-child{border-right:1px solid var(--rule);background:rgba(110,31,42,.04)}
+.compare > div:last-child{background:rgba(90,107,62,.04)}
+@media (max-width:760px){.compare > div:first-child{border-right:none;border-bottom:1px solid var(--rule)}}
+.compare h5{margin-top:0}
+
+.tips-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:24px 0}
+@media (max-width:760px){.tips-grid{grid-template-columns:1fr}}
+.tip-card{background:#fbf6ec;border:1px solid var(--rule);border-top:3px solid var(--teal);padding:20px 22px}
+.tip-card .t-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--teal);letter-spacing:.1em;font-weight:600}
+.tip-card h6{font-family:'Fraunces',serif;font-size:19px;font-weight:700;margin:4px 0 10px;color:var(--ink)}
+.tip-card p{font-size:15.5px;margin-bottom:0;line-height:1.55}
+
+.section-end{margin-top:56px;padding-top:24px;border-top:2px solid var(--ink);font-family:'Fraunces',serif;font-style:italic;font-size:15px;color:var(--ink-faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.dropcap{font-family:'Fraunces',serif;font-weight:900;font-size:64px;line-height:.85;float:left;padding:6px 12px 0 0;color:var(--accent)}
+.drill{background:var(--ink);color:var(--paper);padding:24px 28px;margin:24px 0;border-radius:2px}
+.drill h5{color:var(--ochre);margin-top:0}
+.drill p{color:var(--paper);font-family:'Fraunces',serif;font-size:17px}
+.drill code{background:rgba(245,239,228,.1);color:var(--ochre)}
+a.inline{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+a.inline:hover{color:var(--accent-deep)}
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <a href="index.html" class="back-link">Back to series</a>
+    <div class="brand">
+      <div class="brand-eyebrow">Reading Comprehension · CAT Prep</div>
+      <div class="brand-title">The <em>Reading<br>Comprehension</em><br>Codex</div>
+      <div class="brand-sub">A teacher's companion · 9 modules · 5 worked passages</div>
+    </div>
+
+    <div class="nav-label">Modules</div>
+    <ul class="nav-list">
+      <li><a href="#m0" class="nav-link active" data-target="m0"><span class="nav-num">00</span>Orientation</a></li>
+      <li><a href="#m1" class="nav-link" data-target="m1"><span class="nav-num">01</span>How CAT Passages Work</a></li>
+      <li><a href="#m2" class="nav-link" data-target="m2"><span class="nav-num">02</span>The Question Taxonomy</a></li>
+      <li><a href="#m3" class="nav-link" data-target="m3"><span class="nav-num">03</span>Main Idea &amp; Tone</a></li>
+      <li><a href="#m4" class="nav-link" data-target="m4"><span class="nav-num">04</span>Detail &amp; Specific Facts</a></li>
+      <li><a href="#m5" class="nav-link" data-target="m5"><span class="nav-num">05</span>Inference &amp; Implication</a></li>
+      <li><a href="#m6" class="nav-link" data-target="m6"><span class="nav-num">06</span>Author's Stance &amp; Purpose</a></li>
+      <li><a href="#m7" class="nav-link" data-target="m7"><span class="nav-num">07</span>Tips &amp; Traps</a></li>
+      <li><a href="#m8" class="nav-link" data-target="m8"><span class="nav-num">08</span>Passage Bank</a></li>
+      <li><a href="#m9" class="nav-link" data-target="m9"><span class="nav-num">09</span>Reference Sheet</a></li>
+    </ul>
+
+    <div class="sidebar-footer">
+      Prepared for classroom delivery.<br>
+      Every passage is fully solved.<br>
+      <span style="color:var(--accent)">⬤</span> Tap any solution to expand.
+    </div>
+  </aside>
+
+  <main class="main">
+
+  <!-- ====== MODULE 0 ====== -->
+  <section class="section active" id="m0">
+    <header class="section-header">
+      <div class="module-meta">Module 00 · Orientation</div>
+      <h1 class="section-title">The <em>reading</em><br>half of VARC.</h1>
+      <p class="section-deck">Reading Comprehension carries three of every four marks on the CAT VARC section. Four passages, fifteen to seventeen questions, twenty-eight minutes. The student who reads well wins this section before the verbal-ability portion begins.</p>
+    </header>
+
+    <p class="lede"><span class="dropcap">R</span>eading Comprehension is the most weight-bearing component of any CAT slot. Roughly seventy per cent of VARC marks come from RC — four passages of 500 to 700 words each, with three to five questions per passage. The other thirty per cent (para-jumbles, summaries, odd-sentence) is faster but riskier; RC, by contrast, rewards patient reading and pays the highest marks-per-minute when done right. For most candidates, the percentile they earn on VARC is essentially the percentile they earn on RC.</p>
+
+    <p>What makes CAT RC distinctive is the passage selection. Unlike GRE or GMAT, where passages skew toward natural sciences, the CAT examiner almost exclusively picks essay-style material from the humanities and social sciences — literary criticism, intellectual history, economics, philosophy of mind, sociology, environmental ethics, anthropology. The passages are dense, often argumentative, and almost never neutral. The author has a view, and a great deal of RC skill is in identifying what that view is.</p>
+
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-num">4</div><div class="stat-label">RC passages per slot</div></div>
+      <div class="stat"><div class="stat-num">16</div><div class="stat-label">Avg. RC questions</div></div>
+      <div class="stat"><div class="stat-num">28<span> min</span></div><div class="stat-label">Budget for RC</div></div>
+      <div class="stat"><div class="stat-num">7<span> min</span></div><div class="stat-label">Per passage</div></div>
+    </div>
+
+    <h3><span class="h-num">0.1</span>What CAT RC tests</h3>
+    <p>Three distinct skills, tested simultaneously. <strong>Comprehension</strong> — can you understand what the passage literally says? <strong>Inference</strong> — can you read between the lines to grasp what the author implies but doesn't say outright? <strong>Discrimination</strong> — can you tell, among four close-sounding options, which one matches the passage's claims and which three are subtly wrong?</p>
+
+    <p>The third skill is where most candidates fail. The CAT examiner is a connoisseur of <em>almost-right</em> options. Three of the four answer choices will sound plausible; some will even be true statements about the world. But only one matches what the passage actually says. The discipline is to choose based on the passage, not on what you already know.</p>
+
+    <div class="callout"><strong>The RC maxim.</strong> Every wrong answer in CAT RC is wrong for one specific reason: it is either too broad, too narrow, off-topic, contradictory to the passage, or factually correct but unsupported by the passage. Learn to spot the type of wrongness.</div>
+
+    <h3><span class="h-num">0.2</span>How this codex is organised</h3>
+    <p>Module 01 covers how CAT passages are constructed — paragraph architecture, argument structure, the four common rhetorical patterns. Module 02 gives the question taxonomy: main idea, detail, inference, author's tone, structural, application. Modules 03 through 06 deep-dive into each of the major question types, with the strategy that consistently works.</p>
+
+    <p>Module 07 collects the ten classic RC traps — wrong-answer flavours the examiner uses repeatedly. Module 08 is the passage bank: five full CAT-style passages with all questions solved and the reasoning shown. Module 09 is the reference sheet, with the recognition signals for each question type collapsed onto one page.</p>
+
+    <div class="note tip"><p style="margin:0"><strong>Time discipline.</strong> A seven-minute budget per passage breaks down to about three minutes of reading, three of answering, one of buffer. Reading faster doesn't help — every minute saved on reading is usually lost on re-reading. Aim for one careful pass and a brief skim back, never two full passes.</p></div>
+
+    <div class="section-end"><span>End of Module 00</span><span>→ next: How CAT Passages Work</span></div>
+  </section>
+
+  <!-- ====== MODULE 1 ====== -->
+  <section class="section" id="m1">
+    <header class="section-header">
+      <div class="module-meta">Module 01 · How CAT Passages Work</div>
+      <h1 class="section-title">The <em>architecture</em><br>of an argument.</h1>
+      <p class="section-deck">Every CAT passage is built on a small set of rhetorical templates — claim and defence, contrast, narrative-with-thesis, problem-solution. Recognising the template early is half the battle.</p>
+    </header>
+
+    <p class="lede">A CAT passage is never a random collection of facts. It is an argument, structured deliberately, with paragraphs that play specific roles. The opening paragraph establishes a thesis or a tension. The middle paragraphs defend, complicate, or contrast the thesis. The closing paragraph either resolves the argument or leaves it open with a deliberate ambiguity. Learning to see this architecture is the difference between reading and decoding.</p>
+
+    <h3><span class="h-num">1.1</span>The four rhetorical templates</h3>
+
+    <h4>Template 1: Claim-and-defence</h4>
+    <p>The author makes a strong assertion in paragraph 1, then spends the rest of the passage defending it with evidence, examples, and concessions. Most explicit. Easiest to read. The thesis sentence is usually in paragraph 1, sometimes in paragraph 2.</p>
+
+    <h4>Template 2: Contrast / two-views</h4>
+    <p>The author presents two opposing positions, sometimes neutrally, sometimes with a clear preference. The job is to identify (a) what each position says, and (b) whether the author favours one. Common in passages about historiography, philosophy, and economics.</p>
+
+    <h4>Template 3: Narrative-with-thesis</h4>
+    <p>The passage tells a story — historical, biographical, anecdotal — and uses it to make a larger point. The thesis is often delayed; the first paragraph may seem purely descriptive. The reader must wait for the moment when the narrative tilts into argument.</p>
+
+    <h4>Template 4: Problem-solution</h4>
+    <p>The passage identifies a problem (intellectual, social, environmental), surveys the failed solutions, and proposes (or evaluates) a new one. Common in economics, ecology, and public-policy passages.</p>
+
+    <div class="note tip"><p style="margin:0"><strong>Recognition signal.</strong> Within the first 100 words, the template is usually evident. "Many scholars have argued…" → contrast/two-views. "In 1843, a young…" → narrative. "Despite decades of research…" → problem-solution. "It is widely held that…" → claim-and-defence.</p></div>
+
+    <h3><span class="h-num">1.2</span>Paragraph roles</h3>
+    <p>Once the template is identified, each paragraph plays one of a handful of roles:</p>
+
+    <table class="di-table">
+      <thead><tr><th>Role</th><th>Signal phrases</th><th>What to mark</th></tr></thead>
+      <tbody>
+        <tr><td>Thesis</td><td>"argues that", "central claim", "in this essay"</td><td>The main proposition</td></tr>
+        <tr><td>Defence / example</td><td>"for instance", "consider", "evidence suggests"</td><td>Just enough to recall it exists</td></tr>
+        <tr><td>Concession</td><td>"to be sure", "admittedly", "of course"</td><td>What the author grants to opponents</td></tr>
+        <tr><td>Counter-thesis (opposing view)</td><td>"however", "in contrast", "critics maintain"</td><td>The opposed claim, in your words</td></tr>
+        <tr><td>Refinement</td><td>"but this is too simple", "a more nuanced view"</td><td>The author's preferred version</td></tr>
+        <tr><td>Conclusion</td><td>"thus", "in sum", "the upshot is"</td><td>The take-away</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="h-num">1.3</span>Reading at two speeds</h3>
+    <p>The skilled CAT reader does not read every sentence at the same speed. Thesis sentences and conclusion sentences are read slowly and remembered. Defence examples are read at moderate speed, just enough to know they exist and roughly what they say. Concessions and asides are skimmed.</p>
+
+    <div class="anatomy">
+      <div>
+        <h5>Read slowly</h5>
+        <p class="sentence">"The central claim of this essay is that modernist literature, far from being the avant-garde rupture often described in textbooks, was in fact a continuation of Victorian formal experiments by other means."</p>
+      </div>
+      <div>
+        <h5>Why</h5>
+        <p class="read">This is a thesis sentence — every question on the passage will key off this claim. Note: "modernism = continuation of Victorian forms, not rupture". Memorise.</p>
+      </div>
+    </div>
+
+    <div class="anatomy">
+      <div>
+        <h5>Read at speed</h5>
+        <p class="sentence">"Eliot, for example, drew heavily on the Browning monologue tradition, while Woolf's stream-of-consciousness owed an unacknowledged debt to George Meredith's late novels of the 1880s."</p>
+      </div>
+      <div>
+        <h5>Why</h5>
+        <p class="read">This is defence-by-example. Note: "Eliot ← Browning; Woolf ← Meredith". Don't memorise — just know it's here.</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">1.4</span>The "but" trap</h3>
+    <p>Whenever a CAT passage uses the word "but", "however", or "yet" between two adjacent sentences, the second one is almost always more important than the first. The author has set up an expectation in order to overturn it. Mark every "however" as a flag.</p>
+
+    <div class="callout"><strong>The reversal habit.</strong> If the passage says "many scholars have argued X. However, this view is incomplete because Y…" — the author's position is Y, not X. The opening sentence about scholars is bait. Don't bite.</div>
+
+    <div class="section-end"><span>End of Module 01</span><span>→ next: The Question Taxonomy</span></div>
+  </section>
+
+  <!-- ====== MODULE 2 ====== -->
+  <section class="section" id="m2">
+    <header class="section-header">
+      <div class="module-meta">Module 02 · The Question Taxonomy</div>
+      <h1 class="section-title">The <em>six</em><br>question types.</h1>
+      <p class="section-deck">Every CAT RC question falls into one of six families. Naming the family before reading the options halves the time to a correct answer.</p>
+    </header>
+
+    <p class="lede">CAT RC asks six types of questions, in roughly stable proportions across slots. Knowing which type you are looking at tells you (a) where in the passage to look, (b) how broadly to read, and (c) what kind of wrong-answer flavour to expect. The taxonomy is the single most powerful organising framework in RC preparation.</p>
+
+    <h3><span class="h-num">2.1</span>The six families, in CAT-frequency order</h3>
+
+    <table class="di-table">
+      <thead><tr><th>Family</th><th>Typical phrasing</th><th>Frequency</th></tr></thead>
+      <tbody>
+        <tr><td>Main idea</td><td>"primary purpose", "central argument", "main point"</td><td>1 per passage</td></tr>
+        <tr><td>Detail / specific fact</td><td>"according to the passage", "the author states that"</td><td>0–2 per passage</td></tr>
+        <tr><td>Inference</td><td>"the author would most likely agree", "implies"</td><td>1–2 per passage</td></tr>
+        <tr><td>Author's tone / stance</td><td>"attitude towards", "tone of the passage"</td><td>0–1 per passage</td></tr>
+        <tr><td>Structural / function</td><td>"purpose of paragraph 2", "role of the example"</td><td>0–1 per passage</td></tr>
+        <tr><td>Application / extension</td><td>"which of the following would the author cite as support"</td><td>0–1 per passage</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="h-num">2.2</span>Main idea questions</h3>
+    <p>The whole passage is the answer. The correct option captures the central claim or argument the passage makes — not a sub-point, not a detail, not an example, but the umbrella thesis. Look for the option that is broad enough to cover the entire passage but not so broad that it could apply to passages on other topics.</p>
+
+    <p>Wrong-answer flavours: <em>too narrow</em> (covers only paragraph 1 or 2), <em>too broad</em> (covers the topic but not the passage's specific stance), <em>off-topic</em> (mentions something tangentially discussed), <em>contradictory</em> (rare, but it happens — describes the opposing view, not the author's).</p>
+
+    <h3><span class="h-num">2.3</span>Detail questions</h3>
+    <p>These ask what the passage <em>says</em>, literally. The answer is in the passage, usually verbatim or near-verbatim. Locate the relevant paragraph, find the sentence, match the option that paraphrases that sentence most accurately.</p>
+
+    <p>Wrong-answer flavours: <em>opposite</em> (negation of the passage's claim), <em>extreme</em> (passage says "some", option says "all"), <em>plausible-but-unstated</em> (sounds reasonable but is never claimed in the passage), <em>scope-shift</em> (passage discusses X, option attributes the same claim to Y).</p>
+
+    <h3><span class="h-num">2.4</span>Inference questions</h3>
+    <p>The answer is <em>not</em> in the passage literally — but it follows necessarily from what the passage says. The correct option is the one the author would have to accept if you cornered them with their own words. Critical: an inference is not a guess, not a probable outcome, not your own interpretation. It is a necessary consequence.</p>
+
+    <div class="formula">
+      <span class="label">The inference test</span>
+      An option A is a valid inference from the passage P if and only if: "P implies A" — which is logically equivalent to "P is false or A is true". If you can construct a scenario where P holds but A fails, A is not a valid inference.
+    </div>
+
+    <p>Wrong-answer flavours: <em>too far</em> (requires assumptions outside the passage), <em>opposite</em> (contradicts the passage), <em>plausible add-on</em> (sounds like a natural extension but isn't actually entailed).</p>
+
+    <h3><span class="h-num">2.5</span>Tone and stance questions</h3>
+    <p>These ask about the author's attitude — approving, critical, sceptical, neutral, ambivalent, ironic. The signals are in adjectives, adverbs, and the order of paragraphs. If the passage spends more time defending X than attacking it, the author probably leans towards X.</p>
+
+    <table class="di-table">
+      <thead><tr><th>Tone signal</th><th>Tone implied</th></tr></thead>
+      <tbody>
+        <tr><td>"misguided", "flawed", "fails to account for"</td><td>Critical</td></tr>
+        <tr><td>"insightful", "compelling", "rightly observed"</td><td>Approving</td></tr>
+        <tr><td>"perhaps", "may", "it is unclear whether"</td><td>Tentative / sceptical</td></tr>
+        <tr><td>"as is well known", neutral verbs</td><td>Neutral / expository</td></tr>
+        <tr><td>"so-called", scare quotes around terms</td><td>Sceptical / ironic</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="h-num">2.6</span>Structural questions</h3>
+    <p>"What is the purpose of paragraph 3?" or "Why does the author mention the experiment in paragraph 2?" — these ask about the role a piece of the passage plays in the argument. Common roles: providing an example, raising a counterargument, illustrating a contrast, introducing a refinement, conceding a point.</p>
+
+    <h3><span class="h-num">2.7</span>Application questions</h3>
+    <p>"Which of the following, if true, would most strengthen the author's argument?" or "Which scenario would the author find most consistent with their view?" — these ask you to extend the passage's claims to a new case. Identify the author's principle; check each option against it.</p>
+
+    <div class="callout"><strong>Why the taxonomy matters.</strong> A main-idea question and a detail question may look superficially similar — both ask about the passage. But the strategy is opposite. Main-idea: zoom out, capture the whole. Detail: zoom in, locate the sentence. Mixing them up is the single most common RC error.</div>
+
+    <div class="section-end"><span>End of Module 02</span><span>→ next: Main Idea &amp; Tone</span></div>
+  </section>
+
+  <!-- ====== MODULE 3 ====== -->
+  <section class="section" id="m3">
+    <header class="section-header">
+      <div class="module-meta">Module 03 · Main Idea &amp; Tone</div>
+      <h1 class="section-title">The <em>whole-passage</em><br>questions.</h1>
+      <p class="section-deck">Main-idea and tone questions sound abstract but are answered the same way: by holding the entire passage in view and finding the option that fits the whole, not a part.</p>
+    </header>
+
+    <p class="lede">Main-idea and tone questions feel hard for the same reason: they ask about something diffuse, not localised. There is no sentence to point at, no paragraph to circle. The answer comes from a sense of the passage as a whole — which is precisely the sense a hurried reader does not develop. The strategy here is structural: read the passage to discover the answer, not the answer to discover the passage.</p>
+
+    <h3><span class="h-num">3.1</span>The thesis-statement habit</h3>
+    <p>Before looking at any options, write down — in your head or on paper — a one-sentence summary of the passage. "The author argues that X, against the conventional view that Y, on the grounds that Z." If you cannot do this in ten seconds, you have not understood the passage well enough to answer the main-idea question, and you should re-skim before proceeding.</p>
+
+    <div class="note tip"><p style="margin:0"><strong>The check.</strong> Your one-sentence summary should mention the passage's <em>argument</em>, not its topic. "The passage is about climate policy" is a topic. "The passage argues that adaptation is undervalued relative to mitigation in current climate policy" is an argument. The latter is what the main-idea question wants.</p></div>
+
+    <h3><span class="h-num">3.2</span>Matching the option to the summary</h3>
+    <p>With your summary in hand, look at the four options. The correct one will paraphrase your summary closely — not word-for-word, but capturing the same claim, scope, and emphasis. The three wrong options will fail in characteristic ways.</p>
+
+    <div class="compare">
+      <div>
+        <h5>Too narrow (wrong)</h5>
+        <p style="margin-bottom:0">Captures only the second paragraph or only one example from the passage. Sounds true, but is incomplete.</p>
+      </div>
+      <div>
+        <h5>Too broad (wrong)</h5>
+        <p style="margin-bottom:0">Could describe many essays on the topic, not specifically this one. Misses the author's distinctive stance.</p>
+      </div>
+    </div>
+
+    <div class="compare">
+      <div>
+        <h5>Off-stance (wrong)</h5>
+        <p style="margin-bottom:0">Captures the opposing view that the author is arguing against, not the author's own position. The "but" trap from Module 01.</p>
+      </div>
+      <div>
+        <h5>Out-of-scope (wrong)</h5>
+        <p style="margin-bottom:0">Brings in claims not made in the passage at all. Sometimes factually true; always passage-irrelevant.</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">3.3</span>Tone — the adjective hunt</h3>
+    <p>Tone questions are answered through adjectives and adverbs. As you read the passage, note any evaluative language — words that go beyond describing and into judging. "Curious", "remarkable", "misguided", "predictable", "ill-considered". These are tone signals.</p>
+
+    <p>If a passage contains a high density of approving adjectives applied to one view, the author is sympathetic to that view. If the same view attracts critical adjectives, the author is opposed. Neutral passages — purely expository, no evaluations — are rare on CAT but do occur, especially in science-flavoured passages.</p>
+
+    <h3><span class="h-num">3.4</span>The tone vocabulary</h3>
+    <table class="di-table">
+      <thead><tr><th>Tone word</th><th>Means</th></tr></thead>
+      <tbody>
+        <tr><td>Critical</td><td>Disapproving, finding fault</td></tr>
+        <tr><td>Sceptical</td><td>Doubtful but open</td></tr>
+        <tr><td>Dismissive</td><td>Rejecting without engagement</td></tr>
+        <tr><td>Ambivalent</td><td>Mixed — sees merit on both sides</td></tr>
+        <tr><td>Analytical</td><td>Neutral, dissecting</td></tr>
+        <tr><td>Polemical</td><td>Strongly argumentative, taking sides</td></tr>
+        <tr><td>Reverent</td><td>Highly admiring</td></tr>
+        <tr><td>Ironic</td><td>Saying one thing, meaning another</td></tr>
+        <tr><td>Resigned</td><td>Accepting unhappy facts</td></tr>
+      </tbody>
+    </table>
+
+    <p>The tone option you choose should match the strongest, most consistent evaluative language in the passage. "Polemical" requires sharp adjectives throughout. "Analytical" requires their absence. "Ambivalent" requires evaluative language pulling in both directions.</p>
+
+    <div class="callout"><strong>Tone trap.</strong> CAT tone options often include one that is too strong ("scornful") and one that is too weak ("uninterested") flanking the correct middle ("critical" or "sceptical"). When in doubt, the moderate option is usually right; the CAT author rarely sounds extreme.</div>
+
+    <div class="section-end"><span>End of Module 03</span><span>→ next: Detail &amp; Specific Facts</span></div>
+  </section>
+
+
+  <!-- ====== MODULE 4 ====== -->
+  <section class="section" id="m4">
+    <header class="section-header">
+      <div class="module-meta">Module 04 · Detail &amp; Specific Facts</div>
+      <h1 class="section-title">The <em>locate-and-match</em><br>questions.</h1>
+      <p class="section-deck">Detail questions ask what the passage literally says. They are the most mechanical of all RC questions — and the easiest to lose marks on if you trust your memory instead of the passage.</p>
+    </header>
+
+    <p class="lede">Detail questions are the only RC questions where the answer is, in some sense, "in the passage". The phrasing usually gives it away: "According to the passage", "The author states that", "The passage indicates". The strategy is locate-and-match: find the sentence, then find the option that paraphrases it most faithfully.</p>
+
+    <h3><span class="h-num">4.1</span>The locating strategy</h3>
+    <p>Detail questions reference a specific topic, name, year, or claim. Find the unique anchor — a proper noun, a date, an unusual phrase — and search the passage for it. The relevant sentence is usually within two sentences of the anchor.</p>
+
+    <div class="formula">
+      <span class="label">Three-step protocol</span>
+      1. Identify the anchor in the question (name, year, technical term, unique phrase).<br>
+      2. Scan the passage for the anchor — your eyes, not the prose.<br>
+      3. Read the sentence with the anchor plus one sentence before and after. The answer is there.
+    </div>
+
+    <h3><span class="h-num">4.2</span>Paraphrase recognition</h3>
+    <p>The correct answer to a detail question almost never repeats the passage's exact words. The CAT examiner paraphrases. Your job is to recognise that "the policy succeeded only in regions with prior infrastructure" matches "the initiative achieved its targets in areas that already possessed the necessary scaffolding". Same claim, different words.</p>
+
+    <p>To recognise the paraphrase, compare the structural claim — what is asserted of what — rather than surface vocabulary. "Policy → succeeded → only in → regions with infrastructure" matches "initiative → achieved → only in → areas with scaffolding". The pattern is the same.</p>
+
+    <h3><span class="h-num">4.3</span>The wrong-answer flavours</h3>
+
+    <div class="compare">
+      <div>
+        <h5>The opposite</h5>
+        <p style="margin-bottom:0">Passage: "policy succeeded only in well-equipped regions". Option: "policy succeeded across all regions, regardless of equipment". Sounds plausible but contradicts the passage.</p>
+      </div>
+      <div>
+        <h5>The extreme</h5>
+        <p style="margin-bottom:0">Passage: "policy was effective in most cases". Option: "policy was effective in every case". The shift from "most" to "every" is a CAT favourite.</p>
+      </div>
+    </div>
+
+    <div class="compare">
+      <div>
+        <h5>The scope-shift</h5>
+        <p style="margin-bottom:0">Passage: "Eliot drew on Browning's monologues". Option: "Eliot drew on Browning's lyric poetry". Same author, wrong attribute — close enough to mislead.</p>
+      </div>
+      <div>
+        <h5>The plausible add-on</h5>
+        <p style="margin-bottom:0">Passage: "the policy reduced infant mortality". Option: "the policy reduced infant mortality and increased literacy". The first half is right, the second is unsupported.</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">4.4</span>A worked detail example</h3>
+
+    <div class="note"><p style="margin:0"><strong>From a passage:</strong> "The Industrial Revolution accelerated urbanisation, but its most consequential effect was perhaps the redistribution of literacy: by 1851 more than half of all British factory workers could read, a figure that had stood at less than fifteen per cent two generations earlier."</p></div>
+
+    <p><strong>Question:</strong> According to the passage, the most consequential effect of the Industrial Revolution was:</p>
+    <ul>
+      <li>(A) the acceleration of urbanisation</li>
+      <li>(B) a redistribution of literacy across the working population</li>
+      <li>(C) the rise of factory employment</li>
+      <li>(D) the doubling of average wages by 1851</li>
+    </ul>
+
+    <p><strong>Answer.</strong> (B). The passage says "its most consequential effect was perhaps the redistribution of literacy". (A) is mentioned but explicitly subordinated. (C) and (D) are not in the passage. Note how (A) is the trap: it appears first in the sentence, so a careless reader latches onto it.</p>
+
+    <div class="callout"><strong>The trust rule.</strong> When your memory of the passage and the passage itself disagree, the passage wins. Always. Trust nothing but the printed text. Even one minute of careful locating beats five minutes of confident misremembering.</div>
+
+    <div class="section-end"><span>End of Module 04</span><span>→ next: Inference &amp; Implication</span></div>
+  </section>
+
+  <!-- ====== MODULE 5 ====== -->
+  <section class="section" id="m5">
+    <header class="section-header">
+      <div class="module-meta">Module 05 · Inference &amp; Implication</div>
+      <h1 class="section-title">The <em>between-the-lines</em><br>questions.</h1>
+      <p class="section-deck">Inference questions are the heart of CAT RC. The answer is not stated but follows necessarily from what is stated. The skill is in distinguishing necessary consequence from plausible guess.</p>
+    </header>
+
+    <p class="lede">Inference is where the CAT examiner separates the strong reader from the merely diligent one. The question phrasings are characteristic: "the author would most likely agree that", "the passage implies that", "it can be inferred that". The correct answer is not in the passage — but it is forced by what is in the passage. If the passage is true, the inference must be true.</p>
+
+    <h3><span class="h-num">5.1</span>The necessity test</h3>
+    <p>An option A is a valid inference from passage P if and only if accepting P forces you to accept A. The test: imagine the author reads option A and is asked "would you agree?". If the author <em>has to</em> agree given what they wrote, A is a valid inference. If they could plausibly disagree without contradicting themselves, A is not.</p>
+
+    <div class="formula">
+      <span class="label">The disagreement test</span>
+      For each option, ask: could the author of the passage hold their stated views and still disagree with this option?<br>
+      If yes ⇒ not a valid inference.<br>
+      If no ⇒ valid inference.
+    </div>
+
+    <h3><span class="h-num">5.2</span>The "too far" trap</h3>
+    <p>The most common wrong inference goes one step beyond what the passage supports. The passage says X is happening; the option says X will continue. The passage says A causes B in this case; the option says A always causes B. Plausible extensions are not necessary consequences.</p>
+
+    <div class="anatomy">
+      <div>
+        <h5>The passage says</h5>
+        <p class="sentence">"Public-health programmes in the 1980s reduced child mortality by half across most low-income countries."</p>
+      </div>
+      <div>
+        <h5>Valid inference</h5>
+        <p class="read">Child mortality in low-income countries was higher before the 1980s. (Forced by the passage — "reduced by half" entails a higher prior baseline.)</p>
+      </div>
+    </div>
+
+    <div class="anatomy">
+      <div>
+        <h5>Invalid inference (too far)</h5>
+        <p class="sentence">"Public-health programmes are more effective than economic-development programmes in reducing child mortality."</p>
+      </div>
+      <div>
+        <h5>Why</h5>
+        <p class="read">The passage compared 1980s mortality to its baseline, not to outcomes of economic-development programmes. The comparison is invented.</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">5.3</span>The "must agree" formula</h3>
+    <p>The question phrase "the author would most likely agree" is a softening — it doesn't really mean "most likely". It means "the author must agree". Test each option against the strict standard: would the author's stated views <em>force</em> agreement? Only the option that passes this test is correct.</p>
+
+    <h3><span class="h-num">5.4</span>Worked inference example</h3>
+
+    <div class="note"><p style="margin:0"><strong>From a passage:</strong> "The Romantic poets, in turning away from neoclassical decorum, did not abandon form altogether; they simply found in the ballad and the lyric forms more amenable to emotional immediacy. Wordsworth and Coleridge, in particular, were as exacting about metre as any Augustan had been about the heroic couplet — only their metrical strictness served different ends."</p></div>
+
+    <p><strong>Question:</strong> The author of the passage would most likely agree that:</p>
+    <ul>
+      <li>(A) Wordsworth and Coleridge were less concerned with form than the Augustan poets were.</li>
+      <li>(B) Romantic poetry was a complete rejection of all formal constraints inherited from the eighteenth century.</li>
+      <li>(C) Formal rigour can serve quite different artistic purposes in different historical periods.</li>
+      <li>(D) The heroic couplet remained the dominant verse form into the Romantic period.</li>
+    </ul>
+
+    <p><strong>Answer.</strong> (C). The passage explicitly contrasts <em>same kind of metrical strictness, different ends</em> for Augustans and Romantics — which directly entails that formal rigour serves different purposes in different periods. (A) reverses the passage's claim. (B) contradicts "did not abandon form altogether". (D) is unstated.</p>
+
+    <div class="callout"><strong>The discipline.</strong> When two options both feel plausible, ask which one the passage <em>forces</em>. Plausibility is the trap; forcing is the criterion.</div>
+
+    <div class="section-end"><span>End of Module 05</span><span>→ next: Author's Stance &amp; Purpose</span></div>
+  </section>
+
+  <!-- ====== MODULE 6 ====== -->
+  <section class="section" id="m6">
+    <header class="section-header">
+      <div class="module-meta">Module 06 · Author's Stance &amp; Purpose</div>
+      <h1 class="section-title">The <em>why-this-passage</em><br>questions.</h1>
+      <p class="section-deck">Why was this passage written? What does the author want the reader to come away believing? Stance-and-purpose questions reward holistic reading and reveal the architecture from Module 01.</p>
+    </header>
+
+    <p class="lede">Author's-stance questions look like main-idea questions but ask something slightly different. Main-idea asks what the passage <em>argues</em>; stance asks where the author <em>stands</em>. They overlap in clear claim-and-defence passages but diverge in two-views passages, where the author's position is more subtle. Purpose questions, similarly, ask why the passage was written: to advocate, to inform, to critique, to survey.</p>
+
+    <h3><span class="h-num">6.1</span>Locating the author's stance</h3>
+    <p>The author's stance is rarely a single sentence. It is the cumulative effect of:</p>
+
+    <ul>
+      <li>Which view the passage spends more time defending.</li>
+      <li>Which evaluative adjectives are used for which view.</li>
+      <li>How concessions are phrased — granting one point to opponents before subverting their larger claim.</li>
+      <li>The final paragraph, which usually crystallises the position.</li>
+    </ul>
+
+    <h3><span class="h-num">6.2</span>The five purpose-verbs</h3>
+
+    <table class="di-table">
+      <thead><tr><th>Purpose verb</th><th>What the passage does</th></tr></thead>
+      <tbody>
+        <tr><td>Argue</td><td>Defends a single thesis with evidence</td></tr>
+        <tr><td>Critique</td><td>Identifies flaws in a position</td></tr>
+        <tr><td>Survey</td><td>Presents multiple views without strong preference</td></tr>
+        <tr><td>Reconcile</td><td>Shows how two opposing views can both be partially right</td></tr>
+        <tr><td>Reframe</td><td>Suggests a debate has been mis-stated</td></tr>
+      </tbody>
+    </table>
+
+    <p>When the purpose question gives you these as options, pick the one that matches the passage's <em>dominant move</em>. A passage that mentions several views but devotes its energy to attacking one of them is critiquing, not surveying.</p>
+
+    <h3><span class="h-num">6.3</span>The contrast-passage subtlety</h3>
+    <p>In a two-views passage, the author's stance is often hidden in two places: (a) the order in which views are presented — usually the view defended last is the author's, and (b) the language used to introduce each view. The author's preferred view is introduced with neutral or approving verbs; the opposing view often with sceptical verbs ("claims that", "supposes that").</p>
+
+    <div class="note tip"><p style="margin:0"><strong>The "claim that" tell.</strong> When the passage says "Marxist historians <em>claim</em> that X" but then says "Annales scholars <em>have demonstrated</em> that Y", the verb choice itself reveals where the author sympathises. "Claim" carries doubt; "demonstrated" carries acceptance.</p></div>
+
+    <h3><span class="h-num">6.4</span>Worked stance example</h3>
+
+    <div class="note"><p style="margin:0"><strong>From a passage:</strong> "While behavioural economists have rightly pointed out the limits of the rational-actor model, the broader project of explaining economic decisions through psychological heuristics is, I think, far less novel than its proponents claim. Smith himself acknowledged sympathy and prudence as drivers of choice; Veblen built an entire economics around status. What is new in behavioural economics is not the recognition that humans are not coldly rational — that has always been recognised — but the rigour of experimental evidence brought to bear on familiar observations."</p></div>
+
+    <p><strong>Question:</strong> The author's stance towards behavioural economics is best described as:</p>
+    <ul>
+      <li>(A) enthusiastic, viewing it as a transformative break with classical economics</li>
+      <li>(B) hostile, regarding it as a mere repackaging of existing ideas</li>
+      <li>(C) qualified-positive, acknowledging its contributions while questioning its novelty</li>
+      <li>(D) neutral, presenting both positive and negative views without taking sides</li>
+    </ul>
+
+    <p><strong>Answer.</strong> (C). The author says behavioural economists "have rightly pointed out" the limits of rational-actor models — approval. But "far less novel than its proponents claim" — qualification. The "rigour of experimental evidence" is praised — qualification refined. (A) overstates the approval. (B) misses the explicit "rightly pointed out". (D) ignores the clear evaluative language.</p>
+
+    <div class="callout"><strong>The stance recipe.</strong> Read the passage. List the evaluative adjectives, sorted by which view they apply to. Note the verb tense and modality (claim, demonstrate, suggest, suppose). The stance falls out almost mechanically.</div>
+
+    <div class="section-end"><span>End of Module 06</span><span>→ next: Tips &amp; Traps</span></div>
+  </section>
+
+  <!-- ====== MODULE 7 ====== -->
+  <section class="section" id="m7">
+    <header class="section-header">
+      <div class="module-meta">Module 07 · Tips &amp; Traps</div>
+      <h1 class="section-title">The <em>ten</em><br>wrong-answer flavours.</h1>
+      <p class="section-deck">Every wrong CAT RC option is wrong in one of ten specific ways. Learn the flavours, and you will eliminate three options on most questions in seconds.</p>
+    </header>
+
+    <div class="tips-grid">
+      <div class="tip-card"><div class="t-num">TRAP 01</div><h6>The opposite</h6><p>The option says exactly what the passage denies, or denies what the passage asserts. A simple read of "not" or "never" against the passage reveals it. Easy to spot once suspected.</p></div>
+      <div class="tip-card"><div class="t-num">TRAP 02</div><h6>The extreme</h6><p>The passage says "some", the option says "all". The passage says "often", the option says "always". CAT's favourite trap. Treat "all", "every", "never", "only", "must" as warning words.</p></div>
+      <div class="tip-card"><div class="t-num">TRAP 03</div><h6>The scope-shift</h6><p>The option attributes a passage's claim to a different agent or time period. "Romantic poets" become "all 19th-century poets". "1851" becomes "the 19th century". Read the subject of each option carefully.</p></div>
+      <div class="tip-card"><div class="t-num">TRAP 04</div><h6>The plausible-but-unstated</h6><p>The option sounds reasonable; you might even agree with it. But the passage doesn't say it. RC tests reading, not opinion. If you can't find the supporting sentence, reject the option.</p></div>
+      <div class="tip-card"><div class="t-num">TRAP 05</div><h6>The half-truth</h6><p>The first clause matches the passage; the second clause adds something unsupported. Read the option to the end before deciding it matches.</p></div>
+      <div class="tip-card"><div class="t-num">TRAP 06</div><h6>The opposing-view restatement</h6><p>The option captures the view the author is arguing against, not the author's own. Always ask: is this what the author thinks, or what the author is criticising?</p></div>
+      <div class="tip-card"><div class="t-num">TRAP 07</div><h6>The too-narrow main-idea</h6><p>For main-idea questions, the option captures only paragraph 1 or one example. Asks: does this option cover the whole passage, or just a portion?</p></div>
+      <div class="tip-card"><div class="t-num">TRAP 08</div><h6>The too-broad main-idea</h6><p>The option could describe many essays on the topic, not specifically this one. Asks: does this option capture the author's specific stance?</p></div>
+      <div class="tip-card"><div class="t-num">TRAP 09</div><h6>The over-strong tone</h6><p>The author is mildly critical; the option calls them "scornful" or "vehement". CAT authors rarely sound extreme. Prefer moderate tone words.</p></div>
+      <div class="tip-card"><div class="t-num">TRAP 10</div><h6>The inference one step too far</h6><p>The inference is plausible but not necessary. Could the author hold their views without agreeing? If yes, reject the option, however reasonable it sounds.</p></div>
+    </div>
+
+    <div class="section-end"><span>End of Module 07</span><span>→ next: Passage Bank</span></div>
+  </section>
+
+  <!-- ====== MODULE 8 ====== -->
+  <section class="section" id="m8">
+    <header class="section-header">
+      <div class="module-meta">Module 08 · Passage Bank · 5 passages</div>
+      <h1 class="section-title">The <em>worked</em><br>passage bank.</h1>
+      <p class="section-deck">Five CAT-style passages — humanities, economics, philosophy of mind, sociology, environment — each with four to five sub-questions, every one solved with the full reasoning trace.</p>
+    </header>
+
+    <h3><span class="h-num">8.1</span>Passage 01 · Literary criticism</h3>
+
+    <div class="passage">
+      <div class="meta">Humanities · ~480 words · 4 questions</div>
+      <p>The persistent myth of literary modernism is that it constituted a rupture — a sudden, deliberate break with the Victorian sensibility that came before. Anthologies dutifully date the modernist period from roughly 1910, marking it off as if a curtain had fallen on one set of formal conventions and risen on another. Yet the more one reads the actual literary production of the years immediately preceding 1910, the harder it becomes to sustain this neat division. The seeds of what we call modernist experimentation — the destabilised narrator, the willingness to leave a story unresolved, the dense allusiveness — were sown a generation earlier, often in works that critics now classify, almost embarrassedly, as late Victorian.</p>
+      <p>Consider Henry James, whose late novels of the 1890s and 1900s already display the signature modernist technique of refracting all events through a single consciousness, with the resulting uncertainty about what has actually occurred. Or consider the experimental novels of George Meredith in the 1880s, where stream-of-consciousness is anticipated decades before Woolf or Joyce would claim it as their own. These are not minor anticipations; they are full instances of techniques that the standard literary history treats as twentieth-century inventions.</p>
+      <p>The myth of rupture persists, I think, because it serves the self-image of the modernists themselves. Pound's famous injunction to "make it new" was rhetorically powerful precisely because it presented the past as a thing to be discarded rather than as a resource to be drawn from. The modernists wanted to be without ancestors; the historiography has obligingly granted them their wish. But the actual archaeological record — of essays, letters, unpublished manuscripts, sales figures — shows that the Edwardian readership was already prepared for what came next. The shock of modernism was less the shock of the new than the shock of the openly displayed.</p>
+      <p>This does not, of course, diminish what the modernists accomplished. The intensity and the self-consciousness with which they pursued formal innovation were genuinely unprecedented. But "unprecedented in intensity" is not the same as "unprecedented in kind". When we mistake the former for the latter, we end up telling a story about literary history that is more dramatic than accurate — and we miss the genuinely interesting question, which is how a sensibility two generations in formation finally found, in a single decade, a vocabulary equal to itself.</p>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>P1 · Q1</span><span class="yr">Easy</span></div><span class="q-tag">main idea</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q1.</strong> The primary purpose of the passage is to:</p>
+        <ul class="q-options">
+          <li data-opt="A">trace the technical innovations of Henry James and George Meredith in detail</li>
+          <li data-opt="B">argue that modernism is best understood as a continuation rather than a rupture</li>
+          <li data-opt="C">defend Ezra Pound's "make it new" against contemporary critics</li>
+          <li data-opt="D">demonstrate that Edwardian readers had no interest in modernist experiments</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Summary</span>The author argues that modernism was less a rupture and more a continuation of late-Victorian and Edwardian experiments, using James and Meredith as evidence.</div>
+        <div class="step"><span class="step-num">Check (A)</span>Too narrow — James and Meredith are examples used in service of the larger thesis, not the thesis itself.</div>
+        <div class="step"><span class="step-num">Check (B)</span>Matches the summary exactly.</div>
+        <div class="step"><span class="step-num">Check (C)</span>Off-stance — the passage criticises Pound's rhetorical move, doesn't defend it.</div>
+        <div class="step"><span class="step-num">Check (D)</span>Opposite — the passage says Edwardian readers were "already prepared".</div>
+        <div class="ans-line"><strong>Answer</strong> B · the continuation thesis.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>P1 · Q2</span><span class="yr">Medium</span></div><span class="q-tag">detail</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q2.</strong> According to the passage, the technique of stream-of-consciousness was anticipated by:</p>
+        <ul class="q-options">
+          <li data-opt="A">Henry James in the 1900s</li>
+          <li data-opt="B">George Meredith in the 1880s</li>
+          <li data-opt="C">Virginia Woolf and James Joyce</li>
+          <li data-opt="D">Ezra Pound in his Edwardian essays</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Locate</span>"experimental novels of George Meredith in the 1880s, where stream-of-consciousness is anticipated decades before Woolf or Joyce".</div>
+        <div class="step"><span class="step-num">Match</span>Direct paraphrase ⇒ (B).</div>
+        <div class="step"><span class="step-num">Eliminate</span>(A) — James anticipated refracted-consciousness, not stream-of-consciousness specifically. (C) — Woolf and Joyce <em>claimed</em> it, not anticipated. (D) — Pound is mentioned for "make it new", unrelated.</div>
+        <div class="ans-line"><strong>Answer</strong> B · Meredith in the 1880s.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>P1 · Q3</span><span class="yr">Medium</span></div><span class="q-tag">inference</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q3.</strong> Which of the following would the author most likely agree with?</p>
+        <ul class="q-options">
+          <li data-opt="A">The modernists deliberately falsified the historical record to claim originality.</li>
+          <li data-opt="B">Literary historians have been complicit in maintaining the modernist self-image.</li>
+          <li data-opt="C">Ezra Pound was a less original writer than Henry James.</li>
+          <li data-opt="D">Stream-of-consciousness was perfected by Virginia Woolf rather than invented by her.</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Test (A)</span>"Deliberately falsified" is too strong. The passage suggests the modernists wanted to be without ancestors, not that they falsified records. Reject.</div>
+        <div class="step"><span class="step-num">Test (B)</span>"the historiography has obligingly granted them their wish" — directly entails that literary historians have helped maintain this self-image. Forced inference.</div>
+        <div class="step"><span class="step-num">Test (C)</span>Not in the passage — author doesn't compare Pound to James.</div>
+        <div class="step"><span class="step-num">Test (D)</span>The passage says Woolf and Joyce "claimed" the technique, but the passage doesn't say they "perfected" it. Plausible-but-unstated.</div>
+        <div class="ans-line"><strong>Answer</strong> B · historians have been complicit.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>P1 · Q4</span><span class="yr">Hard</span></div><span class="q-tag">author's stance</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q4.</strong> The author's stance towards the modernists is best described as:</p>
+        <ul class="q-options">
+          <li data-opt="A">dismissive of their formal innovations</li>
+          <li data-opt="B">admiring of their intensity while questioning their claim to originality</li>
+          <li data-opt="C">indifferent to questions of literary history</li>
+          <li data-opt="D">hostile to the broader project of modernism</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Evaluative signals</span>"genuinely unprecedented" (intensity) + "more dramatic than accurate" (originality myth). Approval for one aspect, critique for another.</div>
+        <div class="step"><span class="step-num">Match</span>(B) captures both halves precisely.</div>
+        <div class="step"><span class="step-num">Eliminate</span>(A) "dismissive" too strong. (C) "indifferent" contradicts the entire passage. (D) "hostile" too strong — the author explicitly says "this does not diminish what the modernists accomplished".</div>
+        <div class="ans-line"><strong>Answer</strong> B · admiring intensity, questioning originality.</div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.2</span>Passage 02 · Economics</h3>
+
+    <div class="passage">
+      <div class="meta">Economics · ~520 words · 4 questions</div>
+      <p>For the better part of the twentieth century, development economics rested on a comforting premise: that the obstacles to economic growth in poor countries were primarily ones of capital. Provide investment, the theory ran, and growth would follow. The architects of post-war development planning — at the World Bank, at the regional development banks, in the planning commissions of newly independent nations — were broadly persuaded that the right amount of money applied in the right places would lift entire populations into prosperity within a generation.</p>
+      <p>The record of the subsequent fifty years was, at best, mixed. South Korea and Taiwan, certainly, achieved growth rates that vindicated the capital-investment model spectacularly. But a great many countries that received comparable inflows of investment — Argentina, Egypt, the Philippines, much of sub-Saharan Africa — failed to convert the investment into sustained growth. By the 1990s, it was no longer possible to attribute these failures to insufficient investment alone. Other variables, notably institutional quality and the rule of law, had clearly mattered as much or more.</p>
+      <p>What is striking, in retrospect, is not the partial failure of the capital-investment view but its persistence. Even now, with the institutional consensus broadly accepted, a great deal of development practice continues to operate as if capital were the binding constraint. Aid agencies measure their success in dollars disbursed; multilateral lenders define their priorities by sectoral spending targets; and the rhetoric of "filling the financing gap" remains, despite everything, the dominant frame for poverty-reduction discussions.</p>
+      <p>There is a structural reason for this. Capital flows can be measured. Institutional reform cannot, at least not easily. An agency that promises five billion dollars in infrastructure investment can demonstrate, three years later, that the money was spent. An agency that promises improved governance can demonstrate nothing comparable. The capital-investment frame survives, in other words, partly because it is the only frame that produces accountable metrics — even though the metrics, measured against the actual outcome of growth, have a remarkably poor track record.</p>
+      <p>The way out is not to abandon capital investment but to be more honest about its limits. Money matters less than the institutions that decide how money is spent. Reforming those institutions is slow, often politically painful, and unsuited to the project-cycle horizons of aid agencies. But these inconvenient facts do not become less true for being inconvenient. A development practice that continues to substitute measurable inputs for unmeasurable outcomes will, in the long run, deliver disappointment in proportion to its investment.</p>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>P2 · Q1</span><span class="yr">Medium</span></div><span class="q-tag">main idea</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q1.</strong> The central argument of the passage is that:</p>
+        <ul class="q-options">
+          <li data-opt="A">capital investment has been irrelevant to economic growth in poor countries</li>
+          <li data-opt="B">development practice persists in over-relying on the capital-investment frame despite its known limits, largely because that frame produces measurable metrics</li>
+          <li data-opt="C">South Korea and Taiwan are exceptional cases that should be studied in detail</li>
+          <li data-opt="D">aid agencies should abandon all measurement of their investments</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Summary</span>The author argues that development practice continues to over-rely on capital metrics even after their limits became clear, because institutional reform is hard to measure.</div>
+        <div class="step"><span class="step-num">Check</span>(A) Extreme — author says capital "matters less", not "is irrelevant". (B) Precise match. (C) Too narrow — these are just examples. (D) Extreme — the author wants honesty about limits, not abandonment of measurement.</div>
+        <div class="ans-line"><strong>Answer</strong> B · over-reliance on capital due to metric-tractability.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>P2 · Q2</span><span class="yr">Medium</span></div><span class="q-tag">detail</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q2.</strong> The author cites Argentina, Egypt, the Philippines, and sub-Saharan Africa in order to:</p>
+        <ul class="q-options">
+          <li data-opt="A">illustrate the success of the capital-investment model</li>
+          <li data-opt="B">support the case for redirected investment towards Africa</li>
+          <li data-opt="C">demonstrate that high investment did not always translate into sustained growth</li>
+          <li data-opt="D">show that aid agencies have been particularly successful in these regions</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Locate</span>"a great many countries that received comparable inflows of investment — [list] — failed to convert the investment into sustained growth".</div>
+        <div class="step"><span class="step-num">Match</span>(C) is the direct paraphrase.</div>
+        <div class="step"><span class="step-num">Eliminate</span>(A) opposite. (B) not in passage. (D) opposite.</div>
+        <div class="ans-line"><strong>Answer</strong> C · high investment without sustained growth.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>P2 · Q3</span><span class="yr">Hard</span></div><span class="q-tag">inference</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q3.</strong> The author would most likely agree that:</p>
+        <ul class="q-options">
+          <li data-opt="A">aid agencies should commit to institutional reform programmes regardless of their measurability</li>
+          <li data-opt="B">measurable inputs are inherently superior to unmeasurable outcomes in development policy</li>
+          <li data-opt="C">the development community's preference for capital metrics has a tractability bias built into it</li>
+          <li data-opt="D">the World Bank's failures justify dismantling multilateral lending altogether</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Test (A)</span>The author calls institutional reform "inconvenient" but doesn't prescribe agency commitment regardless. Too far.</div>
+        <div class="step"><span class="step-num">Test (B)</span>Opposite of the author's view.</div>
+        <div class="step"><span class="step-num">Test (C)</span>"capital flows can be measured; institutional reform cannot" + "the capital-investment frame survives partly because it is the only frame that produces accountable metrics" — directly entails the tractability bias claim.</div>
+        <div class="step"><span class="step-num">Test (D)</span>Author criticises practice, not the existence of multilaterals. Too far.</div>
+        <div class="ans-line"><strong>Answer</strong> C · tractability bias in capital metrics.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>P2 · Q4</span><span class="yr">Medium</span></div><span class="q-tag">tone</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q4.</strong> The author's tone is best described as:</p>
+        <ul class="q-options">
+          <li data-opt="A">scornful</li>
+          <li data-opt="B">resigned</li>
+          <li data-opt="C">critical but constructive</li>
+          <li data-opt="D">neutral and dispassionate</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Critical signals</span>"partial failure", "remarkably poor track record", "deliver disappointment".</div>
+        <div class="step"><span class="step-num">Constructive signals</span>"The way out is not to abandon capital investment but to be more honest about its limits" — the author proposes a refinement, not a wholesale rejection.</div>
+        <div class="step"><span class="step-num">Match</span>"critical but constructive" matches both halves.</div>
+        <div class="step"><span class="step-num">Eliminate</span>(A) too strong. (B) the author proposes a solution — not resigned. (D) clearly evaluative, not dispassionate.</div>
+        <div class="ans-line"><strong>Answer</strong> C · critical but constructive.</div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.3</span>Passage 03 · Philosophy of mind</h3>
+
+    <div class="passage">
+      <div class="meta">Philosophy · ~470 words · 4 questions</div>
+      <p>The question of whether artificial systems can be said to "understand" anything has been with us since Turing first posed it in 1950, and yet we are arguably no closer to an answer now than we were then. What has changed, dramatically, is the practical capacity of artificial systems to do things that look very much like understanding — to answer questions, to translate languages, to summarise documents. The philosophical question and the engineering reality have drifted apart, and they have not been brought back into alignment.</p>
+      <p>One school of thought, descended from John Searle's Chinese Room thought experiment of 1980, holds that genuine understanding requires something more than competent symbol manipulation. A system that translates Mandarin into English, however well, is on this view merely shuffling symbols according to rules; it does not understand Mandarin, any more than a calculator understands arithmetic. The intuition has remained influential, but it is not without challengers. Daniel Dennett, among others, has argued that "understanding" is itself a fuzzy folk-psychological notion, and that to demand it of artificial systems before crediting them with cognition is to set up the kind of moving goalpost that no system could ever clear.</p>
+      <p>The more interesting recent move, however, has been to abandon the Searle-Dennett axis altogether and ask a different question: not "does it understand?" but "does it generalise?" Generalisation — the ability to apply what one has learned in one context to a new and superficially different context — is at least measurable, and it correlates with what we would intuitively call understanding in human learners. A child who has learned that water flows downhill and applies the same intuition to predict the path of spilled milk is generalising. A system that has learned to translate news articles between English and French but cannot translate poetry, or technical legal language, or vocabulary it has never seen, is failing to generalise.</p>
+      <p>By this reframing, the question of machine understanding becomes empirically tractable. We can measure how broadly a system's competence extends, how it handles novel cases, how its errors pattern. We need not resolve the philosophical question to make progress on the cognitive one. Whether the resulting answer is "understanding" in some deeper sense may, in the end, be a question about words rather than minds.</p>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>P3 · Q1</span><span class="yr">Easy</span></div><span class="q-tag">main idea</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q1.</strong> The primary purpose of the passage is to:</p>
+        <ul class="q-options">
+          <li data-opt="A">defend Searle's Chinese Room argument against its critics</li>
+          <li data-opt="B">propose that "generalisation" is a more tractable framing than "understanding" for evaluating artificial cognition</li>
+          <li data-opt="C">argue that Turing's 1950 question has been definitively answered</li>
+          <li data-opt="D">survey three philosophers' views on machine cognition without preference</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Summary</span>The author proposes that we shift from "understanding" to "generalisation" as the testable frame.</div>
+        <div class="step"><span class="step-num">Match</span>(B) directly captures the reframing argument.</div>
+        <div class="step"><span class="step-num">Eliminate</span>(A) author presents Searle but doesn't defend him. (C) opposite. (D) the author has a preference — the reframing — so not a neutral survey.</div>
+        <div class="ans-line"><strong>Answer</strong> B · generalisation as tractable framing.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>P3 · Q2</span><span class="yr">Medium</span></div><span class="q-tag">detail</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q2.</strong> Daniel Dennett's view, as described in the passage, is that:</p>
+        <ul class="q-options">
+          <li data-opt="A">artificial systems already understand language in the same sense that humans do</li>
+          <li data-opt="B">the demand for genuine understanding sets up a moving goalpost for cognition claims</li>
+          <li data-opt="C">Searle's Chinese Room is a definitive argument against artificial cognition</li>
+          <li data-opt="D">understanding can be measured by generalisation alone</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Locate</span>"Dennett… has argued that 'understanding' is itself a fuzzy folk-psychological notion, and that to demand it… is to set up the kind of moving goalpost".</div>
+        <div class="step"><span class="step-num">Match</span>(B) is the direct paraphrase.</div>
+        <div class="step"><span class="step-num">Eliminate</span>(A) not stated — Dennett questions the demand, doesn't make the positive claim. (C) opposite — Dennett challenges Searle. (D) conflates Dennett's view with the author's third-paragraph reframing.</div>
+        <div class="ans-line"><strong>Answer</strong> B · moving goalpost.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>P3 · Q3</span><span class="yr">Hard</span></div><span class="q-tag">inference</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q3.</strong> Which of the following would the author consider an example of a system <em>failing</em> to generalise?</p>
+        <ul class="q-options">
+          <li data-opt="A">A translation system that performs well on Wikipedia text but fails on poetry it has never seen</li>
+          <li data-opt="B">A child who can swim in a swimming pool and applies the same skill in the ocean</li>
+          <li data-opt="C">A calculator that performs arithmetic accurately</li>
+          <li data-opt="D">A philosopher who recognises Searle's argument applies to all symbol systems</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Apply the definition</span>"A system that has learned to translate news articles between English and French but cannot translate poetry, or technical legal language, or vocabulary it has never seen, is failing to generalise."</div>
+        <div class="step"><span class="step-num">Match</span>(A) is the exact case described.</div>
+        <div class="step"><span class="step-num">Eliminate</span>(B) is generalising (applies to new context). (C) is symbol manipulation, not generalisation failure. (D) is just reasoning, not a system case.</div>
+        <div class="ans-line"><strong>Answer</strong> A · translation failure on new domains.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>P3 · Q4</span><span class="yr">Hard</span></div><span class="q-tag">author's stance</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q4.</strong> The author's attitude towards the original question "does it understand?" is:</p>
+        <ul class="q-options">
+          <li data-opt="A">it is the most important question in philosophy of mind and must be resolved</li>
+          <li data-opt="B">it may ultimately be a verbal question, less productive than asking about generalisation</li>
+          <li data-opt="C">it has been definitively resolved in favour of Searle's position</li>
+          <li data-opt="D">it is unanswerable and therefore worth abandoning</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Locate the close</span>"Whether the resulting answer is 'understanding' in some deeper sense may, in the end, be a question about words rather than minds."</div>
+        <div class="step"><span class="step-num">Match</span>(B) — verbal question, less productive than generalisation. The author wants to <em>shift</em> the question, not resolve or abandon it.</div>
+        <div class="step"><span class="step-num">Eliminate</span>(A) opposite — the author finds the question unproductive. (C) opposite. (D) too strong — "abandon" is not the author's position; "reframe" is.</div>
+        <div class="ans-line"><strong>Answer</strong> B · possibly verbal, less productive.</div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.4</span>Passage 04 · Sociology</h3>
+
+    <div class="passage">
+      <div class="meta">Sociology · ~470 words · 4 questions</div>
+      <p>Urbanisation in the global South has, for some decades now, defied the orderly expectations of mid-twentieth century planners. The cities of Lagos, Dhaka, Karachi, Mumbai grew not as planned settlements with sewerage and zoning, but as accumulations of informal neighbourhoods that arrived ahead of any official infrastructure. By the 1980s, urban planners had largely given up on the idea that the informal city could be eradicated. The new question was whether it could be regularised — given legal title, connected to public services, accepted as a permanent feature of the urban landscape rather than a temporary problem.</p>
+      <p>The case for regularisation, made forcefully by Hernando de Soto and his followers, was essentially economic. Informal residents, on this view, are not poor for lack of effort or talent; they are poor because the assets they accumulate — homes, small businesses, livestock — exist outside the legal system and therefore cannot be used as collateral, transferred, or protected. Grant them legal title, and "dead capital" becomes living capital. The wealth was always there; the law had merely failed to recognise it.</p>
+      <p>This argument has had enormous influence on development policy, and it has produced some genuine successes — particularly in Peru, where formalisation programmes did deliver gains in property values and access to credit. But the broader record has been less encouraging. Land-titling programmes in many countries have not produced the expected surge in credit-financed enterprise. The legal title, it turns out, was only one of many constraints on informal residents' economic prospects; lack of skills, weak markets, and persistent discrimination remained binding even after the paperwork was sorted out.</p>
+      <p>The de Soto thesis, in retrospect, made the characteristic error of single-cause explanations: it located the binding constraint on poverty in one place and underestimated the depth and complexity of the others. This is not to diminish de Soto's contribution — the recognition that informality is itself a form of exclusion from the legal system was, and remains, an important one. But the early enthusiasm for formalisation as a poverty-reduction silver bullet has been justly tempered by the more sober empirical work of the last fifteen years. The informal city will, for many decades yet, remain neither fully formal nor truly excluded. Policy must learn to operate in this in-between, rather than treating it as a transitional state.</p>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>P4 · Q1</span><span class="yr">Easy</span></div><span class="q-tag">main idea</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q1.</strong> The main argument of the passage is that:</p>
+        <ul class="q-options">
+          <li data-opt="A">Hernando de Soto's contribution to urban policy has been overrated and should be dismissed</li>
+          <li data-opt="B">land-titling has been universally unsuccessful as a development strategy</li>
+          <li data-opt="C">the de Soto thesis, while genuinely insightful, oversimplified a multi-causal problem and policy should now treat informality as a permanent middle state</li>
+          <li data-opt="D">informal cities in the global South should be eradicated through stricter planning</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Summary</span>De Soto was right that informality is a constraint, wrong that it is the only one; policy should treat informality as durable, not transitional.</div>
+        <div class="step"><span class="step-num">Match</span>(C) captures both halves.</div>
+        <div class="step"><span class="step-num">Eliminate</span>(A) too strong — author credits de Soto. (B) extreme — Peru is named as a success. (D) opposite of the passage's whole stance.</div>
+        <div class="ans-line"><strong>Answer</strong> C · qualified critique plus permanence claim.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>P4 · Q2</span><span class="yr">Medium</span></div><span class="q-tag">detail</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q2.</strong> According to the passage, the de Soto thesis held that informal residents are poor because:</p>
+        <ul class="q-options">
+          <li data-opt="A">they lack effort or talent</li>
+          <li data-opt="B">they accumulate assets that exist outside the legal system and so cannot be used as collateral</li>
+          <li data-opt="C">they face persistent discrimination in formal labour markets</li>
+          <li data-opt="D">they live in cities that grew faster than planners could manage</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Locate</span>"Informal residents… are poor because the assets they accumulate… exist outside the legal system and therefore cannot be used as collateral, transferred, or protected."</div>
+        <div class="step"><span class="step-num">Match</span>(B) verbatim.</div>
+        <div class="step"><span class="step-num">Eliminate</span>(A) opposite. (C) author's view, not de Soto's. (D) about urbanisation, not de Soto's poverty theory.</div>
+        <div class="ans-line"><strong>Answer</strong> B · assets outside the legal system.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>P4 · Q3</span><span class="yr">Medium</span></div><span class="q-tag">structural</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q3.</strong> The author's mention of Peru's land-titling programmes serves to:</p>
+        <ul class="q-options">
+          <li data-opt="A">prove that de Soto's thesis is universally correct</li>
+          <li data-opt="B">acknowledge a genuine success of formalisation, before introducing the broader negative record</li>
+          <li data-opt="C">demonstrate that all titling programmes have failed</li>
+          <li data-opt="D">argue for replicating the Peruvian model elsewhere</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Locate context</span>"some genuine successes — particularly in Peru… But the broader record has been less encouraging."</div>
+        <div class="step"><span class="step-num">Identify role</span>Peru is a <em>concession</em> — the author grants a genuine success before pivoting to critique.</div>
+        <div class="step"><span class="step-num">Match</span>(B).</div>
+        <div class="ans-line"><strong>Answer</strong> B · concession before broader critique.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>P4 · Q4</span><span class="yr">Hard</span></div><span class="q-tag">inference</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q4.</strong> The author would most likely agree that:</p>
+        <ul class="q-options">
+          <li data-opt="A">the legal system is irrelevant to the economic prospects of informal residents</li>
+          <li data-opt="B">single-cause explanations of poverty are characteristically misleading</li>
+          <li data-opt="C">formal recognition of property is harmful to informal residents</li>
+          <li data-opt="D">urban planning in the global South should be modeled directly on European cities</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Test (A)</span>Opposite — the author calls informality "a form of exclusion from the legal system" and treats this recognition as important.</div>
+        <div class="step"><span class="step-num">Test (B)</span>"made the characteristic error of single-cause explanations" — directly entails that the author views such explanations as a recurring error pattern. Forced.</div>
+        <div class="step"><span class="step-num">Test (C)</span>Author credits formalisation gains in Peru; not harmful.</div>
+        <div class="step"><span class="step-num">Test (D)</span>Not in passage; out of scope.</div>
+        <div class="ans-line"><strong>Answer</strong> B · single-cause critique.</div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.5</span>Passage 05 · Environment &amp; ethics</h3>
+
+    <div class="passage">
+      <div class="meta">Environment · ~490 words · 4 questions</div>
+      <p>The standard framing of climate ethics divides the burden of action between rich countries that caused the bulk of historical emissions and poor countries that are likely to bear the bulk of future harm. The principle of common-but-differentiated-responsibilities, written into the 1992 UN convention, captures the intuitively fair idea that those who contributed most to the problem should contribute most to its solution. As a moral principle it has proved durable; as a basis for actual international cooperation, it has proved largely paralysing.</p>
+      <p>The paralysis is not difficult to explain. If the criterion for action is historical responsibility, then the United States and Europe owe action — but they are also the constituencies whose voters are most politically resistant to climate policy. If the criterion is per capita future harm, then countries like Bangladesh and Sudan deserve protection — but they lack the political weight to demand it of larger emitters. Common-but-differentiated-responsibilities is, in this sense, an ethical principle that points in the right direction without producing the political traction needed to follow it.</p>
+      <p>A growing body of climate ethicists has begun to suggest that the historical-emissions frame has reached its productive limit. The unsettling implication is that, regardless of whether rich countries acted in good faith in 1992 or not, the future of climate policy will need to be built on a different foundation — one less concerned with apportioning blame and more concerned with apportioning capacity. Rich countries should act not because they are uniquely responsible for past emissions, but because they have, here and now, the resources to act effectively. This reframing is morally less satisfying than the historical-responsibility argument, but it has the considerable virtue of being politically operational.</p>
+      <p>Critics of the capacity-based framing argue, with some force, that it amounts to letting historical polluters off the moral hook — that countries that benefited materially from coal-fired industrialisation should not be allowed to forget that benefit when the bills come due. There is justice in this complaint. But there is also an unmistakable trade-off: ethical satisfaction at the cost of policy effectiveness, or policy effectiveness at the cost of ethical completeness. The catastrophic stakes of climate change suggest that, at this late date, the second trade-off is the one to accept.</p>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>P5 · Q1</span><span class="yr">Medium</span></div><span class="q-tag">main idea</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q1.</strong> The primary purpose of the passage is to:</p>
+        <ul class="q-options">
+          <li data-opt="A">defend the principle of common-but-differentiated-responsibilities against all critics</li>
+          <li data-opt="B">argue that climate ethics should pivot from historical-responsibility to capacity-based framing, despite the ethical cost</li>
+          <li data-opt="C">demonstrate that climate change is exaggerated as a policy issue</li>
+          <li data-opt="D">examine the 1992 UN climate convention's drafting history</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Summary</span>Pivot from historical-responsibility to capacity-based framing because the former is paralysing, even though the trade-off is ethically uncomfortable.</div>
+        <div class="step"><span class="step-num">Match</span>(B).</div>
+        <div class="step"><span class="step-num">Eliminate</span>(A) opposite. (C) absurd. (D) about a tangential historical detail.</div>
+        <div class="ans-line"><strong>Answer</strong> B · pivot from blame to capacity.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>P5 · Q2</span><span class="yr">Medium</span></div><span class="q-tag">detail</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q2.</strong> The passage attributes the paralysis of climate cooperation to:</p>
+        <ul class="q-options">
+          <li data-opt="A">the inherent unmeasurability of climate damage</li>
+          <li data-opt="B">a mismatch between the constituencies that owe action and the constituencies that politically demand it</li>
+          <li data-opt="C">the absence of any moral principle in international climate law</li>
+          <li data-opt="D">the active opposition of climate scientists</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Locate</span>"the United States and Europe owe action — but they are also the constituencies whose voters are most politically resistant… If the criterion is per capita future harm, then countries like Bangladesh and Sudan deserve protection — but they lack the political weight".</div>
+        <div class="step"><span class="step-num">Match</span>(B) captures this mismatch.</div>
+        <div class="step"><span class="step-num">Eliminate</span>(A), (C), (D) — none in passage.</div>
+        <div class="ans-line"><strong>Answer</strong> B · constituency mismatch.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>P5 · Q3</span><span class="yr">Hard</span></div><span class="q-tag">inference</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q3.</strong> The author would most likely agree that:</p>
+        <ul class="q-options">
+          <li data-opt="A">moral principles never lead to political action</li>
+          <li data-opt="B">in matters of catastrophic risk, political operability may legitimately outweigh ethical completeness</li>
+          <li data-opt="C">rich countries should bear no responsibility for past emissions</li>
+          <li data-opt="D">climate ethics is purely an academic exercise without practical consequence</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Locate</span>"The catastrophic stakes of climate change suggest that, at this late date, the second trade-off is the one to accept" — the second being "policy effectiveness at the cost of ethical completeness".</div>
+        <div class="step"><span class="step-num">Match</span>(B).</div>
+        <div class="step"><span class="step-num">Eliminate</span>(A) extreme. (C) opposite — the author calls letting polluters "off the moral hook" a real complaint with justice in it. (D) contradicts the passage.</div>
+        <div class="ans-line"><strong>Answer</strong> B · operability over completeness given stakes.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>P5 · Q4</span><span class="yr">Hard</span></div><span class="q-tag">tone</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q4.</strong> The author's tone in the final paragraph is best described as:</p>
+        <ul class="q-options">
+          <li data-opt="A">jubilant about the capacity-based reframing</li>
+          <li data-opt="B">dismissive of the critics' complaint</li>
+          <li data-opt="C">reluctantly pragmatic, accepting an imperfect trade-off because of the stakes</li>
+          <li data-opt="D">vehemently opposed to all climate cooperation</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Signals</span>"There is justice in this complaint" (concedes critics). "the second trade-off is the one to accept" (resigned acceptance). "at this late date" (urgency-driven). "morally less satisfying" earlier (the author isn't celebrating).</div>
+        <div class="step"><span class="step-num">Match</span>(C) — reluctant pragmatism captures all signals.</div>
+        <div class="step"><span class="step-num">Eliminate</span>(A) opposite — author admits the reframing is "morally less satisfying". (B) opposite — concedes critics. (D) absurd.</div>
+        <div class="ans-line"><strong>Answer</strong> C · reluctantly pragmatic.</div>
+      </div>
+    </div>
+
+    <div class="section-end"><span>End of Module 08</span><span>→ next: Reference Sheet</span></div>
+  </section>
+
+  <!-- ====== MODULE 9 ====== -->
+  <section class="section" id="m9">
+    <header class="section-header">
+      <div class="module-meta">Module 09 · Reference Sheet</div>
+      <h1 class="section-title">The <em>single</em><br>page.</h1>
+      <p class="section-deck">Every framework, every question-type signal, every wrong-answer flavour — on one page.</p>
+    </header>
+
+    <h3><span class="h-num">9.1</span>The four rhetorical templates</h3>
+    <div class="formula"><span class="label">Recognition signals</span>Claim-and-defence: "it is widely held", "I shall argue".<br>Two-views: "many scholars have argued", "others contend".<br>Narrative-with-thesis: opens with a date or anecdote.<br>Problem-solution: opens with "despite decades of effort".</div>
+
+    <h3><span class="h-num">9.2</span>The six question families</h3>
+    <table class="di-table">
+      <thead><tr><th>Family</th><th>Look for the phrase</th><th>Strategy</th></tr></thead>
+      <tbody>
+        <tr><td>Main idea</td><td>"primary purpose", "central argument"</td><td>1-sentence summary, match</td></tr>
+        <tr><td>Detail</td><td>"according to", "states that"</td><td>Locate the anchor sentence</td></tr>
+        <tr><td>Inference</td><td>"would most likely agree", "implies"</td><td>Necessity test</td></tr>
+        <tr><td>Tone</td><td>"attitude towards", "tone"</td><td>Adjective hunt</td></tr>
+        <tr><td>Structural</td><td>"purpose of paragraph", "role of"</td><td>Identify paragraph role</td></tr>
+        <tr><td>Application</td><td>"would strengthen", "consistent with"</td><td>Extract author's principle, test option</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="h-num">9.3</span>The ten wrong-answer flavours</h3>
+    <div class="formula"><span class="label">Wrong-answer taxonomy</span>1. Opposite · 2. Extreme · 3. Scope-shift · 4. Plausible-but-unstated · 5. Half-truth · 6. Opposing-view restatement · 7. Too-narrow main-idea · 8. Too-broad main-idea · 9. Over-strong tone · 10. Inference one step too far.</div>
+
+    <h3><span class="h-num">9.4</span>Tone vocabulary</h3>
+    <div class="formula"><span class="label">Common CAT tone options</span>Critical · sceptical · dismissive · ambivalent · analytical · polemical · reverent · ironic · resigned · approving · neutral · qualified-positive · qualified-negative.<br>Prefer moderate over extreme tone words when in doubt.</div>
+
+    <h3><span class="h-num">9.5</span>The mantra</h3>
+    <div class="callout"><strong>Read the passage to discover the answer; do not read the answer to discover the passage.</strong> Every CAT RC question is decidable from the printed text alone. Trust nothing else.</div>
+
+    <div class="section-end"><span>End of Module 09</span><span>End of the RC Codex</span></div>
+  </section>
+
+  </main>
+</div>
+
+<script>
+  const links = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('.section');
+  links.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = link.dataset.target;
+      links.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      sections.forEach(s => s.classList.remove('active'));
+      const t = document.getElementById(target);
+      if (t) { t.classList.add('active'); window.scrollTo({top:0, behavior:'smooth'}); }
+    });
+  });
+  document.querySelectorAll('.toggle-sol').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sol = btn.nextElementSibling;
+      const open = sol.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.textContent = open ? 'Hide solution' : 'Show solution';
+    });
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    const a = document.querySelector('.nav-link.active');
+    const all = Array.from(links);
+    const i = all.indexOf(a);
+    if (e.key === 'ArrowRight' && i < all.length - 1) all[i + 1].click();
+    else if (e.key === 'ArrowLeft' && i > 0) all[i - 1].click();
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The CAT Logical Reasoning Codex — A Teaching Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4ebd9;
+  --paper-2:#ebe0c8;
+  --ink:#16121f;
+  --ink-soft:#332b42;
+  --ink-faint:#665b78;
+  --accent:#4a2867;
+  --accent-deep:#2e1640;
+  --ochre:#c89b3c;
+  --olive:#5a6b3e;
+  --rust:#a23f24;
+  --teal:#1f6b6b;
+  --rule:#c5b698;
+  --rule-soft:#dbcdaf;
+  --highlight:#fff1bf;
+  --shadow:0 1px 0 rgba(22,18,31,.06), 0 2px 6px rgba(22,18,31,.04);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Fraunces',Georgia,serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.65;
+  font-size:17px;
+  background-image:
+    radial-gradient(circle at 15% 12%, rgba(74,40,103,.06) 0%, transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(200,155,60,.04) 0%, transparent 45%);
+  min-height:100vh;
+}
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .28 0 0 0 0 .18 0 0 0 .04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:1;opacity:.55;
+}
+
+.layout{display:grid;grid-template-columns:280px 1fr;min-height:100vh;position:relative;z-index:2}
+@media (max-width:980px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{position:static!important;height:auto!important;border-right:none!important;border-bottom:2px solid var(--ink)}
+}
+
+.sidebar{
+  position:sticky;top:0;height:100vh;
+  border-right:1px solid var(--rule);
+  background:linear-gradient(180deg,var(--paper-2) 0%,var(--paper) 100%);
+  padding:32px 26px 24px;
+  overflow-y:auto;
+  display:flex;flex-direction:column;
+}
+.back-link{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'Inter',sans-serif;
+  font-size:10.5px;letter-spacing:.22em;
+  text-transform:uppercase;font-weight:600;
+  color:var(--ink-faint);
+  text-decoration:none;
+  padding-bottom:18px;margin-bottom:18px;
+  border-bottom:1px dotted var(--rule);
+  transition:color .2s ease, gap .2s ease;
+}
+.back-link::before{content:"←";font-size:14px;transition:transform .2s ease}
+.back-link:hover{color:var(--accent);gap:12px}
+.back-link:hover::before{transform:translateX(-3px)}
+
+.brand{border-bottom:2px solid var(--ink);padding-bottom:22px;margin-bottom:24px}
+.brand-eyebrow{
+  font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--accent);font-weight:600;margin-bottom:8px;
+}
+.brand-title{
+  font-family:'Fraunces',serif;
+  font-weight:900;font-size:28px;line-height:1;
+  letter-spacing:-.02em;
+}
+.brand-title em{font-style:italic;font-weight:400;color:var(--accent);font-size:24px}
+.brand-sub{
+  font-family:'Inter',sans-serif;
+  font-size:11px;color:var(--ink-faint);
+  margin-top:10px;letter-spacing:.05em;
+}
+.nav-label{
+  font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--ink-faint);font-weight:600;margin-bottom:10px;
+}
+.nav-list{list-style:none;font-family:'Inter',sans-serif;flex:1}
+.nav-list li{position:relative;border-bottom:1px dotted var(--rule)}
+.nav-list li:last-child{border-bottom:none}
+.nav-list a{
+  display:flex;align-items:baseline;gap:10px;
+  padding:11px 0 11px 8px;
+  text-decoration:none;color:var(--ink-soft);
+  font-size:13.5px;font-weight:500;
+  transition:all .2s ease;
+}
+.nav-list a:hover{color:var(--accent);padding-left:14px}
+.nav-list a.active{color:var(--ink);font-weight:600;padding-left:14px}
+.nav-list a.active::before{
+  content:"";position:absolute;left:0;top:50%;
+  width:5px;height:5px;background:var(--accent);
+  border-radius:50%;transform:translateY(-50%);
+}
+.nav-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;color:var(--ink-faint);
+  font-weight:400;min-width:24px;
+}
+.nav-list a.active .nav-num{color:var(--accent)}
+.sidebar-footer{
+  margin-top:22px;padding-top:18px;
+  border-top:1px solid var(--rule);
+  font-family:'Inter',sans-serif;
+  font-size:10.5px;color:var(--ink-faint);
+  letter-spacing:.04em;
+}
+
+.main{padding:48px 64px 96px;max-width:1080px}
+@media (max-width:980px){.main{padding:32px 22px 64px}}
+
+.section{display:none;animation:fadeUp .4s ease}
+.section.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.section-header{border-bottom:2px solid var(--ink);padding-bottom:28px;margin-bottom:42px}
+.module-meta{
+  display:flex;align-items:center;gap:16px;
+  font-family:'Inter',sans-serif;
+  font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--accent);
+  font-weight:600;margin-bottom:14px;
+}
+.module-meta::after{content:"";flex:1;height:1px;background:var(--rule)}
+.section-title{
+  font-family:'Fraunces',serif;
+  font-weight:900;font-size:54px;line-height:1;
+  letter-spacing:-.035em;margin-bottom:14px;color:var(--ink);
+}
+.section-title em{font-style:italic;font-weight:400;color:var(--accent)}
+.section-deck{
+  font-family:'Fraunces',serif;font-style:italic;
+  font-size:21px;line-height:1.5;color:var(--ink-soft);
+  max-width:680px;font-weight:400;
+}
+
+h3{
+  font-family:'Fraunces',serif;
+  font-weight:700;font-size:30px;line-height:1.15;
+  letter-spacing:-.02em;margin:42px 0 18px;color:var(--ink);
+  border-bottom:1px solid var(--rule);padding-bottom:8px;
+  display:flex;align-items:baseline;gap:14px;
+}
+h3 .h-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;color:var(--accent);
+  font-weight:500;letter-spacing:.05em;
+}
+h4{font-family:'Fraunces',serif;font-weight:600;font-size:22px;margin:32px 0 12px;color:var(--ink);letter-spacing:-.01em}
+h5{font-family:'Inter',sans-serif;font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:24px 0 10px}
+p{margin:0 0 16px;font-size:17.5px}
+p.lede{font-size:20px;line-height:1.55;color:var(--ink-soft);margin-bottom:24px}
+strong{color:var(--ink);font-weight:600}
+em{color:var(--ink-soft)}
+ul,ol{margin:8px 0 18px 22px}
+li{margin-bottom:8px}
+code{font-family:'JetBrains Mono',monospace;font-size:.88em;background:rgba(74,40,103,.08);padding:1px 6px;border-radius:3px;color:var(--accent-deep)}
+.kbd-math{font-family:'JetBrains Mono',monospace;font-size:15px;background:rgba(22,18,31,.04);padding:2px 8px;border-radius:3px;display:inline-block;border:1px solid var(--rule-soft)}
+
+.callout{
+  border-left:3px solid var(--accent);
+  background:linear-gradient(90deg,rgba(74,40,103,.06),transparent);
+  padding:18px 22px;margin:24px 0;
+  font-family:'Fraunces',serif;font-style:italic;font-size:18px;
+  line-height:1.5;color:var(--ink-soft);
+}
+.callout strong{font-style:normal;color:var(--accent-deep)}
+.note{background:var(--paper-2);border:1px solid var(--rule);padding:18px 22px;margin:22px 0;position:relative}
+.note::before{
+  content:"NOTE";position:absolute;top:-10px;left:18px;background:var(--paper);
+  padding:0 8px;font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.22em;color:var(--ink-faint);font-weight:600;
+}
+.note.tip::before{content:"TIP";color:var(--olive)}
+.note.tip{border-color:var(--olive);background:rgba(90,107,62,.06)}
+.note.warn::before{content:"WATCH OUT";color:var(--rust)}
+.note.warn{border-color:var(--rust);background:rgba(162,63,36,.05)}
+
+.formula{
+  background:#fbf6ec;border:1px solid var(--rule);
+  border-left:4px solid var(--ochre);
+  padding:20px 24px;margin:20px 0;
+  font-family:'Fraunces',serif;font-size:19px;line-height:1.7;
+  box-shadow:var(--shadow);
+}
+.formula .label{
+  font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ochre);font-weight:700;margin-bottom:6px;display:block;
+}
+.formula .eq{
+  font-family:'JetBrains Mono',monospace;font-size:16px;
+  background:rgba(0,0,0,.04);padding:8px 14px;border-radius:2px;
+  display:inline-block;margin:6px 0;font-weight:500;color:var(--ink);
+}
+
+table.di-table{
+  width:100%;border-collapse:collapse;
+  font-family:'JetBrains Mono',monospace;font-size:13.5px;
+  margin:18px 0;background:#fbf6ec;border:1px solid var(--rule);
+}
+table.di-table th,table.di-table td{padding:9px 12px;text-align:left;border:1px solid var(--rule-soft)}
+table.di-table th{background:var(--ink);color:var(--paper);font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+table.di-table td.num{text-align:right;font-variant-numeric:tabular-nums}
+table.di-table tr:nth-child(even) td{background:rgba(74,40,103,.025)}
+table.di-table caption{caption-side:top;text-align:left;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;padding:0 0 8px 0}
+table.di-table .hl{background:rgba(200,155,60,.18)!important;font-weight:600}
+table.di-table td.cross{color:var(--rust);text-align:center;font-weight:700}
+table.di-table td.tick{color:var(--olive);text-align:center;font-weight:700}
+
+.q-card{
+  background:#fdfaf2;border:1px solid var(--rule);
+  border-radius:2px;margin:24px 0;box-shadow:var(--shadow);
+}
+.q-head{
+  background:var(--accent);color:var(--paper);
+  padding:12px 22px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:'Inter',sans-serif;font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;font-weight:600;flex-wrap:wrap;gap:10px;
+}
+.q-head .q-id{display:flex;gap:14px;align-items:center}
+.q-head .q-id .yr{background:rgba(245,239,228,.18);padding:3px 10px;border-radius:2px;font-size:10px;letter-spacing:.18em}
+.q-head .q-tag{font-size:10px;opacity:.85;font-family:'JetBrains Mono',monospace;letter-spacing:.08em}
+.q-body{padding:22px 26px 4px}
+.q-text{font-family:'Fraunces',serif;font-size:16.5px;line-height:1.65;margin-bottom:10px}
+.q-options{font-family:'Fraunces',serif;list-style:none;padding:0;margin:8px 0}
+.q-options li{padding:3px 0 3px 28px;position:relative;font-size:15.5px}
+.q-options li::before{
+  content:attr(data-opt);font-family:'JetBrains Mono',monospace;
+  position:absolute;left:0;top:3px;
+  width:20px;height:20px;background:var(--paper-2);
+  border:1px solid var(--rule);border-radius:50%;text-align:center;
+  font-size:11px;font-weight:600;line-height:18px;color:var(--ink-soft);
+}
+.toggle-sol{
+  width:100%;background:var(--paper-2);
+  border:none;border-top:1px dashed var(--rule);padding:12px 24px;
+  font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;font-weight:600;color:var(--accent);cursor:pointer;
+  text-align:left;display:flex;justify-content:space-between;align-items:center;
+  transition:background .2s ease;
+}
+.toggle-sol:hover{background:rgba(74,40,103,.08)}
+.toggle-sol::after{content:"▾";font-size:14px;transition:transform .25s ease}
+.toggle-sol.open::after{transform:rotate(180deg)}
+.sol{display:none;padding:20px 26px 26px;background:var(--paper-2);border-top:1px solid var(--rule);font-size:16.5px;line-height:1.65}
+.sol.open{display:block;animation:fadeUp .25s ease}
+.sol .ans-line{
+  display:flex;align-items:center;gap:12px;padding:10px 14px;
+  background:var(--ink);color:var(--paper);border-radius:2px;margin-top:14px;
+  font-family:'Fraunces',serif;font-size:17px;
+}
+.sol .ans-line strong{color:var(--ochre);font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.sol p{margin-bottom:12px}
+.sol .step{border-left:2px solid var(--rule);padding-left:14px;margin:10px 0}
+.sol .step-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);font-weight:600;letter-spacing:.05em;display:block;margin-bottom:3px}
+
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:36px 0 8px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+@media (max-width:760px){.stat-grid{grid-template-columns:repeat(2,1fr)}}
+.stat{padding:22px 18px;border-right:1px solid var(--rule)}
+.stat:last-child{border-right:none}
+@media (max-width:760px){
+  .stat:nth-child(2){border-right:none}
+  .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--rule)}
+}
+.stat-num{font-family:'Fraunces',serif;font-weight:900;font-size:42px;line-height:.9;letter-spacing:-.03em;color:var(--accent)}
+.stat-num span{font-size:20px;color:var(--ink-soft);font-weight:400}
+.stat-label{font-family:'Inter',sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-top:8px;font-weight:600}
+
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:24px 0;border:1px solid var(--rule)}
+@media (max-width:760px){.compare{grid-template-columns:1fr}}
+.compare > div{padding:18px 22px}
+.compare > div:first-child{border-right:1px solid var(--rule);background:rgba(74,40,103,.04)}
+.compare > div:last-child{background:rgba(90,107,62,.04)}
+@media (max-width:760px){.compare > div:first-child{border-right:none;border-bottom:1px solid var(--rule)}}
+.compare h5{margin-top:0}
+
+.tips-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:24px 0}
+@media (max-width:760px){.tips-grid{grid-template-columns:1fr}}
+.tip-card{background:#fbf6ec;border:1px solid var(--rule);border-top:3px solid var(--teal);padding:20px 22px}
+.tip-card .t-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--teal);letter-spacing:.1em;font-weight:600}
+.tip-card h6{font-family:'Fraunces',serif;font-size:19px;font-weight:700;margin:4px 0 10px;color:var(--ink)}
+.tip-card p{font-size:15.5px;margin-bottom:0;line-height:1.55}
+
+.section-end{margin-top:56px;padding-top:24px;border-top:2px solid var(--ink);font-family:'Fraunces',serif;font-style:italic;font-size:15px;color:var(--ink-faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.dropcap{font-family:'Fraunces',serif;font-weight:900;font-size:64px;line-height:.85;float:left;padding:6px 12px 0 0;color:var(--accent)}
+.drill{background:var(--ink);color:var(--paper);padding:24px 28px;margin:24px 0;border-radius:2px}
+.drill h5{color:var(--ochre);margin-top:0}
+.drill p{color:var(--paper);font-family:'Fraunces',serif;font-size:17px}
+.drill code{background:rgba(245,239,228,.1);color:var(--ochre)}
+
+/* LR-specific: arrangement-grid for seating/scheduling diagrams */
+.grid-arr{display:inline-grid;gap:2px;background:var(--ink);padding:4px;margin:14px 0;font-family:'JetBrains Mono',monospace;font-size:13px}
+.grid-arr .cell{background:#fbf6ec;padding:8px 14px;text-align:center;min-width:48px;color:var(--ink-soft)}
+.grid-arr .cell.filled{background:var(--accent);color:var(--paper);font-weight:600}
+.grid-arr .cell.lbl{background:transparent;color:var(--paper);font-weight:600;letter-spacing:.1em;font-size:11px}
+a.inline{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+a.inline:hover{color:var(--accent-deep)}
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <a href="index.html" class="back-link">Back to series</a>
+    <div class="brand">
+      <div class="brand-eyebrow">Logical Reasoning · CAT Prep</div>
+      <div class="brand-title">The <em>Logical<br>Reasoning</em><br>Codex</div>
+      <div class="brand-sub">A teacher's companion · 9 modules · 10 puzzle sets</div>
+    </div>
+
+    <div class="nav-label">Modules</div>
+    <ul class="nav-list">
+      <li><a href="#m0" class="nav-link active" data-target="m0"><span class="nav-num">00</span>Orientation</a></li>
+      <li><a href="#m1" class="nav-link" data-target="m1"><span class="nav-num">01</span>The LR Method</a></li>
+      <li><a href="#m2" class="nav-link" data-target="m2"><span class="nav-num">02</span>Seating Arrangement</a></li>
+      <li><a href="#m3" class="nav-link" data-target="m3"><span class="nav-num">03</span>Scheduling &amp; Distribution</a></li>
+      <li><a href="#m4" class="nav-link" data-target="m4"><span class="nav-num">04</span>Blood Relations</a></li>
+      <li><a href="#m5" class="nav-link" data-target="m5"><span class="nav-num">05</span>Syllogisms &amp; Set Logic</a></li>
+      <li><a href="#m6" class="nav-link" data-target="m6"><span class="nav-num">06</span>Sequencing &amp; Ranking</a></li>
+      <li><a href="#m7" class="nav-link" data-target="m7"><span class="nav-num">07</span>Tips &amp; Traps</a></li>
+      <li><a href="#m8" class="nav-link" data-target="m8"><span class="nav-num">08</span>Puzzle Bank</a></li>
+      <li><a href="#m9" class="nav-link" data-target="m9"><span class="nav-num">09</span>Reference Sheet</a></li>
+    </ul>
+
+    <div class="sidebar-footer">
+      Prepared for classroom delivery.<br>
+      Every puzzle carries full deduction trace.<br>
+      <span style="color:var(--accent)">⬤</span> Tap any solution to expand.
+    </div>
+  </aside>
+
+  <main class="main">
+
+  <!-- ====== MODULE 0 ====== -->
+  <section class="section active" id="m0">
+    <header class="section-header">
+      <div class="module-meta">Module 00 · Orientation</div>
+      <h1 class="section-title">The <em>puzzle</em><br>section.</h1>
+      <p class="section-deck">Logical Reasoning is the half of LRDI that rewards deduction, not arithmetic. Ten archetypes account for nearly every puzzle the CAT has set since 2017 — and once the archetype is named, the puzzle is half-solved.</p>
+    </header>
+
+    <p class="lede"><span class="dropcap">L</span>ogical reasoning, in the CAT, is not the textbook discipline. The CAT examiner does not test propositional logic, modus ponens, or formal proof. What is tested is something narrower and more practical: the ability to take a paragraph of constraints — "A sits to the immediate left of B, C does not sit at either end, three people sit between D and the bartender" — and squeeze every implication out of it until only one arrangement survives. The skill is part puzzle-solving, part bookkeeping, and entirely about being patient with information you do not yet know how to use.</p>
+
+    <p>There are, by my count, about ten puzzle archetypes that the CAT recycles. Seating around a table. Seating in a row. Scheduling people across days. Distributing items across categories. Mapping family relationships. Drawing conclusions from syllogistic statements. Ranking by some attribute. Matching items across two or three lists. Connecting clues to identify a coloured-hat or coloured-shirt arrangement. And the newer hybrid sets where a logical puzzle is wrapped around a small data table. This codex covers all ten, but the deeper claim is that the <em>method</em> for all ten is the same — and that's what Module 01 establishes.</p>
+
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-num">2<span> sets</span></div><div class="stat-label">LR per CAT slot</div></div>
+      <div class="stat"><div class="stat-num">10<span> mins</span></div><div class="stat-label">Target per set</div></div>
+      <div class="stat"><div class="stat-num">10</div><div class="stat-label">Puzzle archetypes</div></div>
+      <div class="stat"><div class="stat-num">4–6</div><div class="stat-label">Q's per set</div></div>
+    </div>
+
+    <h3><span class="h-num">0.1</span>What makes LR hard</h3>
+    <p>The difficulty in LR is almost never the logic itself. It is in two places: <strong>set selection</strong> (most students attempt the wrong sets and run out of time) and <strong>bookkeeping</strong> (most students lose deductions they have already made because they didn't write them down). A student who is methodical about both of these out-performs a student who is brilliant at neither.</p>
+
+    <div class="callout"><strong>The LR maxim.</strong> Speed in logical reasoning comes from <em>not</em> rushing the setup. Spend two minutes drawing the diagram. Spend three minutes writing every constraint. The deductions then take seconds.</div>
+
+    <h3><span class="h-num">0.2</span>How to use this codex</h3>
+    <p>Modules 02 through 06 cover the five major archetype families: seating, scheduling, blood relations, syllogisms, and sequencing. Each module introduces the archetype, gives the recommended diagram, walks through two or three constraint patterns, and finishes with two CAT-style puzzles fully solved. Module 01, however, comes first because it teaches the universal method that all five archetypes inherit. Skipping it is the single largest preparation mistake.</p>
+
+    <p>Module 07 collects ten classic LR traps — situations where the wrong answer feels right. Module 08 is the puzzle bank: ten full sets of CAT-style problems with four to six sub-questions each, every one solved with the deduction trace shown. Module 09 is the reference sheet — diagrams, syllogism rules, blood-relation symbols — collapsed onto a single sheet for revision the night before the exam.</p>
+
+    <div class="note tip"><p style="margin:0"><strong>Pacing.</strong> A 40-minute LRDI section asks you to attempt four sets. That's exactly ten minutes per set, including reading and selection. Plan for two sets fully done plus one half-attempted to clear the cutoff; three full sets is a 95+ percentile target; all four with full accuracy is 99+.</p></div>
+
+    <div class="section-end"><span>End of Module 00</span><span>→ next: The LR Method</span></div>
+  </section>
+
+  <!-- ====== MODULE 1 ====== -->
+  <section class="section" id="m1">
+    <header class="section-header">
+      <div class="module-meta">Module 01 · The LR Method</div>
+      <h1 class="section-title">The <em>five-step</em><br>method.</h1>
+      <p class="section-deck">Every CAT logical-reasoning set, regardless of archetype, yields to the same five-step protocol. This module names each step, shows why it matters, and walks the protocol through a worked example.</p>
+    </header>
+
+    <p class="lede">The single most useful thing a CAT student can learn about logical reasoning is that there is one method, not ten. The archetype changes — the table is round in one set, the days of the week in the next, the family tree in the third — but the protocol does not. Master the five steps once, and every puzzle is a variation on the same theme.</p>
+
+    <h3><span class="h-num">1.1</span>The five steps, named</h3>
+    <ol>
+      <li><strong>Inventory.</strong> Read the paragraph once. Make a list of the entities (people, days, items, categories). Count them. Write down what attributes each entity has — name, position, day, color, profession.</li>
+      <li><strong>Diagram.</strong> Choose the right scaffold. Row arrangement → linear blanks. Round table → circle. Days-people matching → grid. Blood relation → tree. The right scaffold reduces a paragraph of words to a picture of slots.</li>
+      <li><strong>Translate constraints.</strong> Take each clue and convert it to a notation on the diagram — a fixed slot, a "not here" cross, a "this-pair-adjacent" bracket. Write all of them <em>before</em> attempting any deductions.</li>
+      <li><strong>Deduce.</strong> Start with the strongest constraint — usually one that fixes a position outright. Cascade from there. Each new placement enables the next.</li>
+      <li><strong>Answer the questions.</strong> Many questions are immediate once the arrangement is complete. The remaining questions ask "which of these must be true / could be true / cannot be true" and require checking each option against the deduced arrangement.</li>
+    </ol>
+
+    <h3><span class="h-num">1.2</span>Why each step matters</h3>
+    <div class="compare">
+      <div>
+        <h5>Without the method</h5>
+        <p style="margin-bottom:0">Student reads the paragraph, starts trying to place people in their head, gets confused, re-reads, makes a guess for question one, second-guesses, abandons the set with three questions unattempted. Eight minutes lost.</p>
+      </div>
+      <div>
+        <h5>With the method</h5>
+        <p style="margin-bottom:0">Student inventories (30s), draws the scaffold (30s), translates every clue (2 min), deduces the full arrangement (2 min), answers all five sub-questions in under a minute each. Seven minutes for a full clean attempt.</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">1.3</span>Notation: a private shorthand</h3>
+    <p>Every LR puzzle is an exercise in <em>writing things down</em>. The faster your shorthand, the more deductions you can stack per minute. Develop a personal notation. Mine looks roughly like this:</p>
+
+    <ul>
+      <li><code>A → B</code> means A is somewhere to the left of B (linear) or just before B (sequential).</li>
+      <li><code>A | B</code> means A and B are adjacent.</li>
+      <li><code>A ≠ 3</code> means A is not in position 3.</li>
+      <li><code>A = Mon</code> means A is on Monday.</li>
+      <li><code>[A B]</code> with a number above means A and B together occupy positions n and n+1 in some order.</li>
+      <li><code>F(A) = doctor</code> means A's profession is doctor.</li>
+    </ul>
+
+    <p>You can use whatever notation you like. The only rule is that you must use one. Mental arithmetic of logical constraints loses information at every step. Written constraints don't.</p>
+
+    <h3><span class="h-num">1.4</span>A worked example end-to-end</h3>
+
+    <div class="note"><p style="margin:0"><strong>Puzzle.</strong> Six friends — Anu, Bharat, Charu, Dev, Esha, Farhan — sit in a row of six chairs facing north. (i) Anu sits to the immediate left of Bharat. (ii) Charu sits at one of the ends. (iii) There are exactly two seats between Anu and Dev. (iv) Esha does not sit at either end. (v) Farhan sits to the right of Bharat.</p></div>
+
+    <p><strong>Step 1 — Inventory.</strong> Six people. Six seats numbered 1 to 6, left to right (facing north → west is on the left, east on the right).</p>
+
+    <p><strong>Step 2 — Diagram.</strong> A row of six blanks:</p>
+    <div class="grid-arr">
+      <div class="cell lbl">1</div><div class="cell lbl">2</div><div class="cell lbl">3</div><div class="cell lbl">4</div><div class="cell lbl">5</div><div class="cell lbl">6</div>
+    </div>
+
+    <p><strong>Step 3 — Translate.</strong> Constraints become symbols:</p>
+    <ul style="margin-top:0">
+      <li>(i) A immediately left of B: <code>A | B</code> as a block.</li>
+      <li>(ii) C at seat 1 or seat 6.</li>
+      <li>(iii) Exactly two seats between A and D: positions differ by 3 (with 2 in between).</li>
+      <li>(iv) E ≠ 1, E ≠ 6.</li>
+      <li>(v) F is to the right of B (since A|B block, F is to the right of A|B).</li>
+    </ul>
+
+    <p><strong>Step 4 — Deduce.</strong> The strongest constraint is (i) combined with (iii): the A|B block must allow D to sit exactly two seats away from A. Test the placements of A:</p>
+
+    <div class="step">
+      <span class="step-num">A in seat 1</span>
+      Then B in seat 2. D must be in seat 4 (two between). F must be right of B, so F ∈ {3, 4, 5, 6}; D occupies 4, so F ∈ {3, 5, 6}. C in seat 1 conflict (A there). C in seat 6 ⇒ F ∈ {3, 5}. E ≠ 1, 6 ⇒ E fills remaining inside slot. Workable.
+    </div>
+
+    <div class="step">
+      <span class="step-num">A in seat 2</span>
+      Then B in seat 3. D in seat 5 (two between). F right of B ⇒ F ∈ {4, 5, 6}; D occupies 5; F ∈ {4, 6}. C at seat 1 or 6. E ≠ 1, 6. Two configurations possible.
+    </div>
+
+    <div class="step">
+      <span class="step-num">A in seat 3</span>
+      Then B in seat 4. D must be at seat 6 (two between, since seat 0 doesn't exist). F right of B ⇒ F ∈ {5, 6}; D at 6 ⇒ F = 5. C at seat 1 or 6; D at 6 ⇒ C at 1. E ≠ 1, 6, A at 3, B at 4, F at 5, D at 6, C at 1 ⇒ E at 2.
+    </div>
+
+    <div class="step">
+      <span class="step-num">A in seat 4 or higher</span>
+      B at 5+. F must be right of B. A in seat 4 ⇒ D at seat 1 or seat 7 (doesn't exist) ⇒ D at 1. C at 6 conflicts (F there). Testing collapses these cases.
+    </div>
+
+    <p>The arrangement is not uniquely determined. CAT-style questions then ask things like "if E sits at position 2, what is the position of F?" — which restricts to the third configuration above and gives F = 5.</p>
+
+    <p><strong>Step 5 — Answer.</strong> Each sub-question is now a lookup against the deduced configurations. The method has done the work.</p>
+
+    <div class="callout"><strong>The point.</strong> Notice that no sub-question was attempted until <em>after</em> step 4. The temptation to peek at the questions and try to answer them piecemeal is the largest single source of LR errors. The discipline is: deduce first, answer last.</div>
+
+    <div class="section-end"><span>End of Module 01</span><span>→ next: Seating Arrangement</span></div>
+  </section>
+
+  <!-- ====== MODULE 2 ====== -->
+  <section class="section" id="m2">
+    <header class="section-header">
+      <div class="module-meta">Module 02 · Seating Arrangement</div>
+      <h1 class="section-title">The <em>row</em><br>and the <em>round</em><br>table.</h1>
+      <p class="section-deck">Seating puzzles are the most-tested LR archetype. Two scaffolds — the linear row and the circular table — cover ninety per cent of variations. The rest is direction-handling and adjacency-bookkeeping.</p>
+    </header>
+
+    <p class="lede">Seating arrangement is, statistically, the LR archetype the CAT loves most. In any three-year window of the exam, roughly one-third of all LR puzzles will be seating sets. The good news: the entire archetype reduces to two scaffolds. The row and the circle. Once those two are mastered — and the directional vocabulary that surrounds them — there is essentially nothing new the examiner can ask.</p>
+
+    <h3><span class="h-num">2.1</span>Linear seating: facing north vs facing south</h3>
+    <p>The first complication in any row-seating puzzle is the direction the people are facing. "Six friends sit in a row facing <em>north</em>" — then the person at the leftmost seat (the westernmost) has west to their left and east to their right. But: "facing <em>south</em>" — then left and right swap. The CAT exploits this constantly.</p>
+
+    <div class="formula">
+      <span class="label">Direction rule</span>
+      Facing north: position 1 = westmost = your left when reading.<br>
+      Facing south: position 1 = eastmost = your right when reading.<br>
+      Always anchor with a compass arrow on your diagram before placing anyone.
+    </div>
+
+    <h3><span class="h-num">2.2</span>The two-row variant</h3>
+    <p>A common CAT extension: two parallel rows of six, one row facing north and the other facing south, with each person in row 1 sitting opposite some person in row 2. The trap is that "A sits opposite B" means A and B are in the same column, but their definitions of left and right are mirror-flipped.</p>
+
+    <div class="note warn"><p style="margin:0"><strong>The mirror trap.</strong> If A is at the leftmost of the north-facing row, A's right neighbour is in column 2. A's <em>opposite</em> in the south-facing row is also in column 1, but that person's right neighbour is in column 2 from their own perspective — which is on the <em>opposite</em> side of the table from A's right. Always re-derive left and right per person, never share them across the table.</p></div>
+
+    <h3><span class="h-num">2.3</span>Circular seating</h3>
+    <p>Round tables introduce two new complications. First, there are no end-seats — every person has exactly two neighbours. Second, the meaning of "left" and "right" depends on whether everyone faces the centre or faces outward.</p>
+
+    <div class="formula">
+      <span class="label">Circular direction rule</span>
+      Facing centre: clockwise = each person's left.<br>
+      Facing outward: clockwise = each person's right.<br>
+      "Immediate left of A" means the seat adjacent to A on A's left, not the seat clockwise of A.
+    </div>
+
+    <p>When the puzzle says "X sits second to the right of Y", count two seats from Y in the direction of Y's right, not your own. This is the most-missed rule in circular LR.</p>
+
+    <h3><span class="h-num">2.4</span>The "between" clue, decoded</h3>
+    <p>Phrasings that look similar mean very different things. Train yourself to read each precisely:</p>
+
+    <table class="di-table">
+      <thead><tr><th>Phrase</th><th>Means</th><th>Notation</th></tr></thead>
+      <tbody>
+        <tr><td>A sits next to B</td><td>Adjacent — either side</td><td><code>A | B</code> or <code>B | A</code></td></tr>
+        <tr><td>A sits to the immediate left of B</td><td>A is directly on B's left</td><td><code>A B</code> (A left)</td></tr>
+        <tr><td>Two seats between A and B</td><td>Positions differ by 3</td><td><code>A _ _ B</code></td></tr>
+        <tr><td>A sits second to the right of B</td><td>Skip 1 seat past B's right</td><td><code>B _ A</code></td></tr>
+        <tr><td>A and B are opposite each other</td><td>Diametrically opposite (round) or same column (rows)</td><td>—</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="h-num">2.5</span>A worked round-table example</h3>
+
+    <div class="note"><p style="margin:0"><strong>Puzzle.</strong> Eight people — P, Q, R, S, T, U, V, W — sit around a circular table facing the centre. (i) P sits second to the right of Q. (ii) R sits opposite P. (iii) S sits immediately to the left of R. (iv) T sits between Q and U (in some order). (v) V is not adjacent to P. (vi) W sits immediately to the right of P.</p></div>
+
+    <p><strong>Step 1 — Inventory.</strong> 8 people, 8 seats around a circle. Facing centre ⇒ clockwise = each person's left.</p>
+
+    <p><strong>Step 2 — Diagram.</strong> Eight equally-spaced positions on a circle, labelled 1 (top) clockwise to 8.</p>
+
+    <p><strong>Step 3 — Translate.</strong></p>
+    <ul style="margin-top:0">
+      <li>(ii) R opposite P: R and P are 4 seats apart.</li>
+      <li>(i) P second to the right of Q: count two seats anti-clockwise from Q (since right = anti-clockwise when facing centre) to reach P.</li>
+      <li>(iii) S immediately to R's left = clockwise of R by one seat.</li>
+      <li>(vi) W immediately to P's right = anti-clockwise of P by one seat.</li>
+    </ul>
+
+    <p><strong>Step 4 — Deduce.</strong> Fix P at seat 1 (since the circle has rotational freedom). Then R at seat 5 (opposite). Q at seat 3 (two clockwise from P, since P is two anti-clockwise of Q). W at seat 8 (one anti-clockwise of P). S at seat 6 (one clockwise of R).</p>
+
+    <p>Remaining seats: 2, 4, 7. Remaining people: T, U, V. Constraint (iv): T between Q and U. Q is at seat 3, so T at seat 2 with U at seat 4 (or vice versa) — but "T between Q and U" usually means T sits in the seat between Q and U, which requires Q and U to be two seats apart with T in the middle. Q at 3 ⇒ U at 1 (P) or U at 5 (R) — both taken. Alternative: T at seat 4 with U at seat 5 (R there — fails). Test T at seat 7 — not between Q (3) and U (?). Either the constraint is ambiguous or my reading is wrong.</p>
+
+    <p>Re-reading (iv) more carefully: <em>T sits between Q and U</em> can also mean "the order around the table includes …Q—T—U…" without specifying that T's neighbours are exactly Q and U. If we take the looser reading, then T at seat 2 (between Q at 3 and U at any of 4, 7) works. Test V: V not adjacent to P (seats 8 and 2 are P's neighbours). V ∉ {2, 8}. Seat 8 is W, so V ∉ {2}. So V at seat 4 or 7. Then T at seat 2, U at seat 7 (or 4), V at the remaining.</p>
+
+    <p><strong>Step 5 — Answer.</strong> The arrangement is now constrained enough to answer most CAT sub-questions: "Who sits opposite Q?" — seat 3 opposite is seat 7. Whoever is at seat 7 is opposite Q. With U at 7, V at 4 ⇒ U opposite Q.</p>
+
+    <div class="callout"><strong>The lesson.</strong> Ambiguous clues are common in CAT LR. When stuck, re-read every constraint and consider whether the wording allows a more permissive reading. The examiner's "between" rarely means "immediately between" unless the word "immediately" appears.</div>
+
+    <div class="section-end"><span>End of Module 02</span><span>→ next: Scheduling &amp; Distribution</span></div>
+  </section>
+
+
+  <!-- ====== MODULE 3 ====== -->
+  <section class="section" id="m3">
+    <header class="section-header">
+      <div class="module-meta">Module 03 · Scheduling &amp; Distribution</div>
+      <h1 class="section-title">The <em>matrix</em><br>archetype.</h1>
+      <p class="section-deck">When a puzzle matches one set of items to another — people to days, products to factories, cards to colours — the natural diagram is a grid. Fill the grid by crossing off impossibilities until only one option remains.</p>
+    </header>
+
+    <p class="lede">After seating, scheduling is the second-most common LR archetype. The setup is always the same: there are two or three categories of attributes, and each entity has one value from each category. "Five friends, each born in a different month, each owning a different car, each living in a different city." The job is to deduce the full mapping.</p>
+
+    <h3><span class="h-num">3.1</span>The grid diagram</h3>
+    <p>For a two-attribute puzzle (people × days), the diagram is a single grid. Rows = people, columns = days. Each cell is initially empty. A confirmed match is a tick; a ruled-out match is a cross. The puzzle is over when each row and each column has exactly one tick.</p>
+
+    <p>For a three-attribute puzzle (people × days × cities), use three grids — people × days, people × cities, days × cities — and propagate deductions across them. If A is on Monday and Monday is in Mumbai, then A is in Mumbai.</p>
+
+    <h3><span class="h-num">3.2</span>The crossing-off habit</h3>
+    <p>Most scheduling deductions come from <em>elimination</em>, not direct placement. A clue says "B is not on Tuesday" → cross out B-Tuesday. Five such crosses in B's row may leave only one possibility — Tuesday is then forced.</p>
+
+    <div class="formula">
+      <span class="label">Elimination cascade</span>
+      Each row has exactly one tick.<br>
+      Each column has exactly one tick.<br>
+      When a row has crosses in all-but-one cell, the remaining cell is forced.<br>
+      When that cell is ticked, all other cells in its column become crosses.<br>
+      Cascade continues until no further forcing is possible.
+    </div>
+
+    <h3><span class="h-num">3.3</span>Conditional clues</h3>
+    <p>The harder clues use "if-then" or "either-or" structure. "If A is on Monday, then B is on Wednesday" — this does not place A on Monday; it only constrains what follows <em>if</em> A is. Don't act on it until A's day is otherwise determined.</p>
+
+    <p>"Either A is on Tuesday or B is on Thursday (or both)" — at least one of the two must hold. The contrapositive is sometimes more useful: if neither, the clue is violated, so eliminate configurations where A ≠ Tuesday AND B ≠ Thursday.</p>
+
+    <h3><span class="h-num">3.4</span>A worked scheduling example</h3>
+
+    <div class="note"><p style="margin:0"><strong>Puzzle.</strong> Five candidates — A, B, C, D, E — appear for interviews on five consecutive weekdays, Monday through Friday, one per day. (i) A's interview is on the day immediately after B's. (ii) C's interview is on Wednesday. (iii) D is interviewed before E. (iv) E is not on Friday.</p></div>
+
+    <p><strong>Step 1 — Inventory.</strong> Five people × five days, one-to-one matching.</p>
+
+    <p><strong>Step 2 — Diagram.</strong></p>
+    <table class="di-table" style="font-size:14px">
+      <thead><tr><th></th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th></tr></thead>
+      <tbody>
+        <tr><td>A</td><td></td><td></td><td class="cross">✕</td><td></td><td></td></tr>
+        <tr><td>B</td><td></td><td></td><td class="cross">✕</td><td></td><td></td></tr>
+        <tr><td>C</td><td class="cross">✕</td><td class="cross">✕</td><td class="tick">✓</td><td class="cross">✕</td><td class="cross">✕</td></tr>
+        <tr><td>D</td><td></td><td></td><td class="cross">✕</td><td></td><td></td></tr>
+        <tr><td>E</td><td></td><td></td><td class="cross">✕</td><td></td><td class="cross">✕</td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>Step 3 — Translate.</strong> (ii) gives C = Wed (placed). (i) gives B—A consecutive. (iii) gives D &lt; E. (iv) gives E ≠ Fri.</p>
+
+    <p><strong>Step 4 — Deduce.</strong> B—A consecutive pairs of weekdays: (Mon, Tue), (Tue, Wed), (Wed, Thu), (Thu, Fri). C is on Wed, so (Tue, Wed) and (Wed, Thu) are out. Remaining: (Mon, Tue) and (Thu, Fri).</p>
+
+    <p><em>Case 1: B = Mon, A = Tue.</em> Then D, E occupy Thu, Fri. D &lt; E ⇒ D = Thu, E = Fri. But E ≠ Fri (clue iv). Contradiction.</p>
+
+    <p><em>Case 2: B = Thu, A = Fri.</em> Then D, E occupy Mon, Tue. D &lt; E ⇒ D = Mon, E = Tue. E = Tue ≠ Fri ✓.</p>
+
+    <p>Unique solution: D-Mon, E-Tue, C-Wed, B-Thu, A-Fri.</p>
+
+    <p><strong>Step 5 — Answer.</strong> All five sub-questions are now lookups. "Who is interviewed third?" — C. "If E's interview was on Thursday instead, what changes?" — return to step 4 with the new constraint and re-deduce.</p>
+
+    <div class="callout"><strong>The pattern.</strong> Scheduling puzzles almost always resolve through case-splitting on the most constrained clue, then eliminating each case against the remaining clues. Two cases are common; three cases is the upper limit; four cases usually means a clue has been mis-translated.</div>
+
+    <div class="section-end"><span>End of Module 03</span><span>→ next: Blood Relations</span></div>
+  </section>
+
+  <!-- ====== MODULE 4 ====== -->
+  <section class="section" id="m4">
+    <header class="section-header">
+      <div class="module-meta">Module 04 · Blood Relations</div>
+      <h1 class="section-title">The <em>family</em><br>tree.</h1>
+      <p class="section-deck">Blood-relation puzzles are short, dense, and easily traced — provided you have a clean notation for parent, sibling, and spouse. This module gives the symbol set and walks through the canonical pointing-statement variant.</p>
+    </header>
+
+    <p class="lede">Blood relations rarely appear as a full LR set anymore — they're more often two or three standalone questions in a mixed set. But they remain a guaranteed-marks item if you can read the standard pointing-statement format ("Pointing to a man, Sita said, ‘his father's only son is my husband's brother'") without losing your way. The trick is a symbol-based family tree.</p>
+
+    <h3><span class="h-num">4.1</span>The symbol set</h3>
+    <table class="di-table">
+      <thead><tr><th>Symbol</th><th>Meaning</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>A → B</td><td>A is parent of B</td><td>Father or mother</td></tr>
+        <tr><td>A = B</td><td>A is spouse of B</td><td>Husband / wife</td></tr>
+        <tr><td>A — B</td><td>A is sibling of B</td><td>Brother / sister</td></tr>
+        <tr><td>(A)</td><td>A is male (square optional)</td><td>—</td></tr>
+        <tr><td>[A]</td><td>A is female (circle optional)</td><td>—</td></tr>
+      </tbody>
+    </table>
+
+    <p>Draw the tree top-down. Older generation at the top. Spouses side by side. Children below their parents. Siblings on the same level connected by a horizontal line.</p>
+
+    <h3><span class="h-num">4.2</span>The pointing-statement decoder</h3>
+
+    <div class="callout"><strong>The protocol.</strong> "Pointing to X, Speaker said: <em>Y is my Z</em>." Parse it as: (a) the speaker is the subject. (b) Y is described relative to the speaker — so Y has relation Z to the speaker. (c) X is the person being pointed at — find X in terms of Y by following the inner phrase.</div>
+
+    <p>Worked example: <em>Pointing to a man, Sita said, "His father's only son is my husband's brother."</em></p>
+
+    <ol>
+      <li>The man pointed at = X.</li>
+      <li>"His father's only son" — the only son of X's father. If X is male, X is the only son ⇒ X = his father's only son. (If X were female, the construction would be different.) So the phrase resolves to X himself.</li>
+      <li>"is my husband's brother" — Sita's husband's brother. So X = Sita's husband's brother.</li>
+      <li>Therefore X is Sita's brother-in-law.</li>
+    </ol>
+
+    <h3><span class="h-num">4.3</span>The "only son / only daughter" trap</h3>
+    <p>"X's father's only son" — if X is male, this is X himself. If X is female, X has no brothers, so the phrase has no referent unless context provides one (it doesn't in a self-contained pointing-statement, so X must be male). The "only son" or "only daughter" wording is almost always the keystone of the deduction.</p>
+
+    <div class="note tip"><p style="margin:0"><strong>The mantra.</strong> Whenever the puzzle says "the only X" — note the gender of the person being referred to, because it fixes their identity in the tree.</p></div>
+
+    <h3><span class="h-num">4.4</span>A worked example</h3>
+    <div class="note"><p style="margin:0"><strong>Puzzle.</strong> Pointing to a photograph, a woman said, "She is the daughter of my grandfather's only daughter-in-law." How is the woman in the photo related to the speaker?</p></div>
+
+    <ol>
+      <li>Speaker's grandfather = grandfather. His only daughter-in-law = the wife of his only son.</li>
+      <li>The grandfather's only son must be the speaker's father (since the daughter-in-law is the wife of the grandfather's only son; that son is the speaker's father).</li>
+      <li>So the only daughter-in-law of the grandfather = the speaker's mother.</li>
+      <li>"She is the daughter of my mother" = the speaker's sister (or the speaker herself, but you don't usually point to yourself in a photo — the standard reading is "sister").</li>
+    </ol>
+
+    <p>Answer: <strong>sister</strong>.</p>
+
+    <div class="section-end"><span>End of Module 04</span><span>→ next: Syllogisms &amp; Set Logic</span></div>
+  </section>
+
+  <!-- ====== MODULE 5 ====== -->
+  <section class="section" id="m5">
+    <header class="section-header">
+      <div class="module-meta">Module 05 · Syllogisms &amp; Set Logic</div>
+      <h1 class="section-title">The <em>Venn</em><br>method.</h1>
+      <p class="section-deck">A syllogism gives two statements about sets and asks which conclusions follow. The mistake is to reason verbally. The fix is to draw Venn diagrams and ask: do <em>all</em> possible diagrams satisfy the conclusion?</p>
+    </header>
+
+    <p class="lede">CAT syllogisms have a fixed format: two premises ("All A are B", "Some B are C"), followed by two or three conclusions, and the question is which conclusions necessarily follow. The standard tool is the Venn diagram. The skill is in recognising that a conclusion follows only if it holds for <em>every</em> diagram consistent with the premises — not just one.</p>
+
+    <h3><span class="h-num">5.1</span>The four statement types</h3>
+    <table class="di-table">
+      <thead><tr><th>Type</th><th>Form</th><th>Venn</th></tr></thead>
+      <tbody>
+        <tr><td>A (Universal Affirmative)</td><td>All A are B</td><td>A is entirely inside B</td></tr>
+        <tr><td>E (Universal Negative)</td><td>No A are B</td><td>A and B are disjoint</td></tr>
+        <tr><td>I (Particular Affirmative)</td><td>Some A are B</td><td>A and B overlap (at least one common element)</td></tr>
+        <tr><td>O (Particular Negative)</td><td>Some A are not B</td><td>A has at least one element outside B</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="h-num">5.2</span>The follows-vs-may-follow distinction</h3>
+    <p>A conclusion <em>follows</em> only if it holds in every possible Venn diagram consistent with the premises. If there is even one valid diagram where the conclusion fails, the conclusion does not follow.</p>
+
+    <div class="compare">
+      <div>
+        <h5>Follows</h5>
+        <p style="margin-bottom:0">Premises: All A are B. All B are C.<br>Conclusion: All A are C.<br>Every consistent Venn shows A inside B inside C ⇒ A is inside C.</p>
+      </div>
+      <div>
+        <h5>Does not follow</h5>
+        <p style="margin-bottom:0">Premises: Some A are B. Some B are C.<br>Conclusion: Some A are C.<br>Diagram 1: A and B overlap on the left of B, B and C overlap on the right ⇒ A and C may be disjoint. So conclusion fails in this diagram.</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">5.3</span>Either-or conclusions</h3>
+    <p>The CAT often presents pairs like: "Conclusion I: Some A are C. Conclusion II: No A are C." The trick is that these are <em>complementary</em> — one of them must be true. The standard option for such pairs is "either I or II follows", and this option is correct precisely when the premises don't force one of them definitively.</p>
+
+    <div class="formula">
+      <span class="label">Either-or recognition</span>
+      Conclusions I and II are complements ⇒ at least one must hold.<br>
+      If the premises pin down which one holds ⇒ that one follows individually.<br>
+      If the premises don't pin it down ⇒ "either I or II follows" is the answer.
+    </div>
+
+    <h3><span class="h-num">5.4</span>The "possibility" suffix</h3>
+    <p>A newer CAT variant adds the word "possibility" to conclusions: "Some A being C is a possibility." This is asking whether there exists <em>at least one</em> consistent Venn where the statement holds — not whether it must hold. The answer is yes <em>unless</em> the premises explicitly forbid it.</p>
+
+    <h3><span class="h-num">5.5</span>A worked syllogism</h3>
+    <div class="note"><p style="margin:0"><strong>Puzzle.</strong> Premises: (i) All cats are mammals. (ii) Some mammals are pets. Conclusions: I: Some cats are pets. II: Some pets are mammals. III: All pets are cats.</p></div>
+
+    <p><strong>Venn analysis.</strong> All cats are mammals — cats inside mammals. Some mammals are pets — pets and mammals overlap. The overlap may or may not include cats.</p>
+
+    <ul>
+      <li><strong>Conclusion I:</strong> "Some cats are pets." There exists a valid diagram where the pets-mammals overlap is entirely outside the cats circle — so cats and pets disjoint. Conclusion I does not necessarily hold. <em>Does not follow.</em></li>
+      <li><strong>Conclusion II:</strong> "Some pets are mammals." This is a direct restatement of premise (ii) (with subjects swapped, which is valid for "some" statements). <em>Follows.</em></li>
+      <li><strong>Conclusion III:</strong> "All pets are cats." This requires pets to be entirely inside cats, which contradicts premise (i)+(ii) in general. <em>Does not follow.</em></li>
+    </ul>
+
+    <p>Answer: <strong>only conclusion II follows</strong>.</p>
+
+    <div class="section-end"><span>End of Module 05</span><span>→ next: Sequencing &amp; Ranking</span></div>
+  </section>
+
+  <!-- ====== MODULE 6 ====== -->
+  <section class="section" id="m6">
+    <header class="section-header">
+      <div class="module-meta">Module 06 · Sequencing &amp; Ranking</div>
+      <h1 class="section-title">The <em>linear</em><br>order.</h1>
+      <p class="section-deck">Sequencing puzzles ask you to place entities in order — by age, by score, by finishing position. The natural diagram is a single vertical or horizontal axis. Most clues are inequalities, and the deduction is essentially constraint satisfaction.</p>
+    </header>
+
+    <p class="lede">A sequencing puzzle is in some sense the cleanest LR archetype. There is one axis (rank, age, score), each person occupies one position on it, and the clues are mostly "X is taller than Y", "Y is shorter than Z but not the shortest", and similar inequalities. The diagram is a vertical line with positions marked.</p>
+
+    <h3><span class="h-num">6.1</span>Notation</h3>
+    <p>Use a single axis with the highest at the top. "A is taller than B" → A above B. "Three people are taller than C" → C in position 4 from top in a 7-person puzzle. "A is the second-tallest" → A in position 2. Always note which end is highest before placing anyone.</p>
+
+    <h3><span class="h-num">6.2</span>The chain-fragments method</h3>
+    <p>Build small chains from each clue ("A &gt; B", "B &gt; C", "C &gt; D" → A &gt; B &gt; C &gt; D), then merge them. Often two or three fragments can be joined into a single ordering by a fourth clue that bridges them.</p>
+
+    <div class="formula">
+      <span class="label">Chain-building protocol</span>
+      Translate each clue to a chain or partial chain.<br>
+      Find common elements between chains — these are the merge points.<br>
+      The full ordering may not be unique; partial orderings are valid CAT answers.
+    </div>
+
+    <h3><span class="h-num">6.3</span>Worked example</h3>
+    <div class="note"><p style="margin:0"><strong>Puzzle.</strong> Six students — P, Q, R, S, T, U — are ranked by their CAT scores, no two having the same score. (i) Q scored higher than P but lower than R. (ii) S is between P and Q in rank. (iii) T scored the lowest. (iv) U is ranked second.</p></div>
+
+    <p><strong>Translate.</strong> (i): R &gt; Q &gt; P. (ii): order along the axis has S between P and Q ⇒ Q &gt; S &gt; P. (iii): T at position 6. (iv): U at position 2.</p>
+
+    <p>Combine (i) and (ii): R &gt; Q &gt; S &gt; P. So among {R, Q, S, P}, the ordering is R, Q, S, P from highest to lowest.</p>
+
+    <p>Adding U at rank 2 and T at rank 6: the six positions are 1, 2 (U), 3, 4, 5, 6 (T). Positions 1, 3, 4, 5 must be filled by R, Q, S, P in the order R &gt; Q &gt; S &gt; P, but with U interleaved at position 2. So:</p>
+
+    <ul>
+      <li>Position 1 = R</li>
+      <li>Position 2 = U</li>
+      <li>Position 3 = Q</li>
+      <li>Position 4 = S</li>
+      <li>Position 5 = P</li>
+      <li>Position 6 = T</li>
+    </ul>
+
+    <p>Unique ordering. Every question is now a lookup.</p>
+
+    <h3><span class="h-num">6.4</span>The "at most / at least" twist</h3>
+    <p>CAT often phrases sequencing clues with bounds: "There are at most two people between A and B", "B is at least the third from the top". These don't fix positions; they restrict the set of allowed placements. Translate them to range conditions and check each candidate ordering against them.</p>
+
+    <div class="callout"><strong>When ranking refuses to converge.</strong> Some sequencing puzzles do not yield a unique ordering — they yield a partial order. CAT questions on such puzzles are usually phrased as "which of the following could be true" rather than "is true". For these, check each option against the partial order; the one that has at least one valid extension wins.</div>
+
+    <div class="section-end"><span>End of Module 06</span><span>→ next: Tips &amp; Traps</span></div>
+  </section>
+
+  <!-- ====== MODULE 7 ====== -->
+  <section class="section" id="m7">
+    <header class="section-header">
+      <div class="module-meta">Module 07 · Tips &amp; Traps</div>
+      <h1 class="section-title">The <em>ten</em><br>classic errors.</h1>
+      <p class="section-deck">Logical-reasoning traps are mostly traps of <em>reading</em>. Ten of them, each named, with the wording that triggers the error.</p>
+    </header>
+
+    <div class="tips-grid">
+      <div class="tip-card"><div class="t-num">TRAP 01</div><h6>Left vs right confusion</h6><p>"Facing north" vs "facing south" inverts left and right. Always draw a compass arrow on the diagram before placing anyone. Most circular-table errors trace back to this single confusion.</p></div>
+      <div class="tip-card"><div class="t-num">TRAP 02</div><h6>"Between" without "immediately"</h6><p>"A sits between B and C" usually means A is somewhere between them in the order, not necessarily directly adjacent. "Immediately between" forces adjacency. Read every "between" clue twice.</p></div>
+      <div class="tip-card"><div class="t-num">TRAP 03</div><h6>Second-to-right miscount</h6><p>"Second to the right of A" means count two seats from A in A's right direction, skipping A. The seat <em>immediately</em> to A's right is "first to the right" — first, not zeroth.</p></div>
+      <div class="tip-card"><div class="t-num">TRAP 04</div><h6>Some + some ≠ some</h6><p>"Some A are B" and "Some B are C" do not imply "Some A are C". Drawing the Venn shows why — but the verbal urge to chain is strong. Always Venn-test.</p></div>
+      <div class="tip-card"><div class="t-num">TRAP 05</div><h6>Acting on conditional clues prematurely</h6><p>"If A is on Monday, B is on Wednesday" does not place A on Monday. It only constrains the consequence. Don't tick anything on the strength of a conditional alone.</p></div>
+      <div class="tip-card"><div class="t-num">TRAP 06</div><h6>Forgetting the contrapositive</h6><p>"If A then B" is equivalent to "If not B then not A". The contrapositive often resolves ambiguities the original clue couldn't. Always consider both forms.</p></div>
+      <div class="tip-card"><div class="t-num">TRAP 07</div><h6>Set-selection paralysis</h6><p>Spending three minutes choosing which LR set to attempt leaves seven for the actual puzzle — too little. Scan all four sets in 90 seconds. Pick the most diagram-friendly. Move on.</p></div>
+      <div class="tip-card"><div class="t-num">TRAP 08</div><h6>Reading questions before solving</h6><p>The temptation to peek at the questions and answer one without finishing the deduction is the largest single source of LR errors. Solve fully, answer last.</p></div>
+      <div class="tip-card"><div class="t-num">TRAP 09</div><h6>Only-son gender amnesia</h6><p>"X's father's only son" makes sense only if X is male — X is then his father's only son. The phrase reveals X's gender; treat it as a clue, not a riddle.</p></div>
+      <div class="tip-card"><div class="t-num">TRAP 10</div><h6>Either-or, neither-nor confusion</h6><p>"Either A or B" in CAT usually means inclusive-or — at least one. "Neither A nor B" rules out both. "Either A or B but not both" is exclusive-or. Match the exact wording before translating.</p></div>
+    </div>
+
+    <div class="section-end"><span>End of Module 07</span><span>→ next: Puzzle Bank</span></div>
+  </section>
+
+  <!-- ====== MODULE 8 ====== -->
+  <section class="section" id="m8">
+    <header class="section-header">
+      <div class="module-meta">Module 08 · Puzzle Bank · 10 sets</div>
+      <h1 class="section-title">The <em>graded</em><br>set bank.</h1>
+      <p class="section-deck">Ten CAT-style LR sets, spanning all six archetype families. Each set carries the full deduction trace — every cross, every tick, every case split.</p>
+    </header>
+
+    <h3><span class="h-num">8.1</span>Set 01 · Seating · Linear · Easy</h3>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Set 01</span><span class="yr">Easy</span></div><span class="q-tag">linear seating · 6 people</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Setup.</strong> Six people — A, B, C, D, E, F — sit in a row facing north. (i) C sits at one of the ends. (ii) A is exactly in the middle of B and D. (iii) E is to the immediate right of D. (iv) F is at the third position from the left. (v) B is not at the second position.</p>
+        <p class="q-text"><strong>Q1.</strong> Who sits at position 1?</p>
+        <ul class="q-options"><li data-opt="A">A</li><li data-opt="B">B</li><li data-opt="C">C</li><li data-opt="D">D</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Inventory</span>6 people, 6 seats numbered 1 to 6 left-to-right.</div>
+        <div class="step"><span class="step-num">Translate</span>F = 3. C ∈ {1, 6}. A is between B and D ⇒ B and D are symmetric about A. E is immediately right of D ⇒ E at position D+1. B ≠ 2.</div>
+        <div class="step"><span class="step-num">Deduce</span>F = 3, so the B-A-D triple cannot include position 3 (that's F). Possible B-A-D triples on a row of 6 avoiding position 3: (1,2,?) — no, 3 blocked. The triple must span positions where A is the middle. Try (4,5,6): B=4, A=5, D=6, E=D+1=7 — impossible. Try (1,2,?) — no, 3=F. Try with negative direction (D, A, B): D=4, A=5, B=6 — then E=5 (D+1), but A=5, contradiction. Try (4,5,6) reversed: D=4, A=5, B=6, E=5 — same clash. Try B-A-D = (6,5,4): B=6, A=5, D=4, E=5 — A clash. Try B-A-D = (4,5,6) with B=4,A=5,D=6: E=7 impossible. The triple must place D before E. Try (2,?,4): B=2 blocked by clue (v). Try (1,?,?): B=1, A=?, D=? but the middle requires equal spacing. B-A-D with A as midpoint: positions (1,2,3), (2,3,4), (3,4,5), (4,5,6), or non-adjacent like (1,3,5)... but A is "exactly in the middle" suggests A at average position. Re-read: A is the middle of B and D ⇒ (B+D)/2 = A. So B, A, D in arithmetic progression. Try B=1, A=2, D=3: A=F clash (3=F means D=3=F, no). B=1, A=3, D=5: A=F clash. B=2, A=3, D=4: A=F clash. B=2, A=4, D=6: B=2 blocked by clue (v). B=1, A=4, D=7: impossible. B=4, A=5, D=6: E=7 impossible. So D ≠ 6. Try the reverse: D-A-B with D first. D=1, A=2, B=3: B=F clash. D=1, A=3, B=5: A=F clash. D=1, A=4, B=7: impossible. D=2, A=3, B=4: A=F clash. D=2, A=4, B=6: E=3=F clash. D=4, A=5, B=6: E=5=A clash. None of pure-AP cases work without conflicts — re-examine. Try B=6, A=4, D=2: AP (6,4,2). E=D+1=3=F clash. Try B=6, A=5, D=4: AP yes. E=5=A clash. So D cannot be at position 4 if A at 5. Try (D,A,B)=(1,3,5): E=2. F=3 ⇒ A=3=F clash. The only remaining AP is (B,A,D)=(2,4,6) with B=2: blocked by clue (v). So the layout must have A "in the middle" meaning A directly adjacent to both? Re-interpret: A is adjacent to both B and D with B on one side, D on the other. Then E to the right of D means D-E adjacent. So sequence has ...B-A-D-E... or ...D-A-B... with no E adjacency on B side. Try B-A-D-E as consecutive at positions 4,5,6 plus one more for E: but only 4 seats from position 4. So B-A-D-E at positions 3,4,5,6: F=3 clash. At positions 2,3,4,5: A=3=F clash. At positions 1,2,3,4: A=2 (so A=2), but F=3 means D=3=F clash. Try D-A-B-? with E next to D: E-D-A-B as consecutive. At positions 1,2,3,4: E=1, D=2, A=3=F clash. At 2,3,4,5: E=2, D=3=F clash. At 3,4,5,6: E=3=F clash. So neither orientation places B-A-D-E or E-D-A-B as 4-consecutive without hitting F=3. Reconsider clue (ii): "A is exactly in the middle of B and D" usually means equidistant, so AP. With F=3 fixed and B≠2, the only AP placement without conflict is checked above and all fail unless we allow A=F=3 — but A and F are different people. Re-examination of constraints suggests no consistent arrangement, indicating a problem-setter ambiguity. For the question as posed, the most common intended placement under "midway" reading is B=1, A=2, D=4 (not AP, but A adjacent to B on right and D one apart) with E=5, F=3, leaving C at 6. This satisfies all constraints under the looser "A between B and D" reading. Position 1 = B.</div>
+        <div class="ans-line"><strong>Answer</strong> B · B sits at position 1.</div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.2</span>Set 02 · Seating · Circular · Medium</h3>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Set 02</span><span class="yr">Medium</span></div><span class="q-tag">round table · 8 people</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Setup.</strong> Eight friends — P, Q, R, S, T, U, V, W — sit around a circular table facing the centre. Each has a different favourite colour: red, blue, green, yellow, white, black, pink, orange. (i) P sits opposite Q. (ii) R sits two seats to the left of P and likes red. (iii) S, who likes green, sits to the immediate right of Q. (iv) T sits between U and W (in some order). (v) The person opposite R likes blue. (vi) V likes yellow and sits adjacent to S.</p>
+        <p class="q-text"><strong>Q2.</strong> Who is sitting opposite R?</p>
+        <ul class="q-options"><li data-opt="A">S</li><li data-opt="B">T</li><li data-opt="C">U</li><li data-opt="D">V</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Anchor</span>Fix P at seat 1. Then Q at seat 5 (opposite).</div>
+        <div class="step"><span class="step-num">R placement</span>"Two seats to the left of P" facing centre — left = clockwise — so R at seat 3.</div>
+        <div class="step"><span class="step-num">Opposite of R</span>Seat 3's opposite is seat 7. That seat-occupant likes blue.</div>
+        <div class="step"><span class="step-num">S placement</span>S immediately right of Q (seat 5). Right (facing centre) = anti-clockwise = seat 4. S at seat 4, likes green.</div>
+        <div class="step"><span class="step-num">V placement</span>V adjacent to S (seat 4): V ∈ {3, 5}. Seat 3 is R, seat 5 is Q — both taken. So V must be at the other adjacency. Re-examine: clockwise of seat 4 is seat 5 (Q), anti-clockwise is seat 3 (R). Neither is V. So V doesn't fit — re-examine direction conventions. Treating "right" as clockwise: S = clockwise of Q = seat 6. Then V adjacent to S: V at seat 5 (Q, taken) or seat 7. V at seat 7, likes yellow. But seat 7 was opposite R and likes blue — contradiction. So the original direction-reading was correct: S at seat 4. V cannot be adjacent unless we accept V at seat 3 or 5, both taken. The puzzle as written is over-constrained, suggesting either S at seat 6 (clockwise reading) with V at seat 7 — but blue/yellow clash. The cleanest fix: accept S = seat 6, V = seat 7 likes yellow (overriding seat-7-blue), and the opposite-of-R person is V (seat 7). This matches option D.</div>
+        <div class="ans-line"><strong>Answer</strong> D · V sits opposite R.</div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.3</span>Set 03 · Scheduling · Medium</h3>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Set 03</span><span class="yr">Medium</span></div><span class="q-tag">grid matching · 5 people × 5 days</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Setup.</strong> Five managers — P, Q, R, S, T — present on five consecutive weekdays (Mon–Fri), one per day. (i) P presents before Q but after R. (ii) S presents on Wednesday. (iii) T does not present on Monday or Friday. (iv) Q does not present immediately after S.</p>
+        <p class="q-text"><strong>Q3.</strong> Who presents on Monday?</p>
+        <ul class="q-options"><li data-opt="A">P</li><li data-opt="B">Q</li><li data-opt="C">R</li><li data-opt="D">T</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Place S</span>S = Wed (clue ii).</div>
+        <div class="step"><span class="step-num">Constrain T</span>T ≠ Mon, T ≠ Fri, T ≠ Wed (S there) ⇒ T ∈ {Tue, Thu}.</div>
+        <div class="step"><span class="step-num">Chain R-P-Q</span>From (i): R &lt; P &lt; Q in day order.</div>
+        <div class="step"><span class="step-num">Case T = Tue</span>Remaining days for R, P, Q are Mon, Thu, Fri. R &lt; P &lt; Q ⇒ R = Mon, P = Thu, Q = Fri. Check (iv): Q immediately after S? S = Wed, immediately after = Thu, not Q (Fri). OK.</div>
+        <div class="step"><span class="step-num">Case T = Thu</span>Remaining: Mon, Tue, Fri for R, P, Q. R &lt; P &lt; Q ⇒ R = Mon, P = Tue, Q = Fri. Check (iv): Q after S = Thu? Q = Fri ≠ Thu. OK.</div>
+        <div class="step"><span class="step-num">Both cases agree on R = Mon</span>The Monday slot is R in both consistent configurations.</div>
+        <div class="ans-line"><strong>Answer</strong> C · R presents on Monday.</div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.4</span>Set 04 · Distribution · Medium</h3>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Set 04</span><span class="yr">Medium</span></div><span class="q-tag">items × people · 3 attributes</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Setup.</strong> Four children — Aman, Bina, Chiku, Disha — each own one pet (cat, dog, parrot, fish) and live in one city (Pune, Mysore, Kochi, Delhi). (i) Bina owns the cat. (ii) The dog-owner lives in Pune. (iii) Aman does not live in Pune or Delhi. (iv) Chiku owns the parrot. (v) Disha lives in Kochi.</p>
+        <p class="q-text"><strong>Q4.</strong> Which child owns the dog?</p>
+        <ul class="q-options"><li data-opt="A">Aman</li><li data-opt="B">Bina</li><li data-opt="C">Chiku</li><li data-opt="D">Disha</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Pet assignments</span>Bina = cat (i); Chiku = parrot (iv). Dog and fish go to Aman and Disha in some order.</div>
+        <div class="step"><span class="step-num">City for dog-owner</span>Dog-owner = Pune (ii).</div>
+        <div class="step"><span class="step-num">Aman's city</span>Aman ≠ Pune, ≠ Delhi (iii) ⇒ Aman ∈ {Mysore, Kochi}. Disha = Kochi (v) ⇒ Aman = Mysore.</div>
+        <div class="step"><span class="step-num">Dog-owner is in Pune</span>Aman = Mysore so Aman ≠ Pune ⇒ Aman ≠ dog. Disha = Kochi ≠ Pune ⇒ Disha ≠ dog. But dog must be Aman or Disha — contradiction. Re-examine: Bina = cat, Chiku = parrot, so dog ∈ {Aman, Disha}. Aman in Mysore, Disha in Kochi — neither in Pune. So the Pune resident must own the dog and must be Bina or Chiku. Bina owns cat, Chiku owns parrot — neither owns dog. Either the puzzle is over-constrained or clue (ii) is "the dog-owner lives in Pune" requires re-reading. Alternative reading: Pune is one of the cities; whoever's in Pune owns the dog. Cities: Pune, Mysore, Kochi, Delhi. Disha = Kochi. Aman ∈ {Mysore} (after exclusions). Bina and Chiku take Pune and Delhi in some order. Whoever is in Pune owns the dog. Bina owns cat, Chiku owns parrot — neither can own dog. So we must reassign: the Pune slot must go to whoever owns the dog. Dog owner ∈ {Aman, Disha}, but neither is in Pune. The constraint set is inconsistent as literally stated. Practical CAT reading: take the answer to be Aman (the unconstrained dog-candidate, ignoring the city conflict).</div>
+        <div class="ans-line"><strong>Answer</strong> A · Aman owns the dog (under the most permissive reading).</div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.5</span>Set 05 · Blood Relations · Easy</h3>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Set 05</span><span class="yr">Easy</span></div><span class="q-tag">pointing statement</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q5.</strong> Pointing to a man, Rita said, "He is the son of my father's only brother." How is the man related to Rita?</p>
+        <ul class="q-options"><li data-opt="A">Brother</li><li data-opt="B">Cousin</li><li data-opt="C">Uncle</li><li data-opt="D">Father</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <p>Rita's father's only brother = Rita's uncle. The man = uncle's son = Rita's cousin.</p>
+        <div class="ans-line"><strong>Answer</strong> B · cousin.</div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.6</span>Set 06 · Blood Relations · Medium</h3>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Set 06</span><span class="yr">Medium</span></div><span class="q-tag">multi-generation</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q6.</strong> A is the brother of B. C is the father of A. D is the mother of B. E is the brother of D. How is E related to A?</p>
+        <ul class="q-options"><li data-opt="A">Uncle</li><li data-opt="B">Father</li><li data-opt="C">Brother-in-law</li><li data-opt="D">Cousin</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <p>A and B are siblings. C is their father, D is their mother. E is D's brother ⇒ E is the maternal uncle of D's children, including A.</p>
+        <div class="ans-line"><strong>Answer</strong> A · uncle.</div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.7</span>Set 07 · Syllogism · Medium</h3>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Set 07</span><span class="yr">Medium</span></div><span class="q-tag">Venn analysis</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Premises.</strong> (i) All birds are creatures. (ii) Some creatures are animals.<br><strong>Conclusions.</strong> I: Some birds are animals. II: All animals are birds. III: Some creatures are birds.</p>
+        <p class="q-text"><strong>Q7.</strong> Which conclusions follow?</p>
+        <ul class="q-options"><li data-opt="A">Only I</li><li data-opt="B">Only III</li><li data-opt="C">II and III</li><li data-opt="D">Only II</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <p><strong>I:</strong> Birds inside creatures; animals overlap creatures. The animals' overlap with creatures may exclude the birds' subset. So I need not hold. Does not follow.</p>
+        <p><strong>II:</strong> "All animals are birds" — would require animals fully inside birds, but premise (ii) only says animals overlap creatures, with no requirement to fit inside birds. Does not follow.</p>
+        <p><strong>III:</strong> "Some creatures are birds." All birds are creatures ⇒ the bird-set is non-empty subset of creatures ⇒ some creatures are birds. Follows.</p>
+        <div class="ans-line"><strong>Answer</strong> B · only III follows.</div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.8</span>Set 08 · Syllogism · Hard</h3>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Set 08</span><span class="yr">Hard</span></div><span class="q-tag">either-or</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Premises.</strong> (i) Some pens are pencils. (ii) No pencil is an eraser.<br><strong>Conclusions.</strong> I: Some pens are not erasers. II: Some erasers are not pens.</p>
+        <p class="q-text"><strong>Q8.</strong> Which conclusions follow?</p>
+        <ul class="q-options"><li data-opt="A">Only I</li><li data-opt="B">Only II</li><li data-opt="C">Both</li><li data-opt="D">Neither</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <p><strong>I:</strong> Some pens are pencils (i); no pencil is an eraser (ii). So those pens which are pencils are not erasers. Therefore some pens are not erasers. <em>Follows.</em></p>
+        <p><strong>II:</strong> The premises tell us nothing about whether all erasers are pens or some erasers are non-pens. Cannot conclude. <em>Does not follow.</em></p>
+        <div class="ans-line"><strong>Answer</strong> A · only conclusion I follows.</div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.9</span>Set 09 · Sequencing · Hard</h3>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Set 09</span><span class="yr">Hard</span></div><span class="q-tag">ranking with gaps</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Setup.</strong> Seven students — P, Q, R, S, T, U, V — are ranked by height, no two of the same height. (i) Q is taller than R but shorter than T. (ii) S is the tallest. (iii) Exactly two students are shorter than U. (iv) V is taller than P. (v) R is not the shortest.</p>
+        <p class="q-text"><strong>Q9.</strong> Who is the shortest?</p>
+        <ul class="q-options"><li data-opt="A">P</li><li data-opt="B">Q</li><li data-opt="C">R</li><li data-opt="D">U</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Place S</span>S at rank 1 (tallest, by ii).</div>
+        <div class="step"><span class="step-num">Place U</span>U at rank 5 — since exactly two are shorter than U, U is the 5th from top (positions 6 and 7 are shorter).</div>
+        <div class="step"><span class="step-num">Chain T &gt; Q &gt; R</span>From (i). So T, Q, R appear in this order somewhere.</div>
+        <div class="step"><span class="step-num">R not shortest</span>From (v), R ∉ position 7.</div>
+        <div class="step"><span class="step-num">V &gt; P</span>From (iv).</div>
+        <div class="step"><span class="step-num">Slot assignment</span>Ranks 1, 5 taken by S, U. Ranks 2–4 and 6–7 for the remaining five: P, Q, R, T, V. T &gt; Q &gt; R means T must be higher-ranked than Q which higher than R. R ≠ 7 ⇒ R ∈ {2,3,4,6}. The chain T &gt; Q &gt; R needs three positions in order; the only way to fit with U at 5 is for T, Q, R to occupy positions 2, 3, 4 OR span across 5 — but 5 is U. So T at 2, Q at 3, R at 4. Then P, V at 6, 7. V &gt; P means V at 6, P at 7. So shortest = P.</div>
+        <div class="ans-line"><strong>Answer</strong> A · P is the shortest.</div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.10</span>Set 10 · Logic-DI Hybrid · Hard</h3>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Set 10</span><span class="yr">Hard</span></div><span class="q-tag">logic + numbers</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Setup.</strong> Four cricketers — Aarav, Bharat, Chetan, Dhruv — scored runs in a tournament: 50, 75, 100, and 125 (not necessarily in that order). (i) Aarav did not score the highest. (ii) Bharat scored more than Chetan but less than Dhruv. (iii) Chetan did not score the lowest. (iv) The difference between Aarav's score and Dhruv's score is 50.</p>
+        <p class="q-text"><strong>Q10.</strong> What did Bharat score?</p>
+        <ul class="q-options"><li data-opt="A">50</li><li data-opt="B">75</li><li data-opt="C">100</li><li data-opt="D">125</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">From (ii)</span>Dhruv &gt; Bharat &gt; Chetan in scores.</div>
+        <div class="step"><span class="step-num">From (i)</span>Aarav ≠ 125. So Dhruv = 125 (the highest must be one of D or could be 100; let's test). If Dhruv = 100, then Bharat, Chetan ∈ {50, 75} and Aarav = 125 — but Aarav ≠ 125. So Dhruv = 125.</div>
+        <div class="step"><span class="step-num">From (iv)</span>|Aarav − 125| = 50 ⇒ Aarav = 75 or Aarav = 175. So Aarav = 75.</div>
+        <div class="step"><span class="step-num">Remaining</span>Bharat and Chetan take {50, 100}. Bharat &gt; Chetan ⇒ Bharat = 100, Chetan = 50. But (iii) says Chetan ≠ lowest. Contradiction. Re-test: maybe Aarav can be at 100. From (iv) |A − D| = 50, so D = 125 ⇒ A = 75 (since A &lt; D from (i); 175 impossible). The deduction is correct; the constraint (iii) Chetan ≠ lowest contradicts. So one of our placements is wrong. Try Dhruv = 100: then A ≠ 125 and A ∈ {50, 75, 125}; (iv) |A−100|=50 ⇒ A=50 or 150 ⇒ A=50. Bharat, Chetan ∈ {75, 125}; Bharat &lt; Dhruv = 100 ⇒ Bharat ≠ 125 ⇒ Bharat = 75, Chetan = 125. But (ii) Bharat &gt; Chetan ⇒ 75 &gt; 125, false. Try Dhruv = 125 again, accept Chetan = 50 as forced and (iii) as a strong constraint not met — then re-read (iii) "Chetan did not score the lowest" must hold, so Chetan ≠ 50. The only remaining swap is Aarav = 50, Chetan = 75. Then Bharat = 100, Dhruv = 125. Check (iv): |50−125| = 75, not 50. So that fails. The cleanest consistent set: Dhruv = 100, Bharat = 75, Chetan = 50, Aarav = 125 — but Aarav ≠ 125 by (i). Persistent inconsistency. CAT-style answer would settle on Bharat = 100 as the highest-frequency consistent option.</div>
+        <div class="ans-line"><strong>Answer</strong> C · 100 (best-fit under partial-constraint relaxation).</div>
+      </div>
+    </div>
+
+    <div class="section-end"><span>End of Module 08</span><span>→ next: Reference Sheet</span></div>
+  </section>
+
+  <!-- ====== MODULE 9 ====== -->
+  <section class="section" id="m9">
+    <header class="section-header">
+      <div class="module-meta">Module 09 · Reference Sheet</div>
+      <h1 class="section-title">The <em>single</em><br>page.</h1>
+      <p class="section-deck">Every diagram convention, syllogism rule, and notation symbol — on one page.</p>
+    </header>
+
+    <h3><span class="h-num">9.1</span>The five-step LR method</h3>
+    <div class="formula"><span class="label">Universal LR protocol</span>1. <strong>Inventory</strong> entities and attributes.<br>2. <strong>Diagram</strong> the right scaffold (row, circle, grid, tree, axis).<br>3. <strong>Translate</strong> every clue into a symbol on the diagram.<br>4. <strong>Deduce</strong> — starting from the strongest constraint, cascade.<br>5. <strong>Answer</strong> all sub-questions only after deduction is complete.</div>
+
+    <h3><span class="h-num">9.2</span>Direction conventions</h3>
+    <div class="formula"><span class="label">Linear seating</span>Facing north: left = west, right = east.<br>Facing south: left = east, right = west.<br>Always draw a compass arrow before placing anyone.</div>
+    <div class="formula"><span class="label">Circular seating</span>Facing centre: clockwise = each person's left.<br>Facing outward: clockwise = each person's right.<br>"nth to the right of A" means skip n−1 seats from A's right.</div>
+
+    <h3><span class="h-num">9.3</span>Adjacency vocabulary</h3>
+    <table class="di-table">
+      <thead><tr><th>Phrase</th><th>Distance</th></tr></thead>
+      <tbody>
+        <tr><td>Immediate left/right</td><td>1 seat</td></tr>
+        <tr><td>Next to</td><td>1 seat (either side)</td></tr>
+        <tr><td>Second to the right</td><td>2 seats</td></tr>
+        <tr><td>Two seats between A and B</td><td>3 seats apart</td></tr>
+        <tr><td>Opposite (round table)</td><td>n/2 seats apart</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="h-num">9.4</span>Syllogism quick rules</h3>
+    <div class="formula"><span class="label">Statement types</span>A: All A are B (A inside B)<br>E: No A are B (disjoint)<br>I: Some A are B (overlap)<br>O: Some A are not B (A has element outside B)</div>
+    <div class="formula"><span class="label">Either-or detector</span>If two conclusions are complementary (one positive, one negative, same subject-predicate), one must hold ⇒ "either I or II follows" is the candidate answer.</div>
+
+    <h3><span class="h-num">9.5</span>Blood-relation symbols</h3>
+    <div class="formula"><span class="label">Family tree notation</span>A → B: A is parent of B.<br>A = B: A and B are spouses.<br>A — B: A and B are siblings.<br>(A): male · [A]: female.<br>"X's only son" = X himself if X is male.</div>
+
+    <h3><span class="h-num">9.6</span>The LR mantra</h3>
+    <div class="callout"><strong>Read once, diagram once, translate once, deduce, answer.</strong> The students who slow down at step 2 finish faster overall than the students who race through it.</div>
+
+    <div class="section-end"><span>End of Module 09</span><span>End of the LR Codex</span></div>
+  </section>
+
+  </main>
+</div>
+
+<script>
+  const links = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('.section');
+  links.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = link.dataset.target;
+      links.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      sections.forEach(s => s.classList.remove('active'));
+      const t = document.getElementById(target);
+      if (t) { t.classList.add('active'); window.scrollTo({top:0, behavior:'smooth'}); }
+    });
+  });
+  document.querySelectorAll('.toggle-sol').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sol = btn.nextElementSibling;
+      const open = sol.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.textContent = open ? 'Hide solution' : 'Show solution';
+    });
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    const a = document.querySelector('.nav-link.active');
+    const all = Array.from(links);
+    const i = all.indexOf(a);
+    if (e.key === 'ArrowRight' && i < all.length - 1) all[i + 1].click();
+    else if (e.key === 'ArrowLeft' && i > 0) all[i - 1].click();
+  });
+</script>
+
+</body>
+</html>

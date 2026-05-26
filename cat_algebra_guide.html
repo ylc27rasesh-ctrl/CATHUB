@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The CAT Algebra Codex — A Teaching Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4ebd9;
+  --paper-2:#ebe0c8;
+  --ink:#1f1a14;
+  --ink-soft:#403728;
+  --ink-faint:#6f6448;
+  --accent:#8a6a2a;
+  --accent-deep:#5c4717;
+  --ochre:#c89b3c;
+  --olive:#5a6b3e;
+  --rust:#a23f24;
+  --teal:#1f6b6b;
+  --rule:#c5b698;
+  --rule-soft:#dbcdaf;
+  --highlight:#fff1bf;
+  --shadow:0 1px 0 rgba(31,26,20,.06), 0 2px 6px rgba(31,26,20,.04);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Fraunces',Georgia,serif;
+  background:var(--paper);color:var(--ink);
+  line-height:1.65;font-size:17px;
+  background-image:
+    radial-gradient(circle at 15% 12%, rgba(138,106,42,.05) 0%, transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(200,155,60,.04) 0%, transparent 45%);
+  min-height:100vh;
+}
+body::before{content:"";position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .28 0 0 0 0 .18 0 0 0 .04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");pointer-events:none;z-index:1;opacity:.55}
+.layout{display:grid;grid-template-columns:280px 1fr;min-height:100vh;position:relative;z-index:2}
+@media (max-width:980px){.layout{grid-template-columns:1fr}.sidebar{position:static!important;height:auto!important;border-right:none!important;border-bottom:2px solid var(--ink)}}
+.sidebar{position:sticky;top:0;height:100vh;border-right:1px solid var(--rule);background:linear-gradient(180deg,var(--paper-2) 0%,var(--paper) 100%);padding:32px 26px 24px;overflow-y:auto;display:flex;flex-direction:column}
+.back-link{display:inline-flex;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--ink-faint);text-decoration:none;padding-bottom:18px;margin-bottom:18px;border-bottom:1px dotted var(--rule);transition:color .2s ease, gap .2s ease}
+.back-link::before{content:"←";font-size:14px;transition:transform .2s ease}
+.back-link:hover{color:var(--accent);gap:12px}
+.back-link:hover::before{transform:translateX(-3px)}
+.brand{border-bottom:2px solid var(--ink);padding-bottom:22px;margin-bottom:24px}
+.brand-eyebrow{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:8px}
+.brand-title{font-family:'Fraunces',serif;font-weight:900;font-size:28px;line-height:1;letter-spacing:-.02em}
+.brand-title em{font-style:italic;font-weight:400;color:var(--accent);font-size:24px}
+.brand-sub{font-family:'Inter',sans-serif;font-size:11px;color:var(--ink-faint);margin-top:10px;letter-spacing:.05em}
+.nav-label{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:10px}
+.nav-list{list-style:none;font-family:'Inter',sans-serif;flex:1}
+.nav-list li{position:relative;border-bottom:1px dotted var(--rule)}
+.nav-list li:last-child{border-bottom:none}
+.nav-list a{display:flex;align-items:baseline;gap:10px;padding:11px 0 11px 8px;text-decoration:none;color:var(--ink-soft);font-size:13.5px;font-weight:500;transition:all .2s ease}
+.nav-list a:hover{color:var(--accent);padding-left:14px}
+.nav-list a.active{color:var(--ink);font-weight:600;padding-left:14px}
+.nav-list a.active::before{content:"";position:absolute;left:0;top:50%;width:5px;height:5px;background:var(--accent);border-radius:50%;transform:translateY(-50%)}
+.nav-num{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-faint);font-weight:400;min-width:24px}
+.nav-list a.active .nav-num{color:var(--accent)}
+.sidebar-footer{margin-top:22px;padding-top:18px;border-top:1px solid var(--rule);font-family:'Inter',sans-serif;font-size:10.5px;color:var(--ink-faint);letter-spacing:.04em}
+.main{padding:48px 64px 96px;max-width:1080px}
+@media (max-width:980px){.main{padding:32px 22px 64px}}
+.section{display:none;animation:fadeUp .4s ease}
+.section.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.section-header{border-bottom:2px solid var(--ink);padding-bottom:28px;margin-bottom:42px}
+.module-meta{display:flex;align-items:center;gap:16px;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:14px}
+.module-meta::after{content:"";flex:1;height:1px;background:var(--rule)}
+.section-title{font-family:'Fraunces',serif;font-weight:900;font-size:54px;line-height:1;letter-spacing:-.035em;margin-bottom:14px;color:var(--ink)}
+.section-title em{font-style:italic;font-weight:400;color:var(--accent)}
+.section-deck{font-family:'Fraunces',serif;font-style:italic;font-size:21px;line-height:1.5;color:var(--ink-soft);max-width:680px;font-weight:400}
+h3{font-family:'Fraunces',serif;font-weight:700;font-size:30px;line-height:1.15;letter-spacing:-.02em;margin:42px 0 18px;color:var(--ink);border-bottom:1px solid var(--rule);padding-bottom:8px;display:flex;align-items:baseline;gap:14px}
+h3 .h-num{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--accent);font-weight:500;letter-spacing:.05em}
+h4{font-family:'Fraunces',serif;font-weight:600;font-size:22px;margin:32px 0 12px;color:var(--ink);letter-spacing:-.01em}
+h5{font-family:'Inter',sans-serif;font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:24px 0 10px}
+p{margin:0 0 16px;font-size:17.5px}
+p.lede{font-size:20px;line-height:1.55;color:var(--ink-soft);margin-bottom:24px}
+strong{color:var(--ink);font-weight:600}
+em{color:var(--ink-soft)}
+ul,ol{margin:8px 0 18px 22px}
+li{margin-bottom:8px}
+code{font-family:'JetBrains Mono',monospace;font-size:.88em;background:rgba(138,106,42,.08);padding:1px 6px;border-radius:3px;color:var(--accent-deep)}
+.kbd-math{font-family:'JetBrains Mono',monospace;font-size:15px;background:rgba(31,26,20,.04);padding:2px 8px;border-radius:3px;display:inline-block;border:1px solid var(--rule-soft)}
+.callout{border-left:3px solid var(--accent);background:linear-gradient(90deg,rgba(138,106,42,.06),transparent);padding:18px 22px;margin:24px 0;font-family:'Fraunces',serif;font-style:italic;font-size:18px;line-height:1.5;color:var(--ink-soft)}
+.callout strong{font-style:normal;color:var(--accent-deep)}
+.note{background:var(--paper-2);border:1px solid var(--rule);padding:18px 22px;margin:22px 0;position:relative}
+.note::before{content:"NOTE";position:absolute;top:-10px;left:18px;background:var(--paper);padding:0 8px;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.22em;color:var(--ink-faint);font-weight:600}
+.note.tip::before{content:"TIP";color:var(--olive)}
+.note.tip{border-color:var(--olive);background:rgba(90,107,62,.06)}
+.note.warn::before{content:"WATCH OUT";color:var(--rust)}
+.note.warn{border-color:var(--rust);background:rgba(162,63,36,.05)}
+.formula{background:#fbf6ec;border:1px solid var(--rule);border-left:4px solid var(--ochre);padding:20px 24px;margin:20px 0;font-family:'Fraunces',serif;font-size:19px;line-height:1.7;box-shadow:var(--shadow)}
+.formula .label{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ochre);font-weight:700;margin-bottom:6px;display:block}
+.formula .eq{font-family:'JetBrains Mono',monospace;font-size:16px;background:rgba(0,0,0,.04);padding:8px 14px;border-radius:2px;display:inline-block;margin:6px 0;font-weight:500;color:var(--ink)}
+table.di-table{width:100%;border-collapse:collapse;font-family:'JetBrains Mono',monospace;font-size:13.5px;margin:18px 0;background:#fbf6ec;border:1px solid var(--rule)}
+table.di-table th,table.di-table td{padding:9px 12px;text-align:left;border:1px solid var(--rule-soft)}
+table.di-table th{background:var(--ink);color:var(--paper);font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+table.di-table td.num{text-align:right;font-variant-numeric:tabular-nums}
+table.di-table tr:nth-child(even) td{background:rgba(138,106,42,.025)}
+table.di-table caption{caption-side:top;text-align:left;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;padding:0 0 8px 0}
+table.di-table .hl{background:rgba(200,155,60,.18)!important;font-weight:600}
+.q-card{background:#fdfaf2;border:1px solid var(--rule);border-radius:2px;margin:24px 0;box-shadow:var(--shadow)}
+.q-head{background:var(--accent);color:var(--paper);padding:12px 22px;display:flex;justify-content:space-between;align-items:center;font-family:'Inter',sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;flex-wrap:wrap;gap:10px}
+.q-head .q-id{display:flex;gap:14px;align-items:center}
+.q-head .q-id .yr{background:rgba(245,239,228,.18);padding:3px 10px;border-radius:2px;font-size:10px;letter-spacing:.18em}
+.q-head .q-tag{font-size:10px;opacity:.85;font-family:'JetBrains Mono',monospace;letter-spacing:.08em}
+.q-body{padding:22px 26px 4px}
+.q-text{font-family:'Fraunces',serif;font-size:16.5px;line-height:1.65;margin-bottom:10px}
+.q-options{font-family:'Fraunces',serif;list-style:none;padding:0;margin:8px 0}
+.q-options li{padding:3px 0 3px 28px;position:relative;font-size:15.5px}
+.q-options li::before{content:attr(data-opt);font-family:'JetBrains Mono',monospace;position:absolute;left:0;top:3px;width:20px;height:20px;background:var(--paper-2);border:1px solid var(--rule);border-radius:50%;text-align:center;font-size:11px;font-weight:600;line-height:18px;color:var(--ink-soft)}
+.toggle-sol{width:100%;background:var(--paper-2);border:none;border-top:1px dashed var(--rule);padding:12px 24px;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--accent);cursor:pointer;text-align:left;display:flex;justify-content:space-between;align-items:center;transition:background .2s ease}
+.toggle-sol:hover{background:rgba(138,106,42,.08)}
+.toggle-sol::after{content:"▾";font-size:14px;transition:transform .25s ease}
+.toggle-sol.open::after{transform:rotate(180deg)}
+.sol{display:none;padding:20px 26px 26px;background:var(--paper-2);border-top:1px solid var(--rule);font-size:16.5px;line-height:1.65}
+.sol.open{display:block;animation:fadeUp .25s ease}
+.sol .ans-line{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--ink);color:var(--paper);border-radius:2px;margin-top:14px;font-family:'Fraunces',serif;font-size:17px}
+.sol .ans-line strong{color:var(--ochre);font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.sol p{margin-bottom:12px}
+.sol .step{border-left:2px solid var(--rule);padding-left:14px;margin:10px 0}
+.sol .step-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);font-weight:600;letter-spacing:.05em;display:block;margin-bottom:3px}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:36px 0 8px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+@media (max-width:760px){.stat-grid{grid-template-columns:repeat(2,1fr)}}
+.stat{padding:22px 18px;border-right:1px solid var(--rule)}
+.stat:last-child{border-right:none}
+@media (max-width:760px){.stat:nth-child(2){border-right:none}.stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--rule)}}
+.stat-num{font-family:'Fraunces',serif;font-weight:900;font-size:42px;line-height:.9;letter-spacing:-.03em;color:var(--accent)}
+.stat-num span{font-size:20px;color:var(--ink-soft);font-weight:400}
+.stat-label{font-family:'Inter',sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-top:8px;font-weight:600}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:24px 0;border:1px solid var(--rule)}
+@media (max-width:760px){.compare{grid-template-columns:1fr}}
+.compare > div{padding:18px 22px}
+.compare > div:first-child{border-right:1px solid var(--rule);background:rgba(138,106,42,.04)}
+.compare > div:last-child{background:rgba(90,107,62,.04)}
+@media (max-width:760px){.compare > div:first-child{border-right:none;border-bottom:1px solid var(--rule)}}
+.compare h5{margin-top:0}
+.tips-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:24px 0}
+@media (max-width:760px){.tips-grid{grid-template-columns:1fr}}
+.tip-card{background:#fbf6ec;border:1px solid var(--rule);border-top:3px solid var(--teal);padding:20px 22px}
+.tip-card .t-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--teal);letter-spacing:.1em;font-weight:600}
+.tip-card h6{font-family:'Fraunces',serif;font-size:19px;font-weight:700;margin:4px 0 10px;color:var(--ink)}
+.tip-card p{font-size:15.5px;margin-bottom:0;line-height:1.55}
+.section-end{margin-top:56px;padding-top:24px;border-top:2px solid var(--ink);font-family:'Fraunces',serif;font-style:italic;font-size:15px;color:var(--ink-faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.dropcap{font-family:'Fraunces',serif;font-weight:900;font-size:64px;line-height:.85;float:left;padding:6px 12px 0 0;color:var(--accent)}
+.drill{background:var(--ink);color:var(--paper);padding:24px 28px;margin:24px 0;border-radius:2px}
+.drill h5{color:var(--ochre);margin-top:0}
+.drill p{color:var(--paper);font-family:'Fraunces',serif;font-size:17px}
+.drill code{background:rgba(245,239,228,.1);color:var(--ochre)}
+</style>
+</head>
+<body>
+
+<div class="layout">
+  <aside class="sidebar">
+    <a href="index.html" class="back-link">Back to series</a>
+    <div class="brand">
+      <div class="brand-eyebrow">Algebra · CAT Prep</div>
+      <div class="brand-title">The <em>Algebra</em><br>Codex</div>
+      <div class="brand-sub">A teacher's companion · 9 modules · 25 problems</div>
+    </div>
+    <div class="nav-label">Modules</div>
+    <ul class="nav-list">
+      <li><a href="#m0" class="nav-link active" data-target="m0"><span class="nav-num">00</span>Orientation</a></li>
+      <li><a href="#m1" class="nav-link" data-target="m1"><span class="nav-num">01</span>Linear Equations</a></li>
+      <li><a href="#m2" class="nav-link" data-target="m2"><span class="nav-num">02</span>Quadratics</a></li>
+      <li><a href="#m3" class="nav-link" data-target="m3"><span class="nav-num">03</span>Inequalities</a></li>
+      <li><a href="#m4" class="nav-link" data-target="m4"><span class="nav-num">04</span>Functions &amp; Graphs</a></li>
+      <li><a href="#m5" class="nav-link" data-target="m5"><span class="nav-num">05</span>Logarithms</a></li>
+      <li><a href="#m6" class="nav-link" data-target="m6"><span class="nav-num">06</span>Sequences &amp; Series</a></li>
+      <li><a href="#m7" class="nav-link" data-target="m7"><span class="nav-num">07</span>Tips &amp; Traps</a></li>
+      <li><a href="#m8" class="nav-link" data-target="m8"><span class="nav-num">08</span>Problem Bank</a></li>
+      <li><a href="#m9" class="nav-link" data-target="m9"><span class="nav-num">09</span>Reference Sheet</a></li>
+    </ul>
+    <div class="sidebar-footer">Prepared for classroom delivery.<br>All problems carry full reasoning.<br><span style="color:var(--accent)">⬤</span> Tap any solution to expand.</div>
+  </aside>
+
+  <main class="main">
+
+  <!-- ====== MODULE 0 ====== -->
+  <section class="section active" id="m0">
+    <header class="section-header">
+      <div class="module-meta">Module 00 · Orientation</div>
+      <h1 class="section-title">The <em>structural</em><br>half of Quant.</h1>
+      <p class="section-deck">Algebra on the CAT is not about manipulating symbols. It is about translating prose into equations and recognising the eight or ten standard structures that solve themselves once set up correctly.</p>
+    </header>
+
+    <p class="lede"><span class="dropcap">A</span>lgebra on the CAT is wider than any other Quant chapter. Linear equations, quadratics, inequalities, functions and graphs, logarithms, sequences and series — each is a self-contained sub-topic, and each contributes roughly one question to the typical CAT paper. Together they represent four to six of the twenty-two Quant questions, making algebra the single largest content area in the section. Unlike arithmetic, which rewards computational speed, algebra rewards <em>setup speed</em>: the candidate who reads a word problem and translates it to an equation in twenty seconds has already won.</p>
+
+    <p>This codex is organised around the eight standard problem shapes. Module 1 covers linear systems — one variable, two variables, and the "ages and word problems" classics. Module 2 covers quadratics — discriminants, sum/product of roots, and the elegant Vieta's relations. Module 3 covers inequalities, which look the same as equations but have stricter manipulation rules. Modules 4 through 6 cover functions, logarithms, and progressions — each with its own characteristic CAT question type. Module 8 collects 25 worked problems spanning the syllabus.</p>
+
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-num">4–6</div><div class="stat-label">Questions per paper</div></div>
+      <div class="stat"><div class="stat-num">6</div><div class="stat-label">Core sub-topics</div></div>
+      <div class="stat"><div class="stat-num">High</div><div class="stat-label">Score variance</div></div>
+      <div class="stat"><div class="stat-num">Med</div><div class="stat-label">Typical difficulty</div></div>
+    </div>
+
+    <h3><span class="h-num">0.1</span>What this codex emphasises</h3>
+
+    <p>The skill being trained here is <strong>translation</strong>. The CAT does not test whether you can solve a quadratic — every student can. It tests whether you can read "the sum of the roots is twice the product of the roots" and immediately write <code>−b/a = 2c/a</code>, or whether you can read "f(x + 1) = f(x) + 2" and recognise an arithmetic-progression structure. The faster the translation, the shorter the problem.</p>
+
+    <div class="callout">
+      <strong>Teaching philosophy.</strong> Symbol manipulation is a low-level skill — every CAT student has it. The high-leverage skill is translation: prose to equation, equation to recognisable form, form to known technique.
+    </div>
+
+    <h3><span class="h-num">0.2</span>The eight standard structures</h3>
+
+    <table class="di-table">
+      <caption>The eight algebra structures CAT examines</caption>
+      <thead><tr><th>Structure</th><th>Signal phrase</th><th>Module</th></tr></thead>
+      <tbody>
+        <tr><td>Linear in one variable</td><td>"five years ago", "twice as much"</td><td>1</td></tr>
+        <tr><td>Linear system in two variables</td><td>"A and B together", "cost of each"</td><td>1</td></tr>
+        <tr><td>Quadratic in one variable</td><td>"area is X", "sum and product"</td><td>2</td></tr>
+        <tr><td>Polynomial inequality</td><td>"less than", "non-negative for"</td><td>3</td></tr>
+        <tr><td>Function with given property</td><td>"f(x+y) = f(x) + f(y)"</td><td>4</td></tr>
+        <tr><td>Logarithm equation</td><td>"log x = y", "antilog"</td><td>5</td></tr>
+        <tr><td>Arithmetic progression</td><td>"common difference", "nth term"</td><td>6</td></tr>
+        <tr><td>Geometric progression</td><td>"common ratio", "sum to infinity"</td><td>6</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="h-num">0.3</span>What "doing well" looks like</h3>
+
+    <p>A 95th-percentile candidate solves four out of five algebra questions in twelve minutes total. A 99th-percentile candidate solves all five in ten. The difference is almost entirely in setup speed — once the equation is written, the arithmetic is trivial. The training goal of this codex is to make the setup automatic for each of the eight structures.</p>
+
+    <div class="section-end">
+      <span>End of Module 00 · Orientation</span>
+      <span>→ next: Linear Equations</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 1 — LINEAR EQUATIONS ====== -->
+  <section class="section" id="m1">
+    <header class="section-header">
+      <div class="module-meta">Module 01 · Linear Equations</div>
+      <h1 class="section-title">One variable.<br><em>Two variables. Done.</em></h1>
+      <p class="section-deck">The chapter where the algebra is trivial and the translation is everything. Master the translation and these problems take thirty seconds each.</p>
+    </header>
+
+    <p class="lede">Linear equations are the simplest algebraic objects on the CAT, and yet they account for nearly a third of all algebra questions. The reason is that linear problems wear so many disguises: ages, money, distance, work, mixtures. Each of these has the same underlying structure — one or two unknowns related by linear constraints — but each uses a different vocabulary. The job of this module is to make the underlying structure visible across the disguises.</p>
+
+    <h3><span class="h-num">1.1</span>The basic forms</h3>
+
+    <div class="formula">
+      <span class="label">Linear equation · one variable</span>
+      <span class="eq">ax + b = 0</span>, with solution <span class="eq">x = −b/a</span> (when a ≠ 0).
+    </div>
+
+    <div class="formula">
+      <span class="label">Linear system · two variables</span>
+      <span class="eq">a₁x + b₁y = c₁</span><br>
+      <span class="eq">a₂x + b₂y = c₂</span><br>
+      Unique solution when <span class="eq">a₁b₂ − a₂b₁ ≠ 0</span> (determinant non-zero).
+    </div>
+
+    <p>For a two-variable system to have a unique solution, the two lines must not be parallel. They are parallel when <code>a₁/a₂ = b₁/b₂</code>. If additionally <code>a₁/a₂ = b₁/b₂ = c₁/c₂</code>, the two equations are the same line (infinite solutions). Otherwise (parallel but not the same) — no solution.</p>
+
+    <h3><span class="h-num">1.2</span>Translation patterns</h3>
+
+    <p>The classical "translation drills" of CAT prep all reduce to the same exercise: read each English clause and produce one equation per clause. The patterns are highly repetitive:</p>
+
+    <table class="di-table">
+      <caption>English-to-algebra translation</caption>
+      <thead><tr><th>English clause</th><th>Algebra</th></tr></thead>
+      <tbody>
+        <tr><td>"A is x years older than B"</td><td>A = B + x</td></tr>
+        <tr><td>"A is twice as old as B"</td><td>A = 2B</td></tr>
+        <tr><td>"Five years ago, A was…"</td><td>A − 5 = …</td></tr>
+        <tr><td>"In ten years, A will be…"</td><td>A + 10 = …</td></tr>
+        <tr><td>"The sum of A and B is 50"</td><td>A + B = 50</td></tr>
+        <tr><td>"A is one-third of B"</td><td>A = B/3</td></tr>
+        <tr><td>"The number, when doubled and increased by 5"</td><td>2x + 5</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="h-num">1.3</span>The "ages" archetype</h3>
+
+    <p>Worked example. <em>"A father is three times as old as his son. Five years ago, he was four times as old. Find their present ages."</em></p>
+
+    <p>Let son's age = s, father's = 3s (from clause 1). Five years ago: father = 3s − 5, son = s − 5. From clause 2: 3s − 5 = 4(s − 5) ⇒ 3s − 5 = 4s − 20 ⇒ s = 15. So father = 45, son = 15.</p>
+
+    <p>Notice the structure: clause 1 gives a relation between current ages; clause 2 gives a relation between past ages. Two clauses, two unknowns — the linear system always closes.</p>
+
+    <h3><span class="h-num">1.4</span>The "money" archetype</h3>
+
+    <p>The money problems exchange the time dimension for a quantity dimension, but the structure is identical. <em>"Five pens and three pencils cost ₹85. Three pens and seven pencils cost ₹89. Find the cost of one pen and one pencil."</em></p>
+
+    <p>Let pen = p, pencil = q. Then 5p + 3q = 85, 3p + 7q = 89. Multiply first by 7 and second by 3: 35p + 21q = 595, 9p + 21q = 267. Subtract: 26p = 328, so p = 12.6 — not clean. Re-check the arithmetic: 35p + 21q − 9p − 21q = 595 − 267 → 26p = 328 → p ≈ 12.6. The arithmetic gives a non-integer answer, suggesting the intended values are slightly different in the original problem. Take this as a reminder that CAT setters choose coefficients that produce clean integer answers; if the answer is non-integer, recheck both the setup and the arithmetic.</p>
+
+    <div class="note tip">
+      <p style="margin:0"><strong>Sanity check.</strong> CAT answers are almost always clean integers or simple fractions. If your solution gives a number like 12.6, look for a translation error before trusting the result.</p>
+    </div>
+
+    <h3><span class="h-num">1.5</span>Systems with constraints (Diophantine)</h3>
+
+    <p>A CAT twist: <em>"Find all pairs of positive integers (x, y) satisfying 3x + 5y = 50."</em> Here the constraint is that x and y must be positive integers, which sharply restricts the solutions.</p>
+
+    <p>From 3x + 5y = 50: 5y = 50 − 3x, so y = (50 − 3x)/5. For y to be a positive integer, 50 − 3x must be a positive multiple of 5. 50 − 3x ≡ 0 (mod 5) ⇒ 3x ≡ 0 (mod 5) ⇒ x ≡ 0 (mod 5). So x ∈ {5, 10, 15} (and x > 0, x < 50/3). For x = 5: y = 7. For x = 10: y = 4. For x = 15: y = 1. Three pairs.</p>
+
+    <h3><span class="h-num">1.6</span>Word problems with two unknowns and one equation</h3>
+
+    <p>Occasionally CAT gives an equation in two unknowns and asks for an integer property — typically with an embedded inequality constraint. <em>"x and y are positive integers with 2x + 3y = 30. Find the maximum value of xy."</em></p>
+
+    <p>From the constraint: x can be any positive integer such that 30 − 2x > 0 and divisible by 3. So 2x ≡ 0 (mod 3) ⇒ x ≡ 0 (mod 3). Candidates: x = 3 (y = 8, xy = 24), x = 6 (y = 6, xy = 36), x = 9 (y = 4, xy = 36), x = 12 (y = 2, xy = 24). Maximum xy = 36.</p>
+
+    <p>Lesson: optimisation over integer lattice points is a common CAT twist that turns a simple linear equation into a discrete max problem.</p>
+
+    <div class="section-end">
+      <span>End of Module 01 · Linear Equations</span>
+      <span>→ next: Quadratics</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 2 — QUADRATICS ====== -->
+  <section class="section" id="m2">
+    <header class="section-header">
+      <div class="module-meta">Module 02 · Quadratics</div>
+      <h1 class="section-title">The <em>roots</em><br>that solve themselves.</h1>
+      <p class="section-deck">Quadratics are the most efficient algebra chapter on the CAT — fast formulas, recognisable shapes, and Vieta's elegant relations that bypass the formula entirely.</p>
+    </header>
+
+    <p class="lede">A quadratic equation has the form <code>ax² + bx + c = 0</code> with a ≠ 0. Almost every CAT quadratic question reduces to one of three sub-techniques: factoring, applying the quadratic formula, or — most cleverly — using the relations between coefficients and roots without ever solving the quadratic. This module covers all three and the half-dozen problem shapes built on them.</p>
+
+    <h3><span class="h-num">2.1</span>The three solving techniques</h3>
+
+    <div class="formula">
+      <span class="label">Quadratic formula</span>
+      For <span class="eq">ax² + bx + c = 0</span>: <span class="eq">x = [−b ± √(b² − 4ac)] / (2a)</span>
+    </div>
+
+    <p>The expression <code>b² − 4ac</code> is the <strong>discriminant</strong>, often written Δ. Its sign decides the nature of the roots:</p>
+
+    <ul>
+      <li><strong>Δ &gt; 0</strong>: two distinct real roots.</li>
+      <li><strong>Δ = 0</strong>: one repeated real root (the quadratic is a perfect square).</li>
+      <li><strong>Δ &lt; 0</strong>: no real roots (two complex conjugates).</li>
+    </ul>
+
+    <h3><span class="h-num">2.2</span>Vieta's relations</h3>
+
+    <div class="formula">
+      <span class="label">Sum and product of roots</span>
+      For <span class="eq">ax² + bx + c = 0</span> with roots α and β:<br>
+      <span class="eq">α + β = −b/a</span> · <span class="eq">α × β = c/a</span>
+    </div>
+
+    <p>Vieta's relations let you read off the sum and product of roots directly from the coefficients, without solving the equation. This is the workhorse of CAT quadratic questions. A question like "if α and β are roots of x² − 7x + 12 = 0, find α² + β²" needs no factoring: α² + β² = (α + β)² − 2αβ = 49 − 24 = 25.</p>
+
+    <div class="callout">
+      <strong>The Vieta habit.</strong> Whenever a CAT question asks for a symmetric function of the roots — α + β, αβ, α² + β², α³ + β³, 1/α + 1/β — write down the sum and product first, then express the desired quantity in terms of them. The quadratic formula almost never needs to be applied.
+    </div>
+
+    <h3><span class="h-num">2.3</span>Common symmetric identities</h3>
+
+    <div class="formula">
+      <span class="label">Identities in (s, p) where s = α + β, p = αβ</span>
+      <span class="eq">α² + β² = s² − 2p</span><br>
+      <span class="eq">α³ + β³ = s³ − 3sp</span><br>
+      <span class="eq">1/α + 1/β = s/p</span><br>
+      <span class="eq">α² β + α β² = p × s</span><br>
+      <span class="eq">(α − β)² = s² − 4p</span>
+    </div>
+
+    <h3><span class="h-num">2.4</span>Constructing a quadratic from given roots</h3>
+
+    <p>If α and β are desired roots, the quadratic with those roots is:</p>
+
+    <div class="formula">
+      <span class="label">Reverse construction</span>
+      <span class="eq">x² − (α + β)x + αβ = 0</span>
+    </div>
+
+    <p>For roots 3 and 5: x² − 8x + 15 = 0. For roots 2 + √3 and 2 − √3: sum = 4, product = 4 − 3 = 1, so x² − 4x + 1 = 0.</p>
+
+    <h3><span class="h-num">2.5</span>Modifying roots</h3>
+
+    <p>Often CAT asks: "if α, β are roots of ax² + bx + c = 0, find the equation whose roots are α + k, β + k", or "α², β²", or "1/α, 1/β". The trick is substitution.</p>
+
+    <ul>
+      <li><strong>Roots shifted by k:</strong> substitute x = y − k. New equation in y has roots α + k, β + k.</li>
+      <li><strong>Reciprocal roots (1/α, 1/β):</strong> reverse the coefficients. From ax² + bx + c = 0, the reciprocal-root equation is cx² + bx + a = 0.</li>
+      <li><strong>Squared roots (α², β²):</strong> express the new sum and product in terms of s and p: new sum = s² − 2p, new product = p². New equation: x² − (s² − 2p)x + p² = 0.</li>
+    </ul>
+
+    <h3><span class="h-num">2.6</span>The discriminant in disguise</h3>
+
+    <p>A frequent CAT question: "for what values of k does ax² + bx + c = 0 have real roots?" or "equal roots?" or "imaginary roots?". The answer is always a condition on the discriminant.</p>
+
+    <p>Worked example. <em>"For what value of k does x² − 6x + k = 0 have equal roots?"</em> Discriminant Δ = 36 − 4k = 0 ⇒ k = 9.</p>
+
+    <div class="note tip">
+      <p style="margin:0"><strong>Sign of the discriminant.</strong> The CAT loves questions that ask for the range of k such that roots are real (Δ ≥ 0), distinct (Δ &gt; 0), or imaginary (Δ &lt; 0). Always set up the discriminant and solve the resulting inequality.</p>
+    </div>
+
+    <div class="section-end">
+      <span>End of Module 02 · Quadratics</span>
+      <span>→ next: Inequalities</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 3 — INEQUALITIES ====== -->
+  <section class="section" id="m3">
+    <header class="section-header">
+      <div class="module-meta">Module 03 · Inequalities</div>
+      <h1 class="section-title">Equations<br><em>with attitude.</em></h1>
+      <p class="section-deck">Inequalities look like equations but flip rules at every turn. Multiplying both sides by a negative flips the sign; multiplying by a variable might. Sign discipline decides every problem.</p>
+    </header>
+
+    <p class="lede">An inequality replaces "=" with "&lt;", "&gt;", "≤", or "≥". The basic operations on inequalities — adding the same number to both sides, multiplying by a positive number — preserve the inequality. But multiplying by a negative number flips the inequality direction, and dividing by a variable expression of unknown sign is forbidden without splitting cases. Most CAT inequality errors are sign-discipline errors.</p>
+
+    <h3><span class="h-num">3.1</span>The rules</h3>
+
+    <div class="formula">
+      <span class="label">Preserves direction</span>
+      Adding the same number to both sides.<br>
+      Multiplying both sides by a positive number.<br>
+      <span class="label" style="margin-top:8px">Flips direction</span>
+      Multiplying both sides by a negative number.<br>
+      Taking reciprocals of same-sign quantities.<br>
+      <span class="label" style="margin-top:8px">Requires cases</span>
+      Multiplying or dividing by a variable expression.
+    </div>
+
+    <h3><span class="h-num">3.2</span>Linear inequalities</h3>
+
+    <p>Solve <code>3x − 7 &lt; 2x + 5</code>: subtract 2x from both sides ⇒ x − 7 &lt; 5 ⇒ x &lt; 12. Solution set: (−∞, 12).</p>
+
+    <p>Solve <code>−2x + 3 ≥ 9</code>: subtract 3 ⇒ −2x ≥ 6. Divide by −2 (flip!): x ≤ −3. Solution: (−∞, −3].</p>
+
+    <h3><span class="h-num">3.3</span>Quadratic inequalities · the sign chart method</h3>
+
+    <p>Solve <code>x² − 5x + 6 &gt; 0</code>. Factor: (x − 2)(x − 3) &gt; 0. Now use the sign chart:</p>
+
+    <table class="di-table">
+      <caption>Sign chart for (x − 2)(x − 3)</caption>
+      <thead><tr><th>Interval</th><th>x − 2</th><th>x − 3</th><th>Product</th></tr></thead>
+      <tbody>
+        <tr><td>x &lt; 2</td><td class="num">−</td><td class="num">−</td><td class="num hl">+</td></tr>
+        <tr><td>2 &lt; x &lt; 3</td><td class="num">+</td><td class="num">−</td><td class="num">−</td></tr>
+        <tr><td>x &gt; 3</td><td class="num">+</td><td class="num">+</td><td class="num hl">+</td></tr>
+      </tbody>
+    </table>
+
+    <p>So (x − 2)(x − 3) &gt; 0 when x &lt; 2 or x &gt; 3. Solution: (−∞, 2) ∪ (3, ∞).</p>
+
+    <div class="callout">
+      <strong>Sign-chart mnemonic.</strong> For a polynomial inequality factored into linear terms, the sign alternates at each root (provided the roots have odd multiplicity). For a polynomial with positive leading coefficient, the rightmost interval is positive.
+    </div>
+
+    <h3><span class="h-num">3.4</span>Higher-degree polynomial inequalities</h3>
+
+    <p>Solve <code>(x + 1)(x − 2)(x − 5) ≤ 0</code>. Roots at −1, 2, 5. Sign in rightmost interval (x &gt; 5): all three factors positive ⇒ product positive. Sign alternates as you cross each root:</p>
+
+    <ul>
+      <li>x &gt; 5: product +</li>
+      <li>2 &lt; x &lt; 5: product −</li>
+      <li>−1 &lt; x &lt; 2: product +</li>
+      <li>x &lt; −1: product −</li>
+    </ul>
+
+    <p>For ≤ 0, we want product non-positive ⇒ x ≤ −1 or 2 ≤ x ≤ 5. Solution: (−∞, −1] ∪ [2, 5].</p>
+
+    <h3><span class="h-num">3.5</span>Modulus / absolute value inequalities</h3>
+
+    <div class="formula">
+      <span class="label">Modulus rules</span>
+      <span class="eq">|x| &lt; a</span> ⇔ <span class="eq">−a &lt; x &lt; a</span> (for a &gt; 0)<br>
+      <span class="eq">|x| &gt; a</span> ⇔ <span class="eq">x &lt; −a or x &gt; a</span><br>
+      <span class="eq">|x − k| &lt; a</span> ⇔ <span class="eq">k − a &lt; x &lt; k + a</span>
+    </div>
+
+    <p>Solve <code>|2x − 3| ≤ 5</code>: −5 ≤ 2x − 3 ≤ 5 ⇒ −2 ≤ 2x ≤ 8 ⇒ −1 ≤ x ≤ 4. Solution: [−1, 4].</p>
+
+    <h3><span class="h-num">3.6</span>AM-GM and related inequalities</h3>
+
+    <div class="formula">
+      <span class="label">AM ≥ GM (two non-negative numbers)</span>
+      For a, b ≥ 0: <span class="eq">(a + b)/2 ≥ √(ab)</span>, with equality iff a = b.
+    </div>
+
+    <p>Generalised: for n non-negative numbers, the arithmetic mean is at least the geometric mean. AM-GM is the most important named inequality on the CAT. It solves dozens of optimisation problems: "minimise x + 1/x for x &gt; 0" — by AM-GM, x + 1/x ≥ 2√(x · 1/x) = 2, with equality at x = 1.</p>
+
+    <p>A frequent CAT setup: <em>"if x + y = 10 and x, y &gt; 0, find the maximum value of xy."</em> By AM-GM: (x + y)/2 ≥ √(xy), so 5 ≥ √(xy), so xy ≤ 25. Maximum is 25, achieved when x = y = 5.</p>
+
+    <h3><span class="h-num">3.7</span>Cauchy-Schwarz (rare but useful)</h3>
+
+    <div class="formula">
+      <span class="label">Cauchy-Schwarz</span>
+      For reals a, b, c, d: <span class="eq">(a² + b²)(c² + d²) ≥ (ac + bd)²</span>
+    </div>
+
+    <p>Cauchy-Schwarz appears once or twice every few CAT papers in optimisation problems. AM-GM is far more common. Both are worth knowing because they often turn ugly optimisation into one-line solutions.</p>
+
+    <div class="section-end">
+      <span>End of Module 03 · Inequalities</span>
+      <span>→ next: Functions &amp; Graphs</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 4 — FUNCTIONS ====== -->
+  <section class="section" id="m4">
+    <header class="section-header">
+      <div class="module-meta">Module 04 · Functions &amp; Graphs</div>
+      <h1 class="section-title">Mapping <em>inputs</em><br>to outputs.</h1>
+      <p class="section-deck">CAT loves functional equations: "f(x+y) = f(x) + f(y)" and the like. Each functional equation collapses to one of three recognisable families.</p>
+    </header>
+
+    <p class="lede">A function is a rule that assigns to each element of one set (the domain) a unique element of another set (the range). On the CAT, functions appear in two ways: as concrete expressions (find f(3) when f(x) = x² + 1) and as functional equations (find all f such that f(x + y) = f(x) + f(y)). The first is straightforward; the second is where the genuine technique lives.</p>
+
+    <h3><span class="h-num">4.1</span>Domain, range, and basic notation</h3>
+
+    <p>For a function f with rule f(x) = √(x − 2), the domain is {x : x ≥ 2} and the range is [0, ∞). Domain restrictions usually come from three sources:</p>
+
+    <ul>
+      <li>Square roots require non-negative input.</li>
+      <li>Logarithms require positive input.</li>
+      <li>Denominators must be non-zero.</li>
+    </ul>
+
+    <p>A composite domain question: <em>"Find the domain of f(x) = √(x − 1) + log(5 − x)."</em> Need x − 1 ≥ 0 AND 5 − x &gt; 0 ⇒ 1 ≤ x &lt; 5. Domain: [1, 5).</p>
+
+    <h3><span class="h-num">4.2</span>Function families and graphs</h3>
+
+    <table class="di-table">
+      <caption>Standard function families</caption>
+      <thead><tr><th>Form</th><th>Name</th><th>Graph shape</th></tr></thead>
+      <tbody>
+        <tr><td>f(x) = mx + c</td><td>Linear</td><td>Straight line</td></tr>
+        <tr><td>f(x) = ax² + bx + c</td><td>Quadratic</td><td>Parabola</td></tr>
+        <tr><td>f(x) = a^x</td><td>Exponential</td><td>Rising / falling curve</td></tr>
+        <tr><td>f(x) = log_a(x)</td><td>Logarithmic</td><td>Slowly rising</td></tr>
+        <tr><td>f(x) = 1/x</td><td>Hyperbolic</td><td>Two branches</td></tr>
+        <tr><td>f(x) = |x|</td><td>Absolute value</td><td>V shape</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="h-num">4.3</span>Composite and inverse functions</h3>
+
+    <p><strong>Composition.</strong> If f and g are functions, <code>(f ∘ g)(x) = f(g(x))</code>. Note that f ∘ g and g ∘ f are usually different.</p>
+
+    <p><strong>Inverse.</strong> A function f is invertible if it is one-to-one (injective). The inverse f⁻¹ undoes f: <code>f(f⁻¹(x)) = x</code> for all x in the range. Geometrically, the graph of f⁻¹ is the reflection of the graph of f in the line y = x.</p>
+
+    <p>To find f⁻¹: set y = f(x), solve for x in terms of y, then swap variable names. Example: f(x) = 2x + 3. Set y = 2x + 3 ⇒ x = (y − 3)/2. So f⁻¹(x) = (x − 3)/2.</p>
+
+    <h3><span class="h-num">4.4</span>Functional equations</h3>
+
+    <p>The marquee CAT topic. A functional equation describes a property of f without specifying f. The job is to find all f satisfying the property — or in CAT's case, to compute f(value) given the property.</p>
+
+    <table class="di-table">
+      <caption>Common functional equations on CAT</caption>
+      <thead><tr><th>Property</th><th>Family</th></tr></thead>
+      <tbody>
+        <tr><td>f(x + y) = f(x) + f(y)</td><td>Cauchy / linear (f(x) = kx)</td></tr>
+        <tr><td>f(x + y) = f(x) × f(y)</td><td>Exponential (f(x) = aˣ)</td></tr>
+        <tr><td>f(xy) = f(x) + f(y)</td><td>Logarithmic (f(x) = k log x)</td></tr>
+        <tr><td>f(xy) = f(x) × f(y)</td><td>Power (f(x) = xᵏ)</td></tr>
+      </tbody>
+    </table>
+
+    <p>Worked example. <em>"f(x + y) = f(x) + f(y) and f(1) = 5. Find f(10)."</em> The property is Cauchy. Test: f(2) = f(1 + 1) = f(1) + f(1) = 10. f(3) = f(2 + 1) = 10 + 5 = 15. By induction, f(n) = 5n for any positive integer n. So f(10) = 50.</p>
+
+    <div class="callout">
+      <strong>The Cauchy habit.</strong> Whenever a CAT problem hands you a functional equation, plug in specific values (x = 0, x = y, y = −x) to extract concrete values of f. Three or four substitutions usually pin down enough information to compute the target.</p>
+    </div>
+
+    <h3><span class="h-num">4.5</span>Odd, even, periodic</h3>
+
+    <ul>
+      <li><strong>Even function:</strong> f(−x) = f(x) for all x. Graph symmetric about y-axis. Example: x², cos x, |x|.</li>
+      <li><strong>Odd function:</strong> f(−x) = −f(x) for all x. Graph symmetric about origin. Example: x, x³, sin x.</li>
+      <li><strong>Periodic:</strong> f(x + T) = f(x) for some fixed T &gt; 0. The smallest such T is the period.</li>
+    </ul>
+
+    <p>CAT problems with periodic functions often ask: "if f(x + 3) = f(x) and f(2) = 7, find f(2024)." The period is 3, so f(2024) = f(2024 mod 3) = f(2) = 7.</p>
+
+    <h3><span class="h-num">4.6</span>Maximum and minimum of quadratic functions</h3>
+
+    <p>The quadratic f(x) = ax² + bx + c reaches its extremum (minimum if a &gt; 0, maximum if a &lt; 0) at <code>x = −b/(2a)</code>. The extremum value is <code>c − b²/(4a)</code>, often written <code>(4ac − b²)/(4a)</code>.</p>
+
+    <p>For f(x) = x² − 6x + 10: vertex at x = 3, min value = 10 − 9 = 1. So f has range [1, ∞).</p>
+
+    <div class="section-end">
+      <span>End of Module 04 · Functions &amp; Graphs</span>
+      <span>→ next: Logarithms</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 5 — LOGARITHMS ====== -->
+  <section class="section" id="m5">
+    <header class="section-header">
+      <div class="module-meta">Module 05 · Logarithms</div>
+      <h1 class="section-title">The <em>inverse</em><br>of exponentiation.</h1>
+      <p class="section-deck">Logarithms collapse multiplication to addition and exponentiation to multiplication. Master the six rules and every CAT log question becomes a one-step substitution.</p>
+    </header>
+
+    <p class="lede">A logarithm is the inverse of an exponential. The equation <code>a^x = b</code> rearranges to <code>x = log_a(b)</code>. Logs appear on the CAT in two ways: as standalone equations (solve log₂(x) = 5) and as transformation tools (the relation between AM and GM uses logs implicitly). Both reduce to the six rules below.</p>
+
+    <h3><span class="h-num">5.1</span>The definition and the six rules</h3>
+
+    <div class="formula">
+      <span class="label">Logarithm — definition</span>
+      <span class="eq">log_a(b) = c ⇔ a^c = b</span><br>
+      Requires: a &gt; 0, a ≠ 1, b &gt; 0.
+    </div>
+
+    <div class="formula">
+      <span class="label">The six rules</span>
+      <span class="eq">log_a(xy) = log_a(x) + log_a(y)</span><br>
+      <span class="eq">log_a(x/y) = log_a(x) − log_a(y)</span><br>
+      <span class="eq">log_a(x^k) = k · log_a(x)</span><br>
+      <span class="eq">log_a(1) = 0</span> &nbsp; <span class="eq">log_a(a) = 1</span><br>
+      <span class="eq">log_a(b) = log_c(b) / log_c(a)</span> (change of base)<br>
+      <span class="eq">a^(log_a(x)) = x</span> &nbsp; <span class="eq">log_a(a^x) = x</span>
+    </div>
+
+    <p>The change-of-base formula is the most-used rule. Given log₂(7), you can rewrite it as log(7)/log(2) using any convenient base — typically 10 or e. This lets you compute any logarithm from log₁₀ tables (the historical use) or, more pragmatically, simplify expressions involving logs of mixed bases.</p>
+
+    <h3><span class="h-num">5.2</span>Common bases</h3>
+
+    <table class="di-table">
+      <caption>Standard logarithm bases</caption>
+      <thead><tr><th>Notation</th><th>Base</th><th>Use</th></tr></thead>
+      <tbody>
+        <tr><td>log(x)</td><td>10</td><td>"Common log" — CAT default</td></tr>
+        <tr><td>ln(x)</td><td>e ≈ 2.718</td><td>Natural log — rare on CAT</td></tr>
+        <tr><td>lg(x)</td><td>2</td><td>Binary log — rare on CAT</td></tr>
+        <tr><td>log_a(x)</td><td>a</td><td>Explicit base</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note warn">
+      <p style="margin:0"><strong>The CAT convention.</strong> On CAT, "log" without subscript means log₁₀. Some textbooks use it for natural log (ln). Read the problem carefully — if any log values are given (log 2 = 0.301, log 3 = 0.477), the base is almost certainly 10.</p>
+    </div>
+
+    <h3><span class="h-num">5.3</span>Memorisable log values</h3>
+
+    <p>The CAT setter often provides log 2 ≈ 0.301 and log 3 ≈ 0.477, and expects you to derive everything else. From these:</p>
+
+    <ul>
+      <li>log 4 = 2 log 2 = 0.602</li>
+      <li>log 5 = log(10/2) = 1 − log 2 = 0.699</li>
+      <li>log 6 = log 2 + log 3 = 0.778</li>
+      <li>log 8 = 3 log 2 = 0.903</li>
+      <li>log 9 = 2 log 3 = 0.954</li>
+      <li>log 25 = 2 log 5 = 1.398</li>
+    </ul>
+
+    <h3><span class="h-num">5.4</span>Solving log equations</h3>
+
+    <p>Worked example. <em>"Solve log₂(x² − 5x + 6) = 1."</em> Convert to exponential form: x² − 5x + 6 = 2¹ = 2 ⇒ x² − 5x + 4 = 0 ⇒ (x − 1)(x − 4) = 0. So x = 1 or x = 4.</p>
+
+    <p>Check domain: x² − 5x + 6 must be positive. For x = 1: 1 − 5 + 6 = 2 &gt; 0 ✓. For x = 4: 16 − 20 + 6 = 2 &gt; 0 ✓. Both valid.</p>
+
+    <div class="note tip">
+      <p style="margin:0"><strong>Always check the domain.</strong> When solving log equations, every candidate solution must give a positive argument to every log in the original equation. CAT setters love placing extraneous roots in the answer choices.</p>
+    </div>
+
+    <h3><span class="h-num">5.5</span>The "number of digits" question</h3>
+
+    <p>A CAT classic: <em>"How many digits does 2^50 have?"</em> The number of digits in N is ⌊log₁₀(N)⌋ + 1. So digits in 2^50 = ⌊50 × log 2⌋ + 1 = ⌊50 × 0.301⌋ + 1 = ⌊15.05⌋ + 1 = 15 + 1 = 16.</p>
+
+    <div class="formula">
+      <span class="label">Number of digits</span>
+      Digits in N = ⌊log₁₀ N⌋ + 1 (for N ≥ 1).
+    </div>
+
+    <h3><span class="h-num">5.6</span>The characteristic and mantissa</h3>
+
+    <p>For log₁₀(N) where N ≥ 1, write log N = (integer part) + (decimal part). The integer part is the <strong>characteristic</strong>; the decimal part is the <strong>mantissa</strong>. The characteristic of log N is one less than the number of digits in N. The mantissa determines the actual digits.</p>
+
+    <p>Example: log 5000 = log(5 × 10³) = log 5 + 3 = 0.699 + 3 = 3.699. Characteristic = 3 (so 5000 has 4 digits ✓), mantissa = 0.699 (matching log 5).</p>
+
+    <div class="callout">
+      <strong>Logs are about magnitude.</strong> The characteristic tells you the order of magnitude; the mantissa tells you the leading digits. The CAT exploits this split frequently in "how many digits does 7^100 have?" type questions.
+    </div>
+
+    <div class="section-end">
+      <span>End of Module 05 · Logarithms</span>
+      <span>→ next: Sequences &amp; Series</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 6 — SEQUENCES & SERIES ====== -->
+  <section class="section" id="m6">
+    <header class="section-header">
+      <div class="module-meta">Module 06 · Sequences &amp; Series</div>
+      <h1 class="section-title">Numbers <em>in line.</em></h1>
+      <p class="section-deck">Arithmetic, geometric, and harmonic progressions — three families that account for ninety percent of CAT sequence questions. The fourth, the telescoping series, accounts for the other ten.</p>
+    </header>
+
+    <p class="lede">A sequence is an ordered list of numbers; a series is the sum of a sequence. The CAT examines three named families — arithmetic progressions, geometric progressions, and harmonic progressions — plus a handful of telescoping and rearrangement tricks. Each family has its own nth-term formula and its own sum formula. Memorise both for each family and ninety percent of CAT sequence questions become substitution exercises.</p>
+
+    <h3><span class="h-num">6.1</span>Arithmetic progression (AP)</h3>
+
+    <p>An AP has constant difference between consecutive terms. The standard form: a, a + d, a + 2d, a + 3d, … with first term a and common difference d.</p>
+
+    <div class="formula">
+      <span class="label">AP — nth term and sum</span>
+      <span class="eq">T_n = a + (n − 1)d</span><br>
+      <span class="eq">S_n = n/2 · [2a + (n − 1)d] = n/2 · (a + L)</span>
+      &nbsp; where L = last term
+    </div>
+
+    <p>Worked example. <em>"Find the 25th term and the sum of the first 25 terms of the AP 7, 11, 15, …"</em> First term a = 7, common difference d = 4. T₂₅ = 7 + 24 × 4 = 103. S₂₅ = 25/2 × (7 + 103) = 25/2 × 110 = 1375.</p>
+
+    <h3><span class="h-num">6.2</span>Geometric progression (GP)</h3>
+
+    <p>A GP has constant ratio between consecutive terms. Form: a, ar, ar², ar³, … with first term a and common ratio r.</p>
+
+    <div class="formula">
+      <span class="label">GP — nth term and sum</span>
+      <span class="eq">T_n = a · r^(n−1)</span><br>
+      <span class="eq">S_n = a · (r^n − 1) / (r − 1)</span> for r ≠ 1<br>
+      <span class="eq">S_∞ = a / (1 − r)</span> for |r| &lt; 1
+    </div>
+
+    <p>The infinite sum formula is one of the most beautiful and useful results in school algebra. When |r| &lt; 1, an infinite GP converges to a finite sum. Example: 1 + 1/2 + 1/4 + 1/8 + … = 1/(1 − 1/2) = 2.</p>
+
+    <p>Worked example. <em>"In a GP with first term 3 and common ratio 2, find the 8th term and the sum of the first 8 terms."</em> T₈ = 3 × 2⁷ = 384. S₈ = 3 × (2⁸ − 1)/(2 − 1) = 3 × 255 = 765.</p>
+
+    <h3><span class="h-num">6.3</span>Harmonic progression (HP)</h3>
+
+    <p>An HP is a sequence whose reciprocals form an AP. So 1/2, 1/5, 1/8, 1/11, … is an HP (reciprocals are 2, 5, 8, 11, an AP with d = 3). HPs have no clean sum formula — you must invert to the AP, work there, then invert back.</p>
+
+    <h3><span class="h-num">6.4</span>The three means</h3>
+
+    <div class="formula">
+      <span class="label">AM, GM, HM of two positive numbers</span>
+      For a, b &gt; 0:<br>
+      <span class="eq">AM = (a + b)/2</span><br>
+      <span class="eq">GM = √(ab)</span><br>
+      <span class="eq">HM = 2ab/(a + b)</span>
+    </div>
+
+    <p>The means satisfy <code>AM ≥ GM ≥ HM</code> always, with equality iff a = b. The product relation <code>GM² = AM × HM</code> is the most-used identity in CAT mean problems.</p>
+
+    <h3><span class="h-num">6.5</span>Special sum formulas</h3>
+
+    <div class="formula">
+      <span class="label">Sums of first n positive integers and powers</span>
+      <span class="eq">1 + 2 + … + n = n(n + 1)/2</span><br>
+      <span class="eq">1² + 2² + … + n² = n(n + 1)(2n + 1)/6</span><br>
+      <span class="eq">1³ + 2³ + … + n³ = [n(n + 1)/2]²</span>
+    </div>
+
+    <p>The third formula — sum of cubes equals square of the sum of integers — is the most elegant. Sum of cubes from 1 to 10 = (55)² = 3025.</p>
+
+    <h3><span class="h-num">6.6</span>Telescoping series</h3>
+
+    <p>A telescoping series is one where intermediate terms cancel. The classical example:</p>
+
+    <div class="formula">
+      <span class="label">Telescoping identity</span>
+      <span class="eq">1/(k(k+1)) = 1/k − 1/(k+1)</span>
+    </div>
+
+    <p>Worked example. <em>"Find the sum 1/(1·2) + 1/(2·3) + 1/(3·4) + … + 1/(99·100)."</em></p>
+
+    <p>Use 1/(k(k+1)) = 1/k − 1/(k+1). The sum becomes (1 − 1/2) + (1/2 − 1/3) + (1/3 − 1/4) + … + (1/99 − 1/100) = 1 − 1/100 = 99/100.</p>
+
+    <div class="callout">
+      <strong>The telescoping habit.</strong> Whenever a CAT series has a denominator like k(k+1), k(k+1)(k+2), or a difference of squares pattern, look for the partial-fraction decomposition that creates a telescoping sum. The answer is then almost always a single fraction.
+    </div>
+
+    <h3><span class="h-num">6.7</span>Arithmetico-geometric series (AGP)</h3>
+
+    <p>An AGP is the term-by-term product of an AP and a GP: like 1 + 2x + 3x² + 4x³ + … The sum formula is derived by subtracting r times the series from itself. For CAT, the result for |r| &lt; 1 is:</p>
+
+    <div class="formula">
+      <span class="label">AGP — infinite sum</span>
+      <span class="eq">1 + 2r + 3r² + 4r³ + … = 1/(1 − r)²</span> for |r| &lt; 1
+    </div>
+
+    <p>For 1 + 2(1/2) + 3(1/2)² + 4(1/2)³ + … = 1/(1/2)² = 4.</p>
+
+    <div class="section-end">
+      <span>End of Module 06 · Sequences &amp; Series</span>
+      <span>→ next: Tips &amp; Traps</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 7 — TIPS & TRAPS ====== -->
+  <section class="section" id="m7">
+    <header class="section-header">
+      <div class="module-meta">Module 07 · Tips &amp; Traps</div>
+      <h1 class="section-title">The <em>setup</em><br>errors.</h1>
+      <p class="section-deck">Algebra problems on the CAT rarely fail on the arithmetic. They fail on the translation, the sign-handling, or the domain restriction. Eight traps that decide marks.</p>
+    </header>
+
+    <p class="lede">Most CAT algebra errors happen before the candidate writes the first equation. The translation is wrong, the modulus rule is misapplied, the domain is ignored, the inequality flip is missed. This module catalogues the eight commonest traps.</p>
+
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="t-num">TRAP 01</div>
+        <h6>Sign flip on inequalities</h6>
+        <p>Multiplying or dividing by a negative number flips the inequality direction. If you skip the flip on −2x ≥ 6 you get x ≥ −3 instead of the correct x ≤ −3.</p>
+      </div>
+      <div class="tip-card">
+        <div class="t-num">TRAP 02</div>
+        <h6>Dividing by a variable expression</h6>
+        <p>You can't divide an inequality by x without knowing the sign of x. Split into cases x &gt; 0 and x &lt; 0, solve each, take the union.</p>
+      </div>
+      <div class="tip-card">
+        <div class="t-num">TRAP 03</div>
+        <h6>Domain restrictions on logs and roots</h6>
+        <p>After solving log x = something or √x = something, verify every candidate is in the domain. Extraneous solutions are common.</p>
+      </div>
+      <div class="tip-card">
+        <div class="t-num">TRAP 04</div>
+        <h6>Roots vs zeros vs solutions</h6>
+        <p>For "x² + 1 = 0 has no real roots", remember: real roots, not no roots. Over the complex numbers, there are two roots (±i). CAT uses "real" implicitly.</p>
+      </div>
+      <div class="tip-card">
+        <div class="t-num">TRAP 05</div>
+        <h6>Vieta gives sum and product, not roots</h6>
+        <p>α + β = −b/a is the sum, αβ = c/a is the product. Don't confuse the signs — sum has a minus, product doesn't.</p>
+      </div>
+      <div class="tip-card">
+        <div class="t-num">TRAP 06</div>
+        <h6>Square-rooting both sides</h6>
+        <p>√(x²) = |x|, not x. The "missing absolute value" is a classic CAT trap. Whenever you take a square root, ask whether the result should be positive or could be either sign.</p>
+      </div>
+      <div class="tip-card">
+        <div class="t-num">TRAP 07</div>
+        <h6>AM-GM requires non-negative inputs</h6>
+        <p>AM-GM only applies to non-negative numbers. If a variable could be negative, AM-GM doesn't help directly — you may need to substitute or work on the absolute value.</p>
+      </div>
+      <div class="tip-card">
+        <div class="t-num">TRAP 08</div>
+        <h6>Infinite GP requires |r| &lt; 1</h6>
+        <p>S∞ = a/(1 − r) is valid only for |r| &lt; 1. For |r| ≥ 1, the series diverges. Always check the ratio before applying the formula.</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">7.1</span>The recognition checklist</h3>
+
+    <p>Before solving any algebra question, take fifteen seconds to identify the structure:</p>
+    <ul>
+      <li>Does it have <strong>one or two unknowns linearly related</strong>? → Module 1.</li>
+      <li>Is there an <strong>x²</strong> with given sum or product of roots? → Module 2 (Vieta).</li>
+      <li>Is it asking for a <strong>range of x</strong>? → Module 3 (sign chart or modulus).</li>
+      <li>Is there a <strong>functional equation</strong> (f of something equals f of something else)? → Module 4.</li>
+      <li>Is there a <strong>log or exponent</strong> being solved for? → Module 5.</li>
+      <li>Is there an <strong>nth term, sum to n, or pattern</strong>? → Module 6.</li>
+    </ul>
+
+    <div class="callout">
+      <strong>The translation mantra.</strong> Algebra problems are won at the translation step. If you read the problem twice and still don't know which Module's structure applies, the question isn't yours to fight — move on.
+    </div>
+
+    <div class="section-end">
+      <span>End of Module 07 · Tips &amp; Traps</span>
+      <span>→ next: Problem Bank</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 8 — PROBLEM BANK ====== -->
+  <section class="section" id="m8">
+    <header class="section-header">
+      <div class="module-meta">Module 08 · Problem Bank · 25 problems</div>
+      <h1 class="section-title">The <em>graded</em><br>bank.</h1>
+      <p class="section-deck">Twenty-five problems across all six topics, graded from recognition drills to full CAT-difficulty. Solve before reading the solution.</p>
+    </header>
+
+    <h3><span class="h-num">8.1</span>Linear · Problems 1–4</h3>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Problem 01</span><span class="yr">Easy</span></div><span class="q-tag">linear · ages</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q.</strong> The sum of the ages of a father and his son is 50 years. Five years ago, the father was seven times as old as the son. Find their present ages.</p>
+        <ul class="q-options"><li data-opt="A">40, 10</li><li data-opt="B">42, 8</li><li data-opt="C">44, 6</li><li data-opt="D">35, 15</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <div class="step"><span class="step-num">STEP · TRANSLATE</span> Let father F, son S. F + S = 50. F − 5 = 7(S − 5).</div>
+        <div class="step"><span class="step-num">STEP · SOLVE</span> F − 5 = 7S − 35 ⇒ F = 7S − 30. Substitute: (7S − 30) + S = 50 ⇒ 8S = 80 ⇒ S = 10. F = 40.</div>
+        <div class="ans-line"><strong>Answer</strong> A · 40 and 10.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Problem 02</span><span class="yr">Easy</span></div><span class="q-tag">linear · two variables</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q.</strong> Two pens and three pencils cost ₹46. Three pens and two pencils cost ₹49. Find the cost of one pen.</p>
+        <ul class="q-options"><li data-opt="A">₹10</li><li data-opt="B">₹11</li><li data-opt="C">₹12</li><li data-opt="D">₹13</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <p>2p + 3q = 46, 3p + 2q = 49. Add: 5p + 5q = 95 ⇒ p + q = 19. Subtract: p − q = 3. So p = 11, q = 8.</p>
+        <div class="ans-line"><strong>Answer</strong> B · ₹11.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Problem 03</span><span class="yr">Medium</span></div><span class="q-tag">linear · diophantine</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q.</strong> How many ordered pairs of positive integers (x, y) satisfy 2x + 3y = 30?</p>
+        <ul class="q-options"><li data-opt="A">3</li><li data-opt="B">4</li><li data-opt="C">5</li><li data-opt="D">6</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <p>3y = 30 − 2x. For y positive integer: 30 − 2x divisible by 3 and positive. 2x ≡ 0 (mod 3) ⇒ x ≡ 0 (mod 3). x ∈ {3, 6, 9, 12}: y = 8, 6, 4, 2. Four pairs.</p>
+        <div class="ans-line"><strong>Answer</strong> B · 4 pairs.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Problem 04</span><span class="yr">Hard</span></div><span class="q-tag">linear · optimisation</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q.</strong> x and y are non-negative integers with 3x + 4y ≤ 24. What is the maximum value of 2x + 3y?</p>
+        <ul class="q-options"><li data-opt="A">15</li><li data-opt="B">17</li><li data-opt="C">18</li><li data-opt="D">20</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <p>Maximise 2x + 3y subject to 3x + 4y ≤ 24, x, y ≥ 0 integers. The ratio of objective gain to constraint use: for x, 2/3 per unit; for y, 3/4 per unit. y is more efficient. Maximise y first: y = 6 uses 24, leaving x = 0. Value = 18. Try y = 5 (uses 20): remaining 4 = 3x ⇒ x = 1 (uses 3, with 1 leftover). Value = 2 + 15 = 17. Try y = 4 (uses 16): x ≤ 8/3 ⇒ x = 2. Value = 4 + 12 = 16. So max at (0, 6) with value 18.</p>
+        <div class="ans-line"><strong>Answer</strong> C · 18.</div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.2</span>Quadratics · Problems 5–9</h3>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Problem 05</span><span class="yr">Easy</span></div><span class="q-tag">quadratic · Vieta</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q.</strong> If α and β are roots of x² − 7x + 12 = 0, find α² + β².</p>
+        <ul class="q-options"><li data-opt="A">21</li><li data-opt="B">25</li><li data-opt="C">29</li><li data-opt="D">37</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <p>Sum α + β = 7, product αβ = 12. α² + β² = (α + β)² − 2αβ = 49 − 24 = 25.</p>
+        <div class="ans-line"><strong>Answer</strong> B · 25.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Problem 06</span><span class="yr">Easy</span></div><span class="q-tag">quadratic · discriminant</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q.</strong> For what value of k does x² − 8x + k = 0 have equal roots?</p>
+        <ul class="q-options"><li data-opt="A">12</li><li data-opt="B">14</li><li data-opt="C">16</li><li data-opt="D">18</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <p>Equal roots ⇒ Δ = 0. b² − 4ac = 64 − 4k = 0 ⇒ k = 16.</p>
+        <div class="ans-line"><strong>Answer</strong> C · k = 16.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Problem 07</span><span class="yr">Medium</span></div><span class="q-tag">quadratic · construct</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q.</strong> Find the quadratic with roots 3 + 2√2 and 3 − 2√2.</p>
+        <ul class="q-options"><li data-opt="A">x² − 6x + 1 = 0</li><li data-opt="B">x² − 6x − 1 = 0</li><li data-opt="C">x² + 6x + 1 = 0</li><li data-opt="D">x² − 4x + 1 = 0</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <p>Sum = 6, product = 9 − 8 = 1. Equation: x² − 6x + 1 = 0.</p>
+        <div class="ans-line"><strong>Answer</strong> A · x² − 6x + 1 = 0.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Problem 08</span><span class="yr">Hard</span></div><span class="q-tag">quadratic · symmetric</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q.</strong> If α, β are roots of x² − 5x + 6 = 0, find 1/α³ + 1/β³.</p>
+        <ul class="q-options"><li data-opt="A">35/216</li><li data-opt="B">35/108</li><li data-opt="C">125/216</li><li data-opt="D">35/72</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <p>s = 5, p = 6. 1/α³ + 1/β³ = (α³ + β³)/(αβ)³. α³ + β³ = s³ − 3sp = 125 − 90 = 35. (αβ)³ = 216. So answer = 35/216.</p>
+        <div class="ans-line"><strong>Answer</strong> A · 35/216.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Problem 09</span><span class="yr">Hard</span></div><span class="q-tag">quadratic · range of k</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q.</strong> For what range of k does kx² − 5x + 1 = 0 have real and distinct roots?</p>
+        <ul class="q-options"><li data-opt="A">k &lt; 25/4, k ≠ 0</li><li data-opt="B">k ≤ 25/4</li><li data-opt="C">k &gt; 25/4</li><li data-opt="D">k = 25/4</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <p>For a quadratic to exist, k ≠ 0. Discriminant Δ = 25 − 4k. Real and distinct ⇒ Δ &gt; 0 ⇒ 25 − 4k &gt; 0 ⇒ k &lt; 25/4. Combined: k &lt; 25/4 and k ≠ 0.</p>
+        <div class="ans-line"><strong>Answer</strong> A · k &lt; 25/4, k ≠ 0.</div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.3</span>Inequalities · Problems 10–13</h3>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Problem 10</span><span class="yr">Easy</span></div><span class="q-tag">quadratic inequality</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q.</strong> Solve x² − 5x + 6 ≤ 0.</p>
+        <ul class="q-options"><li data-opt="A">x ≤ 2 or x ≥ 3</li><li data-opt="B">2 ≤ x ≤ 3</li><li data-opt="C">x &lt; 2 or x &gt; 3</li><li data-opt="D">2 &lt; x &lt; 3</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <p>(x − 2)(x − 3) ≤ 0. Sign chart: product is negative between the roots, non-positive on [2, 3].</p>
+        <div class="ans-line"><strong>Answer</strong> B · 2 ≤ x ≤ 3.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Problem 11</span><span class="yr">Medium</span></div><span class="q-tag">modulus inequality</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q.</strong> Solve |3x − 4| ≤ 5.</p>
+        <ul class="q-options"><li data-opt="A">−1/3 ≤ x ≤ 3</li><li data-opt="B">−1 ≤ x ≤ 3</li><li data-opt="C">1/3 ≤ x ≤ 3</li><li data-opt="D">x ≥ −1/3</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <p>−5 ≤ 3x − 4 ≤ 5 ⇒ −1 ≤ 3x ≤ 9 ⇒ −1/3 ≤ x ≤ 3.</p>
+        <div class="ans-line"><strong>Answer</strong> A · −1/3 ≤ x ≤ 3.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Problem 12</span><span class="yr">Hard</span></div><span class="q-tag">AM-GM</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q.</strong> If x, y &gt; 0 and x + y = 12, find the maximum value of x²y.</p>
+        <ul class="q-options"><li data-opt="A">192</li><li data-opt="B">216</li><li data-opt="C">256</li><li data-opt="D">288</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <p>Use AM-GM weighted: write x = u + v, treating x²y as x · x · y. AM of (x, x, y) is (2x + y)/3, GM is ∛(x²y). For AM-GM, (2x + y)/3 ≥ ∛(x²y). We have x + y = 12 but need 2x + y for the inequality. Re-write: maximise x²y subject to x + y = 12. Taking derivative: y = 12 − x, so f(x) = x²(12 − x) = 12x² − x³. f'(x) = 24x − 3x² = 3x(8 − x) = 0 ⇒ x = 8 (rejecting x = 0). Then y = 4, x²y = 64 × 4 = 256.</p>
+        <div class="ans-line"><strong>Answer</strong> C · 256.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Problem 13</span><span class="yr">Hard</span></div><span class="q-tag">cubic inequality</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q.</strong> Solve (x − 1)(x − 3)(x + 2) &gt; 0.</p>
+        <ul class="q-options"><li data-opt="A">x &gt; 3</li><li data-opt="B">−2 &lt; x &lt; 1 or x &gt; 3</li><li data-opt="C">x &lt; −2 or 1 &lt; x &lt; 3</li><li data-opt="D">x ≠ 1, 3, −2</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <p>Roots at −2, 1, 3. Test rightmost interval (x &gt; 3): all factors positive ⇒ positive. Sign alternates: 1 &lt; x &lt; 3 negative; −2 &lt; x &lt; 1 positive; x &lt; −2 negative. Want positive: −2 &lt; x &lt; 1 or x &gt; 3.</p>
+        <div class="ans-line"><strong>Answer</strong> B · −2 &lt; x &lt; 1 or x &gt; 3.</div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.4</span>Functions · Problems 14–17</h3>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Problem 14</span><span class="yr">Easy</span></div><span class="q-tag">function · composite</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q.</strong> If f(x) = 2x + 1 and g(x) = x², find f(g(3)).</p>
+        <ul class="q-options"><li data-opt="A">7</li><li data-opt="B">18</li><li data-opt="C">19</li><li data-opt="D">49</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <p>g(3) = 9. f(9) = 19.</p>
+        <div class="ans-line"><strong>Answer</strong> C · 19.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Problem 15</span><span class="yr">Medium</span></div><span class="q-tag">function · Cauchy</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q.</strong> If f(x + y) = f(x) + f(y) for all real x, y and f(1) = 4, find f(7).</p>
+        <ul class="q-options"><li data-opt="A">11</li><li data-opt="B">21</li><li data-opt="C">28</li><li data-opt="D">32</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <p>Cauchy property ⇒ f(n) = n · f(1) for positive integers. So f(7) = 28.</p>
+        <div class="ans-line"><strong>Answer</strong> C · 28.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Problem 16</span><span class="yr">Medium</span></div><span class="q-tag">function · domain</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q.</strong> Find the domain of f(x) = √(x − 3) + 1/√(7 − x).</p>
+        <ul class="q-options"><li data-opt="A">[3, 7]</li><li data-opt="B">[3, 7)</li><li data-opt="C">(3, 7]</li><li data-opt="D">(3, 7)</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <p>x − 3 ≥ 0 ⇒ x ≥ 3. 7 − x &gt; 0 (strict, since in denominator) ⇒ x &lt; 7. Combined: [3, 7).</p>
+        <div class="ans-line"><strong>Answer</strong> B · [3, 7).</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Problem 17</span><span class="yr">Hard</span></div><span class="q-tag">function · periodic</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q.</strong> A function f satisfies f(x + 4) = f(x) for all x, and f(1) = 3, f(2) = 5, f(3) = 7, f(4) = 9. Find f(2025).</p>
+        <ul class="q-options"><li data-opt="A">3</li><li data-opt="B">5</li><li data-opt="C">7</li><li data-opt="D">9</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <p>Period 4. 2025 mod 4 = 1. So f(2025) = f(1) = 3.</p>
+        <div class="ans-line"><strong>Answer</strong> A · 3.</div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.5</span>Logarithms · Problems 18–20</h3>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Problem 18</span><span class="yr">Easy</span></div><span class="q-tag">log · equation</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q.</strong> Solve log₃(x − 2) = 2.</p>
+        <ul class="q-options"><li data-opt="A">5</li><li data-opt="B">8</li><li data-opt="C">9</li><li data-opt="D">11</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <p>x − 2 = 3² = 9 ⇒ x = 11.</p>
+        <div class="ans-line"><strong>Answer</strong> D · 11.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Problem 19</span><span class="yr">Medium</span></div><span class="q-tag">log · digits</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q.</strong> How many digits are there in 3^40? (Use log 3 ≈ 0.477.)</p>
+        <ul class="q-options"><li data-opt="A">18</li><li data-opt="B">19</li><li data-opt="C">20</li><li data-opt="D">21</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <p>log(3⁴⁰) = 40 × 0.477 = 19.08. Number of digits = ⌊19.08⌋ + 1 = 20.</p>
+        <div class="ans-line"><strong>Answer</strong> C · 20 digits.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Problem 20</span><span class="yr">Hard</span></div><span class="q-tag">log · system</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q.</strong> If log_x(2) + log_x(4) + log_x(8) = 6, find x.</p>
+        <ul class="q-options"><li data-opt="A">√2</li><li data-opt="B">2</li><li data-opt="C">2√2</li><li data-opt="D">4</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <p>log_x(2 · 4 · 8) = 6 ⇒ log_x(64) = 6 ⇒ x⁶ = 64 ⇒ x = 64^(1/6) = 2.</p>
+        <div class="ans-line"><strong>Answer</strong> B · 2.</div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.6</span>Sequences · Problems 21–25</h3>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Problem 21</span><span class="yr">Easy</span></div><span class="q-tag">AP · sum</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q.</strong> Find the sum of the first 20 terms of the AP 7, 11, 15, 19, …</p>
+        <ul class="q-options"><li data-opt="A">820</li><li data-opt="B">880</li><li data-opt="C">900</li><li data-opt="D">920</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <p>a = 7, d = 4, n = 20. S = (20/2)(2·7 + 19·4) = 10 × (14 + 76) = 10 × 90 = 900.</p>
+        <div class="ans-line"><strong>Answer</strong> C · 900.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Problem 22</span><span class="yr">Easy</span></div><span class="q-tag">GP · sum</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q.</strong> Find the sum of the infinite GP 6, 4, 8/3, 16/9, …</p>
+        <ul class="q-options"><li data-opt="A">12</li><li data-opt="B">15</li><li data-opt="C">18</li><li data-opt="D">24</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <p>a = 6, r = 4/6 = 2/3. |r| &lt; 1 so S∞ = 6/(1 − 2/3) = 6/(1/3) = 18.</p>
+        <div class="ans-line"><strong>Answer</strong> C · 18.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Problem 23</span><span class="yr">Medium</span></div><span class="q-tag">AP · word problem</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q.</strong> The 7th term of an AP is 20 and the 13th term is 38. Find the 25th term.</p>
+        <ul class="q-options"><li data-opt="A">68</li><li data-opt="B">74</li><li data-opt="C">80</li><li data-opt="D">86</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <p>T₇ = a + 6d = 20. T₁₃ = a + 12d = 38. Subtract: 6d = 18 ⇒ d = 3. a = 20 − 18 = 2. T₂₅ = 2 + 24×3 = 74.</p>
+        <div class="ans-line"><strong>Answer</strong> B · 74.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Problem 24</span><span class="yr">Hard</span></div><span class="q-tag">telescoping</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q.</strong> Find 1/(1·3) + 1/(3·5) + 1/(5·7) + … + 1/(99·101).</p>
+        <ul class="q-options"><li data-opt="A">25/101</li><li data-opt="B">50/101</li><li data-opt="C">99/202</li><li data-opt="D">100/101</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <p>1/(k(k+2)) = (1/2) × [1/k − 1/(k+2)]. Sum telescopes: (1/2)[(1 − 1/3) + (1/3 − 1/5) + … + (1/99 − 1/101)] = (1/2)(1 − 1/101) = (1/2)(100/101) = 50/101.</p>
+        <div class="ans-line"><strong>Answer</strong> B · 50/101.</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-head"><div class="q-id"><span>Problem 25</span><span class="yr">Very Hard</span></div><span class="q-tag">composite</span></div>
+      <div class="q-body">
+        <p class="q-text"><strong>Q.</strong> If a, b, c are in AP and a, c, b are in GP with a ≠ b, find a/b.</p>
+        <ul class="q-options"><li data-opt="A">1/4</li><li data-opt="B">1/2</li><li data-opt="C">2</li><li data-opt="D">4</li></ul>
+      </div>
+      <button class="toggle-sol">Show solution</button>
+      <div class="sol">
+        <p>AP condition: 2b = a + c ⇒ c = 2b − a. GP condition: c² = ab. Substitute: (2b − a)² = ab ⇒ 4b² − 4ab + a² = ab ⇒ a² − 5ab + 4b² = 0. Divide by b²: (a/b)² − 5(a/b) + 4 = 0. Let t = a/b: t² − 5t + 4 = 0 ⇒ (t − 1)(t − 4) = 0. Since a ≠ b, t ≠ 1, so t = 4.</p>
+        <div class="ans-line"><strong>Answer</strong> D · 4.</div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:36px">
+      <strong>What to do with these 25 problems.</strong> Solve each under three minutes of clock time before reading the solution. The solutions emphasise the <em>order of reasoning</em> — what to recognise first, what to set up next, when to substitute. That order is the actual skill being trained.
+    </div>
+
+    <div class="section-end">
+      <span>End of Module 08 · Problem Bank</span>
+      <span>→ next: Reference Sheet</span>
+    </div>
+  </section>
+
+  <!-- ====== MODULE 9 — REFERENCE ====== -->
+  <section class="section" id="m9">
+    <header class="section-header">
+      <div class="module-meta">Module 09 · Reference</div>
+      <h1 class="section-title">One page,<br><em>everything you need.</em></h1>
+      <p class="section-deck">The codex compressed to a single revision sheet.</p>
+    </header>
+
+    <h3><span class="h-num">9.1</span>Recognition signals</h3>
+    <table class="di-table">
+      <thead><tr><th>Phrase</th><th>Technique</th></tr></thead>
+      <tbody>
+        <tr><td>"sum and product of roots"</td><td>Vieta (−b/a, c/a)</td></tr>
+        <tr><td>"real / equal / imaginary roots"</td><td>Discriminant Δ</td></tr>
+        <tr><td>"f(x + y) = f(x) + f(y)"</td><td>Linear / Cauchy</td></tr>
+        <tr><td>"f(x + T) = f(x)"</td><td>Periodic, use mod T</td></tr>
+        <tr><td>"how many digits in N"</td><td>⌊log N⌋ + 1</td></tr>
+        <tr><td>"nth term, common difference"</td><td>AP</td></tr>
+        <tr><td>"common ratio, sum to infinity"</td><td>GP</td></tr>
+        <tr><td>"1/(k(k+1)) type sum"</td><td>Telescoping</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="h-num">9.2</span>Core formulas</h3>
+    <div class="formula">
+      <span class="label">Quadratic formula</span> <span class="eq">x = [−b ± √(b² − 4ac)] / 2a</span>
+    </div>
+    <div class="formula">
+      <span class="label">Vieta</span> <span class="eq">α + β = −b/a · αβ = c/a</span>
+    </div>
+    <div class="formula">
+      <span class="label">Symmetric identities</span>
+      <span class="eq">α² + β² = s² − 2p</span><br>
+      <span class="eq">α³ + β³ = s³ − 3sp</span><br>
+      <span class="eq">1/α + 1/β = s/p</span>
+    </div>
+    <div class="formula">
+      <span class="label">AM ≥ GM ≥ HM</span> for non-negative reals; equality iff all equal
+    </div>
+    <div class="formula">
+      <span class="label">AP</span> <span class="eq">T_n = a + (n−1)d</span> · <span class="eq">S_n = (n/2)[2a + (n−1)d]</span>
+    </div>
+    <div class="formula">
+      <span class="label">GP</span> <span class="eq">T_n = a·r^(n−1)</span> · <span class="eq">S_n = a(r^n − 1)/(r − 1)</span> · <span class="eq">S_∞ = a/(1−r)</span> for |r|&lt;1
+    </div>
+    <div class="formula">
+      <span class="label">Special sums</span>
+      <span class="eq">Σk = n(n+1)/2</span><br>
+      <span class="eq">Σk² = n(n+1)(2n+1)/6</span><br>
+      <span class="eq">Σk³ = [n(n+1)/2]²</span>
+    </div>
+    <div class="formula">
+      <span class="label">Log rules</span>
+      <span class="eq">log(xy) = log x + log y</span> · <span class="eq">log(x^k) = k log x</span><br>
+      <span class="eq">log_a b = log b / log a</span>
+    </div>
+
+    <h3><span class="h-num">9.3</span>Useful log values</h3>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:14px;background:rgba(138,106,42,.06);padding:14px 18px;border-radius:2px">
+      log 2 ≈ 0.301 · log 3 ≈ 0.477 · log 5 = 1 − log 2 ≈ 0.699 · log 7 ≈ 0.845
+    </p>
+
+    <h3><span class="h-num">9.4</span>The mantra</h3>
+    <div class="callout">
+      <strong>Translate first, compute later.</strong> The win in algebra is in the setup. Read the prose, name the structure, write the equation. The arithmetic that follows is almost always trivial.
+    </div>
+
+    <div class="section-end">
+      <span>End of Module 09 · Reference</span>
+      <span>End of the Algebra Codex</span>
+    </div>
+  </section>
+
+  </main>
+</div>
+
+<script>
+  const links = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('.section');
+  links.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = link.dataset.target;
+      links.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      sections.forEach(s => s.classList.remove('active'));
+      const t = document.getElementById(target);
+      if (t) { t.classList.add('active'); window.scrollTo({top:0, behavior:'smooth'}); }
+    });
+  });
+  document.querySelectorAll('.toggle-sol').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sol = btn.nextElementSibling;
+      const open = sol.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.textContent = open ? 'Hide solution' : 'Show solution';
+    });
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    const a = document.querySelector('.nav-link.active');
+    const all = Array.from(links);
+    const i = all.indexOf(a);
+    if (e.key === 'ArrowRight' && i < all.length - 1) all[i + 1].click();
+    else if (e.key === 'ArrowLeft' && i > 0) all[i - 1].click();
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The CAT Verbal Ability Codex — A Teaching Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f4ebd9;
+  --paper-2:#ebe0c8;
+  --ink:#170a10;
+  --ink-soft:#391a25;
+  --ink-faint:#6a4554;
+  --accent:#52132a;
+  --accent-deep:#350a1a;
+  --ochre:#c89b3c;
+  --olive:#5a6b3e;
+  --rust:#a23f24;
+  --teal:#1f6b6b;
+  --rule:#c5b698;
+  --rule-soft:#dbcdaf;
+  --highlight:#fff1bf;
+  --shadow:0 1px 0 rgba(23,10,16,.06), 0 2px 6px rgba(23,10,16,.04);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Fraunces',Georgia,serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.65;
+  font-size:17px;
+  background-image:
+    radial-gradient(circle at 15% 12%, rgba(82,19,42,.06) 0%, transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(200,155,60,.04) 0%, transparent 45%);
+  min-height:100vh;
+}
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .28 0 0 0 0 .18 0 0 0 .04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:1;opacity:.55;
+}
+
+.layout{display:grid;grid-template-columns:280px 1fr;min-height:100vh;position:relative;z-index:2}
+@media (max-width:980px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{position:static!important;height:auto!important;border-right:none!important;border-bottom:2px solid var(--ink)}
+}
+
+.sidebar{
+  position:sticky;top:0;height:100vh;
+  border-right:1px solid var(--rule);
+  background:linear-gradient(180deg,var(--paper-2) 0%,var(--paper) 100%);
+  padding:32px 26px 24px;
+  overflow-y:auto;
+  display:flex;flex-direction:column;
+}
+.back-link{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'Inter',sans-serif;
+  font-size:10.5px;letter-spacing:.22em;
+  text-transform:uppercase;font-weight:600;
+  color:var(--ink-faint);
+  text-decoration:none;
+  padding-bottom:18px;margin-bottom:18px;
+  border-bottom:1px dotted var(--rule);
+  transition:color .2s ease, gap .2s ease;
+}
+.back-link::before{content:"←";font-size:14px;transition:transform .2s ease}
+.back-link:hover{color:var(--accent);gap:12px}
+.back-link:hover::before{transform:translateX(-3px)}
+
+.brand{border-bottom:2px solid var(--ink);padding-bottom:22px;margin-bottom:24px}
+.brand-eyebrow{
+  font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--accent);font-weight:600;margin-bottom:8px;
+}
+.brand-title{
+  font-family:'Fraunces',serif;
+  font-weight:900;font-size:28px;line-height:1;
+  letter-spacing:-.02em;
+}
+.brand-title em{font-style:italic;font-weight:400;color:var(--accent);font-size:24px}
+.brand-sub{
+  font-family:'Inter',sans-serif;
+  font-size:11px;color:var(--ink-faint);
+  margin-top:10px;letter-spacing:.05em;
+}
+.nav-label{
+  font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--ink-faint);font-weight:600;margin-bottom:10px;
+}
+.nav-list{list-style:none;font-family:'Inter',sans-serif;flex:1}
+.nav-list li{position:relative;border-bottom:1px dotted var(--rule)}
+.nav-list li:last-child{border-bottom:none}
+.nav-list a{
+  display:flex;align-items:baseline;gap:10px;
+  padding:11px 0 11px 8px;
+  text-decoration:none;color:var(--ink-soft);
+  font-size:13.5px;font-weight:500;
+  transition:all .2s ease;
+}
+.nav-list a:hover{color:var(--accent);padding-left:14px}
+.nav-list a.active{color:var(--ink);font-weight:600;padding-left:14px}
+.nav-list a.active::before{
+  content:"";position:absolute;left:0;top:50%;
+  width:5px;height:5px;background:var(--accent);
+  border-radius:50%;transform:translateY(-50%);
+}
+.nav-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;color:var(--ink-faint);
+  font-weight:400;min-width:24px;
+}
+.nav-list a.active .nav-num{color:var(--accent)}
+.sidebar-footer{
+  margin-top:22px;padding-top:18px;
+  border-top:1px solid var(--rule);
+  font-family:'Inter',sans-serif;
+  font-size:10.5px;color:var(--ink-faint);
+  letter-spacing:.04em;
+}
+
+.main{padding:48px 64px 96px;max-width:1080px}
+@media (max-width:980px){.main{padding:32px 22px 64px}}
+
+.section{display:none;animation:fadeUp .4s ease}
+.section.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.section-header{border-bottom:2px solid var(--ink);padding-bottom:28px;margin-bottom:42px}
+.module-meta{
+  display:flex;align-items:center;gap:16px;
+  font-family:'Inter',sans-serif;
+  font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--accent);
+  font-weight:600;margin-bottom:14px;
+}
+.module-meta::after{content:"";flex:1;height:1px;background:var(--rule)}
+.section-title{
+  font-family:'Fraunces',serif;
+  font-weight:900;font-size:54px;line-height:1;
+  letter-spacing:-.035em;margin-bottom:14px;color:var(--ink);
+}
+.section-title em{font-style:italic;font-weight:400;color:var(--accent)}
+.section-deck{
+  font-family:'Fraunces',serif;font-style:italic;
+  font-size:21px;line-height:1.5;color:var(--ink-soft);
+  max-width:680px;font-weight:400;
+}
+
+h3{
+  font-family:'Fraunces',serif;
+  font-weight:700;font-size:30px;line-height:1.15;
+  letter-spacing:-.02em;margin:42px 0 18px;color:var(--ink);
+  border-bottom:1px solid var(--rule);padding-bottom:8px;
+  display:flex;align-items:baseline;gap:14px;
+}
+h3 .h-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;color:var(--accent);
+  font-weight:500;letter-spacing:.05em;
+}
+h4{font-family:'Fraunces',serif;font-weight:600;font-size:22px;margin:32px 0 12px;color:var(--ink);letter-spacing:-.01em}
+h5{font-family:'Inter',sans-serif;font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:24px 0 10px}
+p{margin:0 0 16px;font-size:17.5px}
+p.lede{font-size:20px;line-height:1.55;color:var(--ink-soft);margin-bottom:24px}
+strong{color:var(--ink);font-weight:600}
+em{color:var(--ink-soft)}
+ul,ol{margin:8px 0 18px 22px}
+li{margin-bottom:8px}
+code{font-family:'JetBrains Mono',monospace;font-size:.88em;background:rgba(82,19,42,.08);padding:1px 6px;border-radius:3px;color:var(--accent-deep)}
+.kbd-math{font-family:'JetBrains Mono',monospace;font-size:15px;background:rgba(23,10,16,.04);padding:2px 8px;border-radius:3px;display:inline-block;border:1px solid var(--rule-soft)}
+
+.callout{
+  border-left:3px solid var(--accent);
+  background:linear-gradient(90deg,rgba(82,19,42,.06),transparent);
+  padding:18px 22px;margin:24px 0;
+  font-family:'Fraunces',serif;font-style:italic;font-size:18px;
+  line-height:1.5;color:var(--ink-soft);
+}
+.callout strong{font-style:normal;color:var(--accent-deep)}
+.note{background:var(--paper-2);border:1px solid var(--rule);padding:18px 22px;margin:22px 0;position:relative}
+.note::before{
+  content:"NOTE";position:absolute;top:-10px;left:18px;background:var(--paper);
+  padding:0 8px;font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.22em;color:var(--ink-faint);font-weight:600;
+}
+.note.tip::before{content:"TIP";color:var(--olive)}
+.note.tip{border-color:var(--olive);background:rgba(90,107,62,.06)}
+.note.warn::before{content:"WATCH OUT";color:var(--rust)}
+.note.warn{border-color:var(--rust);background:rgba(162,63,36,.05)}
+
+.formula{
+  background:#fbf6ec;border:1px solid var(--rule);
+  border-left:4px solid var(--ochre);
+  padding:20px 24px;margin:20px 0;
+  font-family:'Fraunces',serif;font-size:19px;line-height:1.7;
+  box-shadow:var(--shadow);
+}
+.formula .label{
+  font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ochre);font-weight:700;margin-bottom:6px;display:block;
+}
+.formula .eq{
+  font-family:'JetBrains Mono',monospace;font-size:16px;
+  background:rgba(0,0,0,.04);padding:8px 14px;border-radius:2px;
+  display:inline-block;margin:6px 0;font-weight:500;color:var(--ink);
+}
+
+table.di-table{
+  width:100%;border-collapse:collapse;
+  font-family:'JetBrains Mono',monospace;font-size:13.5px;
+  margin:18px 0;background:#fbf6ec;border:1px solid var(--rule);
+}
+table.di-table th,table.di-table td{padding:9px 12px;text-align:left;border:1px solid var(--rule-soft)}
+table.di-table th{background:var(--ink);color:var(--paper);font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+table.di-table tr:nth-child(even) td{background:rgba(82,19,42,.025)}
+
+/* VA-specific: jumble sentence display */
+.jumble{
+  background:#fdfaf2;border:1px solid var(--rule);
+  border-left:4px solid var(--accent);
+  padding:22px 26px;margin:20px 0;
+  box-shadow:var(--shadow);position:relative;
+}
+.jumble::before{
+  content:"JUMBLED";position:absolute;top:-10px;left:22px;background:var(--paper);
+  padding:0 10px;font-family:'Inter',sans-serif;
+  font-size:10px;letter-spacing:.22em;color:var(--accent);font-weight:700;
+}
+.jumble .frag{
+  display:flex;gap:14px;margin-bottom:10px;
+  font-family:'Fraunces',serif;font-size:16px;line-height:1.55;
+}
+.jumble .frag:last-child{margin-bottom:0}
+.jumble .frag .lbl{
+  flex-shrink:0;width:32px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;font-weight:600;
+  color:var(--accent);background:var(--paper-2);
+  padding:2px 0;text-align:center;border-radius:2px;
+  height:fit-content;
+}
+.jumble .frag .text{flex:1;color:var(--ink-soft)}
+
+/* Connection-trace block */
+.trace{
+  background:var(--paper-2);border:1px solid var(--rule);
+  padding:18px 22px;margin:18px 0;
+  font-family:'Inter',sans-serif;font-size:14px;line-height:1.6;
+}
+.trace .pair{
+  display:flex;align-items:center;gap:14px;
+  padding:6px 0;border-bottom:1px dotted var(--rule);
+}
+.trace .pair:last-child{border-bottom:none}
+.trace .pair .from{
+  font-family:'JetBrains Mono',monospace;font-weight:600;
+  color:var(--accent);min-width:48px;
+}
+.trace .pair .reason{flex:1;color:var(--ink-soft);font-family:'Fraunces',serif;font-size:15px}
+
+.q-card{
+  background:#fdfaf2;border:1px solid var(--rule);
+  border-radius:2px;margin:24px 0;box-shadow:var(--shadow);
+}
+.q-head{
+  background:var(--accent);color:var(--paper);
+  padding:12px 22px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:'Inter',sans-serif;font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;font-weight:600;flex-wrap:wrap;gap:10px;
+}
+.q-head .q-id{display:flex;gap:14px;align-items:center}
+.q-head .q-id .yr{background:rgba(245,239,228,.18);padding:3px 10px;border-radius:2px;font-size:10px;letter-spacing:.18em}
+.q-head .q-tag{font-size:10px;opacity:.85;font-family:'JetBrains Mono',monospace;letter-spacing:.08em}
+.q-body{padding:22px 26px 4px}
+.q-text{font-family:'Fraunces',serif;font-size:16.5px;line-height:1.65;margin-bottom:10px}
+.q-options{font-family:'Fraunces',serif;list-style:none;padding:0;margin:8px 0}
+.q-options li{padding:3px 0 3px 28px;position:relative;font-size:15.5px}
+.q-options li::before{
+  content:attr(data-opt);font-family:'JetBrains Mono',monospace;
+  position:absolute;left:0;top:3px;
+  width:20px;height:20px;background:var(--paper-2);
+  border:1px solid var(--rule);border-radius:50%;text-align:center;
+  font-size:11px;font-weight:600;line-height:18px;color:var(--ink-soft);
+}
+.toggle-sol{
+  width:100%;background:var(--paper-2);
+  border:none;border-top:1px dashed var(--rule);padding:12px 24px;
+  font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;font-weight:600;color:var(--accent);cursor:pointer;
+  text-align:left;display:flex;justify-content:space-between;align-items:center;
+  transition:background .2s ease;
+}
+.toggle-sol:hover{background:rgba(82,19,42,.08)}
+.toggle-sol::after{content:"▾";font-size:14px;transition:transform .25s ease}
+.toggle-sol.open::after{transform:rotate(180deg)}
+.sol{display:none;padding:20px 26px 26px;background:var(--paper-2);border-top:1px solid var(--rule);font-size:16.5px;line-height:1.65}
+.sol.open{display:block;animation:fadeUp .25s ease}
+.sol .ans-line{
+  display:flex;align-items:center;gap:12px;padding:10px 14px;
+  background:var(--ink);color:var(--paper);border-radius:2px;margin-top:14px;
+  font-family:'Fraunces',serif;font-size:17px;
+}
+.sol .ans-line strong{color:var(--ochre);font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.sol p{margin-bottom:12px}
+.sol .step{border-left:2px solid var(--rule);padding-left:14px;margin:10px 0}
+.sol .step-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);font-weight:600;letter-spacing:.05em;display:block;margin-bottom:3px}
+
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:36px 0 8px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+@media (max-width:760px){.stat-grid{grid-template-columns:repeat(2,1fr)}}
+.stat{padding:22px 18px;border-right:1px solid var(--rule)}
+.stat:last-child{border-right:none}
+@media (max-width:760px){
+  .stat:nth-child(2){border-right:none}
+  .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--rule)}
+}
+.stat-num{font-family:'Fraunces',serif;font-weight:900;font-size:42px;line-height:.9;letter-spacing:-.03em;color:var(--accent)}
+.stat-num span{font-size:20px;color:var(--ink-soft);font-weight:400}
+.stat-label{font-family:'Inter',sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-top:8px;font-weight:600}
+
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:24px 0;border:1px solid var(--rule)}
+@media (max-width:760px){.compare{grid-template-columns:1fr}}
+.compare > div{padding:18px 22px}
+.compare > div:first-child{border-right:1px solid var(--rule);background:rgba(82,19,42,.04)}
+.compare > div:last-child{background:rgba(90,107,62,.04)}
+@media (max-width:760px){.compare > div:first-child{border-right:none;border-bottom:1px solid var(--rule)}}
+.compare h5{margin-top:0}
+
+.tips-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:24px 0}
+@media (max-width:760px){.tips-grid{grid-template-columns:1fr}}
+.tip-card{background:#fbf6ec;border:1px solid var(--rule);border-top:3px solid var(--teal);padding:20px 22px}
+.tip-card .t-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--teal);letter-spacing:.1em;font-weight:600}
+.tip-card h6{font-family:'Fraunces',serif;font-size:19px;font-weight:700;margin:4px 0 10px;color:var(--ink)}
+.tip-card p{font-size:15.5px;margin-bottom:0;line-height:1.55}
+
+.section-end{margin-top:56px;padding-top:24px;border-top:2px solid var(--ink);font-family:'Fraunces',serif;font-style:italic;font-size:15px;color:var(--ink-faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.dropcap{font-family:'Fraunces',serif;font-weight:900;font-size:64px;line-height:.85;float:left;padding:6px 12px 0 0;color:var(--accent)}
+.drill{background:var(--ink);color:var(--paper);padding:24px 28px;margin:24px 0;border-radius:2px}
+.drill h5{color:var(--ochre);margin-top:0}
+.drill p{color:var(--paper);font-family:'Fraunces',serif;font-size:17px}
+.drill code{background:rgba(245,239,228,.1);color:var(--ochre)}
+a.inline{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+a.inline:hover{color:var(--accent-deep)}
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <a href="index.html" class="back-link">Back to series</a>
+    <div class="brand">
+      <div class="brand-eyebrow">Verbal Ability · CAT Prep</div>
+      <div class="brand-title">The <em>Verbal<br>Ability</em><br>Codex</div>
+      <div class="brand-sub">A teacher's companion · 9 modules · 25 problems</div>
+    </div>
+
+    <div class="nav-label">Modules</div>
+    <ul class="nav-list">
+      <li><a href="#m0" class="nav-link active" data-target="m0"><span class="nav-num">00</span>Orientation</a></li>
+      <li><a href="#m1" class="nav-link" data-target="m1"><span class="nav-num">01</span>Para-jumbles</a></li>
+      <li><a href="#m2" class="nav-link" data-target="m2"><span class="nav-num">02</span>Para-summary</a></li>
+      <li><a href="#m3" class="nav-link" data-target="m3"><span class="nav-num">03</span>Odd-Sentence-Out</a></li>
+      <li><a href="#m4" class="nav-link" data-target="m4"><span class="nav-num">04</span>Sentence Completion</a></li>
+      <li><a href="#m5" class="nav-link" data-target="m5"><span class="nav-num">05</span>Connectors &amp; Transitions</a></li>
+      <li><a href="#m6" class="nav-link" data-target="m6"><span class="nav-num">06</span>Critical Reasoning</a></li>
+      <li><a href="#m7" class="nav-link" data-target="m7"><span class="nav-num">07</span>Tips &amp; Traps</a></li>
+      <li><a href="#m8" class="nav-link" data-target="m8"><span class="nav-num">08</span>Problem Bank</a></li>
+      <li><a href="#m9" class="nav-link" data-target="m9"><span class="nav-num">09</span>Reference Sheet</a></li>
+    </ul>
+
+    <div class="sidebar-footer">
+      Prepared for classroom delivery.<br>
+      Every problem carries full reasoning.<br>
+      <span style="color:var(--accent)">⬤</span> Tap any solution to expand.
+    </div>
+  </aside>
+
+  <main class="main">
+
+  <!-- ====== MODULE 0 ====== -->
+  <section class="section active" id="m0">
+    <header class="section-header">
+      <div class="module-meta">Module 00 · Orientation</div>
+      <h1 class="section-title">The <em>other</em><br>thirty per cent.</h1>
+      <p class="section-deck">Verbal Ability — para-jumbles, para-summary, odd-sentence — accounts for roughly seven or eight VARC marks. Faster than RC, riskier than RC, and pure-deduction in a way RC never is.</p>
+    </header>
+
+    <p class="lede"><span class="dropcap">V</span>erbal Ability is the smaller, sharper half of VARC. Where RC asks for patience and interpretation, VA asks for something closer to logic: every question has a single correct answer that follows from a small set of grammatical and rhetorical principles, and a student who knows the principles can attempt each question in under two minutes. The skill is structural pattern-recognition — recognising openers, finding transition cues, distinguishing summaries from extensions — and once recognised, the answers fall out cleanly.</p>
+
+    <p>The current CAT VA section has settled around three or four standard formats: <em>para-jumble</em> (a paragraph's sentences are presented out of order, you arrange them), <em>para-summary</em> (a paragraph is presented in full, you select the best summary among four options), <em>odd-sentence-out</em> (five sentences are given, four belong to a single paragraph, one does not — identify the outlier), and increasingly the older <em>sentence-completion</em> and <em>critical-reasoning</em> formats appearing in mock papers. This codex covers all of these, beginning with para-jumbles, which is both the most common and the most teachable.</p>
+
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-num">7–8</div><div class="stat-label">VA marks per slot</div></div>
+      <div class="stat"><div class="stat-num">8<span> min</span></div><div class="stat-label">Time budget</div></div>
+      <div class="stat"><div class="stat-num">3–4</div><div class="stat-label">Question formats</div></div>
+      <div class="stat"><div class="stat-num">90<span> sec</span></div><div class="stat-label">Per question target</div></div>
+    </div>
+
+    <h3><span class="h-num">0.1</span>What VA tests</h3>
+    <p>One core capacity, tested four different ways: the ability to recognise <em>paragraph-level coherence</em>. A coherent paragraph has an opening sentence that sets up the topic, middle sentences that develop it, and a closing sentence that resolves or refines it. The transitions between sentences are signalled — by pronouns, by connective adverbs, by repeated nouns. The VA examiner gives you a paragraph with the signals intact and asks you to use them.</p>
+
+    <div class="callout"><strong>The VA maxim.</strong> Coherence is in the connectives, not the content. If you read the sentences without tracking the connecting cues — pronouns, demonstratives, contrast words — you are guessing, not solving.</div>
+
+    <h3><span class="h-num">0.2</span>How this codex is organised</h3>
+    <p>Module 01 covers para-jumbles in depth — opener identification, mandatory pairs, transition words, the order-of-deduction protocol. Module 02 handles para-summary, with emphasis on scope and tone matching. Module 03 covers odd-sentence-out, which is essentially para-jumble in reverse. Module 04 is the older sentence-completion format, with sub-types like single-blank and double-blank. Module 05 takes a closer look at connectors — the small set of words that signal almost every transition CAT cares about. Module 06 covers the critical-reasoning format that occasionally appears.</p>
+
+    <p>Module 07 lists the ten classic VA traps. Module 08 is the problem bank: 25 questions distributed across the four formats with the full reasoning shown. Module 09 collapses the recognition signals onto one reference page.</p>
+
+    <div class="note tip"><p style="margin:0"><strong>Pacing.</strong> VA questions are TITA (type-in-the-answer) in CAT — no options for jumble and odd-sentence. A wrong answer carries no negative marking, but the time cost is what hurts. Spend two minutes max per question; if stuck, mark and move on.</p></div>
+
+    <div class="section-end"><span>End of Module 00</span><span>→ next: Para-jumbles</span></div>
+  </section>
+
+  <!-- ====== MODULE 1 ====== -->
+  <section class="section" id="m1">
+    <header class="section-header">
+      <div class="module-meta">Module 01 · Para-jumbles</div>
+      <h1 class="section-title">The <em>order-restoration</em><br>puzzle.</h1>
+      <p class="section-deck">Four or five sentences from a coherent paragraph, scrambled. Restore the original order. The strategy: find the opener, find the mandatory pairs, fit everything around them.</p>
+    </header>
+
+    <p class="lede">Para-jumbles are the canonical VA question. The CAT has been setting them, in one form or another, since the late 1990s, and despite occasional format tweaks the underlying skill has not changed. A coherent paragraph is being broken apart; you re-assemble it using the textual cues — pronouns, connectives, repeated terms — that signal which sentence follows which.</p>
+
+    <h3><span class="h-num">1.1</span>The four-step protocol</h3>
+
+    <ol>
+      <li><strong>Identify the opener.</strong> The opening sentence introduces the topic without referring back to anything. Look for: a noun that everyone else refers to with pronouns, a general claim that the others elaborate, an absence of "this", "that", "however", "moreover" at the start.</li>
+      <li><strong>Find mandatory pairs.</strong> A mandatory pair is two sentences where one must follow the other directly — usually because the second contains a pronoun whose referent is in the first, or a connective like "however" that responds to the first. Mandatory pairs are unbreakable; the order between them is fixed.</li>
+      <li><strong>Find the closer.</strong> The closing sentence often contains a conclusion-marker ("thus", "in this way", "ultimately") or a forward-looking statement. It rarely opens a new sub-topic.</li>
+      <li><strong>Slot the rest.</strong> The middle sentences fit between opener and closer in the order that preserves the mandatory pairs and respects the topic flow.</li>
+    </ol>
+
+    <h3><span class="h-num">1.2</span>Opener identification</h3>
+    <p>The most efficient way to find the opener is by elimination. A sentence that <em>cannot</em> be the opener is one that begins with a pronoun without a clear preceding referent, a demonstrative ("this", "such", "these"), or a transition word ("however", "moreover", "consequently"). Eliminate these from the candidate set; the remaining sentence is often the opener.</p>
+
+    <div class="formula">
+      <span class="label">Opener disqualifiers</span>
+      Starts with "This/That/Such/These" — refers back.<br>
+      Starts with "However/But/Yet/Nevertheless" — contradicts something.<br>
+      Starts with "Moreover/Furthermore/Also/Additionally" — extends something.<br>
+      Starts with "Consequently/Thus/Hence/Therefore" — concludes something.<br>
+      Starts with "He/She/It/They" without a noun antecedent — refers to a previous sentence.
+    </div>
+
+    <h3><span class="h-num">1.3</span>Mandatory pairs</h3>
+    <p>Two sentences are paired when the second cannot stand without the first. The most reliable indicator is a pronoun in sentence Y whose only natural referent is in sentence X — Y must follow X. Other indicators:</p>
+
+    <ul>
+      <li>Y begins with "however" and X states the position Y contradicts.</li>
+      <li>Y begins with "for example" and X states the claim Y illustrates.</li>
+      <li>X ends with a noun and Y begins with "this [same noun]" or "such [noun]".</li>
+      <li>Y begins with "in contrast" or "by comparison" — X provides the thing being contrasted.</li>
+    </ul>
+
+    <h3><span class="h-num">1.4</span>Worked example</h3>
+
+    <div class="jumble">
+      <div class="frag"><div class="lbl">1</div><div class="text">However, the more revolutionary claim — that fragmentation actually expanded the public sphere by enabling micro-communities to form — has gained ground in the past decade.</div></div>
+      <div class="frag"><div class="lbl">2</div><div class="text">For most of the past twenty years, scholars of digital media argued that the internet had fragmented public discourse rather than uniting it.</div></div>
+      <div class="frag"><div class="lbl">3</div><div class="text">This newer view treats the fragmentation not as a loss but as a structural feature of any genuinely plural society.</div></div>
+      <div class="frag"><div class="lbl">4</div><div class="text">The consensus, by 2010, was that this fragmentation was the dominant intellectual effect of the platforms.</div></div>
+    </div>
+
+    <p><strong>Step 1: Opener.</strong> Sentence 2 is the only one without back-referring cues. It introduces the topic ("scholars argued that"). 1 starts with "However" — disqualified. 3 starts with "This newer view" — refers to something prior. 4 contains "this fragmentation" — refers to fragmentation just introduced. Opener = 2.</p>
+
+    <p><strong>Step 2: Mandatory pairs.</strong> 4 mentions "this fragmentation" — must follow 2 (which introduces fragmentation). So 2 → 4 is a pair. 1 says "However, the more revolutionary claim…" — this contrasts with the "consensus" mentioned in 4. So 4 → 1. 3 says "This newer view" — referring to the "more revolutionary claim" in 1. So 1 → 3.</p>
+
+    <p><strong>Step 3: Order.</strong> 2 → 4 → 1 → 3.</p>
+
+    <div class="trace">
+      <div class="pair"><div class="from">2 → 4</div><div class="reason">"this fragmentation" in 4 refers to fragmentation introduced in 2</div></div>
+      <div class="pair"><div class="from">4 → 1</div><div class="reason">"However" in 1 contrasts with the "consensus" view stated in 4</div></div>
+      <div class="pair"><div class="from">1 → 3</div><div class="reason">"This newer view" in 3 refers to the "revolutionary claim" in 1</div></div>
+    </div>
+
+    <p><strong>Final order:</strong> 2, 4, 1, 3.</p>
+
+    <div class="callout"><strong>The pattern.</strong> Almost every para-jumble has at least one pair of sentences whose order is fixed by a pronoun or transition word. Find that pair first. The rest of the puzzle is usually decidable from there.</div>
+
+    <div class="section-end"><span>End of Module 01</span><span>→ next: Para-summary</span></div>
+  </section>
+
+  <!-- ====== MODULE 2 ====== -->
+  <section class="section" id="m2">
+    <header class="section-header">
+      <div class="module-meta">Module 02 · Para-summary</div>
+      <h1 class="section-title">The <em>compress-without-distorting</em><br>question.</h1>
+      <p class="section-deck">A paragraph is given in full. Four candidate summaries follow. Pick the one that captures the central claim without adding, omitting, or distorting.</p>
+    </header>
+
+    <p class="lede">Para-summary tests something subtle: the ability to compress a paragraph by a factor of three or four without losing the central claim or introducing anything not in the original. The wrong answers are usually wrong in characteristic ways — too narrow (covers only half the paragraph), too broad (loses the specific stance), distorted (shifts the emphasis), or out-of-scope (adds details not in the original).</p>
+
+    <h3><span class="h-num">2.1</span>The two-question test</h3>
+
+    <div class="formula">
+      <span class="label">Para-summary criteria</span>
+      <strong>Coverage:</strong> Does the summary capture the central claim of the paragraph as a whole?<br>
+      <strong>Fidelity:</strong> Does it avoid adding anything not in the paragraph, and avoid changing the emphasis or stance?
+    </div>
+
+    <p>The correct summary is the one that passes both tests. The three wrong summaries fail at least one — usually fidelity (they add or omit) more often than coverage.</p>
+
+    <h3><span class="h-num">2.2</span>The wrong-answer flavours</h3>
+
+    <div class="compare">
+      <div>
+        <h5>Too narrow</h5>
+        <p style="margin-bottom:0">Captures only the first or last sentence of the paragraph. Misses the connecting thread. A summary that mentions only one of two opposing views in a two-view paragraph is too narrow.</p>
+      </div>
+      <div>
+        <h5>Too broad</h5>
+        <p style="margin-bottom:0">Could summarise any paragraph on the same topic. Misses the specific argument or stance of this paragraph. "The paragraph discusses X" is almost always too broad.</p>
+      </div>
+    </div>
+
+    <div class="compare">
+      <div>
+        <h5>Distorted</h5>
+        <p style="margin-bottom:0">Captures the topic but shifts the stance — the paragraph favours X, the summary suggests neutrality, or vice versa. Watch the verbs in particular: "challenges" vs "presents", "rejects" vs "considers".</p>
+      </div>
+      <div>
+        <h5>Out-of-scope</h5>
+        <p style="margin-bottom:0">Adds a prediction, recommendation, or inference that the paragraph itself never makes. If the paragraph stops at "the consequences are unclear", the summary cannot end with "the policy should therefore be reconsidered".</p>
+      </div>
+    </div>
+
+    <h3><span class="h-num">2.3</span>The scope and tone match</h3>
+    <p>Beyond coverage and fidelity, the summary must match the paragraph in <em>scope</em> (how broadly the claim is asserted) and <em>tone</em> (whether the paragraph is critical, approving, neutral). A paragraph that mildly criticises a policy should not be summarised by a sentence that strongly rejects it.</p>
+
+    <h3><span class="h-num">2.4</span>Worked example</h3>
+
+    <div class="note"><p style="margin:0"><strong>Paragraph:</strong> "The doctrine that economic growth is the principal route out of poverty has been the foundation of development thinking for over half a century. There is much to recommend it: countries that have grown rapidly have generally seen the most dramatic reductions in absolute poverty. Yet the dependence on growth has obscured an inconvenient fact — that some forms of growth, particularly those concentrated in capital-intensive sectors, can leave large parts of the population materially worse off in relative terms even as overall national income rises. The complication is not that growth fails to reduce poverty; it is that the type of growth matters as much as the rate."</p></div>
+
+    <p><strong>Candidate summaries:</strong></p>
+    <ul>
+      <li>(A) Economic growth has been the central concept in development thinking and should remain so.</li>
+      <li>(B) Capital-intensive sectors are bad for poverty reduction.</li>
+      <li>(C) While economic growth has been broadly successful in reducing poverty, the type of growth matters as much as the rate.</li>
+      <li>(D) Development thinking has been dominated by economists for too long and needs revision.</li>
+    </ul>
+
+    <p><strong>Test each:</strong></p>
+    <ul>
+      <li>(A) Misses the central qualification — that <em>type</em> matters. Distorted.</li>
+      <li>(B) Too narrow — only the capital-intensive parenthetical, missing the main claim.</li>
+      <li>(C) Captures both halves: growth has worked, but type matters. Best match.</li>
+      <li>(D) Out-of-scope — paragraph doesn't critique economists or call for revision; it refines the growth doctrine.</li>
+    </ul>
+
+    <p><strong>Answer:</strong> (C).</p>
+
+    <div class="callout"><strong>The compression test.</strong> A good summary preserves the paragraph's argumentative structure: claim-plus-qualification stays claim-plus-qualification; two-views stays two-views. If a paragraph has a "yet" or "however", the summary almost always needs the same word.</div>
+
+    <div class="section-end"><span>End of Module 02</span><span>→ next: Odd-Sentence-Out</span></div>
+  </section>
+
+
+  <!-- ====== MODULE 3 ====== -->
+  <section class="section" id="m3">
+    <header class="section-header">
+      <div class="module-meta">Module 03 · Odd-Sentence-Out</div>
+      <h1 class="section-title">The <em>intruder</em><br>question.</h1>
+      <p class="section-deck">Five sentences are given. Four belong to a coherent paragraph; one does not. Identify the outlier. The strategy: build the four-sentence paragraph and see which sentence refuses to fit.</p>
+    </header>
+
+    <p class="lede">Odd-sentence-out is structurally para-jumble's mirror image. Where the jumble asks you to find the right ordering of the right sentences, the odd-sentence asks you to identify which sentence doesn't belong at all. The skill is the same — detection of paragraph coherence — but the task is filtration rather than ordering.</p>
+
+    <h3><span class="h-num">3.1</span>How outliers look</h3>
+
+    <p>The intruder sentence is usually on the same broad topic as the paragraph — same word, same setting — but makes a different kind of claim. Common varieties:</p>
+
+    <ul>
+      <li><strong>The off-topic specific.</strong> The paragraph is about urban migration in general; the intruder describes a particular Mumbai neighbourhood. Specific where the paragraph is general.</li>
+      <li><strong>The wrong-frame intruder.</strong> The paragraph treats the topic from a sociological angle; the intruder approaches it from a personal-anecdote angle.</li>
+      <li><strong>The contradictory.</strong> The paragraph defends a thesis; the intruder makes a claim that contradicts the thesis without being framed as a counter-argument.</li>
+      <li><strong>The chronologically wrong.</strong> The paragraph discusses events in one historical period; the intruder belongs to a different period.</li>
+    </ul>
+
+    <h3><span class="h-num">3.2</span>The filtration protocol</h3>
+
+    <ol>
+      <li>Read all five sentences quickly to grasp the broad topic.</li>
+      <li>Identify which sentence is the opener — the most general, no back-references.</li>
+      <li>Try to thread the remaining four into a paragraph that flows. The one that consistently refuses to fit is the odd sentence.</li>
+      <li>Verify by writing out the four-sentence paragraph: if it reads as coherent, the fifth is the outlier.</li>
+    </ol>
+
+    <h3><span class="h-num">3.3</span>Worked example</h3>
+
+    <div class="jumble">
+      <div class="frag"><div class="lbl">1</div><div class="text">The rise of digital media in the 2000s transformed how political campaigns reached voters in democratic societies.</div></div>
+      <div class="frag"><div class="lbl">2</div><div class="text">Television, which had dominated political communication since the 1960s, lost much of its monopoly to social networks and online platforms.</div></div>
+      <div class="frag"><div class="lbl">3</div><div class="text">My local political party's social media manager once told me that voter engagement online tripled after they hired a video editor.</div></div>
+      <div class="frag"><div class="lbl">4</div><div class="text">By 2016, more than two-thirds of voters in the United States and Western Europe reported encountering political content primarily through social media rather than broadcast.</div></div>
+      <div class="frag"><div class="lbl">5</div><div class="text">This shift produced a measurable change in how campaigns budgeted: spending on broadcast television declined while spending on targeted digital advertising rose sharply.</div></div>
+    </div>
+
+    <p><strong>Identify topic.</strong> Sentences 1, 2, 4, 5 all describe the macro-shift from broadcast to digital political communication. Sentence 3 is a personal anecdote from "my local political party's social media manager".</p>
+
+    <p><strong>Test fit.</strong> Sentences 1, 2, 4, 5 thread together cleanly: 1 (overview) → 2 (TV-vs-digital framing) → 4 (numerical evidence by 2016) → 5 (budget consequences). Sentence 3 sits in a different register entirely — anecdotal, personal, single-case.</p>
+
+    <p><strong>Outlier:</strong> 3. The wrong-frame intruder.</p>
+
+    <div class="note tip"><p style="margin:0"><strong>The register cue.</strong> Many odd-sentences are betrayed by a shift in register — a paragraph that has been analytical suddenly contains "I", "my", or a specific named individual. Register shifts are a strong tell, even if the topic is the same.</p></div>
+
+    <div class="section-end"><span>End of Module 03</span><span>→ next: Sentence Completion</span></div>
+  </section>
+
+  <!-- ====== MODULE 4 ====== -->
+  <section class="section" id="m4">
+    <header class="section-header">
+      <div class="module-meta">Module 04 · Sentence Completion</div>
+      <h1 class="section-title">The <em>fit-the-blank</em><br>question.</h1>
+      <p class="section-deck">A sentence has one or two blanks. Four pairs of words are offered as candidates. Pick the pair that completes the sentence with the right meaning <em>and</em> the right register.</p>
+    </header>
+
+    <p class="lede">Sentence completion was once a CAT staple and has reappeared in recent mock papers and shadow papers. The format is straightforward but unforgiving: a sentence with one or two blanks, four option-pairs to fill them. The correct option is the one that makes the sentence grammatically sound, semantically coherent, and tonally consistent.</p>
+
+    <h3><span class="h-num">4.1</span>The three tests</h3>
+
+    <div class="formula">
+      <span class="label">Sentence-completion criteria</span>
+      <strong>Grammar:</strong> Does the word fit the syntactic slot? (Noun vs verb, singular vs plural, tense.)<br>
+      <strong>Sense:</strong> Does the resulting sentence mean something coherent in context?<br>
+      <strong>Register:</strong> Does the word's tone match the surrounding language? Don't insert "vexed" into a casual sentence or "annoyed" into a literary one.
+    </div>
+
+    <h3><span class="h-num">4.2</span>The double-blank protocol</h3>
+
+    <p>For two-blank sentences, both blanks must work for the option to be correct. The strategy is to identify the easier blank first (often the second, since it has more context), eliminate options that fail there, then test the remaining options on the harder blank.</p>
+
+    <h3><span class="h-num">4.3</span>Vocabulary scope</h3>
+
+    <p>CAT sentence-completion vocabulary tends towards <em>formal but not arcane</em>: words a moderately literate reader of newspapers and serious magazines would know. The examiner avoids both colloquialism and obscure technical terms. Build vocabulary by reading editorial pages of broadsheets, literary supplements, and policy journals.</p>
+
+    <h3><span class="h-num">4.4</span>Worked example</h3>
+
+    <div class="note"><p style="margin:0"><strong>Sentence:</strong> The senator's _____ response to the journalist's question — neither denying the accusation nor admitting it — only _____ the impression that something was being concealed.</p></div>
+
+    <ul>
+      <li>(A) evasive — reinforced</li>
+      <li>(B) blunt — diminished</li>
+      <li>(C) thoughtful — extended</li>
+      <li>(D) heated — confirmed</li>
+    </ul>
+
+    <p><strong>Test the first blank:</strong> "neither denying nor admitting" describes evasion. (A) evasive ✓. (B) blunt — would deny or admit, not both — fails. (C) thoughtful — possible but doesn't match "neither/nor" pattern as strongly. (D) heated — wrong tone.</p>
+
+    <p><strong>Test the second blank:</strong> Evasion creates the impression of concealment, so "reinforced" fits. (A) confirmed.</p>
+
+    <p><strong>Answer:</strong> (A).</p>
+
+    <div class="callout"><strong>The flow test.</strong> Read the completed sentence aloud (mentally). If it sounds natural and the meaning is coherent end-to-end, the option is likely correct. If it reads stilted or contradictory, eliminate.</div>
+
+    <div class="section-end"><span>End of Module 04</span><span>→ next: Connectors &amp; Transitions</span></div>
+  </section>
+
+  <!-- ====== MODULE 5 ====== -->
+  <section class="section" id="m5">
+    <header class="section-header">
+      <div class="module-meta">Module 05 · Connectors &amp; Transitions</div>
+      <h1 class="section-title">The <em>signal</em><br>vocabulary.</h1>
+      <p class="section-deck">A small set of connective words and phrases does almost all the heavy lifting in paragraph coherence. Memorise the set; reading speed for VA improves by a factor of two.</p>
+    </header>
+
+    <p class="lede">Beneath every coherent paragraph runs a small lattice of transition words — "however", "moreover", "for example", "in contrast", "thus" — that signal the relationship between adjacent sentences. The skilled VA reader sees these signals first, and reads the surrounding content second. This module enumerates the signals and groups them by function.</p>
+
+    <h3><span class="h-num">5.1</span>The six functional families</h3>
+
+    <table class="di-table">
+      <thead><tr><th>Function</th><th>Signal words</th><th>What follows</th></tr></thead>
+      <tbody>
+        <tr><td>Contrast</td><td>however, but, yet, nevertheless, on the contrary, in contrast, by comparison</td><td>An opposing or qualifying claim</td></tr>
+        <tr><td>Continuation</td><td>moreover, furthermore, in addition, also, additionally, what is more</td><td>More evidence for the same claim</td></tr>
+        <tr><td>Example</td><td>for example, for instance, consider, as in the case of</td><td>A specific illustration of a general claim</td></tr>
+        <tr><td>Consequence</td><td>thus, hence, therefore, consequently, as a result, accordingly</td><td>A conclusion drawn from the preceding</td></tr>
+        <tr><td>Concession</td><td>admittedly, to be sure, granted, of course, no doubt</td><td>A point granted to opponents (often followed by "but")</td></tr>
+        <tr><td>Restatement</td><td>that is, in other words, namely, i.e., put differently</td><td>A clarification of the immediately preceding</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="h-num">5.2</span>The contrast-pivot pattern</h3>
+
+    <p>"However", "but", and "yet" are the highest-information connectives. A sentence that begins with one of these is signalling that the author's actual position differs from what was just said. The text just before the pivot is usually a setup; the text just after is the author's real claim.</p>
+
+    <div class="callout"><strong>The reversal mnemonic.</strong> When you see "however" at the start of a sentence, mentally underline the next 15 words. The author is about to say what they really think.</div>
+
+    <h3><span class="h-num">5.3</span>The concession-pivot pattern</h3>
+
+    <p>"Admittedly", "to be sure", "granted" — these flag a point the author is conceding to the other side. The concession is almost always followed within one or two sentences by a "but" or "however" that re-asserts the author's main claim. Skilled CAT readers recognise the concession as a two-step structure: "I admit X" + "but actually Y". The author still believes Y.</p>
+
+    <h3><span class="h-num">5.4</span>Connectors in para-jumbles</h3>
+
+    <p>For para-jumble work, the connector words tell you exactly which sentences can and cannot follow which. A sentence starting with "moreover" requires a preceding sentence stating the claim being extended. A sentence starting with "for instance" requires a preceding general claim. Tracking these constraints is faster than tracking content.</p>
+
+    <h3><span class="h-num">5.5</span>The connectors that are <em>not</em> what they seem</h3>
+
+    <p>A few connective words are commonly misread:</p>
+
+    <ul>
+      <li><strong>"While"</strong> — when at the start of a sentence, it usually signals concession ("While X is true, Y is also true"), not simultaneity.</li>
+      <li><strong>"Since"</strong> — usually causal ("since X, Y"), not temporal.</li>
+      <li><strong>"As"</strong> — can mean "because", "while", or "in the role of" depending on context. Disambiguate using the surrounding clauses.</li>
+    </ul>
+
+    <div class="section-end"><span>End of Module 05</span><span>→ next: Critical Reasoning</span></div>
+  </section>
+
+  <!-- ====== MODULE 6 ====== -->
+  <section class="section" id="m6">
+    <header class="section-header">
+      <div class="module-meta">Module 06 · Critical Reasoning</div>
+      <h1 class="section-title">The <em>argument-evaluation</em><br>question.</h1>
+      <p class="section-deck">A short passage states an argument. The question asks what would strengthen, weaken, or follow from it. The skill is identifying the gap between the argument's evidence and its conclusion.</p>
+    </header>
+
+    <p class="lede">Critical reasoning questions are rare in the post-2015 CAT but recur in shadow papers and OMET (other management entrance tests). They give you a short argument and ask one of: what would weaken it, what would strengthen it, what is the assumption it makes, what can be inferred from it. The skill is essentially analytical: separate the evidence from the conclusion, identify the unstated link between them.</p>
+
+    <h3><span class="h-num">6.1</span>The argument structure</h3>
+
+    <div class="formula">
+      <span class="label">Any argument has three parts</span>
+      <strong>Evidence:</strong> what the argument cites as factual.<br>
+      <strong>Assumption:</strong> the unstated bridge between evidence and conclusion.<br>
+      <strong>Conclusion:</strong> what the argument claims follows from the evidence.
+    </div>
+
+    <p>The assumption is almost always the weakest part of the argument. Find it, and you can either strengthen the argument (by confirming the assumption) or weaken it (by undermining the assumption).</p>
+
+    <h3><span class="h-num">6.2</span>The four question types</h3>
+
+    <table class="di-table">
+      <thead><tr><th>Question type</th><th>What it asks</th><th>Strategy</th></tr></thead>
+      <tbody>
+        <tr><td>Weaken</td><td>Which option makes the argument weaker?</td><td>Undermine the assumption</td></tr>
+        <tr><td>Strengthen</td><td>Which option makes the argument stronger?</td><td>Confirm the assumption</td></tr>
+        <tr><td>Assumption</td><td>What does the argument assume?</td><td>Find the bridge between evidence and conclusion</td></tr>
+        <tr><td>Inference</td><td>What follows from the argument?</td><td>What must be true if the argument is true?</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="h-num">6.3</span>Worked weaken example</h3>
+
+    <div class="note"><p style="margin:0"><strong>Argument:</strong> "Students who attend coaching classes for the CAT examination achieve, on average, higher percentiles than those who do not. The coaching classes must therefore be the cause of this performance difference."</p></div>
+
+    <p><strong>Evidence:</strong> Coaching-class students have higher CAT percentiles.</p>
+    <p><strong>Conclusion:</strong> Coaching classes <em>cause</em> the performance difference.</p>
+    <p><strong>Assumption:</strong> The two groups (coached and uncoached) are otherwise comparable — same baseline ability, same study time, same motivation.</p>
+
+    <p><strong>Question:</strong> Which option most weakens the argument?</p>
+    <ul>
+      <li>(A) Students who self-study without coaching typically spend fewer hours preparing.</li>
+      <li>(B) Coaching classes have become more expensive over the past decade.</li>
+      <li>(C) Students who can afford coaching classes generally come from educational backgrounds that already place them above average academically.</li>
+      <li>(D) The CAT examination is conducted twice a year in some years.</li>
+    </ul>
+
+    <p><strong>Analysis:</strong> The assumption is that the two groups are comparable. (C) directly attacks this — if coached students start with an academic advantage, the percentile difference may reflect that advantage rather than the coaching itself. This is a classic "alternate cause" weaken.</p>
+
+    <p>(A) actually strengthens or supports the argument (fewer hours → lower performance). (B) is irrelevant. (D) is irrelevant.</p>
+
+    <p><strong>Answer:</strong> (C).</p>
+
+    <div class="callout"><strong>The alternate-cause habit.</strong> Most CAT critical-reasoning weakeners take the form "X may not have caused Y; some third factor Z may have caused both X and Y". Train yourself to ask, for any cited correlation, "what else could explain this?"</div>
+
+    <div class="section-end"><span>End of Module 06</span><span>→ next: Tips &amp; Traps</span></div>
+  </section>
+
+  <!-- ====== MODULE 7 · TIPS & TRAPS ====== -->
+  <section class="section" id="m7">
+    <header class="section-header">
+      <div class="module-meta">Module 07 · Tips &amp; Traps</div>
+      <h1 class="section-title">Ten <em>habits</em><br>that move the needle.</h1>
+      <p class="section-deck">Most VA marks are lost not to ignorance but to haste. The fixes below are not new techniques; they are corrections to small habits that compound across eight questions.</p>
+    </header>
+
+    <p class="lede">Verbal Ability rewards a slightly slower reader. Each of the four sub-types asks you to do one specific thing well — find the opener, compress the argument, hear the odd note, predict the destination — and each one breaks down in a slightly different way. The tips below are organised loosely by sub-type, with a final cluster on test-day discipline.</p>
+
+    <div class="tips-grid">
+
+      <div class="tip-card">
+        <div class="t-num">TIP 01 · Para-jumble</div>
+        <h6>Read the opener candidates aloud in your head.</h6>
+        <p>An opener should feel like a paragraph beginning — neutral, topic-introducing, with no backward gestures. If a sentence sounds like an answer rather than a question, it is almost certainly not the opener.</p>
+      </div>
+
+      <div class="tip-card">
+        <div class="t-num">TIP 02 · Para-jumble</div>
+        <h6>The "this/that" trap.</h6>
+        <p>A sentence beginning with "this", "that", "such", or "these" must follow a sentence that contains the noun being referred to. The reference is always backward, never forward. Use this to lock at least one pair.</p>
+      </div>
+
+      <div class="tip-card">
+        <div class="t-num">TIP 03 · Para-jumble</div>
+        <h6>Trust the "however"-pair, distrust the rest.</h6>
+        <p>"However", "but", "yet", "nevertheless" reliably attach a sentence to the one immediately before it, since they contradict that previous claim. "Moreover" and "furthermore" are weaker bonds — they can sometimes sit two sentences after their referent.</p>
+      </div>
+
+      <div class="tip-card">
+        <div class="t-num">TIP 04 · Para-summary</div>
+        <h6>Write your own one-line summary before reading options.</h6>
+        <p>This is the single highest-yield habit in VA. Cover the options with your hand. Read the paragraph. State its argument in one sentence in your head. <em>Then</em> match that sentence to the closest option. It removes most temptation.</p>
+      </div>
+
+      <div class="tip-card">
+        <div class="t-num">TIP 05 · Para-summary</div>
+        <h6>Reject scope drift, not detail loss.</h6>
+        <p>A good summary <em>must</em> lose detail. What it cannot do is change the scope — narrow what the paragraph claimed universally, broaden what was qualified, or shift from "is" to "should". Detail loss is fine; scope drift is wrong.</p>
+      </div>
+
+      <div class="tip-card">
+        <div class="t-num">TIP 06 · Odd Sentence Out</div>
+        <h6>Find the theme before you hunt the odd one.</h6>
+        <p>The four legitimate sentences share something — a topic, a thesis, a single example being elaborated. Name that shared thing in one phrase. The odd sentence is the one your phrase does not cover, even if its content seems related.</p>
+      </div>
+
+      <div class="tip-card">
+        <div class="t-num">TIP 07 · Odd Sentence Out</div>
+        <h6>Beware the plausible cousin.</h6>
+        <p>CAT's favourite OSO trap is a sentence that is true, well-written, on the same broad topic, but at a different level of abstraction or arguing the opposite stance. "Related" is not "belongs". Test each sentence against the specific argument, not the general topic.</p>
+      </div>
+
+      <div class="tip-card">
+        <div class="t-num">TIP 08 · Sentence Completion</div>
+        <h6>Predict the ending before you peek.</h6>
+        <p>Read the stem with the final sentence missing and finish it in your own words. Then pick the option that matches your prediction. Options that go in a direction you did not predict are almost always wrong — even when they are factually plausible.</p>
+      </div>
+
+      <div class="tip-card">
+        <div class="t-num">TIP 09 · Test-day</div>
+        <h6>Skip and return, ruthlessly.</h6>
+        <p>VA questions have no negative marking only when they are TITA — and most are. But the time cost is real. If a para-jumble has resisted you for 90 seconds, mark it, move on, return at the end. The next question is almost always cheaper.</p>
+      </div>
+
+      <div class="tip-card">
+        <div class="t-num">TIP 10 · Test-day</div>
+        <h6>For TITA, attempt only when you have eliminated to one.</h6>
+        <p>A wrong TITA answer is zero, the same as no attempt. So a 50-50 guess is exactly worth zero in expectation. Only commit to an answer when you have eliminated to a unique sequence or option — otherwise leave it blank.</p>
+      </div>
+
+    </div>
+
+    <h3><span class="h-num">7.1</span>The five most common VA traps</h3>
+
+    <div class="formula">
+      <span class="label">Trap atlas</span>
+      <strong>The reverser:</strong> a summary option that flips the paragraph's stance ("the author argues against X" when the paragraph argues <em>for</em> X).<br>
+      <strong>The narrower:</strong> an option that captures only one example from the paragraph, missing the general claim.<br>
+      <strong>The broadener:</strong> an option that promotes a qualified claim into a universal one — drop the "often" or "sometimes" and the option is wrong.<br>
+      <strong>The intruder:</strong> in OSO, a sentence on the same topic but with an unrelated thesis.<br>
+      <strong>The deflector:</strong> a sentence-completion option that resolves a different question from the one the paragraph was actually setting up.
+    </div>
+
+    <h3><span class="h-num">7.2</span>What to do when you are stuck</h3>
+
+    <p>If a para-jumble has resisted you, do this: identify the <em>last</em> sentence first. The closer is often the easiest to spot — it summarises, concludes, or projects forward. Once you have the closer, work backward; the second-to-last sentence usually sets up the closer's claim.</p>
+
+    <p>If a para-summary feels like a coin flip between two options, ask: which option's wording could the <em>author</em> have written, given the tone of the paragraph? The one whose register matches is almost always correct.</p>
+
+    <p>If an OSO has you stuck, name what the four legitimate sentences are <em>doing</em>. Are they all describing causes of something? All listing instances? All arguing for a thesis? The impostor is doing something subtly different — describing an effect when others describe causes, or generalising when others stay specific.</p>
+
+    <div class="callout"><strong>The discipline.</strong> Verbal Ability is won not by knowing more but by being patient with eight short paragraphs. Most candidates lose marks here by reading too fast and committing too soon. Slow your eye, name the argument, then choose.</div>
+
+    <div class="section-end"><span>End of Module 07</span><span>→ next: Problem Bank</span></div>
+  </section>
+
+  <!-- ====== MODULE 8 · PROBLEM BANK ====== -->
+  <section class="section" id="m8">
+    <header class="section-header">
+      <div class="module-meta">Module 08 · Problem Bank</div>
+      <h1 class="section-title">Twenty-five <em>VA puzzles</em><br>across all four formats.</h1>
+      <p class="section-deck">Ten para-jumbles, eight para-summaries, four odd-sentence-out, three sentence-completions. Each carries a full reasoning trace — opener, mandatory pairs, closer, or option-by-option elimination as the format demands.</p>
+    </header>
+
+    <p class="lede">Work each problem before opening the solution. Restate the paragraph's argument in your own words first; only then commit. For TITA items, the discipline is unforgiving — a wrong answer is the same as a blank, so do not commit until you can defend the sequence sentence by sentence.</p>
+
+    <h3><span class="h-num">8.1</span>Para-jumbles · ten of them</h3>
+
+    <!-- PJ 1 -->
+    <div class="q-card">
+      <div class="q-head">
+        <div class="q-id"><span>Problem 1</span><span class="yr">PJ · Easy</span></div>
+        <div class="q-tag">Para-jumble · 4 sentences</div>
+      </div>
+      <div class="q-body">
+        <p class="q-text">Arrange the following sentences in the most logical order:</p>
+        <div class="jumble">
+          <div class="frag"><div class="lbl">1</div><div class="text">However, recent neuroimaging studies suggest that this division is far less clean than the textbooks imply.</div></div>
+          <div class="frag"><div class="lbl">2</div><div class="text">For most of the twentieth century, neuroscientists drew a firm line between the brain's "emotional" and "rational" circuits.</div></div>
+          <div class="frag"><div class="lbl">3</div><div class="text">The two systems, it turns out, are densely interlinked, and what we call a "rational" judgement almost always carries an affective tag.</div></div>
+          <div class="frag"><div class="lbl">4</div><div class="text">The amygdala was assigned the first job, the prefrontal cortex the second.</div></div>
+        </div>
+        <p class="q-text"><strong>Type your answer:</strong> _ _ _ _</p>
+      </div>
+      <button class="toggle-sol">Show solution <span></span></button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Step 1 — opener</span>Sentence 2 introduces the topic ("for most of the twentieth century, neuroscientists…") with no back-reference. 1 starts with "However" — disqualified. 3 starts with "The two systems" — refers to two systems already introduced. 4 mentions "the amygdala was assigned the first job" — "first job" implies a prior reference. <strong>Opener = 2.</strong></div>
+        <div class="step"><span class="step-num">Step 2 — mandatory pair</span>4 mentions "the first job" and "the second" — referring back to the two functions ("emotional" and "rational") just named in 2. <strong>2 → 4</strong> is locked.</div>
+        <div class="step"><span class="step-num">Step 3 — contrast</span>1 begins "However, recent neuroimaging studies suggest that this division is far less clean…" — contradicting the firm line drawn in 2 and 4. So 1 follows 4. <strong>4 → 1.</strong></div>
+        <div class="step"><span class="step-num">Step 4 — closer</span>3 explains the consequence of 1 ("the two systems are densely interlinked"). <strong>1 → 3.</strong></div>
+        <div class="ans-line"><strong>Answer</strong>2 4 1 3 · classic "old consensus → details → however → consequence" arc.</div>
+      </div>
+    </div>
+
+    <!-- PJ 2 -->
+    <div class="q-card">
+      <div class="q-head">
+        <div class="q-id"><span>Problem 2</span><span class="yr">PJ · Medium</span></div>
+        <div class="q-tag">Para-jumble · 4 sentences</div>
+      </div>
+      <div class="q-body">
+        <p class="q-text">Arrange the following sentences in the most logical order:</p>
+        <div class="jumble">
+          <div class="frag"><div class="lbl">1</div><div class="text">Such a view, however, sits uncomfortably with the actual evidence — most languages have died not through replacement but through abandonment.</div></div>
+          <div class="frag"><div class="lbl">2</div><div class="text">The standard story of language death is one of conquest: a politically dominant tongue rolls over its weaker neighbours and erases them.</div></div>
+          <div class="frag"><div class="lbl">3</div><div class="text">Speakers stop transmitting their inherited language to their children, usually because the surrounding economic ecosystem makes another language more rewarding.</div></div>
+          <div class="frag"><div class="lbl">4</div><div class="text">It is a slow withdrawal, not a sudden conquest, that depopulates a language.</div></div>
+        </div>
+        <p class="q-text"><strong>Type your answer:</strong> _ _ _ _</p>
+      </div>
+      <button class="toggle-sol">Show solution <span></span></button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Step 1 — opener</span>2 introduces "the standard story of language death" without back-reference. 1 ("Such a view, however") — disqualified, refers backward. 3 ("Speakers stop transmitting…") — middle elaboration. 4 ("It is a slow withdrawal…") — sounds like a closer summarising. <strong>Opener = 2.</strong></div>
+        <div class="step"><span class="step-num">Step 2 — contrast pair</span>1 says "Such a view, however, sits uncomfortably…" — directly responding to the "standard story" in 2. <strong>2 → 1.</strong></div>
+        <div class="step"><span class="step-num">Step 3 — explain mechanism</span>3 explains <em>how</em> abandonment happens (the mechanism behind 1's claim). <strong>1 → 3.</strong></div>
+        <div class="step"><span class="step-num">Step 4 — closer</span>4 generalises the mechanism into a closing line. <strong>3 → 4.</strong></div>
+        <div class="ans-line"><strong>Answer</strong>2 1 3 4 · standard story → counter-claim → mechanism → punchline closer.</div>
+      </div>
+    </div>
+
+    <!-- PJ 3 -->
+    <div class="q-card">
+      <div class="q-head">
+        <div class="q-id"><span>Problem 3</span><span class="yr">PJ · Medium</span></div>
+        <div class="q-tag">Para-jumble · 5 sentences</div>
+      </div>
+      <div class="q-body">
+        <p class="q-text">Arrange the following sentences in the most logical order:</p>
+        <div class="jumble">
+          <div class="frag"><div class="lbl">1</div><div class="text">In practice, however, the boundary between the two has dissolved almost entirely.</div></div>
+          <div class="frag"><div class="lbl">2</div><div class="text">Documentary photography was, for most of the twentieth century, distinguished from art photography by a single test: was the image taken to record, or was it taken to express?</div></div>
+          <div class="frag"><div class="lbl">3</div><div class="text">Curators routinely hang documentary work in galleries, and photographers who think of themselves as artists frequently embed themselves in newsrooms.</div></div>
+          <div class="frag"><div class="lbl">4</div><div class="text">A recording, by this older logic, belonged in an archive; an expression belonged in a frame.</div></div>
+          <div class="frag"><div class="lbl">5</div><div class="text">The result is that the older taxonomy survives mostly as a habit of speech rather than a description of practice.</div></div>
+        </div>
+        <p class="q-text"><strong>Type your answer:</strong> _ _ _ _ _</p>
+      </div>
+      <button class="toggle-sol">Show solution <span></span></button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Step 1 — opener</span>2 introduces the topic and "the single test" — clean opener. 1 ("In practice, however…") — disqualified. 3 ("Curators routinely…") — example, must follow a claim. 4 ("by this older logic") — refers to a logic just stated. 5 ("The result is…") — summative closer. <strong>Opener = 2.</strong></div>
+        <div class="step"><span class="step-num">Step 2 — extend</span>4 elaborates the "single test" from 2 (record vs express → archive vs frame). <strong>2 → 4.</strong></div>
+        <div class="step"><span class="step-num">Step 3 — contrast</span>1 contradicts the clean boundary just drawn: "however, the boundary has dissolved". <strong>4 → 1.</strong></div>
+        <div class="step"><span class="step-num">Step 4 — evidence</span>3 supplies evidence for 1 (curators, photographers crossing over). <strong>1 → 3.</strong></div>
+        <div class="step"><span class="step-num">Step 5 — closer</span>5 ("The result is…") generalises the consequence. <strong>3 → 5.</strong></div>
+        <div class="ans-line"><strong>Answer</strong>2 4 1 3 5</div>
+      </div>
+    </div>
+
+    <!-- PJ 4 -->
+    <div class="q-card">
+      <div class="q-head">
+        <div class="q-id"><span>Problem 4</span><span class="yr">PJ · Hard</span></div>
+        <div class="q-tag">Para-jumble · 4 sentences</div>
+      </div>
+      <div class="q-body">
+        <p class="q-text">Arrange the following sentences in the most logical order:</p>
+        <div class="jumble">
+          <div class="frag"><div class="lbl">1</div><div class="text">The puzzle is that this same dopamine system also fires for losses we have anticipated, suggesting that the brain treats accurate expectation, not outcome, as the actual reward.</div></div>
+          <div class="frag"><div class="lbl">2</div><div class="text">For decades, neuroscientists assumed that dopamine in the midbrain encoded the experience of pleasure itself.</div></div>
+          <div class="frag"><div class="lbl">3</div><div class="text">The newer reading is that dopamine encodes prediction error — the gap between what we expected and what actually happened.</div></div>
+          <div class="frag"><div class="lbl">4</div><div class="text">More recent work has revised this picture in a counter-intuitive direction.</div></div>
+        </div>
+        <p class="q-text"><strong>Type your answer:</strong> _ _ _ _</p>
+      </div>
+      <button class="toggle-sol">Show solution <span></span></button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Step 1 — opener</span>2 introduces the old view ("for decades…assumed") with no back-reference. 1 ("The puzzle is that this same dopamine…") — refers to a dopamine claim. 3 ("The newer reading is…") — refers to a previous reading. 4 ("More recent work has revised this picture") — refers to a picture. <strong>Opener = 2.</strong></div>
+        <div class="step"><span class="step-num">Step 2 — transition</span>4 says "more recent work has revised this picture" — "this picture" = the assumption in 2. <strong>2 → 4.</strong></div>
+        <div class="step"><span class="step-num">Step 3 — the new claim</span>3 ("The newer reading is…") follows 4's announcement that there is newer work. <strong>4 → 3.</strong></div>
+        <div class="step"><span class="step-num">Step 4 — puzzle/consequence</span>1 introduces the further wrinkle ("the puzzle is that…"). <strong>3 → 1.</strong></div>
+        <div class="ans-line"><strong>Answer</strong>2 4 3 1 · old view → "but more recent work" → new view → deeper puzzle.</div>
+      </div>
+    </div>
+
+    <!-- PJ 5 -->
+    <div class="q-card">
+      <div class="q-head">
+        <div class="q-id"><span>Problem 5</span><span class="yr">PJ · Hard</span></div>
+        <div class="q-tag">Para-jumble · 5 sentences</div>
+      </div>
+      <div class="q-body">
+        <p class="q-text">Arrange the following sentences in the most logical order:</p>
+        <div class="jumble">
+          <div class="frag"><div class="lbl">1</div><div class="text">What this means in practice is that the older question — "is the universe deterministic?" — has been replaced by a more useful one: "deterministic at what scale, and for what observer?"</div></div>
+          <div class="frag"><div class="lbl">2</div><div class="text">Classical physics was, for three centuries, the paradigm of a deterministic science: identical initial conditions produced identical outcomes.</div></div>
+          <div class="frag"><div class="lbl">3</div><div class="text">Quantum mechanics shattered this conviction by demonstrating that, at the sub-atomic scale, even identical conditions yield probability distributions, not single outcomes.</div></div>
+          <div class="frag"><div class="lbl">4</div><div class="text">Yet at the human scale, the world remains stubbornly deterministic in appearance, because the probabilistic effects average out.</div></div>
+          <div class="frag"><div class="lbl">5</div><div class="text">Determinism, it turned out, was an emergent feature of large systems, not a fundamental property of the universe.</div></div>
+        </div>
+        <p class="q-text"><strong>Type your answer:</strong> _ _ _ _ _</p>
+      </div>
+      <button class="toggle-sol">Show solution <span></span></button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Step 1 — opener</span>2 introduces classical physics with no back-reference. 1 ("What this means in practice…") — refers backward. 3 ("Quantum mechanics shattered this conviction") — "this conviction" refers to something previously claimed. 4 ("Yet at the human scale…") — contrasts with something. 5 ("Determinism, it turned out…") — refers to a result. <strong>Opener = 2.</strong></div>
+        <div class="step"><span class="step-num">Step 2 — disruption</span>3 shatters the conviction in 2. <strong>2 → 3.</strong></div>
+        <div class="step"><span class="step-num">Step 3 — yet</span>4 ("Yet at the human scale…") contrasts the quantum-scale claim of 3 with macroscopic appearance. <strong>3 → 4.</strong></div>
+        <div class="step"><span class="step-num">Step 4 — synthesis</span>5 synthesises ("Determinism…was an emergent feature") — the resolution of the apparent contradiction between 3 and 4. <strong>4 → 5.</strong></div>
+        <div class="step"><span class="step-num">Step 5 — closer</span>1 ("What this means in practice…") generalises the consequence. <strong>5 → 1.</strong></div>
+        <div class="ans-line"><strong>Answer</strong>2 3 4 5 1</div>
+      </div>
+    </div>
+
+    <!-- PJ 6 -->
+    <div class="q-card">
+      <div class="q-head">
+        <div class="q-id"><span>Problem 6</span><span class="yr">PJ · Easy</span></div>
+        <div class="q-tag">Para-jumble · 4 sentences</div>
+      </div>
+      <div class="q-body">
+        <p class="q-text">Arrange the following sentences in the most logical order:</p>
+        <div class="jumble">
+          <div class="frag"><div class="lbl">1</div><div class="text">By the 1970s, however, that promise had collapsed: most of the engineered varieties required precisely the inputs — fertiliser, irrigation, pesticide — that small farmers could not afford.</div></div>
+          <div class="frag"><div class="lbl">2</div><div class="text">The Green Revolution arrived in India with the promise of feeding the country out of dependence on imported grain.</div></div>
+          <div class="frag"><div class="lbl">3</div><div class="text">High-yielding wheat and rice varieties, the planners argued, would close the calorie gap within a decade.</div></div>
+          <div class="frag"><div class="lbl">4</div><div class="text">The result was a paradox: aggregate production rose sharply, but the gains were concentrated among those who already owned land and capital.</div></div>
+        </div>
+        <p class="q-text"><strong>Type your answer:</strong> _ _ _ _</p>
+      </div>
+      <button class="toggle-sol">Show solution <span></span></button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Step 1 — opener</span>2 introduces the Green Revolution. 1 ("by the 1970s, however, that promise had collapsed") — refers to a promise. 3 ("High-yielding wheat and rice varieties, the planners argued") — refers to planners. 4 ("The result was a paradox") — refers to a previous claim. <strong>Opener = 2.</strong></div>
+        <div class="step"><span class="step-num">Step 2 — elaboration</span>3 elaborates the promise in 2. <strong>2 → 3.</strong></div>
+        <div class="step"><span class="step-num">Step 3 — contrast</span>1 ("however, that promise had collapsed") contradicts the optimism in 2-3. <strong>3 → 1.</strong></div>
+        <div class="step"><span class="step-num">Step 4 — closer</span>4 ("The result was a paradox") describes the consequence. <strong>1 → 4.</strong></div>
+        <div class="ans-line"><strong>Answer</strong>2 3 1 4</div>
+      </div>
+    </div>
+
+    <!-- PJ 7 -->
+    <div class="q-card">
+      <div class="q-head">
+        <div class="q-id"><span>Problem 7</span><span class="yr">PJ · Medium</span></div>
+        <div class="q-tag">Para-jumble · 4 sentences</div>
+      </div>
+      <div class="q-body">
+        <p class="q-text">Arrange the following sentences in the most logical order:</p>
+        <div class="jumble">
+          <div class="frag"><div class="lbl">1</div><div class="text">This explains why translation theorists in the late twentieth century stopped asking "is this translation accurate?" and started asking "accurate to whose ear, in which decade?"</div></div>
+          <div class="frag"><div class="lbl">2</div><div class="text">A translation is not a copy of the original but a reading of it, performed in a different language for a different audience.</div></div>
+          <div class="frag"><div class="lbl">3</div><div class="text">What counts as a faithful reading shifts with each generation's literary taste and political concerns.</div></div>
+          <div class="frag"><div class="lbl">4</div><div class="text">Each new century of readers, in other words, requires its own translations of the texts the previous century thought were settled.</div></div>
+        </div>
+        <p class="q-text"><strong>Type your answer:</strong> _ _ _ _</p>
+      </div>
+      <button class="toggle-sol">Show solution <span></span></button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Step 1 — opener</span>2 ("A translation is not a copy…") makes a fresh general claim with no back-reference. 1 ("This explains why…") — refers to something. 3 ("What counts as a faithful reading shifts…") — could open, but is more naturally an elaboration of "reading". 4 ("Each new century of readers, in other words") — "in other words" disqualifies it as opener. <strong>Opener = 2.</strong></div>
+        <div class="step"><span class="step-num">Step 2 — elaborate "reading"</span>3 elaborates the "reading" in 2 — a faithful reading shifts across generations. <strong>2 → 3.</strong></div>
+        <div class="step"><span class="step-num">Step 3 — restatement</span>4 ("in other words…each new century requires new translations") restates 3. <strong>3 → 4.</strong></div>
+        <div class="step"><span class="step-num">Step 4 — consequence</span>1 ("This explains why translation theorists…") draws the consequence. <strong>4 → 1.</strong></div>
+        <div class="ans-line"><strong>Answer</strong>2 3 4 1</div>
+      </div>
+    </div>
+
+    <!-- PJ 8 -->
+    <div class="q-card">
+      <div class="q-head">
+        <div class="q-id"><span>Problem 8</span><span class="yr">PJ · Hard</span></div>
+        <div class="q-tag">Para-jumble · 5 sentences</div>
+      </div>
+      <div class="q-body">
+        <p class="q-text">Arrange the following sentences in the most logical order:</p>
+        <div class="jumble">
+          <div class="frag"><div class="lbl">1</div><div class="text">Cities, by this logic, are not just larger villages but qualitatively different organisms — generating more patents, more wages, and more contagion per capita as they scale.</div></div>
+          <div class="frag"><div class="lbl">2</div><div class="text">Urban economists have long noticed a curious regularity: when a city doubles in population, its economic output rises by roughly 115 per cent, not 100.</div></div>
+          <div class="frag"><div class="lbl">3</div><div class="text">The extra fifteen per cent is what makes the city worth living in despite its costs — and what makes its problems disproportionately concentrated.</div></div>
+          <div class="frag"><div class="lbl">4</div><div class="text">This super-linear scaling appears across cultures and centuries, from medieval European towns to modern Asian megacities.</div></div>
+          <div class="frag"><div class="lbl">5</div><div class="text">It seems to be a property of human density itself, not of any particular institution or policy.</div></div>
+        </div>
+        <p class="q-text"><strong>Type your answer:</strong> _ _ _ _ _</p>
+      </div>
+      <button class="toggle-sol">Show solution <span></span></button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Step 1 — opener</span>2 introduces the phenomenon. 1 ("Cities, by this logic…") — refers backward. 3 ("The extra fifteen per cent") — refers to the 15% in 2. 4 ("This super-linear scaling") — refers to scaling. 5 ("It seems to be a property…") — refers back. <strong>Opener = 2.</strong></div>
+        <div class="step"><span class="step-num">Step 2 — naming the pattern</span>4 names the phenomenon ("This super-linear scaling appears across cultures…") — must follow 2. <strong>2 → 4.</strong></div>
+        <div class="step"><span class="step-num">Step 3 — generalise</span>5 ("It seems to be a property of human density itself") deepens the cross-cultural claim in 4. <strong>4 → 5.</strong></div>
+        <div class="step"><span class="step-num">Step 4 — interpretation</span>1 ("Cities, by this logic, are not just larger villages…") interprets the pattern. <strong>5 → 1.</strong></div>
+        <div class="step"><span class="step-num">Step 5 — closer</span>3 ("The extra fifteen per cent…") gives the punchline. <strong>1 → 3.</strong></div>
+        <div class="ans-line"><strong>Answer</strong>2 4 5 1 3</div>
+      </div>
+    </div>
+
+    <!-- PJ 9 -->
+    <div class="q-card">
+      <div class="q-head">
+        <div class="q-id"><span>Problem 9</span><span class="yr">PJ · Medium</span></div>
+        <div class="q-tag">Para-jumble · 4 sentences</div>
+      </div>
+      <div class="q-body">
+        <p class="q-text">Arrange the following sentences in the most logical order:</p>
+        <div class="jumble">
+          <div class="frag"><div class="lbl">1</div><div class="text">What distinguishes the modern museum from the cabinet of curiosities, then, is not the impulse to collect but the protocol of interpretation.</div></div>
+          <div class="frag"><div class="lbl">2</div><div class="text">Renaissance princes and natural philosophers gathered fossils, coins, and tribal artefacts into private cabinets meant to evoke wonder.</div></div>
+          <div class="frag"><div class="lbl">3</div><div class="text">The Enlightenment transformed these private wonder-rooms into public institutions with labels, catalogues, and disciplines.</div></div>
+          <div class="frag"><div class="lbl">4</div><div class="text">Each object was now expected to occupy a place in a classification, not just a place on a shelf.</div></div>
+        </div>
+        <p class="q-text"><strong>Type your answer:</strong> _ _ _ _</p>
+      </div>
+      <button class="toggle-sol">Show solution <span></span></button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Step 1 — opener</span>2 introduces the cabinet of curiosities. 1 ("What distinguishes the modern museum…then…") — refers to a contrast already drawn. 3 ("The Enlightenment transformed these private wonder-rooms") — "these" refers back. 4 ("Each object was now expected…") — refers to a "now". <strong>Opener = 2.</strong></div>
+        <div class="step"><span class="step-num">Step 2 — transformation</span>3 transforms the cabinets in 2 into public institutions. <strong>2 → 3.</strong></div>
+        <div class="step"><span class="step-num">Step 3 — elaborate</span>4 elaborates the transformation in 3 (objects now expected to be classified). <strong>3 → 4.</strong></div>
+        <div class="step"><span class="step-num">Step 4 — closer</span>1 ("What distinguishes…then…") draws the conceptual conclusion. <strong>4 → 1.</strong></div>
+        <div class="ans-line"><strong>Answer</strong>2 3 4 1</div>
+      </div>
+    </div>
+
+    <!-- PJ 10 -->
+    <div class="q-card">
+      <div class="q-head">
+        <div class="q-id"><span>Problem 10</span><span class="yr">PJ · Hard</span></div>
+        <div class="q-tag">Para-jumble · 5 sentences</div>
+      </div>
+      <div class="q-body">
+        <p class="q-text">Arrange the following sentences in the most logical order:</p>
+        <div class="jumble">
+          <div class="frag"><div class="lbl">1</div><div class="text">A reader confronted with a poem in a foreign metre, in this analogy, must learn to dance in shoes she did not buy.</div></div>
+          <div class="frag"><div class="lbl">2</div><div class="text">Literary form, the formalists argued, is not a container for content but a constraint that shapes what the content can mean.</div></div>
+          <div class="frag"><div class="lbl">3</div><div class="text">A sonnet says different things from a haiku, not because the poet wished it so but because the form admits and excludes different possibilities of utterance.</div></div>
+          <div class="frag"><div class="lbl">4</div><div class="text">This is why translating between forms is so much harder than translating between languages — one is shifting words, the other is shifting the geometry of permitted speech.</div></div>
+          <div class="frag"><div class="lbl">5</div><div class="text">The form, in this picture, is closer to a dance step than to a vessel: it determines what gestures are even available.</div></div>
+        </div>
+        <p class="q-text"><strong>Type your answer:</strong> _ _ _ _ _</p>
+      </div>
+      <button class="toggle-sol">Show solution <span></span></button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Step 1 — opener</span>2 introduces the formalist claim. 1 ("A reader confronted…in this analogy") — refers to an analogy. 3 ("A sonnet says different things from a haiku") — could be opener but feels like example. 4 ("This is why translating between forms…") — refers backward. 5 ("The form, in this picture…closer to a dance step than to a vessel") — refers to the container/vessel image. <strong>Opener = 2</strong> (3 also examines forms, but as illustration of the claim in 2).</div>
+        <div class="step"><span class="step-num">Step 2 — illustrate</span>3 illustrates 2's claim with the sonnet/haiku contrast. <strong>2 → 3.</strong></div>
+        <div class="step"><span class="step-num">Step 3 — analogy introduced</span>5 introduces the dance-step analogy as a re-framing of the "container" idea from 2. <strong>3 → 5.</strong></div>
+        <div class="step"><span class="step-num">Step 4 — extend analogy</span>1 ("in this analogy") extends 5's dance-step image. <strong>5 → 1.</strong></div>
+        <div class="step"><span class="step-num">Step 5 — closer</span>4 draws the consequence ("This is why translating between forms is so much harder"). <strong>1 → 4.</strong></div>
+        <div class="ans-line"><strong>Answer</strong>2 3 5 1 4</div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.2</span>Para-summaries · eight of them</h3>
+
+    <!-- PS 1 -->
+    <div class="q-card">
+      <div class="q-head">
+        <div class="q-id"><span>Problem 11</span><span class="yr">PS · Easy</span></div>
+        <div class="q-tag">Para-summary · MCQ</div>
+      </div>
+      <div class="q-body">
+        <p class="q-text">Read the paragraph and pick the option that best summarises it.</p>
+        <div class="summary-passage" style="background:var(--paper-2);border:1px solid var(--rule);padding:16px 20px;margin:14px 0;font-family:'Fraunces',serif;font-size:15.5px;font-style:italic;line-height:1.6;color:var(--ink-soft)">
+          The popularity of microfinance in the 1990s rested on an attractive idea: small loans, properly channelled, could transform the lives of the rural poor by enabling them to become entrepreneurs. Two decades of empirical work, however, has tempered that optimism. While microfinance does reduce the household's most acute cash-flow shocks, the average borrower does not become an entrepreneur; she simply smooths her existing consumption. The reform value of microfinance, in short, is real but modest — it is a useful liquidity tool, not the engine of social transformation it was once advertised to be.
+        </div>
+        <ul class="q-options">
+          <li data-opt="A">Microfinance has been a failed experiment because borrowers rarely become entrepreneurs.</li>
+          <li data-opt="B">Microfinance helps smooth consumption among the rural poor but does not deliver the entrepreneurial transformation it was originally promoted as enabling.</li>
+          <li data-opt="C">Empirical work has shown that microfinance loans are too small to fund any meaningful business activity.</li>
+          <li data-opt="D">The future of poverty reduction lies in alternatives to microfinance such as cash transfers.</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution <span></span></button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Step 1 — name the argument</span>The paragraph claims: microfinance helps with cash-flow smoothing but does <em>not</em> turn borrowers into entrepreneurs; it is useful but modest. The qualifier "real but modest" is the load-bearing phrase.</div>
+        <div class="step"><span class="step-num">Step 2 — eliminate</span>(A) overstates as "failed" — paragraph says "real but modest". <strong>Reverser.</strong> (C) introduces a claim not in the paragraph (loan size). <strong>Outside.</strong> (D) introduces alternatives the paragraph never discusses. <strong>Outside.</strong></div>
+        <div class="step"><span class="step-num">Step 3 — confirm</span>(B) preserves both halves: helps with consumption smoothing, fails on transformation. <strong>Faithful summary.</strong></div>
+        <div class="ans-line"><strong>Answer</strong>(B) · the only option that preserves the "real but modest" qualifier.</div>
+      </div>
+    </div>
+
+    <!-- PS 2 -->
+    <div class="q-card">
+      <div class="q-head">
+        <div class="q-id"><span>Problem 12</span><span class="yr">PS · Medium</span></div>
+        <div class="q-tag">Para-summary · MCQ</div>
+      </div>
+      <div class="q-body">
+        <p class="q-text">Read the paragraph and pick the option that best summarises it.</p>
+        <div class="summary-passage" style="background:var(--paper-2);border:1px solid var(--rule);padding:16px 20px;margin:14px 0;font-family:'Fraunces',serif;font-size:15.5px;font-style:italic;line-height:1.6;color:var(--ink-soft)">
+          For most of the twentieth century, theories of language acquisition split into two camps. The behaviourists held that children learned to speak through imitation and reinforcement; the nativists, following Chomsky, held that a universal grammar was wired into the human brain from birth. Recent work in developmental psycholinguistics has begun to look like neither — children appear to derive grammatical structure statistically from the speech around them, but the statistical machinery itself seems to be a human-specific cognitive endowment. The truth, in other words, is genuinely both and genuinely neither.
+        </div>
+        <ul class="q-options">
+          <li data-opt="A">Recent psycholinguistic work has refuted Chomsky's nativist theory of language acquisition.</li>
+          <li data-opt="B">Children acquire language through statistical learning, not imitation or innate grammar.</li>
+          <li data-opt="C">Recent evidence on language acquisition does not fit cleanly into either the behaviourist or nativist tradition, suggesting that children combine human-specific cognitive machinery with statistical learning from input.</li>
+          <li data-opt="D">The debate between behaviourists and nativists has been resolved in favour of a hybrid theory.</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution <span></span></button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Step 1 — name the argument</span>The paragraph says: recent work fits <em>neither</em> the behaviourist nor the nativist camp. Children use statistical learning on input, but the statistical machinery is itself a species-specific cognitive endowment. "Both and neither" is the key phrase.</div>
+        <div class="step"><span class="step-num">Step 2 — eliminate</span>(A) overstates: paragraph does not refute Chomsky, it complicates the picture. <strong>Narrower/distorter.</strong> (B) drops the nativist half (the human-specific cognitive endowment). <strong>Narrower.</strong> (D) says "resolved" — paragraph says the truth is "both and neither", not a resolution. <strong>Distorter.</strong></div>
+        <div class="step"><span class="step-num">Step 3 — confirm</span>(C) preserves both halves and the "neither cleanly fits" register. <strong>Faithful.</strong></div>
+        <div class="ans-line"><strong>Answer</strong>(C)</div>
+      </div>
+    </div>
+
+    <!-- PS 3 -->
+    <div class="q-card">
+      <div class="q-head">
+        <div class="q-id"><span>Problem 13</span><span class="yr">PS · Medium</span></div>
+        <div class="q-tag">Para-summary · MCQ</div>
+      </div>
+      <div class="q-body">
+        <p class="q-text">Read the paragraph and pick the option that best summarises it.</p>
+        <div class="summary-passage" style="background:var(--paper-2);border:1px solid var(--rule);padding:16px 20px;margin:14px 0;font-family:'Fraunces',serif;font-size:15.5px;font-style:italic;line-height:1.6;color:var(--ink-soft)">
+          A democracy is often defended on the grounds that it produces better decisions than its alternatives, because the wisdom of many is statistically more reliable than the wisdom of a few. This is the "epistemic" defence. But democracy can be defended on a quite different ground: that even when the decisions it produces are mediocre, the practice of being asked to vote is itself a recognition of the citizen's standing as an equal. This second defence does not stand or fall with the quality of the outcomes; it values the procedure for what it says about the people inside it.
+        </div>
+        <ul class="q-options">
+          <li data-opt="A">Democracy produces better decisions than authoritarian systems because of the wisdom-of-crowds effect.</li>
+          <li data-opt="B">There are two different defences of democracy: an epistemic one based on decision quality, and a procedural one that values voting as an expression of citizen equality regardless of outcome.</li>
+          <li data-opt="C">The procedural defence of democracy is superior to the epistemic defence because it does not depend on outcomes.</li>
+          <li data-opt="D">Even mediocre democracies are worth defending because they treat citizens as equals.</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution <span></span></button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Step 1 — argument</span>The paragraph contrasts two defences of democracy — epistemic (better decisions) and procedural (recognition of citizens as equals). It states both without ranking them.</div>
+        <div class="step"><span class="step-num">Step 2 — eliminate</span>(A) captures only the first defence. <strong>Narrower.</strong> (C) imports a ranking ("superior to") that the paragraph does not make. <strong>Adds claim.</strong> (D) is true but narrow — drops the epistemic half and the framing as "two defences". <strong>Narrower.</strong></div>
+        <div class="step"><span class="step-num">Step 3 — confirm</span>(B) preserves both defences and presents them as parallel. <strong>Faithful.</strong></div>
+        <div class="ans-line"><strong>Answer</strong>(B)</div>
+      </div>
+    </div>
+
+    <!-- PS 4 -->
+    <div class="q-card">
+      <div class="q-head">
+        <div class="q-id"><span>Problem 14</span><span class="yr">PS · Hard</span></div>
+        <div class="q-tag">Para-summary · MCQ</div>
+      </div>
+      <div class="q-body">
+        <p class="q-text">Read the paragraph and pick the option that best summarises it.</p>
+        <div class="summary-passage" style="background:var(--paper-2);border:1px solid var(--rule);padding:16px 20px;margin:14px 0;font-family:'Fraunces',serif;font-size:15.5px;font-style:italic;line-height:1.6;color:var(--ink-soft)">
+          When economists speak of the "informal sector" of an economy, they often mean it as a residual: the part that resists measurement, taxation, or regulation. But residual is a category created by the looker, not by the thing looked at. To the worker in that sector, the work is not informal; it is simply work. The conceptual asymmetry — formal sector as default, informal as exception — encodes a particular political vantage rather than a neutral description. In economies where the majority of work happens outside formal contracts, calling that work "informal" is to call most of the economy a footnote.
+        </div>
+        <ul class="q-options">
+          <li data-opt="A">The informal sector should be formalised because it is currently treated as a footnote in most economies.</li>
+          <li data-opt="B">Economists are wrong to use the term "informal sector" because the work in it is exactly the same as work in the formal sector.</li>
+          <li data-opt="C">The term "informal sector" reflects a particular vantage point in which formal employment is the default; in economies where most work is outside formal contracts, this framing misrepresents the actual majority.</li>
+          <li data-opt="D">Workers in the informal sector resent being called informal.</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution <span></span></button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Step 1 — argument</span>The paragraph is a critique of the <em>concept</em> "informal sector" — it argues that the label encodes a vantage point (formal as default, informal as exception), and that this vantage is misleading where most work is outside formal contracts.</div>
+        <div class="step"><span class="step-num">Step 2 — eliminate</span>(A) advocates a policy ("should be formalised") the paragraph never proposes. <strong>Adds claim.</strong> (B) overstates ("exactly the same") — paragraph says nothing about the work being identical, only that the labelling is the issue. <strong>Distorter.</strong> (D) is narrow gossip about workers' feelings; paragraph is about the conceptual framing. <strong>Narrower.</strong></div>
+        <div class="step"><span class="step-num">Step 3 — confirm</span>(C) captures both halves: the vantage-point argument and the consequence in majority-informal economies. <strong>Faithful.</strong></div>
+        <div class="ans-line"><strong>Answer</strong>(C)</div>
+      </div>
+    </div>
+
+    <!-- PS 5 -->
+    <div class="q-card">
+      <div class="q-head">
+        <div class="q-id"><span>Problem 15</span><span class="yr">PS · Medium</span></div>
+        <div class="q-tag">Para-summary · MCQ</div>
+      </div>
+      <div class="q-body">
+        <p class="q-text">Read the paragraph and pick the option that best summarises it.</p>
+        <div class="summary-passage" style="background:var(--paper-2);border:1px solid var(--rule);padding:16px 20px;margin:14px 0;font-family:'Fraunces',serif;font-size:15.5px;font-style:italic;line-height:1.6;color:var(--ink-soft)">
+          Histories of science once treated the laboratory as a neutral room where data spoke for itself. The newer history is more sceptical: it notices that what counts as a clean experiment, a reliable instrument, or even an "observation" depends on conventions built up over generations and shared by a particular community. A lone observer in a tent, however careful, cannot make discoveries; discoveries require an audience prepared to recognise them as such. This does not make science arbitrary, but it does make it social in a way the older histories denied.
+        </div>
+        <ul class="q-options">
+          <li data-opt="A">Modern science is arbitrary because what counts as a discovery is decided by a community.</li>
+          <li data-opt="B">Newer historians of science emphasise that what counts as evidence, instruments, and observations depends on community conventions — making science social without making it arbitrary.</li>
+          <li data-opt="C">A lone observer cannot do science because science requires laboratories and instruments.</li>
+          <li data-opt="D">Older histories of science have been completely overturned by newer, more sceptical approaches.</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution <span></span></button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Step 1 — argument</span>The paragraph contrasts the older (neutral-laboratory) view with the newer (community-dependent) view, and ends with a careful qualifier: science is <em>social, not arbitrary</em>.</div>
+        <div class="step"><span class="step-num">Step 2 — eliminate</span>(A) drops the qualifier — paragraph explicitly says "this does not make science arbitrary". <strong>Reverser.</strong> (C) is a literal narrow detail (the tent example). <strong>Narrower.</strong> (D) "completely overturned" — overstated. <strong>Broadener.</strong></div>
+        <div class="step"><span class="step-num">Step 3 — confirm</span>(B) preserves the "social but not arbitrary" qualifier. <strong>Faithful.</strong></div>
+        <div class="ans-line"><strong>Answer</strong>(B)</div>
+      </div>
+    </div>
+
+    <!-- PS 6 -->
+    <div class="q-card">
+      <div class="q-head">
+        <div class="q-id"><span>Problem 16</span><span class="yr">PS · Hard</span></div>
+        <div class="q-tag">Para-summary · MCQ</div>
+      </div>
+      <div class="q-body">
+        <p class="q-text">Read the paragraph and pick the option that best summarises it.</p>
+        <div class="summary-passage" style="background:var(--paper-2);border:1px solid var(--rule);padding:16px 20px;margin:14px 0;font-family:'Fraunces',serif;font-size:15.5px;font-style:italic;line-height:1.6;color:var(--ink-soft)">
+          The romantic image of the lone genius — the painter in the garret, the mathematician on the long walk — has been remarkably durable in popular accounts of creativity. Studies of how creative work actually happens, however, tell a different story. Original work emerges from dense networks of conversation, collaboration, criticism, and theft. The garret room is a stage prop; the productive geniuses, examined in detail, turn out to be intensely embedded in their communities, and to be at their most original precisely when they are most engaged.
+        </div>
+        <ul class="q-options">
+          <li data-opt="A">Creative geniuses cannot work alone and always require collaborators.</li>
+          <li data-opt="B">The popular image of the solitary genius is misleading; in practice, originality emerges from dense engagement with collaborators, critics, and influences.</li>
+          <li data-opt="C">Solitude is harmful to creativity and should be avoided by aspiring artists.</li>
+          <li data-opt="D">Historical accounts of creativity have systematically lied about how art is made.</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution <span></span></button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Step 1 — argument</span>The paragraph contrasts the popular myth of solitary genius with the empirical finding that creative work is intensely social. It does not say solitude is harmful, only that the image of pure isolation is inaccurate.</div>
+        <div class="step"><span class="step-num">Step 2 — eliminate</span>(A) overstates ("always") — paragraph says geniuses are embedded, not that solitude is impossible. <strong>Broadener.</strong> (C) prescribes a course of action ("should be avoided") the paragraph does not. <strong>Adds claim.</strong> (D) is hyperbolic ("systematically lied") — paragraph is about a romantic image, not deliberate deception. <strong>Distorter.</strong></div>
+        <div class="step"><span class="step-num">Step 3 — confirm</span>(B) preserves the contrast and the calibrated claim. <strong>Faithful.</strong></div>
+        <div class="ans-line"><strong>Answer</strong>(B)</div>
+      </div>
+    </div>
+
+    <!-- PS 7 -->
+    <div class="q-card">
+      <div class="q-head">
+        <div class="q-id"><span>Problem 17</span><span class="yr">PS · Hard</span></div>
+        <div class="q-tag">Para-summary · MCQ</div>
+      </div>
+      <div class="q-body">
+        <p class="q-text">Read the paragraph and pick the option that best summarises it.</p>
+        <div class="summary-passage" style="background:var(--paper-2);border:1px solid var(--rule);padding:16px 20px;margin:14px 0;font-family:'Fraunces',serif;font-size:15.5px;font-style:italic;line-height:1.6;color:var(--ink-soft)">
+          A working musician trained in the Hindustani classical tradition often resists the language of "improvisation" when it is applied to her performance. The word, she will say, implies a base text from which the performer departs — but the alaap she sings has no base text, only a raga, a grammar of permitted moves. Within that grammar, every performance is a fresh composition, structured by rules the listener can perceive but cannot predict. To call this improvisation is to import a frame from European music in which a written score is the default and departures from it are the exception.
+        </div>
+        <ul class="q-options">
+          <li data-opt="A">Hindustani classical performers should not be called improvisers because they follow strict rules.</li>
+          <li data-opt="B">The word "improvisation" misdescribes Hindustani classical performance because it presupposes a written score that does not exist in that tradition — every performance is a rule-bound fresh composition rather than a departure from a base text.</li>
+          <li data-opt="C">European music theory has unfairly influenced the description of all other musical traditions.</li>
+          <li data-opt="D">The alaap is the most important part of Hindustani classical performance.</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution <span></span></button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Step 1 — argument</span>The paragraph argues that "improvisation" is a misframe — it implies a base text from which one departs; Hindustani classical has no such text, only a grammar. Each performance is fresh, but rule-bound.</div>
+        <div class="step"><span class="step-num">Step 2 — eliminate</span>(A) gets the conclusion but drops the <em>reason</em> (the absence of a base text) — over-narrow on the actual argument. <strong>Narrower.</strong> (C) generalises beyond Hindustani classical — paragraph is about one tradition, not all. <strong>Broadener.</strong> (D) is irrelevant — alaap is mentioned but the paragraph is not about its centrality. <strong>Outside.</strong></div>
+        <div class="step"><span class="step-num">Step 3 — confirm</span>(B) preserves both the "no base text" reason and the "rule-bound fresh composition" qualifier. <strong>Faithful.</strong></div>
+        <div class="ans-line"><strong>Answer</strong>(B)</div>
+      </div>
+    </div>
+
+    <!-- PS 8 -->
+    <div class="q-card">
+      <div class="q-head">
+        <div class="q-id"><span>Problem 18</span><span class="yr">PS · Medium</span></div>
+        <div class="q-tag">Para-summary · MCQ</div>
+      </div>
+      <div class="q-body">
+        <p class="q-text">Read the paragraph and pick the option that best summarises it.</p>
+        <div class="summary-passage" style="background:var(--paper-2);border:1px solid var(--rule);padding:16px 20px;margin:14px 0;font-family:'Fraunces',serif;font-size:15.5px;font-style:italic;line-height:1.6;color:var(--ink-soft)">
+          The architecture of a city teaches its inhabitants what to expect from each other. A street lined with cafés that spill onto the pavement teaches that public space is shareable and slow; a street built around the speed of cars teaches that public space is a corridor to be passed through. These lessons are not delivered explicitly; they are absorbed across a lifetime, in the way a child absorbs the rhythm of a language. By the time a citizen is old enough to vote on urban policy, the city has already shaped what she considers normal.
+        </div>
+        <ul class="q-options">
+          <li data-opt="A">Children should be taught urban planning from an early age so they can vote responsibly later.</li>
+          <li data-opt="B">Cars have ruined the social fabric of cities by replacing pedestrian streets.</li>
+          <li data-opt="C">City architecture quietly conditions citizens' expectations of public space across a lifetime, so that by adulthood their sense of "normal" has already been shaped by the built environment.</li>
+          <li data-opt="D">Voters are biased by the architecture of the cities they grow up in.</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution <span></span></button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Step 1 — argument</span>Architecture acts as a silent educator — it shapes expectations about public space, absorbed over a lifetime, so that by voting age "normal" is already defined.</div>
+        <div class="step"><span class="step-num">Step 2 — eliminate</span>(A) is a recommendation the paragraph never makes. <strong>Adds claim.</strong> (B) is one narrow example used as illustration; the paragraph's claim is general. <strong>Narrower.</strong> (D) is reductive — "bias" is a strong word; the paragraph says "shaped what she considers normal", which is broader and not necessarily negative. <strong>Distorter.</strong></div>
+        <div class="step"><span class="step-num">Step 3 — confirm</span>(C) preserves both the architecture-as-educator framing and the "by adulthood normal is shaped" closer. <strong>Faithful.</strong></div>
+        <div class="ans-line"><strong>Answer</strong>(C)</div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.3</span>Odd Sentence Out · four of them</h3>
+
+    <!-- OSO 1 -->
+    <div class="q-card">
+      <div class="q-head">
+        <div class="q-id"><span>Problem 19</span><span class="yr">OSO · Medium</span></div>
+        <div class="q-tag">Odd-sentence-out · TITA</div>
+      </div>
+      <div class="q-body">
+        <p class="q-text">Four of the following five sentences, when arranged appropriately, form a coherent paragraph. One sentence does not belong. Identify the odd one.</p>
+        <div class="jumble">
+          <div class="frag"><div class="lbl">1</div><div class="text">The earliest maps of disease, drawn by physicians in nineteenth-century Europe, marked outbreaks of cholera with dots in city neighbourhoods.</div></div>
+          <div class="frag"><div class="lbl">2</div><div class="text">John Snow's celebrated map of the 1854 Broad Street outbreak located the source at a single contaminated water pump.</div></div>
+          <div class="frag"><div class="lbl">3</div><div class="text">Mapping outbreaks geographically allowed investigators to identify causes that statistical tables alone had hidden.</div></div>
+          <div class="frag"><div class="lbl">4</div><div class="text">Modern global health agencies use satellite imagery to track diseases like malaria across entire continents.</div></div>
+          <div class="frag"><div class="lbl">5</div><div class="text">The visual technique of mapping cases on a city plan gave physicians a tool that pure case-counts could not.</div></div>
+        </div>
+      </div>
+      <button class="toggle-sol">Show solution <span></span></button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Step 1 — name the theme</span>The four legitimate sentences all describe a single development: the <em>nineteenth-century</em> use of <em>city-scale</em> disease mapping to identify causes invisible to tables. 1 (early maps), 2 (Snow 1854 example), 3 (mapping reveals what tables hide), 5 (mapping as visual technique) — all converge.</div>
+        <div class="step"><span class="step-num">Step 2 — find the misfit</span>4 jumps to <em>modern</em> satellite tracking across <em>continents</em>. It is on the same broad topic (disease mapping) but at a different scale, period, and level of technology. The four legitimate sentences are about a historical innovation; 4 is about modern global surveillance.</div>
+        <div class="step"><span class="step-num">Step 3 — confirm</span>If 4 were included, the paragraph would lose its temporal focus. Without 4, the remaining sentences arrange cleanly: 1 → 2 (example) → 5 (technique) → 3 (consequence), or similar.</div>
+        <div class="ans-line"><strong>Answer</strong>4 · the plausible cousin — same topic, wrong period and scale.</div>
+      </div>
+    </div>
+
+    <!-- OSO 2 -->
+    <div class="q-card">
+      <div class="q-head">
+        <div class="q-id"><span>Problem 20</span><span class="yr">OSO · Hard</span></div>
+        <div class="q-tag">Odd-sentence-out · TITA</div>
+      </div>
+      <div class="q-body">
+        <p class="q-text">Four of the following five sentences, when arranged appropriately, form a coherent paragraph. One sentence does not belong. Identify the odd one.</p>
+        <div class="jumble">
+          <div class="frag"><div class="lbl">1</div><div class="text">The novel form, as it emerged in eighteenth-century Europe, was suspicious of grand metaphysical claims and preferred the close observation of individual lives.</div></div>
+          <div class="frag"><div class="lbl">2</div><div class="text">Where epic poetry had asked what mortals were in the eyes of the gods, the novel asked what they were to each other across a dinner table.</div></div>
+          <div class="frag"><div class="lbl">3</div><div class="text">The novel's preferred subjects were the merchant, the unmarried woman, the orphan — figures who would have been incidental in the older forms.</div></div>
+          <div class="frag"><div class="lbl">4</div><div class="text">Modern publishers report that genre fiction now outsells literary fiction by a margin of roughly five to one.</div></div>
+          <div class="frag"><div class="lbl">5</div><div class="text">A new social object — the bourgeois interior — became, in this literature, a fit setting for the deepest moral inquiry.</div></div>
+        </div>
+      </div>
+      <button class="toggle-sol">Show solution <span></span></button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Step 1 — name the theme</span>The four legitimate sentences describe the <em>aesthetic stance</em> of the early novel — its suspicion of grand claims, its focus on ordinary lives and domestic spaces, its preference for new social figures. 1, 2, 3, 5 are all about the form's preoccupations and subjects in the 18th century.</div>
+        <div class="step"><span class="step-num">Step 2 — find the misfit</span>4 reports a modern publishing statistic — genre vs literary fiction sales. It is on the same broad topic (the novel) but is about <em>commerce</em>, not aesthetics, and about the <em>present</em>, not the eighteenth century. The level of abstraction is different (sales numbers, not literary preoccupations).</div>
+        <div class="ans-line"><strong>Answer</strong>4 · related topic, wrong register and period.</div>
+      </div>
+    </div>
+
+    <!-- OSO 3 -->
+    <div class="q-card">
+      <div class="q-head">
+        <div class="q-id"><span>Problem 21</span><span class="yr">OSO · Medium</span></div>
+        <div class="q-tag">Odd-sentence-out · TITA</div>
+      </div>
+      <div class="q-body">
+        <p class="q-text">Four of the following five sentences, when arranged appropriately, form a coherent paragraph. One sentence does not belong. Identify the odd one.</p>
+        <div class="jumble">
+          <div class="frag"><div class="lbl">1</div><div class="text">A river is not really an object; it is a process — water moving through a basin under the constraint of gravity and geology.</div></div>
+          <div class="frag"><div class="lbl">2</div><div class="text">The Ganges in Varanasi is one of the most photographed urban riverfronts in the world.</div></div>
+          <div class="frag"><div class="lbl">3</div><div class="text">Treating a river as a thing leads us to ask the wrong management questions — about its quantity rather than its movement.</div></div>
+          <div class="frag"><div class="lbl">4</div><div class="text">Hydrologists have long argued that policy should regulate flows, not stocks, and seasonal variability, not annual averages.</div></div>
+          <div class="frag"><div class="lbl">5</div><div class="text">The conceptual shift — from river-as-thing to river-as-process — has consequences for how dams, withdrawals, and floods are planned.</div></div>
+        </div>
+      </div>
+      <button class="toggle-sol">Show solution <span></span></button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Step 1 — theme</span>1, 3, 4, 5 form an argument about treating rivers as processes (not objects) and the resulting policy implications. The argument has a clear arc: a conceptual reframe (1) → consequence for management thinking (3) → expert recommendation (4) → policy implications (5).</div>
+        <div class="step"><span class="step-num">Step 2 — misfit</span>2 reports that the Ganges in Varanasi is a much-photographed riverfront — a tourism / image fact, not a process-vs-thing argument. Same broad subject ("rivers"), unrelated content.</div>
+        <div class="ans-line"><strong>Answer</strong>2 · same topic, unrelated angle.</div>
+      </div>
+    </div>
+
+    <!-- OSO 4 -->
+    <div class="q-card">
+      <div class="q-head">
+        <div class="q-id"><span>Problem 22</span><span class="yr">OSO · Hard</span></div>
+        <div class="q-tag">Odd-sentence-out · TITA</div>
+      </div>
+      <div class="q-body">
+        <p class="q-text">Four of the following five sentences, when arranged appropriately, form a coherent paragraph. One sentence does not belong. Identify the odd one.</p>
+        <div class="jumble">
+          <div class="frag"><div class="lbl">1</div><div class="text">Memory is now understood to be reconstructive rather than reproductive — each act of remembering rebuilds the recalled scene from fragments.</div></div>
+          <div class="frag"><div class="lbl">2</div><div class="text">This is why two witnesses to the same event give accounts that diverge in detail even when both are honest.</div></div>
+          <div class="frag"><div class="lbl">3</div><div class="text">The reconstruction draws on present beliefs and emotions, which is why our memory of an old quarrel often shifts as our relationship to the other person changes.</div></div>
+          <div class="frag"><div class="lbl">4</div><div class="text">Human beings are capable of remembering events from as early as the second or third year of life.</div></div>
+          <div class="frag"><div class="lbl">5</div><div class="text">The legal system, slowly, is being forced to update its understanding of eyewitness testimony in light of these findings.</div></div>
+        </div>
+      </div>
+      <button class="toggle-sol">Show solution <span></span></button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Step 1 — theme</span>1, 2, 3, 5 build a tight argument: memory is reconstructive (1) → which is why witnesses disagree (2) → reconstruction is shaped by present feeling (3) → law is now updating its assumptions (5). The theme is the <em>reconstructive nature</em> of memory and its <em>consequences</em>.</div>
+        <div class="step"><span class="step-num">Step 2 — misfit</span>4 is a fact about <em>when</em> memory begins in childhood — a developmental claim. It does not engage with the reconstructive theme at all.</div>
+        <div class="ans-line"><strong>Answer</strong>4 · on the broad topic of memory, but at a different level — developmental rather than mechanistic.</div>
+      </div>
+    </div>
+
+    <h3><span class="h-num">8.4</span>Sentence Completion · three of them</h3>
+
+    <!-- SC 1 -->
+    <div class="q-card">
+      <div class="q-head">
+        <div class="q-id"><span>Problem 23</span><span class="yr">SC · Medium</span></div>
+        <div class="q-tag">Sentence-completion · MCQ</div>
+      </div>
+      <div class="q-body">
+        <p class="q-text">Pick the option that best completes the paragraph below.</p>
+        <div class="summary-passage" style="background:var(--paper-2);border:1px solid var(--rule);padding:16px 20px;margin:14px 0;font-family:'Fraunces',serif;font-size:15.5px;font-style:italic;line-height:1.6;color:var(--ink-soft)">
+          The popularity of a piece of music, once a function mostly of radio play and word-of-mouth, is now substantially shaped by streaming-service algorithms that decide which tracks are surfaced to which listeners. These algorithms optimise for engagement, which means they tend to amplify songs that produce strong, quick reactions over songs that reward sustained attention. The result, over a decade of compounding, is that ____________
+        </div>
+        <ul class="q-options">
+          <li data-opt="A">listeners now have access to a broader range of music than at any point in history.</li>
+          <li data-opt="B">streaming services have become more profitable than traditional record labels.</li>
+          <li data-opt="C">the musical taste of the average listener has been quietly nudged toward styles that reward immediate, rather than slow, listening.</li>
+          <li data-opt="D">artists have begun rebelling against streaming platforms by releasing music independently.</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution <span></span></button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Step 1 — predict</span>The paragraph has set up a chain: algorithms optimise for engagement → engagement favours quick reactions over sustained attention → "over a decade of compounding" the effect must be on <em>listeners' taste</em>, since that is what algorithms accumulate over time.</div>
+        <div class="step"><span class="step-num">Step 2 — eliminate</span>(A) is contrary to the paragraph's direction — algorithms narrow, not broaden. <strong>Deflector.</strong> (B) is about profitability, a separate topic. <strong>Outside.</strong> (D) is about artists' response, not the paragraph's chain. <strong>Outside.</strong></div>
+        <div class="step"><span class="step-num">Step 3 — confirm</span>(C) completes the chain: quick-reaction selection compounded over a decade nudges taste toward immediate listening. <strong>Predicted direction.</strong></div>
+        <div class="ans-line"><strong>Answer</strong>(C)</div>
+      </div>
+    </div>
+
+    <!-- SC 2 -->
+    <div class="q-card">
+      <div class="q-head">
+        <div class="q-id"><span>Problem 24</span><span class="yr">SC · Hard</span></div>
+        <div class="q-tag">Sentence-completion · MCQ</div>
+      </div>
+      <div class="q-body">
+        <p class="q-text">Pick the option that best completes the paragraph below.</p>
+        <div class="summary-passage" style="background:var(--paper-2);border:1px solid var(--rule);padding:16px 20px;margin:14px 0;font-family:'Fraunces',serif;font-size:15.5px;font-style:italic;line-height:1.6;color:var(--ink-soft)">
+          A useful theory in the social sciences is one that is precise enough to be tested but general enough to apply beyond the particular cases that inspired it. Precision and generality, however, often pull in opposite directions: the more precisely a theory specifies its mechanism, the narrower the range of contexts in which that mechanism is likely to operate exactly as described. Practising social scientists, as a result, ____________
+        </div>
+        <ul class="q-options">
+          <li data-opt="A">prefer narrative case studies over formal models.</li>
+          <li data-opt="B">tend to settle on theories at an intermediate level of specificity — precise enough to be falsifiable, general enough to remain useful across more than a handful of cases.</li>
+          <li data-opt="C">have abandoned the idea that social science can produce general laws.</li>
+          <li data-opt="D">borrow methods from the natural sciences in their search for precision.</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution <span></span></button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Step 1 — predict</span>The paragraph sets up a tension: precision and generality pull opposite ways. The natural closer is a sentence about how social scientists <em>navigate the tension</em>, which means some balanced compromise — neither maximally precise nor maximally general.</div>
+        <div class="step"><span class="step-num">Step 2 — eliminate</span>(A) is too specific a methodological claim that does not follow from the precision-generality trade-off setup. <strong>Outside chain.</strong> (C) is too strong — paragraph never says general laws are impossible. <strong>Broadener.</strong> (D) introduces an unrelated topic. <strong>Outside.</strong></div>
+        <div class="step"><span class="step-num">Step 3 — confirm</span>(B) captures the intermediate compromise — exactly the resolution of the tension. <strong>Predicted direction.</strong></div>
+        <div class="ans-line"><strong>Answer</strong>(B)</div>
+      </div>
+    </div>
+
+    <!-- SC 3 -->
+    <div class="q-card">
+      <div class="q-head">
+        <div class="q-id"><span>Problem 25</span><span class="yr">SC · Hard</span></div>
+        <div class="q-tag">Sentence-completion · MCQ</div>
+      </div>
+      <div class="q-body">
+        <p class="q-text">Pick the option that best completes the paragraph below.</p>
+        <div class="summary-passage" style="background:var(--paper-2);border:1px solid var(--rule);padding:16px 20px;margin:14px 0;font-family:'Fraunces',serif;font-size:15.5px;font-style:italic;line-height:1.6;color:var(--ink-soft)">
+          Translators have long debated whether their job is to bring the text to the reader or the reader to the text. The first school — call it the "domesticating" school — produces translations that read as if they had been originally written in the target language, smoothing the strangeness of the source. The second — the "foreignising" school — preserves the strangeness, asking the reader to do the work of meeting an alien sensibility halfway. Neither approach is wrong in principle, but each ____________
+        </div>
+        <ul class="q-options">
+          <li data-opt="A">has periodically dominated the publishing market, with fashions shifting roughly every generation.</li>
+          <li data-opt="B">is the preferred approach of major literary translators today.</li>
+          <li data-opt="C">embodies a different theory of what reading is for, and the choice between them is therefore not just stylistic but ethical.</li>
+          <li data-opt="D">requires translators to be fluent in both the source and target languages.</li>
+        </ul>
+      </div>
+      <button class="toggle-sol">Show solution <span></span></button>
+      <div class="sol">
+        <div class="step"><span class="step-num">Step 1 — predict</span>The paragraph has set up two schools as <em>genuinely different approaches</em>, each defensible — "neither approach is wrong in principle, but each ___". The expected continuation should say what each approach <em>does</em> that distinguishes it at the level of values or principles — not just market fashion or skill requirements.</div>
+        <div class="step"><span class="step-num">Step 2 — eliminate</span>(A) is a historical-market claim, not a principled distinction. (B) contradicts the paragraph (it does not claim one approach dominates). (D) is a generic translator skill, unrelated to the school distinction.</div>
+        <div class="step"><span class="step-num">Step 3 — confirm</span>(C) elevates the distinction from style to ethics ("different theory of what reading is for") — the natural deepening of "neither is wrong in principle, but each…". <strong>Predicted direction.</strong></div>
+        <div class="ans-line"><strong>Answer</strong>(C)</div>
+      </div>
+    </div>
+
+    <div class="callout"><strong>Bank closed.</strong> Twenty-five VA puzzles, every one with full reasoning. If you have worked through these honestly — predicting the destination, eliminating to one, naming the argument — you have rehearsed the core moves CAT will ask of you.</div>
+
+    <div class="section-end"><span>End of Module 08</span><span>→ next: Reference Sheet</span></div>
+  </section>
+
+  <!-- ====== MODULE 9 · REFERENCE SHEET ====== -->
+  <section class="section" id="m9">
+    <header class="section-header">
+      <div class="module-meta">Module 09 · Reference Sheet</div>
+      <h1 class="section-title">The <em>one-page</em> VA<br>cheat sheet.</h1>
+      <p class="section-deck">Everything in this Codex compressed into the table you would glance at over coffee on the morning of the exam. Use it as a final scan, not as a substitute for the modules.</p>
+    </header>
+
+    <h3><span class="h-num">9.1</span>The four sub-types — what each tests</h3>
+
+    <table class="ref">
+      <thead>
+        <tr><th>Sub-type</th><th>What you are given</th><th>What is being measured</th><th>Format</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Para-jumble</td>
+          <td>4 or 5 sentences from a coherent paragraph, in random order.</td>
+          <td>Can you reconstruct the paragraph's flow using opener cues, mandatory pairs, and closer cues?</td>
+          <td>TITA</td>
+        </tr>
+        <tr>
+          <td>Para-summary</td>
+          <td>A 3–5 sentence paragraph and four candidate summaries.</td>
+          <td>Can you separate the main claim from supporting detail, and reject summaries that distort scope, tone, or stance?</td>
+          <td>MCQ (4 options)</td>
+        </tr>
+        <tr>
+          <td>Odd-sentence-out</td>
+          <td>5 sentences, four of which belong to a coherent paragraph; one is the impostor.</td>
+          <td>Can you hear the theme and detect the sentence whose topic, abstraction, or tone is subtly off?</td>
+          <td>TITA</td>
+        </tr>
+        <tr>
+          <td>Sentence-completion</td>
+          <td>A paragraph with its final (or initial) sentence missing.</td>
+          <td>Can you predict the paragraph's destination and reject options that turn left when the text was going straight?</td>
+          <td>MCQ (4 options)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3><span class="h-num">9.2</span>Opener disqualifiers</h3>
+
+    <table class="ref">
+      <thead>
+        <tr><th>Sentence begins with…</th><th>Why it cannot be the opener</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>This / That / Such / These</td><td>Refers backward to a noun in a previous sentence.</td></tr>
+        <tr><td>However / But / Yet / Nevertheless</td><td>Contradicts a position already stated.</td></tr>
+        <tr><td>Moreover / Furthermore / Also / Additionally</td><td>Extends a claim already made.</td></tr>
+        <tr><td>Consequently / Thus / Hence / Therefore</td><td>Concludes from a previous step.</td></tr>
+        <tr><td>He / She / It / They (without a noun antecedent)</td><td>Pronoun refers back to a previously named entity.</td></tr>
+        <tr><td>In contrast / By comparison</td><td>Compares to something already on the table.</td></tr>
+        <tr><td>For example / For instance</td><td>Illustrates a claim already made.</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="h-num">9.3</span>The five most common para-summary traps</h3>
+
+    <table class="ref">
+      <thead>
+        <tr><th>Trap</th><th>What it does</th><th>How to catch it</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>The reverser</td><td>Flips the author's stance.</td><td>Check whether the option says <em>for</em> what the paragraph said <em>against</em>, or vice versa.</td></tr>
+        <tr><td>The narrower</td><td>Captures one detail or example, drops the general claim.</td><td>Ask: does this option cover the paragraph's full scope, or only one paragraph-half?</td></tr>
+        <tr><td>The broadener</td><td>Drops a qualifier ("often", "in some cases") and turns a calibrated claim into a universal one.</td><td>Compare option wording to paragraph wording — look for missing hedges.</td></tr>
+        <tr><td>The adder</td><td>Imports a claim, recommendation, or comparison the paragraph never made.</td><td>If a key noun in the option is absent from the paragraph, the option is wrong.</td></tr>
+        <tr><td>The deflector</td><td>Resolves a question different from the one the paragraph was asking.</td><td>State the paragraph's central question first; reject options that answer a different one.</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="h-num">9.4</span>Connective vocabulary — what they signal</h3>
+
+    <table class="ref">
+      <thead>
+        <tr><th>Connective</th><th>What it tells you about the next sentence</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>However / But / Yet</td><td>Contradicts or qualifies the previous claim.</td></tr>
+        <tr><td>Moreover / Furthermore / Also</td><td>Extends the previous claim in the same direction.</td></tr>
+        <tr><td>For example / For instance / In particular</td><td>Illustrates the previous claim.</td></tr>
+        <tr><td>That is / In other words / Put differently</td><td>Restates the previous sentence.</td></tr>
+        <tr><td>Therefore / Thus / Hence / Consequently</td><td>Draws a conclusion from the previous claim.</td></tr>
+        <tr><td>In contrast / By comparison / On the other hand</td><td>Sets up a comparison with what came before.</td></tr>
+        <tr><td>Indeed / In fact</td><td>Strengthens or confirms the previous claim with a sharper version.</td></tr>
+        <tr><td>Nevertheless / Still / Even so</td><td>Concedes the previous point but maintains a different position.</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="h-num">9.5</span>Test-day discipline</h3>
+
+    <div class="formula">
+      <span class="label">Three rules for VA on test day</span>
+      <strong>1.</strong> Read the paragraph once for argument before reading the options. Name the argument in one sentence.<br>
+      <strong>2.</strong> For TITA items, commit only when you have eliminated to a single sequence or option. A 50-50 guess is worth zero in expectation — the same as a blank.<br>
+      <strong>3.</strong> Skip-and-return for any question that has resisted you past 90 seconds. The next VA puzzle is almost always cheaper than the one you are stuck on.
+    </div>
+
+    <h3><span class="h-num">9.6</span>The single most useful habit</h3>
+
+    <div class="callout"><strong>Cover the options. Read the paragraph. State the argument. Then look.</strong></div>
+
+    <p>This habit — refusing to be influenced by the options before you have understood the paragraph — is what separates a candidate scoring 80th percentile in VA from one scoring 95th. The options are designed to be plausible. Your own one-sentence summary, formed before the options arrive, is your only reliable defence.</p>
+
+    <div class="section-end"><span>End of Codex</span><span>15 of 15 volumes</span></div>
+  </section>
+
+  </main>
+</div>
+
+<script>
+  const links = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('.section');
+  links.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = link.dataset.target;
+      links.forEach(l => l.classList.remove('active'));
+      sections.forEach(s => s.classList.remove('active'));
+      link.classList.add('active');
+      const sec = document.getElementById(target);
+      if (sec) {
+        sec.classList.add('active');
+        window.scrollTo({top:0, behavior:'smooth'});
+      }
+    });
+  });
+  document.querySelectorAll('.toggle-sol').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sol = btn.nextElementSibling;
+      const open = sol.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.firstChild.textContent = open ? 'Hide solution ' : 'Show solution ';
+    });
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    const a = document.querySelector('.nav-link.active');
+    const all = Array.from(links);
+    const i = all.indexOf(a);
+    if (e.key === 'ArrowRight' && i < all.length - 1) all[i + 1].click();
+    else if (e.key === 'ArrowLeft' && i > 0) all[i - 1].click();
+  });
+</script>
+
+</body>
+</html>

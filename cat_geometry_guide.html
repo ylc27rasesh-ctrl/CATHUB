@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The CAT Geometry &amp; Mensuration Codex — A Teaching Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f4ebd9;--paper-2:#ebe0c8;--ink:#1f1815;--ink-soft:#3f322c;--ink-faint:#6e5b53;--accent:#a23f24;--accent-deep:#6f2812;--ochre:#c89b3c;--olive:#5a6b3e;--rust:#a23f24;--teal:#1f6b6b;--rule:#c5b698;--rule-soft:#dbcdaf;--shadow:0 1px 0 rgba(31,24,21,.06), 0 2px 6px rgba(31,24,21,.04)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:'Fraunces',Georgia,serif;background:var(--paper);color:var(--ink);line-height:1.65;font-size:17px;background-image:radial-gradient(circle at 15% 12%, rgba(162,63,36,.05) 0%, transparent 40%),radial-gradient(circle at 85% 80%, rgba(200,155,60,.04) 0%, transparent 45%);min-height:100vh}
+body::before{content:"";position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .28 0 0 0 0 .18 0 0 0 .04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");pointer-events:none;z-index:1;opacity:.55}
+.layout{display:grid;grid-template-columns:280px 1fr;min-height:100vh;position:relative;z-index:2}
+@media (max-width:980px){.layout{grid-template-columns:1fr}.sidebar{position:static!important;height:auto!important;border-right:none!important;border-bottom:2px solid var(--ink)}}
+.sidebar{position:sticky;top:0;height:100vh;border-right:1px solid var(--rule);background:linear-gradient(180deg,var(--paper-2) 0%,var(--paper) 100%);padding:32px 26px 24px;overflow-y:auto;display:flex;flex-direction:column}
+.back-link{display:inline-flex;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--ink-faint);text-decoration:none;padding-bottom:18px;margin-bottom:18px;border-bottom:1px dotted var(--rule);transition:color .2s ease, gap .2s ease}
+.back-link::before{content:"←";font-size:14px;transition:transform .2s ease}
+.back-link:hover{color:var(--accent);gap:12px}
+.back-link:hover::before{transform:translateX(-3px)}
+.brand{border-bottom:2px solid var(--ink);padding-bottom:22px;margin-bottom:24px}
+.brand-eyebrow{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:8px}
+.brand-title{font-family:'Fraunces',serif;font-weight:900;font-size:28px;line-height:1;letter-spacing:-.02em}
+.brand-title em{font-style:italic;font-weight:400;color:var(--accent);font-size:24px}
+.brand-sub{font-family:'Inter',sans-serif;font-size:11px;color:var(--ink-faint);margin-top:10px;letter-spacing:.05em}
+.nav-label{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:10px}
+.nav-list{list-style:none;font-family:'Inter',sans-serif;flex:1}
+.nav-list li{position:relative;border-bottom:1px dotted var(--rule)}
+.nav-list li:last-child{border-bottom:none}
+.nav-list a{display:flex;align-items:baseline;gap:10px;padding:11px 0 11px 8px;text-decoration:none;color:var(--ink-soft);font-size:13.5px;font-weight:500;transition:all .2s ease}
+.nav-list a:hover{color:var(--accent);padding-left:14px}
+.nav-list a.active{color:var(--ink);font-weight:600;padding-left:14px}
+.nav-list a.active::before{content:"";position:absolute;left:0;top:50%;width:5px;height:5px;background:var(--accent);border-radius:50%;transform:translateY(-50%)}
+.nav-num{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-faint);font-weight:400;min-width:24px}
+.nav-list a.active .nav-num{color:var(--accent)}
+.sidebar-footer{margin-top:22px;padding-top:18px;border-top:1px solid var(--rule);font-family:'Inter',sans-serif;font-size:10.5px;color:var(--ink-faint);letter-spacing:.04em}
+.main{padding:48px 64px 96px;max-width:1080px}
+@media (max-width:980px){.main{padding:32px 22px 64px}}
+.section{display:none;animation:fadeUp .4s ease}
+.section.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.section-header{border-bottom:2px solid var(--ink);padding-bottom:28px;margin-bottom:42px}
+.module-meta{display:flex;align-items:center;gap:16px;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:14px}
+.module-meta::after{content:"";flex:1;height:1px;background:var(--rule)}
+.section-title{font-family:'Fraunces',serif;font-weight:900;font-size:54px;line-height:1;letter-spacing:-.035em;margin-bottom:14px;color:var(--ink)}
+.section-title em{font-style:italic;font-weight:400;color:var(--accent)}
+.section-deck{font-family:'Fraunces',serif;font-style:italic;font-size:21px;line-height:1.5;color:var(--ink-soft);max-width:680px;font-weight:400}
+h3{font-family:'Fraunces',serif;font-weight:700;font-size:30px;line-height:1.15;letter-spacing:-.02em;margin:42px 0 18px;color:var(--ink);border-bottom:1px solid var(--rule);padding-bottom:8px;display:flex;align-items:baseline;gap:14px}
+h3 .h-num{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--accent);font-weight:500;letter-spacing:.05em}
+h4{font-family:'Fraunces',serif;font-weight:600;font-size:22px;margin:32px 0 12px;color:var(--ink);letter-spacing:-.01em}
+h5{font-family:'Inter',sans-serif;font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:24px 0 10px}
+p{margin:0 0 16px;font-size:17.5px}
+p.lede{font-size:20px;line-height:1.55;color:var(--ink-soft);margin-bottom:24px}
+strong{color:var(--ink);font-weight:600}
+em{color:var(--ink-soft)}
+ul,ol{margin:8px 0 18px 22px}li{margin-bottom:8px}
+code{font-family:'JetBrains Mono',monospace;font-size:.88em;background:rgba(162,63,36,.08);padding:1px 6px;border-radius:3px;color:var(--accent-deep)}
+.callout{border-left:3px solid var(--accent);background:linear-gradient(90deg,rgba(162,63,36,.06),transparent);padding:18px 22px;margin:24px 0;font-family:'Fraunces',serif;font-style:italic;font-size:18px;line-height:1.5;color:var(--ink-soft)}
+.callout strong{font-style:normal;color:var(--accent-deep)}
+.note{background:var(--paper-2);border:1px solid var(--rule);padding:18px 22px;margin:22px 0;position:relative}
+.note::before{content:"NOTE";position:absolute;top:-10px;left:18px;background:var(--paper);padding:0 8px;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.22em;color:var(--ink-faint);font-weight:600}
+.note.tip::before{content:"TIP";color:var(--olive)}
+.note.tip{border-color:var(--olive);background:rgba(90,107,62,.06)}
+.note.warn::before{content:"WATCH OUT";color:var(--rust)}
+.note.warn{border-color:var(--rust);background:rgba(162,63,36,.05)}
+.formula{background:#fbf6ec;border:1px solid var(--rule);border-left:4px solid var(--ochre);padding:20px 24px;margin:20px 0;font-family:'Fraunces',serif;font-size:19px;line-height:1.7;box-shadow:var(--shadow)}
+.formula .label{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ochre);font-weight:700;margin-bottom:6px;display:block}
+.formula .eq{font-family:'JetBrains Mono',monospace;font-size:16px;background:rgba(0,0,0,.04);padding:8px 14px;border-radius:2px;display:inline-block;margin:6px 0;font-weight:500;color:var(--ink)}
+table.di-table{width:100%;border-collapse:collapse;font-family:'JetBrains Mono',monospace;font-size:13.5px;margin:18px 0;background:#fbf6ec;border:1px solid var(--rule)}
+table.di-table th,table.di-table td{padding:9px 12px;text-align:left;border:1px solid var(--rule-soft)}
+table.di-table th{background:var(--ink);color:var(--paper);font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+table.di-table td.num{text-align:right;font-variant-numeric:tabular-nums}
+table.di-table tr:nth-child(even) td{background:rgba(162,63,36,.025)}
+table.di-table caption{caption-side:top;text-align:left;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;padding:0 0 8px 0}
+.q-card{background:#fdfaf2;border:1px solid var(--rule);border-radius:2px;margin:24px 0;box-shadow:var(--shadow)}
+.q-head{background:var(--accent);color:var(--paper);padding:12px 22px;display:flex;justify-content:space-between;align-items:center;font-family:'Inter',sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;flex-wrap:wrap;gap:10px}
+.q-head .q-id{display:flex;gap:14px;align-items:center}
+.q-head .q-id .yr{background:rgba(245,239,228,.18);padding:3px 10px;border-radius:2px;font-size:10px;letter-spacing:.18em}
+.q-head .q-tag{font-size:10px;opacity:.85;font-family:'JetBrains Mono',monospace;letter-spacing:.08em}
+.q-body{padding:22px 26px 4px}
+.q-text{font-family:'Fraunces',serif;font-size:16.5px;line-height:1.65;margin-bottom:10px}
+.q-options{font-family:'Fraunces',serif;list-style:none;padding:0;margin:8px 0}
+.q-options li{padding:3px 0 3px 28px;position:relative;font-size:15.5px}
+.q-options li::before{content:attr(data-opt);font-family:'JetBrains Mono',monospace;position:absolute;left:0;top:3px;width:20px;height:20px;background:var(--paper-2);border:1px solid var(--rule);border-radius:50%;text-align:center;font-size:11px;font-weight:600;line-height:18px;color:var(--ink-soft)}
+.toggle-sol{width:100%;background:var(--paper-2);border:none;border-top:1px dashed var(--rule);padding:12px 24px;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--accent);cursor:pointer;text-align:left;display:flex;justify-content:space-between;align-items:center;transition:background .2s ease}
+.toggle-sol:hover{background:rgba(162,63,36,.08)}
+.toggle-sol::after{content:"▾";font-size:14px;transition:transform .25s ease}
+.toggle-sol.open::after{transform:rotate(180deg)}
+.sol{display:none;padding:20px 26px 26px;background:var(--paper-2);border-top:1px solid var(--rule);font-size:16.5px;line-height:1.65}
+.sol.open{display:block;animation:fadeUp .25s ease}
+.sol .ans-line{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--ink);color:var(--paper);border-radius:2px;margin-top:14px;font-family:'Fraunces',serif;font-size:17px}
+.sol .ans-line strong{color:var(--ochre);font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.sol p{margin-bottom:12px}
+.sol .step{border-left:2px solid var(--rule);padding-left:14px;margin:10px 0}
+.sol .step-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);font-weight:600;letter-spacing:.05em;display:block;margin-bottom:3px}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:36px 0 8px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+@media (max-width:760px){.stat-grid{grid-template-columns:repeat(2,1fr)}}
+.stat{padding:22px 18px;border-right:1px solid var(--rule)}
+.stat:last-child{border-right:none}
+@media (max-width:760px){.stat:nth-child(2){border-right:none}.stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--rule)}}
+.stat-num{font-family:'Fraunces',serif;font-weight:900;font-size:42px;line-height:.9;letter-spacing:-.03em;color:var(--accent)}
+.stat-num span{font-size:20px;color:var(--ink-soft);font-weight:400}
+.stat-label{font-family:'Inter',sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-top:8px;font-weight:600}
+.tips-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:24px 0}
+@media (max-width:760px){.tips-grid{grid-template-columns:1fr}}
+.tip-card{background:#fbf6ec;border:1px solid var(--rule);border-top:3px solid var(--teal);padding:20px 22px}
+.tip-card .t-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--teal);letter-spacing:.1em;font-weight:600}
+.tip-card h6{font-family:'Fraunces',serif;font-size:19px;font-weight:700;margin:4px 0 10px;color:var(--ink)}
+.tip-card p{font-size:15.5px;margin-bottom:0;line-height:1.55}
+.section-end{margin-top:56px;padding-top:24px;border-top:2px solid var(--ink);font-family:'Fraunces',serif;font-style:italic;font-size:15px;color:var(--ink-faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.dropcap{font-family:'Fraunces',serif;font-weight:900;font-size:64px;line-height:.85;float:left;padding:6px 12px 0 0;color:var(--accent)}
+</style>
+</head>
+<body>
+
+<div class="layout">
+  <aside class="sidebar">
+    <a href="index.html" class="back-link">Back to series</a>
+    <div class="brand">
+      <div class="brand-eyebrow">Geometry &amp; Mensuration · CAT Prep</div>
+      <div class="brand-title">The <em>Geometry</em><br>Codex</div>
+      <div class="brand-sub">A teacher's companion · 9 modules · 25 problems</div>
+    </div>
+    <div class="nav-label">Modules</div>
+    <ul class="nav-list">
+      <li><a href="#m0" class="nav-link active" data-target="m0"><span class="nav-num">00</span>Orientation</a></li>
+      <li><a href="#m1" class="nav-link" data-target="m1"><span class="nav-num">01</span>Triangles</a></li>
+      <li><a href="#m2" class="nav-link" data-target="m2"><span class="nav-num">02</span>Circles</a></li>
+      <li><a href="#m3" class="nav-link" data-target="m3"><span class="nav-num">03</span>Polygons &amp; Quadrilaterals</a></li>
+      <li><a href="#m4" class="nav-link" data-target="m4"><span class="nav-num">04</span>Coordinate Geometry</a></li>
+      <li><a href="#m5" class="nav-link" data-target="m5"><span class="nav-num">05</span>Mensuration 2D</a></li>
+      <li><a href="#m6" class="nav-link" data-target="m6"><span class="nav-num">06</span>Mensuration 3D</a></li>
+      <li><a href="#m7" class="nav-link" data-target="m7"><span class="nav-num">07</span>Tips &amp; Traps</a></li>
+      <li><a href="#m8" class="nav-link" data-target="m8"><span class="nav-num">08</span>Problem Bank</a></li>
+      <li><a href="#m9" class="nav-link" data-target="m9"><span class="nav-num">09</span>Reference Sheet</a></li>
+    </ul>
+    <div class="sidebar-footer">Prepared for classroom delivery.<br>All problems carry full reasoning.<br><span style="color:var(--accent)">⬤</span> Tap any solution to expand.</div>
+  </aside>
+
+  <main class="main">
+
+  <section class="section active" id="m0">
+    <header class="section-header">
+      <div class="module-meta">Module 00 · Orientation</div>
+      <h1 class="section-title">The <em>visual</em><br>half of Quant.</h1>
+      <p class="section-deck">Geometry is where every CAT student's pen-and-paper habit shows. Draw the figure, mark the data, identify the theorem. The discipline that decides marks.</p>
+    </header>
+
+    <p class="lede"><span class="dropcap">G</span>eometry on the CAT is the chapter where pen-and-paper discipline matters most. A typical CAT paper has three or four geometry questions across triangles, circles, polygons, and coordinate geometry, plus one or two mensuration questions involving areas and volumes. Together that's roughly five of the twenty-two Quant questions — and these are also the questions with the highest no-attempt rate in the candidate pool, because geometry rewards visualisation in a way no other Quant topic does.</p>
+
+    <p>This codex is built around three core habits. First, <strong>always draw the figure</strong> — even when the question looks "simple enough to do in your head", the figure prevents misreadings. Second, <strong>mark all data on the figure</strong> — angles, lengths, parallels, perpendiculars. Third, <strong>name the theorem before the calculation</strong> — Pythagoras, similar triangles, inscribed angle, tangent-secant. With these three habits, every CAT geometry question becomes a one-or-two-step application.</p>
+
+    <div class="stat-grid">
+      <div class="stat"><div class="stat-num">5–6</div><div class="stat-label">Questions per paper</div></div>
+      <div class="stat"><div class="stat-num">6</div><div class="stat-label">Core sub-topics</div></div>
+      <div class="stat"><div class="stat-num">High</div><div class="stat-label">No-attempt rate</div></div>
+      <div class="stat"><div class="stat-num">Med-High</div><div class="stat-label">Typical difficulty</div></div>
+    </div>
+
+    <h3><span class="h-num">0.1</span>What this codex emphasises</h3>
+
+    <p>Geometry on the CAT is not about proving theorems — it is about applying them. The student is expected to know that the angle subtended by a chord at the centre is twice the angle subtended at the circumference, and to recognise when a figure invites that theorem. Recognition is the skill; the rest is arithmetic.</p>
+
+    <div class="callout">
+      <strong>Teaching philosophy.</strong> Draw first, label second, name the theorem third, compute last. Skip any step and the answer becomes a guess.
+    </div>
+
+    <h3><span class="h-num">0.2</span>The six sub-topics</h3>
+    <table class="di-table">
+      <thead><tr><th>Sub-topic</th><th>Module</th><th>CAT frequency</th></tr></thead>
+      <tbody>
+        <tr><td>Triangles</td><td>1</td><td>1–2 questions per paper</td></tr>
+        <tr><td>Circles</td><td>2</td><td>1 question per paper</td></tr>
+        <tr><td>Polygons &amp; quadrilaterals</td><td>3</td><td>Occasional</td></tr>
+        <tr><td>Coordinate geometry</td><td>4</td><td>0–1 question per paper</td></tr>
+        <tr><td>Mensuration 2D</td><td>5</td><td>1 question per paper</td></tr>
+        <tr><td>Mensuration 3D</td><td>6</td><td>0–1 question per paper</td></tr>
+      </tbody>
+    </table>
+
+    <div class="section-end"><span>End of Module 00</span><span>→ next: Triangles</span></div>
+  </section>
+
+  <section class="section" id="m1">
+    <header class="section-header">
+      <div class="module-meta">Module 01 · Triangles</div>
+      <h1 class="section-title">The <em>building block</em><br>of geometry.</h1>
+      <p class="section-deck">Every polygon is made of triangles. Pythagoras, similarity, the four standard centres, and the special triangles — these are the workhorses of CAT geometry.</p>
+    </header>
+
+    <p class="lede">Triangles deserve their own module because everything else in geometry decomposes to triangles. The Pythagorean theorem, the similarity criteria, the angle-bisector theorem, the formulas for area in terms of sides — all live here. This module covers the essentials in the order that a CAT problem would test them.</p>
+
+    <h3><span class="h-num">1.1</span>Classifying triangles</h3>
+    <p>By <strong>sides</strong>: equilateral (all three equal), isosceles (two equal), scalene (none equal). By <strong>angles</strong>: acute (all angles &lt; 90°), right (one angle = 90°), obtuse (one angle &gt; 90°).</p>
+
+    <div class="formula">
+      <span class="label">Triangle inequality</span>
+      The sum of any two sides exceeds the third: <span class="eq">|b − c| &lt; a &lt; b + c</span>
+    </div>
+
+    <p>This inequality is a CAT favourite for problems like "the sides of a triangle are 5, 7, and x. Find the integer range of x." Answer: |7 − 5| &lt; x &lt; 7 + 5, so 2 &lt; x &lt; 12. Integer values: 3, 4, 5, 6, 7, 8, 9, 10, 11 — nine values.</p>
+
+    <h3><span class="h-num">1.2</span>Pythagoras and Pythagorean triples</h3>
+    <div class="formula">
+      <span class="label">Pythagorean theorem</span>
+      In a right triangle with legs a, b and hypotenuse c: <span class="eq">a² + b² = c²</span>
+    </div>
+
+    <p>Memorise the common Pythagorean triples: (3,4,5), (5,12,13), (8,15,17), (7,24,25), (9,40,41), (20,21,29). Any multiple of these is also a triple — (6,8,10), (9,12,15) etc. Recognising a triple saves the arithmetic of computing a square root.</p>
+
+    <div class="note tip"><p style="margin:0"><strong>The triple habit.</strong> Whenever a CAT problem gives two sides of a right triangle as recognisable triple members, the third is immediate. Save the algebra.</p></div>
+
+    <h3><span class="h-num">1.3</span>Similarity</h3>
+    <p>Two triangles are similar (∼) if their corresponding angles are equal. Equivalently, their corresponding sides are in the same ratio. The three similarity criteria:</p>
+    <ul>
+      <li><strong>AA (Angle-Angle):</strong> Two pairs of equal angles ⇒ similar.</li>
+      <li><strong>SAS (Side-Angle-Side):</strong> Two pairs of sides in equal ratio with included angle equal ⇒ similar.</li>
+      <li><strong>SSS (Side-Side-Side):</strong> All three pairs of sides in equal ratio ⇒ similar.</li>
+    </ul>
+
+    <div class="formula">
+      <span class="label">Similarity consequences</span>
+      If △ABC ∼ △DEF with ratio k = AB/DE:<br>
+      <span class="eq">Ratio of sides = k</span><br>
+      <span class="eq">Ratio of perimeters = k</span><br>
+      <span class="eq">Ratio of areas = k²</span><br>
+      <span class="eq">Ratio of altitudes / medians / inradius / circumradius = k</span>
+    </div>
+
+    <h3><span class="h-num">1.4</span>Area formulas</h3>
+    <div class="formula">
+      <span class="label">Area of a triangle — multiple formulas</span>
+      <span class="eq">A = (1/2) × base × height</span><br>
+      <span class="eq">A = (1/2) × ab × sin C</span> (two sides &amp; included angle)<br>
+      <span class="eq">A = √(s(s−a)(s−b)(s−c))</span> (Heron's, s = semi-perimeter)<br>
+      <span class="eq">A = rs</span> (r = inradius, s = semi-perimeter)<br>
+      <span class="eq">A = abc / (4R)</span> (R = circumradius)
+    </div>
+
+    <h3><span class="h-num">1.5</span>The four centres</h3>
+    <table class="di-table">
+      <thead><tr><th>Centre</th><th>Definition</th><th>Notable</th></tr></thead>
+      <tbody>
+        <tr><td>Centroid (G)</td><td>Intersection of medians</td><td>Divides each median 2:1 from vertex</td></tr>
+        <tr><td>Orthocentre (H)</td><td>Intersection of altitudes</td><td>Inside acute, on right, outside obtuse</td></tr>
+        <tr><td>Circumcentre (O)</td><td>Intersection of perpendicular bisectors</td><td>Equidistant from all 3 vertices</td></tr>
+        <tr><td>Incentre (I)</td><td>Intersection of angle bisectors</td><td>Equidistant from all 3 sides</td></tr>
+      </tbody>
+    </table>
+
+    <p>The three centres O, G, H lie on a single line called the <em>Euler line</em>, with G dividing OH in ratio 1:2.</p>
+
+    <h3><span class="h-num">1.6</span>Special triangles</h3>
+    <div class="formula">
+      <span class="label">Equilateral triangle of side a</span>
+      <span class="eq">Area = (√3/4) × a²</span> · <span class="eq">Height = (√3/2) × a</span><br>
+      <span class="eq">Inradius = a/(2√3)</span> · <span class="eq">Circumradius = a/√3</span>
+    </div>
+
+    <div class="formula">
+      <span class="label">30-60-90 and 45-45-90 triangles</span>
+      30-60-90: sides in ratio <span class="eq">1 : √3 : 2</span><br>
+      45-45-90: sides in ratio <span class="eq">1 : 1 : √2</span>
+    </div>
+
+    <h3><span class="h-num">1.7</span>Angle bisector theorem</h3>
+    <div class="formula">
+      <span class="label">Angle bisector theorem</span>
+      An angle bisector from vertex A divides the opposite side BC at point D such that:<br>
+      <span class="eq">BD / DC = AB / AC</span>
+    </div>
+
+    <p>So the angle bisector divides the opposite side in the ratio of the adjacent sides — an elegant and frequently-used CAT fact.</p>
+
+    <div class="section-end"><span>End of Module 01</span><span>→ next: Circles</span></div>
+  </section>
+
+  <section class="section" id="m2">
+    <header class="section-header">
+      <div class="module-meta">Module 02 · Circles</div>
+      <h1 class="section-title">The <em>theorems</em><br>around a centre.</h1>
+      <p class="section-deck">Inscribed angle, tangent-secant, power of a point. Three or four theorems cover almost every CAT circle question.</p>
+    </header>
+
+    <p class="lede">A circle is the locus of points equidistant from a centre. From this simple definition, an unreasonable amount of structure emerges — inscribed angles, tangent lengths, cyclic quadrilaterals, the power of a point. CAT circle questions almost always reduce to one of three or four named theorems. This module covers them in the order they appear most often.</p>
+
+    <h3><span class="h-num">2.1</span>Basic terms</h3>
+    <p><strong>Radius (r)</strong>: distance from centre to any point on circle. <strong>Diameter (d)</strong> = 2r. <strong>Chord</strong>: any line segment with both endpoints on the circle. <strong>Arc</strong>: a portion of the circle between two points. <strong>Sector</strong>: a "pie slice" bounded by two radii and an arc. <strong>Segment</strong>: a region bounded by a chord and an arc.</p>
+
+    <h3><span class="h-num">2.2</span>Length and area formulas</h3>
+    <div class="formula">
+      <span class="label">Circle — circumference and area</span>
+      <span class="eq">Circumference = 2πr</span> · <span class="eq">Area = πr²</span>
+    </div>
+    <div class="formula">
+      <span class="label">Sector with central angle θ (degrees)</span>
+      <span class="eq">Arc length = (θ/360) × 2πr</span><br>
+      <span class="eq">Sector area = (θ/360) × πr²</span>
+    </div>
+
+    <h3><span class="h-num">2.3</span>The inscribed angle theorem</h3>
+    <div class="formula">
+      <span class="label">Inscribed angle theorem</span>
+      The angle subtended by a chord at the centre is <em>twice</em> the angle subtended at any point on the major arc.<br>
+      Consequence: All angles inscribed in the same arc are equal.<br>
+      Special case: An angle inscribed in a semicircle is 90°.
+    </div>
+
+    <p>The last consequence — "angle in a semicircle is a right angle" — is one of the most-used facts in CAT geometry. Whenever a problem mentions a diameter and a point on the circle, expect a right angle.</p>
+
+    <h3><span class="h-num">2.4</span>Tangent properties</h3>
+    <ul>
+      <li>A tangent at any point is <strong>perpendicular to the radius</strong> at that point.</li>
+      <li>From an external point, the <strong>two tangent lengths are equal</strong>.</li>
+      <li><strong>Tangent-chord angle</strong> = inscribed angle in alternate segment.</li>
+    </ul>
+
+    <h3><span class="h-num">2.5</span>Power of a point</h3>
+    <div class="formula">
+      <span class="label">Power of a point</span>
+      For any point P and a circle, draw any line through P meeting the circle at A and B:<br>
+      <span class="eq">PA × PB</span> is constant (the "power" of P).<br>
+      If P is outside and PT is tangent length: <span class="eq">PT² = PA × PB</span>.<br>
+      If P is inside with two chords AB, CD through P: <span class="eq">PA × PB = PC × PD</span>.
+    </div>
+
+    <h3><span class="h-num">2.6</span>Cyclic quadrilateral</h3>
+    <p>A quadrilateral whose four vertices lie on a single circle. The key property:</p>
+    <div class="formula">
+      <span class="label">Cyclic quadrilateral</span>
+      Opposite angles are supplementary: <span class="eq">A + C = 180°</span>, <span class="eq">B + D = 180°</span>.<br>
+      Ptolemy: <span class="eq">AC × BD = AB × CD + AD × BC</span>.
+    </div>
+
+    <div class="section-end"><span>End of Module 02</span><span>→ next: Polygons &amp; Quadrilaterals</span></div>
+  </section>
+
+  <section class="section" id="m3">
+    <header class="section-header">
+      <div class="module-meta">Module 03 · Polygons &amp; Quadrilaterals</div>
+      <h1 class="section-title">From <em>three sides</em><br>to many.</h1>
+      <p class="section-deck">Quadrilaterals — square, rectangle, parallelogram, rhombus, trapezium — each with its own area formula. Then the general polygon: angle sum, diagonal count, regular polygon area.</p>
+    </header>
+
+    <p class="lede">Quadrilaterals are the second most-tested polygon family after triangles. Each has a specific definition, a specific area formula, and a specific CAT question type. This module covers the five standard quadrilaterals, then the general polygon results — angle sum, diagonal count, and regular-polygon area.</p>
+
+    <h3><span class="h-num">3.1</span>The five standard quadrilaterals</h3>
+    <table class="di-table">
+      <thead><tr><th>Type</th><th>Defining property</th><th>Area</th></tr></thead>
+      <tbody>
+        <tr><td>Square</td><td>All sides equal, all angles 90°</td><td>a²</td></tr>
+        <tr><td>Rectangle</td><td>Opposite sides equal, all angles 90°</td><td>length × breadth</td></tr>
+        <tr><td>Parallelogram</td><td>Opposite sides parallel and equal</td><td>base × height</td></tr>
+        <tr><td>Rhombus</td><td>All sides equal, opposite sides parallel</td><td>(1/2) × d₁ × d₂</td></tr>
+        <tr><td>Trapezium</td><td>One pair of parallel sides</td><td>(1/2) × (a + b) × h</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="h-num">3.2</span>Diagonals and special properties</h3>
+    <ul>
+      <li><strong>Square:</strong> diagonals equal, perpendicular, bisect each other. Length = a√2.</li>
+      <li><strong>Rectangle:</strong> diagonals equal, bisect each other (not perpendicular in general).</li>
+      <li><strong>Parallelogram:</strong> diagonals bisect each other (neither equal nor perpendicular in general).</li>
+      <li><strong>Rhombus:</strong> diagonals perpendicular bisectors of each other (not equal in general).</li>
+    </ul>
+
+    <h3><span class="h-num">3.3</span>The general polygon</h3>
+    <div class="formula">
+      <span class="label">Polygon angle sums</span>
+      For an n-sided polygon:<br>
+      <span class="eq">Sum of interior angles = (n − 2) × 180°</span><br>
+      <span class="eq">Sum of exterior angles = 360°</span> (always, regardless of n)<br>
+      <span class="eq">Number of diagonals = n(n − 3)/2</span>
+    </div>
+
+    <p>For a regular polygon (all sides and angles equal):</p>
+    <div class="formula">
+      <span class="label">Regular polygon</span>
+      <span class="eq">Each interior angle = (n − 2) × 180° / n</span><br>
+      <span class="eq">Each exterior angle = 360° / n</span>
+    </div>
+
+    <h3><span class="h-num">3.4</span>The regular hexagon</h3>
+    <p>A regular hexagon of side a has area <code>(3√3 / 2) × a²</code>. It is exactly six equilateral triangles glued together — so its area is 6 × (√3/4) × a² = (3√3/2) × a².</p>
+
+    <div class="section-end"><span>End of Module 03</span><span>→ next: Coordinate Geometry</span></div>
+  </section>
+
+  <section class="section" id="m4">
+    <header class="section-header">
+      <div class="module-meta">Module 04 · Coordinate Geometry</div>
+      <h1 class="section-title">Geometry <em>by</em><br>numbers.</h1>
+      <p class="section-deck">When the figure has coordinates, algebra takes over. Distance, slope, intersection — the algebraic engine that solves geometry without drawing.</p>
+    </header>
+
+    <p class="lede">Coordinate geometry translates geometric configurations into algebraic ones. Points become ordered pairs, lines become equations, areas become determinants. The CAT uses coordinate geometry sparingly — usually one question per paper — but when it does, the techniques are highly standard and reward fluency with three or four formulas.</p>
+
+    <h3><span class="h-num">4.1</span>Distance and section</h3>
+    <div class="formula">
+      <span class="label">Distance and division of line segment</span>
+      Distance between (x₁, y₁) and (x₂, y₂):<br>
+      <span class="eq">d = √[(x₂ − x₁)² + (y₂ − y₁)²]</span><br>
+      Midpoint: <span class="eq">M = ((x₁ + x₂)/2, (y₁ + y₂)/2)</span><br>
+      Section in ratio m:n (internal): <span class="eq">((mx₂ + nx₁)/(m+n), (my₂ + ny₁)/(m+n))</span>
+    </div>
+
+    <h3><span class="h-num">4.2</span>The line</h3>
+    <p>A line in the plane can be written in several equivalent forms:</p>
+    <table class="di-table">
+      <thead><tr><th>Form</th><th>Equation</th><th>Use</th></tr></thead>
+      <tbody>
+        <tr><td>Slope-intercept</td><td>y = mx + c</td><td>m = slope, c = y-intercept</td></tr>
+        <tr><td>Point-slope</td><td>y − y₁ = m(x − x₁)</td><td>Through (x₁, y₁) with slope m</td></tr>
+        <tr><td>Two-point</td><td>(y − y₁)/(y₂ − y₁) = (x − x₁)/(x₂ − x₁)</td><td>Through two points</td></tr>
+        <tr><td>Intercept</td><td>x/a + y/b = 1</td><td>x-intercept a, y-intercept b</td></tr>
+        <tr><td>General</td><td>Ax + By + C = 0</td><td>Slope = −A/B</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="h-num">4.3</span>Slope, parallel, perpendicular</h3>
+    <div class="formula">
+      <span class="label">Slope relations</span>
+      <span class="eq">Slope m = (y₂ − y₁)/(x₂ − x₁)</span><br>
+      Two lines parallel ⇔ <span class="eq">m₁ = m₂</span><br>
+      Two lines perpendicular ⇔ <span class="eq">m₁ × m₂ = −1</span> (when neither vertical)
+    </div>
+
+    <h3><span class="h-num">4.4</span>Distance from a point to a line</h3>
+    <div class="formula">
+      <span class="label">Point-to-line distance</span>
+      For line Ax + By + C = 0 and point (x₀, y₀):<br>
+      <span class="eq">d = |Ax₀ + By₀ + C| / √(A² + B²)</span>
+    </div>
+
+    <h3><span class="h-num">4.5</span>Area by coordinates</h3>
+    <div class="formula">
+      <span class="label">Area of triangle by coordinates</span>
+      For vertices (x₁, y₁), (x₂, y₂), (x₃, y₃):<br>
+      <span class="eq">A = (1/2)|x₁(y₂ − y₃) + x₂(y₃ − y₁) + x₃(y₁ − y₂)|</span>
+    </div>
+
+    <h3><span class="h-num">4.6</span>The circle equation</h3>
+    <div class="formula">
+      <span class="label">Standard circle</span>
+      Circle of radius r centred at (h, k):<br>
+      <span class="eq">(x − h)² + (y − k)² = r²</span>
+    </div>
+
+    <div class="section-end"><span>End of Module 04</span><span>→ next: Mensuration 2D</span></div>
+  </section>
+
+  <section class="section" id="m5">
+    <header class="section-header">
+      <div class="module-meta">Module 05 · Mensuration 2D</div>
+      <h1 class="section-title">Areas <em>of</em><br>everything.</h1>
+      <p class="section-deck">Areas of standard shapes, plus the composite-figure technique — break the irregular into the regular, add the pieces.</p>
+    </header>
+
+    <p class="lede">Mensuration covers measurement of areas (2D) and volumes (3D). The 2D formulas are nearly all of school memorisation, but CAT setters compose them into shapes that need careful decomposition. This module gives the standard formulas in one consolidated reference, then teaches the decomposition habit.</p>
+
+    <h3><span class="h-num">5.1</span>Standard area formulas</h3>
+    <table class="di-table">
+      <thead><tr><th>Shape</th><th>Area</th><th>Perimeter</th></tr></thead>
+      <tbody>
+        <tr><td>Square (side a)</td><td>a²</td><td>4a</td></tr>
+        <tr><td>Rectangle (l, b)</td><td>l × b</td><td>2(l + b)</td></tr>
+        <tr><td>Triangle (base b, height h)</td><td>(1/2)bh</td><td>—</td></tr>
+        <tr><td>Equilateral (side a)</td><td>(√3/4)a²</td><td>3a</td></tr>
+        <tr><td>Parallelogram (base b, height h)</td><td>bh</td><td>2(side₁ + side₂)</td></tr>
+        <tr><td>Rhombus (diagonals d₁, d₂)</td><td>(1/2)d₁d₂</td><td>4 × side</td></tr>
+        <tr><td>Trapezium (parallel sides a, b; h)</td><td>(1/2)(a + b)h</td><td>sum of all sides</td></tr>
+        <tr><td>Circle (radius r)</td><td>πr²</td><td>2πr</td></tr>
+        <tr><td>Sector (radius r, angle θ)</td><td>(θ/360)πr²</td><td>2r + arc length</td></tr>
+        <tr><td>Regular hexagon (side a)</td><td>(3√3/2)a²</td><td>6a</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="h-num">5.2</span>Composite figures · the decomposition habit</h3>
+
+    <p>CAT mensuration questions often involve irregular shapes — a square with a circular cutout, two overlapping triangles, a path around a garden. The technique is always the same:</p>
+    <ol>
+      <li>Decompose the irregular figure into standard pieces.</li>
+      <li>Compute each piece's area using the standard formula.</li>
+      <li>Add (for assembled shapes) or subtract (for cutouts).</li>
+    </ol>
+
+    <p>Worked example. <em>"A rectangular field 20m × 30m has a circular pond of radius 5m at its centre. Find the area outside the pond."</em> Rectangle area = 600. Pond area = π × 25 = 25π ≈ 78.5. Outside = 600 − 25π ≈ 521.5 m².</p>
+
+    <h3><span class="h-num">5.3</span>The path-around-a-figure pattern</h3>
+
+    <p>Classic CAT: <em>"A rectangular garden is 30 m by 20 m. A 2-m-wide path is built around it (outside). Find the area of the path."</em></p>
+
+    <p>Outer rectangle: (30 + 4) × (20 + 4) = 34 × 24 = 816. Inner = 600. Path area = 816 − 600 = 216 m².</p>
+
+    <div class="section-end"><span>End of Module 05</span><span>→ next: Mensuration 3D</span></div>
+  </section>
+
+  <section class="section" id="m6">
+    <header class="section-header">
+      <div class="module-meta">Module 06 · Mensuration 3D</div>
+      <h1 class="section-title">The <em>solids</em><br>that store volume.</h1>
+      <p class="section-deck">Cubes, cuboids, cylinders, cones, spheres, prisms, pyramids. Each has a volume formula and a surface-area formula. Master both.</p>
+    </header>
+
+    <p class="lede">Three-dimensional mensuration on the CAT covers seven standard solids. For each, you need three quantities: the volume, the lateral surface area (LSA) — the side surface excluding top and bottom — and the total surface area (TSA). This module gives all twenty-one formulas in one consolidated table.</p>
+
+    <h3><span class="h-num">6.1</span>The standard solids — volume and surface area</h3>
+    <table class="di-table">
+      <thead><tr><th>Solid</th><th>Volume</th><th>TSA</th><th>LSA</th></tr></thead>
+      <tbody>
+        <tr><td>Cube (side a)</td><td>a³</td><td>6a²</td><td>4a²</td></tr>
+        <tr><td>Cuboid (l, b, h)</td><td>lbh</td><td>2(lb + bh + lh)</td><td>2h(l + b)</td></tr>
+        <tr><td>Cylinder (r, h)</td><td>πr²h</td><td>2πr(r + h)</td><td>2πrh</td></tr>
+        <tr><td>Cone (r, h, slant ℓ)</td><td>(1/3)πr²h</td><td>πr(r + ℓ)</td><td>πrℓ</td></tr>
+        <tr><td>Sphere (r)</td><td>(4/3)πr³</td><td>4πr²</td><td>4πr²</td></tr>
+        <tr><td>Hemisphere (r)</td><td>(2/3)πr³</td><td>3πr²</td><td>2πr²</td></tr>
+      </tbody>
+    </table>
+
+    <p>For the cone, the slant height ℓ satisfies <code>ℓ² = r² + h²</code> by Pythagoras.</p>
+
+    <h3><span class="h-num">6.2</span>The cuboid diagonal</h3>
+    <div class="formula">
+      <span class="label">Space diagonal of a cuboid</span>
+      <span class="eq">d = √(l² + b² + h²)</span><br>
+      For a cube of side a: <span class="eq">d = a√3</span>
+    </div>
+
+    <h3><span class="h-num">6.3</span>Combined and modified solids</h3>
+    <p>CAT loves combined-solid problems. A typical example: <em>"A hemisphere of radius 7 cm sits on top of a cylinder of the same radius and height 10 cm. Find the total volume."</em></p>
+
+    <p>Volume = cylinder + hemisphere = π × 49 × 10 + (2/3) × π × 343 = 490π + (686/3)π = (1470 + 686)/3 × π = 2156/3 × π ≈ 2257.7 cm³.</p>
+
+    <h3><span class="h-num">6.4</span>The melting / recasting pattern</h3>
+    <p>A frequent CAT setup: <em>"A solid metal cylinder of radius 6 cm and height 12 cm is melted and recast into spherical balls of radius 1 cm. How many balls?"</em></p>
+    <p>Volume is conserved. Cylinder volume = π × 36 × 12 = 432π. Ball volume = (4/3)π × 1 = 4π/3. Number = 432π / (4π/3) = 432 × 3/4 = 324 balls.</p>
+
+    <div class="callout"><strong>Volume conservation.</strong> Whenever a CAT problem involves melting, recasting, or transferring liquid between containers, equate the volumes. Surface area is not conserved in any of these processes; only volume is.</div>
+
+    <div class="section-end"><span>End of Module 06</span><span>→ next: Tips &amp; Traps</span></div>
+  </section>
+
+  <section class="section" id="m7">
+    <header class="section-header">
+      <div class="module-meta">Module 07 · Tips &amp; Traps</div>
+      <h1 class="section-title">The <em>figure</em><br>errors.</h1>
+      <p class="section-deck">Geometry traps are mostly diagram traps. Eight of them, each named.</p>
+    </header>
+
+    <div class="tips-grid">
+      <div class="tip-card"><div class="t-num">TRAP 01</div><h6>Drawing not to scale</h6><p>The figure provided in CAT papers is "not to scale". Don't measure with a ruler — use only the data given. Trust the numerical labels, never the visual proportions.</p></div>
+      <div class="tip-card"><div class="t-num">TRAP 02</div><h6>Forgetting the triangle inequality</h6><p>When a problem asks for "possible side lengths", check the triangle inequality. A triangle with sides 2, 3, 6 is impossible — 2 + 3 &lt; 6.</p></div>
+      <div class="tip-card"><div class="t-num">TRAP 03</div><h6>Ratio of areas vs ratio of sides</h6><p>If similar triangles have side ratio k, their area ratio is k², not k. Off-by-square is the commonest similarity error.</p></div>
+      <div class="tip-card"><div class="t-num">TRAP 04</div><h6>Confusing radius and diameter</h6><p>Circumference and area use radius. Many CAT setups give diameter; always halve before substituting.</p></div>
+      <div class="tip-card"><div class="t-num">TRAP 05</div><h6>Tangent length is not radius</h6><p>The tangent at a point and the radius to that point are perpendicular. The tangent length from an external point is computed by Pythagoras, not by setting it equal to the radius.</p></div>
+      <div class="tip-card"><div class="t-num">TRAP 06</div><h6>Sum of polygon angles</h6><p>The sum of interior angles is (n − 2) × 180°. The sum of exterior angles is always 360°, regardless of n.</p></div>
+      <div class="tip-card"><div class="t-num">TRAP 07</div><h6>Cone slant vs height</h6><p>The cone's volume uses height h. The lateral surface area uses slant ℓ. ℓ² = r² + h². Many candidates plug ℓ where h belongs.</p></div>
+      <div class="tip-card"><div class="t-num">TRAP 08</div><h6>Volume vs surface in melting</h6><p>When melting/recasting, volume is conserved but surface area is not. Don't equate surface areas before and after.</p></div>
+    </div>
+
+    <div class="section-end"><span>End of Module 07</span><span>→ next: Problem Bank</span></div>
+  </section>
+
+  <section class="section" id="m8">
+    <header class="section-header">
+      <div class="module-meta">Module 08 · Problem Bank · 25 problems</div>
+      <h1 class="section-title">The <em>graded</em><br>bank.</h1>
+      <p class="section-deck">Twenty-five problems spanning all six sub-topics, graded from recognition drills to full CAT-difficulty.</p>
+    </header>
+
+    <h3><span class="h-num">8.1</span>Triangles · Problems 1–6</h3>
+
+    <div class="q-card"><div class="q-head"><div class="q-id"><span>Problem 01</span><span class="yr">Easy</span></div><span class="q-tag">Pythagoras</span></div><div class="q-body"><p class="q-text"><strong>Q.</strong> A right triangle has legs 9 and 12. Find the hypotenuse.</p><ul class="q-options"><li data-opt="A">13</li><li data-opt="B">15</li><li data-opt="C">17</li><li data-opt="D">18</li></ul></div><button class="toggle-sol">Show solution</button><div class="sol"><p>Triple (3, 4, 5) scaled by 3 gives (9, 12, 15).</p><div class="ans-line"><strong>Answer</strong> B · 15.</div></div></div>
+
+    <div class="q-card"><div class="q-head"><div class="q-id"><span>Problem 02</span><span class="yr">Easy</span></div><span class="q-tag">triangle inequality</span></div><div class="q-body"><p class="q-text"><strong>Q.</strong> Sides of a triangle are 7, 11, x. How many integer values can x take?</p><ul class="q-options"><li data-opt="A">11</li><li data-opt="B">12</li><li data-opt="C">13</li><li data-opt="D">14</li></ul></div><button class="toggle-sol">Show solution</button><div class="sol"><p>|11 − 7| &lt; x &lt; 11 + 7 ⇒ 4 &lt; x &lt; 18. Integers: 5, 6, …, 17. Count = 13.</p><div class="ans-line"><strong>Answer</strong> C · 13.</div></div></div>
+
+    <div class="q-card"><div class="q-head"><div class="q-id"><span>Problem 03</span><span class="yr">Medium</span></div><span class="q-tag">equilateral area</span></div><div class="q-body"><p class="q-text"><strong>Q.</strong> Find the area of an equilateral triangle with side 6√3 cm.</p><ul class="q-options"><li data-opt="A">27√3</li><li data-opt="B">27</li><li data-opt="C">36√3</li><li data-opt="D">9√3</li></ul></div><button class="toggle-sol">Show solution</button><div class="sol"><p>A = (√3/4) × (6√3)² = (√3/4) × 108 = 27√3.</p><div class="ans-line"><strong>Answer</strong> A · 27√3.</div></div></div>
+
+    <div class="q-card"><div class="q-head"><div class="q-id"><span>Problem 04</span><span class="yr">Medium</span></div><span class="q-tag">similarity</span></div><div class="q-body"><p class="q-text"><strong>Q.</strong> Triangles ABC and DEF are similar with AB/DE = 3/4. If area of △ABC = 27, find area of △DEF.</p><ul class="q-options"><li data-opt="A">36</li><li data-opt="B">42</li><li data-opt="C">48</li><li data-opt="D">54</li></ul></div><button class="toggle-sol">Show solution</button><div class="sol"><p>Area ratio = (3/4)² = 9/16. So area of DEF = 27 × 16/9 = 48.</p><div class="ans-line"><strong>Answer</strong> C · 48.</div></div></div>
+
+    <div class="q-card"><div class="q-head"><div class="q-id"><span>Problem 05</span><span class="yr">Hard</span></div><span class="q-tag">Heron</span></div><div class="q-body"><p class="q-text"><strong>Q.</strong> Find the area of a triangle with sides 13, 14, 15.</p><ul class="q-options"><li data-opt="A">72</li><li data-opt="B">78</li><li data-opt="C">84</li><li data-opt="D">90</li></ul></div><button class="toggle-sol">Show solution</button><div class="sol"><p>s = (13+14+15)/2 = 21. A = √(21 × 8 × 7 × 6) = √7056 = 84.</p><div class="ans-line"><strong>Answer</strong> C · 84.</div></div></div>
+
+    <div class="q-card"><div class="q-head"><div class="q-id"><span>Problem 06</span><span class="yr">Hard</span></div><span class="q-tag">angle bisector</span></div><div class="q-body"><p class="q-text"><strong>Q.</strong> In △ABC, AB = 6, AC = 8, BC = 9. The angle bisector from A meets BC at D. Find BD.</p><ul class="q-options"><li data-opt="A">27/7</li><li data-opt="B">36/7</li><li data-opt="C">54/14</li><li data-opt="D">9/2</li></ul></div><button class="toggle-sol">Show solution</button><div class="sol"><p>By the angle bisector theorem: BD/DC = AB/AC = 6/8 = 3/4. So BD = (3/7) × 9 = 27/7.</p><div class="ans-line"><strong>Answer</strong> A · 27/7.</div></div></div>
+
+    <h3><span class="h-num">8.2</span>Circles · Problems 7–10</h3>
+
+    <div class="q-card"><div class="q-head"><div class="q-id"><span>Problem 07</span><span class="yr">Easy</span></div><span class="q-tag">sector</span></div><div class="q-body"><p class="q-text"><strong>Q.</strong> Find the area of a sector with radius 14 cm and central angle 90°.</p><ul class="q-options"><li data-opt="A">154</li><li data-opt="B">196</li><li data-opt="C">308</li><li data-opt="D">616</li></ul></div><button class="toggle-sol">Show solution</button><div class="sol"><p>A = (90/360) × π × 14² = (1/4) × π × 196 = 49π ≈ 154.</p><div class="ans-line"><strong>Answer</strong> A · 154.</div></div></div>
+
+    <div class="q-card"><div class="q-head"><div class="q-id"><span>Problem 08</span><span class="yr">Medium</span></div><span class="q-tag">tangent length</span></div><div class="q-body"><p class="q-text"><strong>Q.</strong> From a point P at distance 13 cm from the centre of a circle of radius 5 cm, a tangent is drawn. Find the tangent length.</p><ul class="q-options"><li data-opt="A">8</li><li data-opt="B">10</li><li data-opt="C">12</li><li data-opt="D">14</li></ul></div><button class="toggle-sol">Show solution</button><div class="sol"><p>Tangent ⊥ radius at point of tangency. By Pythagoras: tangent² = 13² − 5² = 144. Tangent = 12.</p><div class="ans-line"><strong>Answer</strong> C · 12.</div></div></div>
+
+    <div class="q-card"><div class="q-head"><div class="q-id"><span>Problem 09</span><span class="yr">Hard</span></div><span class="q-tag">inscribed angle</span></div><div class="q-body"><p class="q-text"><strong>Q.</strong> In a circle, AB is a diameter and C is a point on the circle. If ∠CAB = 35°, find ∠ABC.</p><ul class="q-options"><li data-opt="A">35°</li><li data-opt="B">45°</li><li data-opt="C">55°</li><li data-opt="D">65°</li></ul></div><button class="toggle-sol">Show solution</button><div class="sol"><p>∠ACB = 90° (angle in semicircle). Triangle angle sum ⇒ ∠ABC = 180 − 90 − 35 = 55°.</p><div class="ans-line"><strong>Answer</strong> C · 55°.</div></div></div>
+
+    <div class="q-card"><div class="q-head"><div class="q-id"><span>Problem 10</span><span class="yr">Hard</span></div><span class="q-tag">power of a point</span></div><div class="q-body"><p class="q-text"><strong>Q.</strong> Two chords AB and CD intersect at P inside a circle. If PA = 6, PB = 8, PC = 4, find PD.</p><ul class="q-options"><li data-opt="A">10</li><li data-opt="B">12</li><li data-opt="C">14</li><li data-opt="D">16</li></ul></div><button class="toggle-sol">Show solution</button><div class="sol"><p>Power of P: PA × PB = PC × PD ⇒ 48 = 4 × PD ⇒ PD = 12.</p><div class="ans-line"><strong>Answer</strong> B · 12.</div></div></div>
+
+    <h3><span class="h-num">8.3</span>Polygons &amp; Coordinates · Problems 11–16</h3>
+
+    <div class="q-card"><div class="q-head"><div class="q-id"><span>Problem 11</span><span class="yr">Easy</span></div><span class="q-tag">polygon angles</span></div><div class="q-body"><p class="q-text"><strong>Q.</strong> Find the sum of interior angles of a 12-sided polygon.</p><ul class="q-options"><li data-opt="A">1440°</li><li data-opt="B">1620°</li><li data-opt="C">1800°</li><li data-opt="D">2160°</li></ul></div><button class="toggle-sol">Show solution</button><div class="sol"><p>(12 − 2) × 180 = 1800°.</p><div class="ans-line"><strong>Answer</strong> C · 1800°.</div></div></div>
+
+    <div class="q-card"><div class="q-head"><div class="q-id"><span>Problem 12</span><span class="yr">Easy</span></div><span class="q-tag">regular hexagon</span></div><div class="q-body"><p class="q-text"><strong>Q.</strong> Find the area of a regular hexagon of side 4 cm.</p><ul class="q-options"><li data-opt="A">12√3</li><li data-opt="B">24√3</li><li data-opt="C">36√3</li><li data-opt="D">48√3</li></ul></div><button class="toggle-sol">Show solution</button><div class="sol"><p>A = (3√3/2) × 16 = 24√3.</p><div class="ans-line"><strong>Answer</strong> B · 24√3.</div></div></div>
+
+    <div class="q-card"><div class="q-head"><div class="q-id"><span>Problem 13</span><span class="yr">Medium</span></div><span class="q-tag">rhombus</span></div><div class="q-body"><p class="q-text"><strong>Q.</strong> A rhombus has diagonals 16 and 12. Find its area and side length.</p><ul class="q-options"><li data-opt="A">96 sq cm, side 10</li><li data-opt="B">96 sq cm, side 14</li><li data-opt="C">192 sq cm, side 10</li><li data-opt="D">96 sq cm, side 20</li></ul></div><button class="toggle-sol">Show solution</button><div class="sol"><p>Area = (1/2)(16)(12) = 96. Diagonals bisect at right angles ⇒ side = √(8² + 6²) = √100 = 10.</p><div class="ans-line"><strong>Answer</strong> A · 96, side 10.</div></div></div>
+
+    <div class="q-card"><div class="q-head"><div class="q-id"><span>Problem 14</span><span class="yr">Medium</span></div><span class="q-tag">coordinate · distance</span></div><div class="q-body"><p class="q-text"><strong>Q.</strong> Find the distance between (3, −2) and (−5, 4).</p><ul class="q-options"><li data-opt="A">8</li><li data-opt="B">10</li><li data-opt="C">12</li><li data-opt="D">14</li></ul></div><button class="toggle-sol">Show solution</button><div class="sol"><p>d = √((3 − (−5))² + (−2 − 4)²) = √(64 + 36) = √100 = 10.</p><div class="ans-line"><strong>Answer</strong> B · 10.</div></div></div>
+
+    <div class="q-card"><div class="q-head"><div class="q-id"><span>Problem 15</span><span class="yr">Hard</span></div><span class="q-tag">coordinate · perpendicular</span></div><div class="q-body"><p class="q-text"><strong>Q.</strong> Find the equation of the line through (2, 3) perpendicular to 2x − 3y + 5 = 0.</p><ul class="q-options"><li data-opt="A">3x + 2y = 12</li><li data-opt="B">3x − 2y = 0</li><li data-opt="C">2x + 3y = 13</li><li data-opt="D">3x + 2y = 13</li></ul></div><button class="toggle-sol">Show solution</button><div class="sol"><p>Slope of given line = 2/3. Perpendicular slope = −3/2. Equation: y − 3 = (−3/2)(x − 2) ⇒ 2y − 6 = −3x + 6 ⇒ 3x + 2y = 12.</p><div class="ans-line"><strong>Answer</strong> A · 3x + 2y = 12.</div></div></div>
+
+    <div class="q-card"><div class="q-head"><div class="q-id"><span>Problem 16</span><span class="yr">Hard</span></div><span class="q-tag">coordinate · area</span></div><div class="q-body"><p class="q-text"><strong>Q.</strong> Find the area of the triangle with vertices (1, 1), (5, 1), (3, 5).</p><ul class="q-options"><li data-opt="A">6</li><li data-opt="B">8</li><li data-opt="C">10</li><li data-opt="D">12</li></ul></div><button class="toggle-sol">Show solution</button><div class="sol"><p>Base from (1,1) to (5,1) = 4. Height from (3,5) to y = 1 is 4. Area = (1/2)(4)(4) = 8.</p><div class="ans-line"><strong>Answer</strong> B · 8.</div></div></div>
+
+    <h3><span class="h-num">8.4</span>Mensuration · Problems 17–25</h3>
+
+    <div class="q-card"><div class="q-head"><div class="q-id"><span>Problem 17</span><span class="yr">Easy</span></div><span class="q-tag">cylinder volume</span></div><div class="q-body"><p class="q-text"><strong>Q.</strong> Find the volume of a cylinder with radius 7 cm and height 10 cm. (π = 22/7)</p><ul class="q-options"><li data-opt="A">1430</li><li data-opt="B">1540</li><li data-opt="C">1650</li><li data-opt="D">2200</li></ul></div><button class="toggle-sol">Show solution</button><div class="sol"><p>V = πr²h = (22/7)(49)(10) = 22 × 70 = 1540.</p><div class="ans-line"><strong>Answer</strong> B · 1540.</div></div></div>
+
+    <div class="q-card"><div class="q-head"><div class="q-id"><span>Problem 18</span><span class="yr">Easy</span></div><span class="q-tag">cone slant</span></div><div class="q-body"><p class="q-text"><strong>Q.</strong> A cone has radius 5 and height 12. Find its slant height.</p><ul class="q-options"><li data-opt="A">11</li><li data-opt="B">13</li><li data-opt="C">15</li><li data-opt="D">17</li></ul></div><button class="toggle-sol">Show solution</button><div class="sol"><p>(5, 12, 13) Pythagorean triple ⇒ slant = 13.</p><div class="ans-line"><strong>Answer</strong> B · 13.</div></div></div>
+
+    <div class="q-card"><div class="q-head"><div class="q-id"><span>Problem 19</span><span class="yr">Medium</span></div><span class="q-tag">sphere volume</span></div><div class="q-body"><p class="q-text"><strong>Q.</strong> Find the volume of a sphere with diameter 14 cm.</p><ul class="q-options"><li data-opt="A">(2156/3)π</li><li data-opt="B">(1372/3)π</li><li data-opt="C">1372π</li><li data-opt="D">(686/3)π</li></ul></div><button class="toggle-sol">Show solution</button><div class="sol"><p>r = 7. V = (4/3)π(343) = (1372/3)π.</p><div class="ans-line"><strong>Answer</strong> B · (1372/3)π.</div></div></div>
+
+    <div class="q-card"><div class="q-head"><div class="q-id"><span>Problem 20</span><span class="yr">Medium</span></div><span class="q-tag">cube diagonal</span></div><div class="q-body"><p class="q-text"><strong>Q.</strong> Find the length of the space diagonal of a cube of side 5.</p><ul class="q-options"><li data-opt="A">5√2</li><li data-opt="B">5√3</li><li data-opt="C">10</li><li data-opt="D">10√3</li></ul></div><button class="toggle-sol">Show solution</button><div class="sol"><p>d = a√3 = 5√3.</p><div class="ans-line"><strong>Answer</strong> B · 5√3.</div></div></div>
+
+    <div class="q-card"><div class="q-head"><div class="q-id"><span>Problem 21</span><span class="yr">Medium</span></div><span class="q-tag">composite</span></div><div class="q-body"><p class="q-text"><strong>Q.</strong> A solid is formed by a cylinder of radius 7 cm and height 14 cm, with a hemisphere of the same radius on top. Find the total volume in terms of π.</p><ul class="q-options"><li data-opt="A">(2058/3)π</li><li data-opt="B">(2744/3)π</li><li data-opt="C">(2786/3)π</li><li data-opt="D">980π</li></ul></div><button class="toggle-sol">Show solution</button><div class="sol"><p>V_cyl = π(49)(14) = 686π. V_hemi = (2/3)π(343) = (686/3)π. Total = 686π + (686/3)π = (2058 + 686)/3 × π = 2744π/3.</p><div class="ans-line"><strong>Answer</strong> B · (2744/3)π.</div></div></div>
+
+    <div class="q-card"><div class="q-head"><div class="q-id"><span>Problem 22</span><span class="yr">Hard</span></div><span class="q-tag">melting</span></div><div class="q-body"><p class="q-text"><strong>Q.</strong> A solid cone of radius 6 cm and height 24 cm is melted and recast into spheres of radius 2 cm. How many spheres are formed?</p><ul class="q-options"><li data-opt="A">18</li><li data-opt="B">21</li><li data-opt="C">27</li><li data-opt="D">36</li></ul></div><button class="toggle-sol">Show solution</button><div class="sol"><p>Cone volume = (1/3)π(36)(24) = 288π. Sphere volume = (4/3)π(8) = 32π/3. Number = 288π / (32π/3) = 288 × 3/32 = 27.</p><div class="ans-line"><strong>Answer</strong> C · 27.</div></div></div>
+
+    <div class="q-card"><div class="q-head"><div class="q-id"><span>Problem 23</span><span class="yr">Hard</span></div><span class="q-tag">path</span></div><div class="q-body"><p class="q-text"><strong>Q.</strong> A garden 40m × 30m has a 3m wide path running outside it. Find the area of the path.</p><ul class="q-options"><li data-opt="A">456 m²</li><li data-opt="B">456 m²</li><li data-opt="C">456 m²</li><li data-opt="D">456 m²</li></ul></div><button class="toggle-sol">Show solution</button><div class="sol"><p>Outer rectangle: (40 + 6)(30 + 6) = 46 × 36 = 1656. Inner = 1200. Path = 1656 − 1200 = 456.</p><div class="ans-line"><strong>Answer</strong> A · 456 m².</div></div></div>
+
+    <div class="q-card"><div class="q-head"><div class="q-id"><span>Problem 24</span><span class="yr">Very Hard</span></div><span class="q-tag">inscribed circle</span></div><div class="q-body"><p class="q-text"><strong>Q.</strong> A circle is inscribed in a right triangle with legs 6 and 8. Find the inradius.</p><ul class="q-options"><li data-opt="A">2</li><li data-opt="B">2.5</li><li data-opt="C">3</li><li data-opt="D">4</li></ul></div><button class="toggle-sol">Show solution</button><div class="sol"><p>Hypotenuse = 10 (3,4,5 triple scaled). Area = (1/2)(6)(8) = 24. Semi-perimeter = (6+8+10)/2 = 12. r = A/s = 24/12 = 2.</p><div class="ans-line"><strong>Answer</strong> A · 2.</div></div></div>
+
+    <div class="q-card"><div class="q-head"><div class="q-id"><span>Problem 25</span><span class="yr">Very Hard</span></div><span class="q-tag">cylinder in cone</span></div><div class="q-body"><p class="q-text"><strong>Q.</strong> A right circular cylinder is inscribed in a right circular cone of radius 6 cm and height 12 cm. The cylinder has the same axis as the cone. If the cylinder has height 6 cm, what is its radius?</p><ul class="q-options"><li data-opt="A">2</li><li data-opt="B">3</li><li data-opt="C">4</li><li data-opt="D">5</li></ul></div><button class="toggle-sol">Show solution</button><div class="sol"><p>By similar triangles, the radius of the cone at height 6 from the base is r_cone × (1 − 6/12) = 6 × 1/2 = 3. The inscribed cylinder has this same radius.</p><div class="ans-line"><strong>Answer</strong> B · 3.</div></div></div>
+
+    <div class="callout" style="margin-top:36px"><strong>What to do with these 25 problems.</strong> Draw every figure before reading the question twice. The geometry that takes one minute when drawn takes four when imagined.</div>
+
+    <div class="section-end"><span>End of Module 08</span><span>→ next: Reference Sheet</span></div>
+  </section>
+
+  <section class="section" id="m9">
+    <header class="section-header">
+      <div class="module-meta">Module 09 · Reference</div>
+      <h1 class="section-title">One page,<br><em>everything you need.</em></h1>
+      <p class="section-deck">The codex compressed to a single revision sheet.</p>
+    </header>
+
+    <h3><span class="h-num">9.1</span>Triangles</h3>
+    <div class="formula"><span class="label">Area formulas</span>(1/2)bh · Heron √(s(s−a)(s−b)(s−c)) · (1/2)ab sin C · rs · abc/(4R)</div>
+    <div class="formula"><span class="label">Equilateral</span>(√3/4)a² · height (√3/2)a · inradius a/(2√3) · circumradius a/√3</div>
+    <div class="formula"><span class="label">Pythagoras triples</span>(3,4,5) (5,12,13) (8,15,17) (7,24,25) (9,40,41) (20,21,29)</div>
+
+    <h3><span class="h-num">9.2</span>Circles</h3>
+    <div class="formula"><span class="label">Circle</span>Area πr² · circumference 2πr · sector area (θ/360)πr² · arc length (θ/360)2πr</div>
+    <div class="formula"><span class="label">Power of point</span>PA × PB = PC × PD (chords through P inside) · PT² = PA × PB (P outside, T tangent)</div>
+    <div class="formula"><span class="label">Inscribed angle</span>Central angle = 2 × inscribed angle on same arc · angle in semicircle = 90°</div>
+
+    <h3><span class="h-num">9.3</span>Quadrilaterals &amp; Polygons</h3>
+    <div class="formula"><span class="label">Quad areas</span>Square a² · Rectangle lb · Parallelogram bh · Rhombus (1/2)d₁d₂ · Trapezium (1/2)(a+b)h</div>
+    <div class="formula"><span class="label">n-gon</span>Interior sum (n−2)·180° · exterior sum always 360° · diagonals n(n−3)/2 · regular hexagon (3√3/2)a²</div>
+
+    <h3><span class="h-num">9.4</span>3D Solids</h3>
+    <div class="formula"><span class="label">Volumes</span>Cube a³ · Cuboid lbh · Cylinder πr²h · Cone (1/3)πr²h · Sphere (4/3)πr³ · Hemisphere (2/3)πr³</div>
+    <div class="formula"><span class="label">Surface areas</span>Cube 6a² · Cuboid 2(lb+bh+lh) · Cylinder TSA 2πr(r+h) · Cone TSA πr(r+ℓ) · Sphere 4πr² · Hemisphere TSA 3πr²</div>
+
+    <h3><span class="h-num">9.5</span>The mantra</h3>
+    <div class="callout"><strong>Draw, label, name the theorem, compute.</strong> Skipping any of these four steps is the single largest source of geometry errors on the CAT.</div>
+
+    <div class="section-end"><span>End of Module 09</span><span>End of the Geometry Codex</span></div>
+  </section>
+
+  </main>
+</div>
+
+<script>
+  const links = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('.section');
+  links.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = link.dataset.target;
+      links.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      sections.forEach(s => s.classList.remove('active'));
+      const t = document.getElementById(target);
+      if (t) { t.classList.add('active'); window.scrollTo({top:0, behavior:'smooth'}); }
+    });
+  });
+  document.querySelectorAll('.toggle-sol').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sol = btn.nextElementSibling;
+      const open = sol.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.textContent = open ? 'Hide solution' : 'Show solution';
+    });
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    const a = document.querySelector('.nav-link.active');
+    const all = Array.from(links);
+    const i = all.indexOf(a);
+    if (e.key === 'ArrowRight' && i < all.length - 1) all[i + 1].click();
+    else if (e.key === 'ArrowLeft' && i > 0) all[i - 1].click();
+  });
+</script>
+
+</body>
+</html>
